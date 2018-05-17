@@ -10,7 +10,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
     * [Migrate Database](#migrate-database)
     * [Run the application](#run-the-application)
 * [Tests](#tests)
-    * [Application & Webserver](#application-&-webserver)
+    <!-- * [Application & Webserver](#application-&-webserver) -->
+    * More coming ...
+* [Styling](styling)
 
 ## Setup & Installation
   Recommendations for running after cloning:
@@ -77,8 +79,30 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
   Navigate to [127.0.0.1:5000](127.0.0.1:5000)
 
+
+
 ## Tests
 To run all tests with coverage:
 ```
 $(venv) py.test --cov-report term-missing --cov
+```
+
+
+## Styling
+Code is currently setup to SCSS with node scripts to compile.
+Alternatively you can create your own .css style sheet in *app/static/css* and replace
+```
+<link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
+```
+in *app/templates/base.html* with
+```
+<link href="{{url_for('static', filename='css/[[[name of your style sheet]]]')}}" rel="stylesheet">
+```
+
+To setup scss watcher in root directory run:
+```
+$ npm install
+```
+```
+$ npm run watch
 ```

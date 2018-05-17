@@ -1,0 +1,10 @@
+@import 'helpers/colors';
+@import 'helpers/fonts';
+@import 'helpers/breakpoints';
+
+
+body {
+  font-family: $body_font;
+  font-size: 18px;
+  line-height: 28px;
+}
