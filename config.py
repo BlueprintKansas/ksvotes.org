@@ -1,12 +1,6 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-if os.path.exists(".env"):
-    for line in open(".env"):
-        var = line.strip().split("=")
-        if len(var) == 2:
-            os.environ[var[0]] = var[1]
-
+from dotenv import load_dotenv
+load_dotenv()
 
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or "devsk"

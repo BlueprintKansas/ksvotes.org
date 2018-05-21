@@ -6,6 +6,7 @@ Flask==1.0.2
 Flask-Migrate==2.1.1
 Flask-Script==2.0.6
 Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
 itsdangerous==0.24
 Jinja2==2.10
 Mako==1.0.7
@@ -18,7 +19,9 @@ py==1.5.3
 pytest==3.5.1
 pytest-cov==2.5.1
 python-dateutil==2.7.3
+python-dotenv==0.8.2
 python-editor==1.0.3
 six==1.11.0
 SQLAlchemy==1.2.7
 Werkzeug==0.14.1
+WTForms==2.1

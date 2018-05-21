@@ -38,7 +38,7 @@ def preview():
     # include signing box
     return 'preview'
 
-#step 7 (affirm signature) (redirec if desktop?)
+#step 7 (affirm signature) (redirect if desktop?)
 @main.route('/affirmation')
 def affirmation():
     return "affirmation"
