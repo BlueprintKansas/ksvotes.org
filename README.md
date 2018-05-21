@@ -13,6 +13,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
     <!-- * [Application & Webserver](#application-&-webserver) -->
     * More coming ...
 * [Styling](styling)
+* [Internationalization & Localization](internationalization-&-localization)
 
 ## Setup & Installation
   Recommendations for running after cloning:
@@ -105,4 +106,20 @@ $ npm install
 ```
 ```
 $ npm run watch
+```
+
+## Internationalization & Localization
+This application is using [Flask-Babel](https://pythonhosted.org/Flask-Babel/)
+To extract all of the gettext() options, in the root directory run:
+**Note: commands are calling directly to our venv/bin/pybabel**
+```
+$ venv/bin/pybabel extract -F babel.cfg -o messages.pot app
+```
+To generate the language catalog for Spanish:
+```
+$ venv/bin/pybabel init -i messages.pot -d app/translations -l es
+```
+To compile translations run:
+```
+$ venv/bin/pybabel compile -d app/translations
 ```

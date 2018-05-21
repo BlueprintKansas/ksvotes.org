@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -30,4 +32,9 @@ config = {
     "testing": TestingConfig,
     "production": ProductionConfig,
     "default": DevelopmentConfig
+}
+
+LANGUAGES = {
+    'en': 'English',
+    'es': 'Español'
 }
