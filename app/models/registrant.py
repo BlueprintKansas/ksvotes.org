@@ -9,7 +9,7 @@ class Registrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow())
     last_completed_step = db.Column(db.Integer)
-    completed_at = db.Column(db.Datetime, default=datetime.utcnow())
+    completed_at = db.Column(db.Datetime, default=None)
 
     #registration steps
     is_citizen = db.Column(db.Boolean, default=True)
@@ -69,5 +69,5 @@ class Registrant(db.Model):
     # }
     party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
     county = db.Column(db.String()) #may require some geo lookup.
-    race_ethnic = db.Column(db.String()) #enum? (values?)
+    lang = db.Column(db.String()) #enum? (values?)
     signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
