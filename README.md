@@ -10,10 +10,8 @@ The ksvotes.org site makes Kansas online voting registration easy.
     * [Migrate Database](#migrate-database)
     * [Run the application](#run-the-application)
 * [Tests](#tests)
-    <!-- * [Application & Webserver](#application-&-webserver) -->
-    * More coming ...
 * [Styling](styling)
-* [Internationalization & Localization](internationalization-&-localization)
+* [Internationalization & Localization](#internationalization-&-localization)
 
 ## Setup & Installation
   Recommendations for running after cloning:
