@@ -17,7 +17,7 @@ run:
 testcov:
 	py.test --cov-report term-missing --cov
 
-test:
+test: check
 	py.test
 
 .PHONY: deps venv test dbmigrate run testcov
