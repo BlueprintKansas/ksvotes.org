@@ -11,7 +11,10 @@ dbmigrate:
 run:
 	python manage.py runserver
 
-test:
-	echo 'testing is TODO'
+testcov:
+	py.test --cov-report term-missing --cov
 
-.PHONY: deps venv test dbmigrate run
+test:
+	py.test
+
+.PHONY: deps venv test dbmigrate run testcov
