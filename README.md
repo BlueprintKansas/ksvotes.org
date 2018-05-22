@@ -1,6 +1,8 @@
 # KSVotes.org
 **Note: This is repo is in active development.  Not recommended to pull and run at this point**
 
+[![Build Status](https://travis-ci.org/BlueprintKansas/ksvotes.org.svg?branch=master)](https://travis-ci.org/BlueprintKansas/ksvotes.org)
+
 The ksvotes.org site makes Kansas online voting registration easy.
 
 ## Table of Contents
