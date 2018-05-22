@@ -1,0 +1,10 @@
+# Config file for automatic testing at travis-ci.org
+sudo: false  # http://docs.travis-ci.com/user/migrating-from-legacy/
+language: python
+python:
+  - 3.6
+install: make deps
+before_script:
+  - export FLASK_DEBUG=1
+
+script: make test
