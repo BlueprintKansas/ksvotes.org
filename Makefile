@@ -1,3 +1,6 @@
+check:
+	@[ -f ".env" ] || echo "Missing .env file"
+
 deps:
 	pip install -r requirements.txt
 
