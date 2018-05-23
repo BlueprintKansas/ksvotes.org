@@ -1,3 +1,6 @@
+check:
+	@[ -f ".env" ] || (echo "Missing .env file" && false)
+
 deps:
 	pip install -r requirements.txt
 
@@ -11,7 +14,10 @@ dbmigrate:
 run:
 	python manage.py runserver
 
-test:
-	echo 'testing is TODO'
+testcov:
+	py.test --cov-report term-missing --cov
 
-.PHONY: deps venv test dbmigrate run
+test: check
+	py.test
+
+.PHONY: deps venv test dbmigrate run testcov
