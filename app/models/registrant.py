@@ -1,9 +1,22 @@
+import os
 from app import db
 from datetime import datetime
+from flask import jsonify
 from sqlalchemy.dialects.postgresql import JSON
+from cryptography.fernet import Fernet
 
 class Registrant(db.Model):
     __tablename__ = "registrants"
+
+    #create key from environmental key
+    #json stringyify dictionary and encrypt
+    def encryptem(data):
+        f = Fernet(os.environ.get("CRYPT_KEY"))
+        return f.encrypt(jsonify(data))
+
+    def decryptem(data):
+        f = Fernet(os.environ.get("CRYPT_KEY"))
+        return f.decrypt(data)
 
     #defaults
     id = db.Column(db.Integer, primary_key=True)
@@ -14,6 +27,11 @@ class Registrant(db.Model):
     #registration steps
     is_citizen = db.Column(db.Boolean, default=True)
     is_eighteen = db.Column(db.Boolean, default=True)
+    party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
+    county = db.Column(db.String()) #may require some geo lookup.
+    lang = db.Column(db.String()) #enum? (values?)
+    signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
+
     registration = db.Column(db.String())
     # registration JSON column encrypted and includes
     # {
@@ -67,7 +85,3 @@ class Registrant(db.Model):
     #     "helper": "String"
                 #long string of help pii
     # }
-    party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
-    county = db.Column(db.String()) #may require some geo lookup.
-    lang = db.Column(db.String()) #enum? (values?)
-    signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
