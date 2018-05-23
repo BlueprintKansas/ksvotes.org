@@ -3,8 +3,14 @@ sudo: false  # http://docs.travis-ci.com/user/migrating-from-legacy/
 language: python
 python:
   - 3.6
+services:
+  - postgresql
 install: make deps
 before_script:
   - export FLASK_DEBUG=1
+  - cp .env-travis .env
+  - psql -c 'create database ksvotes_test;' -U postgres
+  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+  - export $(cat .env | grep -v ^# | xargs)
 
 script: make test

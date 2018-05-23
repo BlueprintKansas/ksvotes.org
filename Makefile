@@ -1,5 +1,5 @@
 check:
-	@[ -f ".env" ] || echo "Missing .env file"
+	@[ -f ".env" ] || (echo "Missing .env file" && false)
 
 deps:
 	pip install -r requirements.txt
