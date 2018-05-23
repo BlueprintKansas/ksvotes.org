@@ -1,2 +1,2 @@
-from .registrants import RegistrantModel
-from .clerks import ClerksModel
+from .registrant import Registrant
+from .clerk import Clerk

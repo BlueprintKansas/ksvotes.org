@@ -9,7 +9,7 @@ class Registrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow())
     last_completed_step = db.Column(db.Integer)
-    completed_at = db.Column(db.Datetime, default=None)
+    completed_at = db.Column(db.DateTime, default=None)
 
     #registration steps
     is_citizen = db.Column(db.Boolean, default=True)
