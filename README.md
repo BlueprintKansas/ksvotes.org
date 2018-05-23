@@ -85,7 +85,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
 ## Tests
 To run all tests with coverage:
 ```
-$(venv) py.test --cov-report term-missing --cov
+$(venv) py.test --cov-report term-missing --cov --ignore=node_modules
 ```
 
 
