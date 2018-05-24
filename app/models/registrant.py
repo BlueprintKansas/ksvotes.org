@@ -1,24 +1,23 @@
 import os
 from app import db
 from datetime import datetime
-from flask import jsonify
+import json
 from sqlalchemy.dialects.postgresql import JSON
 from cryptography.fernet import Fernet
+from sqlalchemy.ext.hybrid import hybrid_property,Comparator
+
+
+def encryptem(data):
+    f = Fernet(os.environ.get("CRYPT_KEY").encode())
+    encrypted = f.encrypt(json.dumps(data).encode())
+    return encrypted.decode()
+
+def decryptem(data):
+    f = Fernet(os.environ.get("CRYPT_KEY").encode())
+    return f.decrypt(data.encode())
 
 class Registrant(db.Model):
     __tablename__ = "registrants"
-
-    #create key from environmental key
-    #json stringyify dictionary and encrypt
-    def encryptem(data):
-        f = Fernet(os.environ.get("CRYPT_KEY"))
-        return f.encrypt(jsonify(data))
-
-    def decryptem(data):
-        f = Fernet(os.environ.get("CRYPT_KEY"))
-        return f.decrypt(data)
-
-    #defaults
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow())
     last_completed_step = db.Column(db.Integer)
@@ -33,6 +32,34 @@ class Registrant(db.Model):
     signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
 
     registration = db.Column(db.String())
+    #create key from environmental key
+    #json stringyify dictionary and encrypt
+
+    @hybrid_property
+    def registration_value(self):
+        return encryptem(self.registration)
+
+    @registration_value.setter
+    def registration_value(self, data):
+        self.registration = encryptem(data)
+
+    class encrypt_comparator(Comparator):
+        def operate(self, op, other, **kw):
+            return op(
+                self.__clause_element__(), encryptem(other),
+                **kw
+            )
+
+    @registration_value.comparator
+    def registration_value(cls):
+        return cls.encrypt_comparator(
+                    cls.registration
+                )
+
+
+
+    #defaults
+
     # registration JSON column encrypted and includes
     # {
     #     #section 1 federal form
