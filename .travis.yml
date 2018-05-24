@@ -1,5 +1,7 @@
 # Config file for automatic testing at travis-ci.org
 sudo: false  # http://docs.travis-ci.com/user/migrating-from-legacy/
+notifications:
+  email: false
 language: python
 python:
   - 3.6

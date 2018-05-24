@@ -9,7 +9,11 @@ venv:
 
 dbmigrate:
 	python manage.py db migrate
+
+dbupgrade:
 	python manage.py db upgrade
+
+update: dbmigrate dbupgrade
 
 run:
 	python manage.py runserver
