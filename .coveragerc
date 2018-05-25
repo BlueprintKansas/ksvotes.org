@@ -1,2 +1,2 @@
 [run]
-omit = manage.py, */tests/*, */migrations/*, */venv/*, config.py
+omit = manage.py, */node_modules/**, */tests/*, */migrations/*, */venv/*, config.py
