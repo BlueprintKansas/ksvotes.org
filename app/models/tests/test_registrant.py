@@ -39,9 +39,16 @@ def test_insert_get_registrant_start(app, session, client):
     )
     session.add(new_registrant)
     session.commit()
-    registrant = session.query(Registrant).first()
-    assert isinstance(registrant.registration, (dict)) == False
-    assert registrant.lang == 'en'
 
+
+    registrant = session.query(Registrant).first()
+    #confirm that registration was modified from dictionary value
+    assert isinstance(registrant.registration, (dict)) == False
+
+    #confirm that registration_value is returned decrypted and marshalled to dictionary
+    assert isinstance(registrant.registration_value, (dict)) == True
+    assert registrant.registration_value.get('name_first') == "foo"
+    
+    #confirm that registration was encrypted and can be decrypted
     decrypted = json.loads(decryptem(registrant.registration))
     assert decrypted.get('name_first') == "foo"

@@ -37,7 +37,8 @@ class Registrant(db.Model):
 
     @hybrid_property
     def registration_value(self):
-        return encryptem(self.registration)
+        reg = decryptem(self.registration)
+        return json.loads(reg.decode())
 
     @registration_value.setter
     def registration_value(self, data):
