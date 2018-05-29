@@ -6,8 +6,55 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-4">
-          <h1> Hello World </h1>
+          <h1 class="h1-responsive"> Hello World </h1>
           <p> {{_('Test String')}} </p>
+
+
+  <form>
+    <div class="md-form">
+        <input type="text" id="name_first" class="form-control" autocomplete="off" required>
+        <label for="name_first" data-error="required">First Name*</label>
+    </div>
+
+    <div class="md-form">
+        <input type="text" id="name_last" class="form-control" autocomplete="off" required>
+        <label for="name_last" data-error="required">Last Name*</label>
+    </div>
+
+    <div class="md-form">
+        <input type="text" id="dob" class="form-control" autocomplete="off" required>
+        <label for="dob" data-error="required">Date of Birth*</label>
+    </div>
+
+
+      <div class="form-group">
+          <label for="county">County*</label>
+          <select class="form-control" id="county">
+            <option disabled value="" selected> Select Your County </option>
+            {% for county in counties %}
+              <option value="{% filter upper %}{{county}}{% endfilter %}"> {{county}} </option>
+            {% endfor %}
+          </select>
+      </div>
+
+
+    <div class="md-form">
+        <input type="email" id="email" class="form-control" autocomplete="off" required>
+        <label for="email" data-error="required">Email*</label>
+    </div>
+
+    <div class="md-form">
+        <input type="text" id="phone" class="form-control" autocomplete="off" required>
+        <label for="phone">Phone Number</label>
+    </div>
+
+
+      <div class="text-right mt-4">
+          <button class="btn btn-outline-default" type="submit">Next </button>
+      </div>
+  </form>
+  <!-- Material form login -->
+
       </div>
     </div>
   </div>
