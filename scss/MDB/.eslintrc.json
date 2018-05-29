@@ -1,0 +1,11 @@
+{
+  "env": {
+    "es6": false,
+    "jquery": true
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "camelcase": "off",
+    "brace-style": 2
+  }
+}
