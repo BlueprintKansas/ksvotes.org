@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-21 10:36-0500\n"
+"POT-Creation-Date: 2018-05-29 18:22-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,5 +19,13 @@ msgstr ""
 
 #: app/templates/index.html:10
 msgid "Test String"
+msgstr ""
+
+#: app/templates/index.html:14 app/templates/index.html:15
+msgid "0_first"
+msgstr ""
+
+#: app/templates/index.html:14
+msgid "is required"
 msgstr ""
 
