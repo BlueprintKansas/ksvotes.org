@@ -32,7 +32,27 @@ form {
   position: relative;
   .loading {
     display: none;
-
+  }
+  .form-check {
+    margin-bottom: 15px;
+    .form-check-label {
+      margin-left: 15px;
+      font-size: .8em;
+    }
+    .postfix {
+      color: #ced4da;
+      position: absolute;
+      top: 15px;
+      right: -25px;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $default-color;
+      }
+    }
+  }
+  .previous-name-fields {
+    display: none;
   }
 }
 
@@ -49,7 +69,7 @@ form {
   box-shadow: 0 1px 0 0 $primary-color !important;
 }
 
-.parsley-success {
+.parsley-success:not(.form-check-input) {
   border-bottom: 1px solid $default-color !important;
   box-shadow: 0 1px 0 0 $default-color !important;
 }

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block title %} Address {% endblock %}
+
+{% block content %}
+<section id="formsection">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form name="step_3" id="step_3" method="POST" action="{{url_for('main.address')}}">
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="addr"
+                name="addr"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="addr">{{_('3_addr')}}*</label>
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_addr_help')}}"></i>
+              <small id="ht_addr" class="form-text"></small>
+          </div>
+          <div class="md-form">
+              <input
+                type="text"
+                id="unit"
+                name="unit"
+                class="form-control"
+                autocomplete="off"
+              >
+              <label for="name_middle">{{_('3_unit')}}*</label>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="city"
+                name="city"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="city">{{_('3_city')}}*</label>
+              <small id="ht_addr" class="form-text"></small>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="state"
+                name="state"
+                class="form-control"
+                autocomplete="off"
+                value="KANSAS"
+                disabled
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_state_help')}}"></i>
+              <small id="ht_addr" class="form-text"></small>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="zip">{{_('3_zip')}}*</label>
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_zip_help')}}"></i>
+              <small id="ht_zip" class="form-text"></small>
+          </div>
+
+          <div class="text-right mt-4">
+              <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block js_footer %}
+<script>
+$(function () {
+  //initialize form with parsley validation
+  var form = $('#step_3');
+  var address_valid = {
+    addr: false,
+    city: false,
+    zip: false,
+  }
+  form.parsley()
+
+  form.submit(function( event ){
+    event.preventDefault();
+    var formy = new Formy(form);
+    formy.submitForm();
+
+  })
+});
+
+</script>
+</script>
+{% endblock %}

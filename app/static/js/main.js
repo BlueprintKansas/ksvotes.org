@@ -77,6 +77,8 @@ var Formy = function(form) {
      for (var i=0; i<elements.length; i++) {
        if(elements[i].value && elements[i].value !== "") {
          data[elements[i].name] = elements[i].value;
+       } else if (elements[i].checked) {
+         data[elements[i].name] = true;
        }
      }
      return data;

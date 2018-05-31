@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% block title %} Name {% endblock %}
+
+{% block content %}
+<section id="formsection">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form name="step_2" id="step_2" method="POST" action="{{url_for('main.name')}}">
+
+          <div class="form-group md-form">
+              <label for="prefix" class="sr-only">{{_('2_prefix')}} </label>
+              <select
+                class="form-control"
+                id="prefix"
+                name="prefix"
+              >
+                <option disabled value="" selected> {{_('2_prefix')}}</option>
+                <option value="mr">Mr.</option>
+                <option value="mrs">Mrs.</option>
+                <option value="miss">Miss</option>
+                <option value="ms">Ms.</option>
+              </select>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="name_first"
+                name="name_first"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="name_first">{{_('2_first')}}*</label>
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('2_name_help')}}"></i>
+
+              <small id="ht_name_first" class="form-text"></small>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="name_middle"
+                name="name_middle"
+                class="form-control"
+                autocomplete="off"
+              >
+              <label for="name_middle">{{_('2_first')}}*</label>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="name_last"
+                name="name_last"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="name_last">{{_('2_last')}}*</label>
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('2_name_help')}}"></i>
+
+              <small id="ht_name_last" class="form-text"></small>
+          </div>
+
+          <div class="form-group md-form">
+              <label for="suffix" class="sr-only">{{_('2_suffix')}} </label>
+              <select
+                class="form-control"
+                id="suffix"
+                name="suffix"
+              >
+                <option disabled value="" selected> {{_('2_suffix')}}</option>
+                <option value="jr">Jr.</option>
+                <option value="sr">Sr.</option>
+                <option value="ii">II</option>
+                <option value="iii">III</option>
+                <option value="iv">IV</option>
+              </select>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="has_prev_name"
+              value=""
+              id="has_prev_name"
+            >
+            <label class="form-check-label" for="citizen">
+              {{_('2_has_prev_name')}}
+            </label>
+          </div>
+
+          <div class="previous-name-fields">
+            <div class="form-group md-form">
+                <label for="prev_prefix" class="sr-only">{{_('2a_prev_prefix')}} </label>
+                <select
+                  class="form-control"
+                  id="prev_prefix"
+                  name="prev_prefix"
+                >
+                  <option disabled value="" selected> {{_('2a_prev_prefix')}}</option>
+                  <option value="mr">Mr.</option>
+                  <option value="mrs">Mrs.</option>
+                  <option value="miss">Miss</option>
+                  <option value="ms">Ms.</option>
+                </select>
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_name_first"
+                  name="prev_name_first"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                >
+                <label for="prev_name_first">{{_('2a_prev_first')}}*</label>
+
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_name_middle"
+                  name="prev_name_middle"
+                  class="form-control"
+                  autocomplete="off"
+                >
+                <label for="prev_name_middle">{{_('2a_prev_middle')}}*</label>
+            </div>
+
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_name_last"
+                  name="prev_name_last"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                >
+                <label for="prev_name_last">{{_('2a_prev_last')}}*</label>
+
+            </div>
+
+            <div class="form-group md-form">
+                <label for="suffix" class="sr-only">{{_('2a_prev_suffix')}} </label>
+                <select
+                  class="form-control"
+                  id="suffix"
+                  name="suffix"
+                >
+                  <option disabled value="" selected>{{_('2a_prev_suffix')}}</option>
+                  <option value="jr">Jr.</option>
+                  <option value="sr">Sr.</option>
+                  <option value="ii">II</option>
+                  <option value="iii">III</option>
+                  <option value="iv">IV</option>
+                </select>
+            </div>
+
+          </div><!--previous-name-fields-->
+
+          <div class="text-right mt-4">
+              <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block js_footer %}
+<script>
+$(function () {
+  //initialize form with parsley validation
+  var form = $('#step_2');
+  $('input[name=has_prev_name]').change(
+      function(){
+          if (this.checked) {
+              $('.previous-name-fields').show();
+              $('#prev_name_first').attr("required", true);
+              $('#prev_name_last').attr("required", true);
+          } else {
+              $('.previous-name-fields').hide();
+              $('#prev_name_first').removeAttr("required").val('').blur();
+              $('#prev_name_last').removeAttr("required").val('').blur();
+          }
+      });
+
+  form.parsley()
+
+  form.submit(function( event ){
+    event.preventDefault();
+    var formy = new Formy(form);
+    formy.submitForm();
+
+  })
+});
+
+</script>
+</script>
+{% endblock %}
