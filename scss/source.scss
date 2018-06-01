@@ -1,0 +1,106 @@
+@import "MDB/scss/mdb";
+body {
+  font-size: 18px;
+  line-height: 28px;
+  background-color: #FAFAFA;
+}
+
+.form-group {
+  label {
+    color: #757575;
+    font-size: .9em;
+  }
+  select {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: right 50%;
+    background-repeat: no-repeat;
+    padding: .5em;
+    padding-right: 1.5em;
+  }
+}
+form {
+  padding: 15px 40px 15px 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 6px -6px #ddd;
+  position: relative;
+  .loading {
+    display: none;
+  }
+  .form-check {
+    margin-bottom: 15px;
+    .form-check-label {
+      margin-left: 15px;
+      font-size: .8em;
+    }
+    .postfix {
+      color: #ced4da;
+      position: absolute;
+      top: 15px;
+      right: -25px;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $default-color;
+      }
+    }
+  }
+  .previous-name-fields {
+    display: none;
+  }
+  .previous-address-fields {
+    display: none;
+  }
+  .mail-address-fields {
+    display: none;
+  }
+}
+
+.parsley-errors-list {
+  list-style: none;
+  margin: 0;
+  margin-top:-.25rem;
+  padding:0px;
+  font-size: .7em;
+  color: $primary-color;
+}
+.parsley-error {
+  border-bottom: 1px solid $primary-color !important;
+  box-shadow: 0 1px 0 0 $primary-color !important;
+}
+
+.parsley-success:not(.form-check-input) {
+  border-bottom: 1px solid $default-color !important;
+  box-shadow: 0 1px 0 0 $default-color !important;
+}
+
+.md-form {
+  .postfix {
+    color: #ced4da;
+    position: absolute;
+    top: 15px;
+    right: -25px;
+    &:hover,
+    &:focus,
+    &:active {
+      color: $default-color;
+    }
+  }
+}
+.tooltip-inner {
+
+    background-color: $default-color;
+}
+.tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before,
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before,
+.tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before,
+.tooltip.bs-tooltip-left .arrow::before {
+    border-left-color: $default-color;
+}

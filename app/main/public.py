@@ -1,36 +1,69 @@
 from app.main import main
-from flask import g, url_for, render_template
-
+from flask import g, url_for, render_template, jsonify, request
+import time
 #step 0 / 0x
+
+
 @main.route('/', methods=["GET", "POST"])
 def index():
-    return render_template('index.html')
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+
+    counties = ["Allen","Anderson","Atchison","Barber","Barton","Bourbon","Brown","Butler","Chase","Chautauqua","Cherokee","Cheyenne","Clark","Clay","Cloud","Coffey","Comanche","Cowley","Crawford","Decatur","Dickinson","Doniphan","Douglas","Edwards","Elk","Ellis","Ellsworth","Finney","Ford","Franklin","Geary","Gove","Graham","Grant","Gray","Greeley","Greenwood","Hamilton","Harper","Harvey","Haskell","Hodgeman","Jackson","Jefferson","Jewell","Johnson","Kearny","Kingman","Kiowa","Labette","Lane","Leavenworth","Lincoln","Linn","Logan","Lyon","Marion","Marshall","McPherson","Meade","Miami","Mitchell","Montgomery","Morris","Morton","Nemaha","Neosho","Ness","Norton","Osage","Osborne","Ottawa","Pawnee","Phillips","Pottawatomie","Pratt","Rawlins","Reno","Republic","Rice","Riley","Rooks","Rush","Russell","Saline","Scott","Sedgwick","Seward","Shawnee","Sheridan","Sherman","Smith","Stafford","Stanton","Stevens","Sumner","Thomas","Trego","Wabaunsee","Wallace","Washington","Wichita","Wilson","Woodson","Wyandotte"]
+    return render_template('index.html', counties=counties)
 
 #step 1
-@main.route('/citizenship')
+@main.route('/citizenship', methods=["GET", "POST"])
 def citizenship():
-    return 'citizenship'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('citizenship.html')
 
 #step 2
-@main.route('/name')
+@main.route('/name', methods=["GET", "POST"])
 def name():
-    return 'name'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('name.html')
 
 #step 3
-@main.route('/address')
+@main.route('/address', methods=["GET", "POST"])
 def address():
-    return 'address'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('address.html')
 
 #step 4
-@main.route('/party')
+@main.route('/party', methods=["GET", "POST"])
 def party():
-    #return normalized address
-    return 'party'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('party.html')
 
 #step 5 (4? 4.5?)
-@main.route('/identification')
+@main.route('/identification', methods=["GET", "POST"])
 def identification():
-    return 'identification'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('identification.html')
 
 #step 6 NVRIS preview
 @main.route('/preview')

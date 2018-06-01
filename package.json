@@ -2,12 +2,15 @@
   "name": "sassem",
   "version": "1.0.0",
   "scripts": {
-    "css": "node-sass --output-style compressed --include-path scss app/static/css/source.scss app/static/css/compiled.css",
+    "css": "node-sass --output-style compressed --include-path scss scss/source.scss app/static/css/compiled.css",
     "watch": "nodemon -e scss -x \"npm run css\""
   },
   "license": "MIT",
   "devDependencies": {
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "moment": "^2.22.1"
   }
 }

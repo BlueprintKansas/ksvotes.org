@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% block title %} Address {% endblock %}
+
+{% block content %}
+<section id="formsection">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form name="step_3" id="step_3" method="POST" action="{{url_for('main.address')}}">
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="addr"
+                name="addr"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="addr">{{_('3_addr')}}*</label>
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_addr_help')}}"></i>
+              <small id="ht_addr" class="form-text"></small>
+          </div>
+          <div class="md-form">
+              <input
+                type="text"
+                id="unit"
+                name="unit"
+                class="form-control"
+                autocomplete="off"
+              >
+              <label for="unit">{{_('3_unit')}}*</label>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="city"
+                name="city"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="city">{{_('3_city')}}*</label>
+              <small id="ht_city" class="form-text"></small>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="state"
+                name="state"
+                class="form-control"
+                autocomplete="off"
+                value="KANSAS"
+                disabled
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_state_help')}}"></i>
+              <small id="ht_state" class="form-text"></small>
+          </div>
+
+          <div class="md-form">
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                class="form-control"
+                autocomplete="off"
+                required
+                data-parsley-error-message="{{_('Required')}}"
+                data-parsley-trigger="focusout"
+              >
+              <label for="zip">{{_('3_zip')}}*</label>
+              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_zip_help')}}"></i>
+              <small id="ht_zip" class="form-text"></small>
+          </div>
+
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="has_prev_addr"
+              value=""
+              id="has_prev_addr"
+            >
+            <label class="form-check-label" for="has_prev_addr">
+              {{_('3_has_prev_addr')}}
+            </label>
+          </div>
+
+
+          <div class="previous-address-fields">
+            <h1 class="h1-responsive"> {{_('3a_header')}} </h1>
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_addr"
+                  name="prev_addr"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="prev_addr">{{_('3a_prev_addr')}}*</label>
+            </div>
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_unit"
+                  name="prev_unit"
+                  class="form-control"
+                  autocomplete="off"
+                >
+                <label for="prev_unit">{{_('3a_prev_unit')}}*</label>
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_city"
+                  name="prev_city"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="prev_city">{{_('3a_prev_city')}}*</label>
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_state"
+                  name="prev_state"
+                  class="form-control"
+                  autocomplete="off"
+                  value="KANSAS"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="prev_state">{{_('3a_prev_state')}}*</label>
+
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="prev_zip"
+                  name="prev_zip"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="prev_zip">{{_('3a_prev_zip')}}*</label>
+                <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_zip_help')}}"></i>
+                <small id="ht_prev_zip" class="form-text"></small>
+            </div>
+
+          </div><!--/previous-address-fields-->
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="has_mail_addr"
+              value=""
+              id="has_mail_addr"
+            >
+            <label class="form-check-label" for="has_mail_addr">
+              {{_('3_has_mail_addr')}}
+            </label>
+          </div>
+
+          <div class="mail-address-fields">
+
+            <h1 class="h1-responsive"> {{_('3b_header')}} </h1>
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="mail_addr"
+                  name="mail_addr"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="mail_addr">{{_('3b_mail_addr')}}*</label>
+            </div>
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="mail_unit"
+                  name="mail_unit"
+                  class="form-control"
+                  autocomplete="off"
+                >
+                <label for="mail_unit">{{_('3b_mail_unit')}}*</label>
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="mail_city"
+                  name="mail_city"
+                  class="form-control"
+                  autocomplete="off"
+
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="mail_city">{{_('3b_mail_city')}}*</label>
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="mail_state"
+                  name="mail_state"
+                  class="form-control"
+                  autocomplete="off"
+                  value="KANSAS"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="mail_state">{{_('3b_mail_state')}}*</label>
+
+            </div>
+
+            <div class="md-form">
+                <input
+                  type="text"
+                  id="mail_zip"
+                  name="mail_zip"
+                  class="form-control"
+                  autocomplete="off"
+                  data-parsley-error-message="{{_('Required')}}"
+                  data-parsley-trigger="focusout"
+                >
+                <label for="mail_zip">{{_('3b_mail_zip')}}*</label>
+                <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('3_zip_help')}}"></i>
+                <small id="ht_mail_zip" class="form-text"></small>
+            </div>
+
+
+          </div><!-- mail address fields -->
+
+
+
+
+
+
+          <div class="text-right mt-4">
+              <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block js_footer %}
+<script>
+$(function () {
+  //initialize form with parsley validation
+  var form = $('#step_3');
+  $('input[name=has_prev_addr]').change(
+      function(){
+          if (this.checked) {
+              $('.previous-address-fields').show();
+              $('#prev_zip').attr("required", true);
+              $('#prev_state').attr("required", true);
+              $('#prev_city').attr("required", true);
+              $('#prev_addr').attr("required", true);
+
+          } else {
+              $('.previous-address-fields').hide();
+              $('#prev_zip').removeAttr("required").val('').blur();
+              $('#prev_state').removeAttr("required").val('').blur();
+              $('#prev_city').removeAttr("required").val('').blur();
+              $('#prev_addr').removeAttr("required").val('').blur();
+          }
+      });
+
+  $('input[name=has_mail_addr]').change(
+      function(){
+          if (this.checked) {
+              $('.mail-address-fields').show();
+              $('#mail_zip').attr("required", true);
+              $('#mail_state').attr("required", true);
+              $('#mail_city').attr("required", true);
+              $('#mail_addr').attr("required", true);
+
+          } else {
+              $('.mail-address-fields').hide();
+              $('#mail_zip').removeAttr("required").val('').blur();
+              $('#mail_state').removeAttr("required").val('').blur();
+              $('#mail_city').removeAttr("required").val('').blur();
+              $('#mail_addr').removeAttr("required").val('').blur();
+          }
+      });
+
+  form.parsley()
+
+  form.submit(function( event ){
+    event.preventDefault();
+    var formy = new Formy(form);
+    formy.submitForm();
+
+  })
+});
+</script>
+{% endblock %}
