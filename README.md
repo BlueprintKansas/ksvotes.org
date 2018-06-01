@@ -51,7 +51,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
   DATABASE_URL={{your development database connection string}}
   TESTING_DATABASE_URL={{your testing database connection string}}
   SECRET_KEY={{generate a secret key}}
-  APP_CONFIG=dev
+  APP_CONFIG=development
   CRYPT_KEY={{generate a secret key | base64}}
   ```
 
