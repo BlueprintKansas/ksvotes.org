@@ -36,7 +36,7 @@ var Formy = function(form) {
       console.log(result);
     })
 
-  },
+  },//submit form
 
   //parse the incoming query string to a js object
   this.getQueryParams = function(){
@@ -48,7 +48,7 @@ var Formy = function(form) {
     .bind({}))[0];
   }
   return null;
-  },
+},//query params
 
   //generic ajax post requires the action endpoint and data as a javascript object.
   this.postem = function(endpoint, payload) {
@@ -66,7 +66,7 @@ var Formy = function(form) {
         }
       })
     })
-  },
+  },//postem
 
   //convert form elements into a js object
   this.getFormElements = function() {
@@ -82,5 +82,5 @@ var Formy = function(form) {
        }
      }
      return data;
-}
-}
+   }//getFormElements
+}//Formy
