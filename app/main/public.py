@@ -1,19 +1,22 @@
 from app.main import main
 from flask import g, url_for, render_template, jsonify, request
 import time
+from app.main.forms import *
 #step 0 / 0x
 
 
 @main.route('/', methods=["GET", "POST"])
 def index():
-    if request.method == "POST":
+    form = FormStep0()
+    if request.method == "POST" and form.validate_on_submit():
+        # do all the logic
         data = request.get_json()
         print(data)
         time.sleep(5)
         return jsonify({"post": "success"})
 
     counties = ["Allen","Anderson","Atchison","Barber","Barton","Bourbon","Brown","Butler","Chase","Chautauqua","Cherokee","Cheyenne","Clark","Clay","Cloud","Coffey","Comanche","Cowley","Crawford","Decatur","Dickinson","Doniphan","Douglas","Edwards","Elk","Ellis","Ellsworth","Finney","Ford","Franklin","Geary","Gove","Graham","Grant","Gray","Greeley","Greenwood","Hamilton","Harper","Harvey","Haskell","Hodgeman","Jackson","Jefferson","Jewell","Johnson","Kearny","Kingman","Kiowa","Labette","Lane","Leavenworth","Lincoln","Linn","Logan","Lyon","Marion","Marshall","McPherson","Meade","Miami","Mitchell","Montgomery","Morris","Morton","Nemaha","Neosho","Ness","Norton","Osage","Osborne","Ottawa","Pawnee","Phillips","Pottawatomie","Pratt","Rawlins","Reno","Republic","Rice","Riley","Rooks","Rush","Russell","Saline","Scott","Sedgwick","Seward","Shawnee","Sheridan","Sherman","Smith","Stafford","Stanton","Stevens","Sumner","Thomas","Trego","Wabaunsee","Wallace","Washington","Wichita","Wilson","Woodson","Wyandotte"]
-    return render_template('index.html', counties=counties)
+    return render_template('index.html', counties=counties, form = form)
 
 #step 1
 @main.route('/citizenship', methods=["GET", "POST"])
