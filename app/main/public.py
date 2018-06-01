@@ -46,15 +46,24 @@ def address():
     return render_template('address.html')
 
 #step 4
-@main.route('/party')
+@main.route('/party', methods=["GET", "POST"])
 def party():
-    #return normalized address
-    return 'party'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('party.html')
 
 #step 5 (4? 4.5?)
-@main.route('/identification')
+@main.route('/identification', methods=["GET", "POST"])
 def identification():
-    return 'identification'
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        time.sleep(5)
+        return jsonify({"post": "success"})
+    return render_template('identification.html')
 
 #step 6 NVRIS preview
 @main.route('/preview')
