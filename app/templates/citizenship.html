@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
+
 {% block title %} Citizenship {% endblock %}
 
 {% block content %}
@@ -7,40 +9,22 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form name="step_1" id="step_1" method="POST" action="{{url_for('main.citizenship')}}">
+          {{form.hidden_tag()}}
 
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="citizen"
-              value=""
-              id="citizen"
-              required
-              data-parsley-error-message="{{_('Required')}}"
+          {{wtf.render_field(
+            form.citizen,
+            _('1_citizen_help'),
+            {
+              'required':'required',
+              'data-parsley-error-message': _('Required'),
+            }
+            )}}
 
-            >
-            <label class="form-check-label" for="citizen">
-              {{_('1_citizen')}}
-            </label>
-            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('1_citizen_help')}}"></i>
-            <small id="ht_citizen" class="form-text"></small>
-          </div>
+            {{wtf.render_field(
+              form.is_eighteen,
+              _('1_18_help'),
 
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              name="eightteen"
-              id="eighteen"
-            >
-            <label class="form-check-label" for="eightteen">
-              {{_('1_18')}}
-            </label>
-            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('1_18_help')}}"></i>
-            <small id="ht_18" class="form-text"></small>
-          </div>
-
+              )}}
           <div class="text-right mt-4">
               <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
           </div>
@@ -56,14 +40,7 @@
 $(function () {
   //initialize form with parsley validation
   var form = $('#step_1');
-  form.parsley()
-
-  form.submit(function( event ){
-    event.preventDefault();
-    var formy = new Formy(form);
-    formy.submitForm();
-
-  })
+  form.parsley();
 });
 
 </script>

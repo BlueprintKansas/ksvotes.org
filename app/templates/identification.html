@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
+
 {% block title %} Identification {% endblock %}
 
 {% block content %}
@@ -7,21 +9,19 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form name="step_5" id="step_5" method="POST" action="{{url_for('main.identification')}}">
-
+          {{form.hidden_tag()}}
           <p> {{_('5_id_help')}} </p>
-          <div class="md-form">
-              <input
-                type="text"
-                id="identification"
-                name="identification"
-                class="form-control"
-                autocomplete="off"
-                required
-                data-parsley-error-message="{{_('Required')}}"
-                data-parsley-trigger="focusout"
-              >
-              <label for="identification">{{_('5_id')}}*</label>
-          </div>
+          {{wtf.render_field(
+              form.identification,
+              _('2_id_help'),
+              {
+                'required':'required',
+                'data-parsley-error-message': _('Required'),
+                'autocomplete':'off',
+                'data-parsley-trigger':'focusout'
+              }
+              )}}
+
 
           <div class="text-right mt-4">
               <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
@@ -39,13 +39,6 @@ $(function () {
   //initialize form with parsley validation
   var form = $('#step_5');
   form.parsley()
-
-  form.submit(function( event ){
-    event.preventDefault();
-    var formy = new Formy(form);
-    formy.submitForm();
-
-  })
 });
 
 </script>
