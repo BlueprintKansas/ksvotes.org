@@ -48,7 +48,11 @@ def test_insert_get_registrant_start(app, session, client):
     #confirm that registration_value is returned decrypted and marshalled to dictionary
     assert isinstance(registrant.registration_value, (dict)) == True
     assert registrant.registration_value.get('name_first') == "foo"
-    
+
     #confirm that registration was encrypted and can be decrypted
     decrypted = json.loads(decryptem(registrant.registration))
     assert decrypted.get('name_first') == "foo"
+
+    #query by uuid
+    registrant_uuid = session.query(Registrant).filter_by(session_id=registrant.session_id).first()
+    assert registrant_uuid.registration_value.get('name_first') == "foo"
