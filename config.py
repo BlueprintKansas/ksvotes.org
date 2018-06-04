@@ -22,7 +22,8 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("TESTING_DATABASE_URL")
-
+    WTF_CSRF_ENABLED = False
+    
 class ProductionConfig(Config):
     JSONIFY_PRETTYPRINT_REGULAR = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
