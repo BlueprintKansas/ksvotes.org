@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
 {% block title %} Home {% endblock %}
 
 {% block content %}
@@ -17,126 +18,83 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form name="step_0" id="step_0" method="POST" action="{{url_for('main.index')}}">
-          <div class="md-form">
-              <input
-                type="text"
-                id="name_first"
-                name="name_first"
-                class="form-control"
-                autocomplete="off"
-                required
-                data-parsley-error-message="{{_('Required')}}"
-                data-parsley-trigger="focusout"
-              >
-              <label for="name_first">{{_('0_first')}}*</label>
-              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('0_name_help')}}"></i>
+          {{form.hidden_tag()}}
 
-              <small id="ht_name_first" class="form-text"></small>
+          {{wtf.render_field(
+            form.name_first,
+            _('0_name_help'),
+            {
+              'required':'required',
+              'data-parsley-error-message': _('Required'),
+              'autocomplete':'off',
+              'data-parsley-trigger':'focusout'
+            }
+            )}}
+
+          {{wtf.render_field(
+            form.name_last,
+            _('0_name_help'),
+            {
+              'required':'required',
+              'data-parsley-error-message': _('Required'),
+              'autocomplete':'off',
+              'data-parsley-trigger':'focusout'
+            }
+            )}}
+
+            {{wtf.render_field(
+              form.dob,
+              _('0_dob_help'),
+              {
+                'required':'required',
+                'data-parsley-required-message': _('Required'),
+                'autocomplete':'off',
+                'data-parsley-trigger':'focusout',
+                'data-parsley-pattern-message': _('0_dob_flag'),
+                'data-parsley-pattern': "/^\d{2}\/\d{2}\/\d{4}$/",
+                'data-parsley-dob-limit':"true",
+                'data-parsley-dob-limit-message': _('0_dob_flag')
+              }
+              )}}
+
+            {{wtf.render_field(
+              form.county,
+              _('0_county_help'),
+              {
+                'required': 'required',
+                'data-parsley-required-message': _('Required'),
+                'data-parsley-trigger': 'focusout'
+              }
+              )}}
+
+            {{wtf.render_field(
+              form.email,
+              _('0_email_help'),
+              {
+                'required': 'required',
+                'data-parsley-required-message': _('Required'),
+                'data-parsley-trigger': 'focusout',
+                'data-parsley-type': 'email',
+                'data-parsley-type-message': _('0_email_flag'),
+              }
+              )}}
+
+              {{wtf.render_field(
+                form.phone,
+                _('0_phone_help'),
+                {
+
+                  'data-parsley-trigger': 'focusout',
+                  'data-parsley-pattern': '/^\d{3}\-\d{3}\-\d{4}$/',
+                  'data-parsley-pattern-message': _('0_phone_flag'),
+                }
+                )}}
+
+
+          <div class="text-right mt-4">
+              <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
           </div>
 
-          <div class="md-form">
-            <input
-              type="text"
-              id="name_last"
-              name="name_last"
-              class="form-control"
-              autocomplete="off"
-              required
-              data-parsley-error-message="{{_('Required')}}"
-              data-parsley-trigger="focusout"
-            >
-            <label for="name_first">{{_('0_last')}}*</label>
-            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('0_name_help')}}"></i>
-
-            <small id="ht_name_last" class="form-text"></small>
-          </div>
-
-          <div class="md-form">
-
-              <input
-                type="text"
-                id="dob"
-                name="dob"
-                class="form-control"
-                autocomplete="off"
-                required
-                data-parsley-pattern="/^\d{2}\/\d{2}\/\d{4}$/"
-                data-parsley-required-message="{{_('Required')}}"
-                data-parsley-pattern-message="{{_('0_dob_flag')}}"
-                data-parsley-dob-limit
-                data-parsley-dob-limit-message="{{_('0_dob_flag')}}"
-                data-parsley-trigger="focusout"
-              >
-              <label for="dob">{{_('0_dob')}}*</label>
-              <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('0_dob_help')}}"></i>
-
-              <small id="ht_dob" class="form-text"></small>
-
-          </div>
-
-
-            <div class="form-group md-form">
-                <label for="county" class="sr-only">County*</label>
-                <select
-                  class="form-control"
-                  id="county"
-                  name="county"
-                  required
-                  data-parsley-required-message="{{_('Required')}}"
-                  data-parsley-trigger="focusout"
-                >
-                  <option disabled value="" selected> Select Your County* </option>
-                  {% for county in counties %}
-                    <option value="{% filter upper %}{{county}}{% endfilter %}"> {{county}} </option>
-                  {% endfor %}
-                </select>
-                <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('0_county_help')}}"></i>
-                <small id="ht_county" class="form-text"></small>
-
-
-            </div>
-
-
-          <div class="md-form">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-control"
-                autocomplete="off"
-                required
-                data-parsley-required-message="{{_('Required')}}"
-                data-parsley-type="email"
-                data-parsley-type-message="{{_('0_email_flag')}}"
-                data-parsley-trigger="focusout"
-              >
-              <label for="email">{{_('0_email')}}*</label>
-              <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('0_email_help')}}"></i>
-
-              <small id="ht_email" class="form-text"></small>
-          </div>
-
-          <div class="md-form">
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                class="form-control"
-                autocomplete="off"
-                data-parsley-trigger="focusout"
-                data-parsley-pattern="/^\d{3}\-\d{3}\-\d{4}$/"
-                data-parsley-pattern-message="{{_('0_phone_flag')}}"
-              >
-              <label for="phone">{{_('0_phone')}}</label>
-              <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('0_phone_help')}}"></i>
-              <small id="ht_phone" class="form-text"></small>
-
-          </div>
-
-
-            <div class="text-right mt-4">
-                <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
-            </div>
         </form>
       </div>
     </div>
@@ -160,13 +118,6 @@ $(function () {
     }
   })
   form.parsley()
-
-  // form.submit(function( event ){
-  //   event.preventDefault();
-  //   var formy = new Formy(form);
-  //   formy.submitForm();
-  //
-  // })
 });
 
 </script>

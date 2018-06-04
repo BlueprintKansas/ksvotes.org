@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
+
 {% block title %} Name {% endblock %}
 
 {% block content %}
@@ -6,166 +8,93 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form name="step_2" id="step_2" method="POST" action="{{url_for('main.name')}}">
+        <form name="step_2" id="step_2" method="POST" action="{{url_for('main.name')}}" novalidate>
+          {{form.hidden_tag()}}
 
-          <div class="form-group md-form">
-              <label for="prefix" class="sr-only">{{_('2_prefix')}} </label>
-              <select
-                class="form-control"
-                id="prefix"
-                name="prefix"
-              >
-                <option disabled value="" selected> {{_('2_prefix')}}</option>
-                <option value="mr">Mr.</option>
-                <option value="mrs">Mrs.</option>
-                <option value="miss">Miss</option>
-                <option value="ms">Ms.</option>
-              </select>
-          </div>
+          {{wtf.render_field(
+            form.prefix,
+            None,
+            None,
+            )}}
 
-          <div class="md-form">
-              <input
-                type="text"
-                id="name_first"
-                name="name_first"
-                class="form-control"
-                autocomplete="off"
-                required
-                data-parsley-error-message="{{_('Required')}}"
-                data-parsley-trigger="focusout"
-              >
-              <label for="name_first">{{_('2_first')}}*</label>
-              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('2_name_help')}}"></i>
+          {{wtf.render_field(
+              form.name_first,
+              _('2_name_help'),
+              {
+                'required':'required',
+                'data-parsley-error-message': _('Required'),
+                'autocomplete':'off',
+                'data-parsley-trigger':'focusout'
+              }
+              )}}
 
-              <small id="ht_name_first" class="form-text"></small>
-          </div>
+          {{wtf.render_field(
+              form.name_middle,
+              _('2_name_help'),
+              None
+              )}}
 
-          <div class="md-form">
-              <input
-                type="text"
-                id="name_middle"
-                name="name_middle"
-                class="form-control"
-                autocomplete="off"
-              >
-              <label for="name_middle">{{_('2_first')}}*</label>
-          </div>
+          {{wtf.render_field(
+              form.name_last,
+              _('2_name_help'),
+              {
+                'required':'required',
+                'data-parsley-error-message': _('Required'),
+                'autocomplete':'off',
+                'data-parsley-trigger':'focusout'
+              }
+              )}}
 
-          <div class="md-form">
-              <input
-                type="text"
-                id="name_last"
-                name="name_last"
-                class="form-control"
-                autocomplete="off"
-                required
-                data-parsley-error-message="{{_('Required')}}"
-                data-parsley-trigger="focusout"
-              >
-              <label for="name_last">{{_('2_last')}}*</label>
-              <i class="fa fa-info-circle postfix default-tooltip" data-toggle="tooltip" data-placement="left" title="{{_('2_name_help')}}"></i>
+          {{wtf.render_field(
+            form.suffix,
+            None,
+            None,
+            )}}
 
-              <small id="ht_name_last" class="form-text"></small>
-          </div>
-
-          <div class="form-group md-form">
-              <label for="suffix" class="sr-only">{{_('2_suffix')}} </label>
-              <select
-                class="form-control"
-                id="suffix"
-                name="suffix"
-              >
-                <option disabled value="" selected> {{_('2_suffix')}}</option>
-                <option value="jr">Jr.</option>
-                <option value="sr">Sr.</option>
-                <option value="ii">II</option>
-                <option value="iii">III</option>
-                <option value="iv">IV</option>
-              </select>
-          </div>
-
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="has_prev_name"
-              value=""
-              id="has_prev_name"
-            >
-            <label class="form-check-label" for="has_prev_name">
-              {{_('2_has_prev_name')}}
-            </label>
-          </div>
+          {{wtf.render_field(
+            form.has_prev_name,
+            _('2_has_prev_name'),
+            )}}
 
           <div class="previous-name-fields">
-            <div class="form-group md-form">
-                <label for="prev_prefix" class="sr-only">{{_('2a_prev_prefix')}} </label>
-                <select
-                  class="form-control"
-                  id="prev_prefix"
-                  name="prev_prefix"
-                >
-                  <option disabled value="" selected> {{_('2a_prev_prefix')}}</option>
-                  <option value="mr">Mr.</option>
-                  <option value="mrs">Mrs.</option>
-                  <option value="miss">Miss</option>
-                  <option value="ms">Ms.</option>
-                </select>
-            </div>
+            {{wtf.render_field(
+              form.prev_prefix,
+              None,
+              None,
+              )}}
 
-            <div class="md-form">
-                <input
-                  type="text"
-                  id="prev_name_first"
-                  name="prev_name_first"
-                  class="form-control"
-                  autocomplete="off"
-                  data-parsley-error-message="{{_('Required')}}"
-                >
-                <label for="prev_name_first">{{_('2a_prev_first')}}*</label>
+            {{wtf.render_field(
+                form.prev_name_first,
+                None,
+                {
+                  'data-parsley-error-message': _('Required'),
+                  'autocomplete':'off',
+                  'data-parsley-trigger':'focusout'
+                }
+                )}}
 
-            </div>
+            {{wtf.render_field(
+                form.prev_name_middle,
+                None,
+                None
+                )}}
 
-            <div class="md-form">
-                <input
-                  type="text"
-                  id="prev_name_middle"
-                  name="prev_name_middle"
-                  class="form-control"
-                  autocomplete="off"
-                >
-                <label for="prev_name_middle">{{_('2a_prev_middle')}}*</label>
-            </div>
+            {{wtf.render_field(
+                form.prev_name_last,
+                None,
+                {
+                  'data-parsley-error-message': _('Required'),
+                  'autocomplete':'off',
+                  'data-parsley-trigger':'focusout'
+                }
+                )}}
 
+            {{wtf.render_field(
+              form.prev_suffix,
+              None,
+              None,
+              )}}
 
-            <div class="md-form">
-                <input
-                  type="text"
-                  id="prev_name_last"
-                  name="prev_name_last"
-                  class="form-control"
-                  autocomplete="off"
-                  data-parsley-error-message="{{_('Required')}}"
-                >
-                <label for="prev_name_last">{{_('2a_prev_last')}}*</label>
-
-            </div>
-
-            <div class="form-group md-form">
-                <label for="suffix" class="sr-only">{{_('2a_prev_suffix')}} </label>
-                <select
-                  class="form-control"
-                  id="suffix"
-                  name="suffix"
-                >
-                  <option disabled value="" selected>{{_('2a_prev_suffix')}}</option>
-                  <option value="jr">Jr.</option>
-                  <option value="sr">Sr.</option>
-                  <option value="ii">II</option>
-                  <option value="iii">III</option>
-                  <option value="iv">IV</option>
-                </select>
-            </div>
 
           </div><!--previous-name-fields-->
 
@@ -200,12 +129,6 @@ $(function () {
 
   form.parsley()
 
-  form.submit(function( event ){
-    event.preventDefault();
-    var formy = new Formy(form);
-    formy.submitForm();
-
-  })
 });
 
 </script>
