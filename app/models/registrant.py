@@ -5,7 +5,8 @@ import json
 from sqlalchemy.dialects.postgresql import JSON
 from cryptography.fernet import Fernet
 from sqlalchemy.ext.hybrid import hybrid_property,Comparator
-
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 def encryptem(data):
     f = Fernet(os.environ.get("CRYPT_KEY").encode())
@@ -22,6 +23,7 @@ class Registrant(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow())
     last_completed_step = db.Column(db.Integer)
     completed_at = db.Column(db.DateTime, default=None)
+    session_id = db.Column(UUID(as_uuid=True), unique=True, nullable=False, default=uuid.uuid4())
 
     #registration steps
     is_citizen = db.Column(db.Boolean, default=True)
