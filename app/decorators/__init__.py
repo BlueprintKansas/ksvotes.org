@@ -1,1 +1,1 @@
-from .sessionmanager import SessionManager
+from .insession import InSession

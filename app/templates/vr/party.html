@@ -1,26 +1,24 @@
 {% extends 'base.html' %}
 {% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Identification {% endblock %}
+{% block title %} Party {% endblock %}
 
 {% block content %}
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form name="step_5" id="step_5" method="POST" action="{{url_for('main.identification')}}">
+        <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
           {{form.hidden_tag()}}
-          <p> {{_('5_id_help')}} </p>
+
           {{wtf.render_field(
-              form.identification,
-              _('2_id_help'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+            form.party,
+            _('4_party_help'),
+            {
+              'required':'required',
+              'data-parsley-error-message': _('Required'),
+            }
+            )}}
 
 
           <div class="text-right mt-4">
@@ -37,7 +35,7 @@
 <script>
 $(function () {
   //initialize form with parsley validation
-  var form = $('#step_5');
+  var form = $('#step_4');
   form.parsley()
 });
 

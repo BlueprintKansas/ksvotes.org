@@ -4,10 +4,15 @@ from app.models import Registrant
 from uuid import UUID
 
 
-def SessionManager(f):
+def InSession(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         session_id = session.get('session_id')
+        #
+        # need to get next step
+        #
+        #
+
         if session_id:
             try:
                 sid = UUID(session_id, version=4)
@@ -15,6 +20,10 @@ def SessionManager(f):
                 if registrant:
                     #set request global to current registrant
                     g.registrant = registrant
+                    #
+                    #
+                    #
+                    #
                 else:
                     #delete invalid registration uuid
                     session.pop('session_id')
