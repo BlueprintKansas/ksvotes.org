@@ -10,6 +10,7 @@ from app.decorators import InSession
 def vr1_citizenship():
     form = FormVR1()
     if request.method == "POST" and form.validate_on_submit():
+        print(form.data)
         pass
 
     return render_template('vr/citizenship.html', form=form)
