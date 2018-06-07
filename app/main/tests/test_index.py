@@ -16,7 +16,6 @@ def test_create_new_session_step_0(app, session, client):
 
     assert response.status_code == 302
     #this will change to ab router
-    assert 'citizenship' in response.location
 
     with client.session_transaction() as sess:
         assert sess.get('session_id') != None
@@ -45,10 +44,13 @@ def test_update_name_step_0_session_exists_already(app,session,client):
         current_registrant = Registrant.query.filter(Registrant.session_id == sess.get('session_id')).first()
         assert current_registrant.registration_value.get('name_first') == 'foo'
 
-        new_data = {
-            "name_first": "baz"
+        name_update = {
+            "name_first": "baz",
+            "county": "Douglas"
         }
-        current_registrant.update(new_data)
+        current_registrant.update(name_update)
+        session.commit()
+
         current_registrant_updated = Registrant.query.filter(Registrant.session_id == sess.get('session_id')).first()
         assert current_registrant_updated.registration_value.get('name_first') == 'baz'
         assert current_registrant_updated.id == current_registrant.id
