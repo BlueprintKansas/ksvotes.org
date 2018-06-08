@@ -1,4 +1,4 @@
-from app.services import Step
+from app.services.steps import Step
 
 class Step_VR_3(Step):
 

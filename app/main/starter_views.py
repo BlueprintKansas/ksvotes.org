@@ -6,43 +6,48 @@ from app.models import Registrant
 from app import db
 from uuid import UUID, uuid4
 from app.decorators import InSession
-from app.services import Step_0
+from app.services import SessionManager
+from app.services.steps import Step_0
 #step 0 / 0x
 
 @main.route('/', methods=["GET", "POST"])
 @InSession
 def index():
-    current_registrant = g.get("registrant")
+    registrant = g.get("registrant")
     form = FormStep0()
-    if current_registrant:
+    if registrant:
         form = FormStep0(
-            name_first = current_registrant.registration_value.get('name_first'),
-            name_last = current_registrant.registration_value.get('name_last'),
-            dob = current_registrant.registration_value.get('dob'),
-            county = current_registrant.registration_value.get('county'),
-            email = current_registrant.registration_value.get('email'),
-            phone = current_registrant.registration_value.get('phone')        
+            name_first = registrant.registration_value.get('name_first'),
+            name_last = registrant.registration_value.get('name_last'),
+            dob = registrant.registration_value.get('dob'),
+            county = registrant.registration_value.get('county'),
+            email = registrant.registration_value.get('email'),
+            phone = registrant.registration_value.get('phone')
         )
 
     if request.method == "POST" and form.validate_on_submit():
-        session_manager = Step_0(form.data)
+        step = Step_0(form.data)
         ## if session id exists update data (assumption people hitting back button/navigating back to homepage)
-        if current_registrant:
+        if registrant:
             g.registrant.update(form.data)
-            db.session.commit()
-        ## create new registrant
+        ## create new registrant with any non pii data points
         else:
             registrant = Registrant(
+                county = form.data.get('county'),
                 registration_value = form.data,
                 session_id = uuid4()
             )
             db.session.add(registrant)
-            db.session.commit()
-            ## set session id
             session['session_id'] = str(registrant.session_id)
 
+        #validate steps
+        step.validate()
+        #update any non form variables/non
+        registrant.reg_lookup_complete = step.reg_lookup_complete
+        db.session.commit()
 
-        return redirect(session_manager.next_step())
+        session_manager = SessionManager(registrant, step)
+        return redirect(session_manager.get_next())
 
     return render_template('index.html', form=form)
 

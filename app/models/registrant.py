@@ -28,13 +28,15 @@ class Registrant(db.Model):
 	session_id = db.Column(UUID(as_uuid=True), unique=True, nullable=False, default=uuid.uuid4())
 
 	#registration steps
-	is_citizen = db.Column(db.Boolean, default=True)
-	is_eighteen = db.Column(db.Boolean, default=True)
+	is_citizen = db.Column(db.Boolean, default=False)
+	is_eighteen = db.Column(db.Boolean, default=False)
 	party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
 	county = db.Column(db.String()) #may require some geo lookup.
 	lang = db.Column(db.String()) #enum? (values?)
 	signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
-
+	reg_lookup_complete = db.Column(db.Boolean, default=False)
+	addr_lookup_complete = db.Column(db.Boolean, default=False)
+	
 	registration = db.Column(db.String())
 	#create key from environmental key
 	#json stringyify dictionary and encrypt

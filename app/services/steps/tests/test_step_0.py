@@ -1,5 +1,5 @@
 from app.models import *
-from app.services import Step_0
+from app.services.steps import Step_0
 
 def test_step_0_is_complete_false(app, session, client):
     """
@@ -10,7 +10,8 @@ def test_step_0_is_complete_false(app, session, client):
         "name_first": "foo"
     }
     step = Step_0(form_payload)
-    assert step.is_complete() == False
+    assert step.validate() == False
+    assert step.is_complete == False
 
 def test_step_0_is_complete_true_and_none_registered(app,session,client):
     """
@@ -25,8 +26,9 @@ def test_step_0_is_complete_true_and_none_registered(app,session,client):
         "county": "Douglas"
     }
     step = Step_0(form_payload)
-    assert step.is_complete() == True
-    assert step.next_step() == '/vr/citizenship'
+    assert step.validate() == True
+    assert step.is_complete == True
+    # assert step.next_step == '/vr/citizenship'
 
 def test_step_0_is_complete_true_and_already_registered(app,session,client):
     form_payload = {
@@ -37,5 +39,6 @@ def test_step_0_is_complete_true_and_already_registered(app,session,client):
         "county": "Douglas"
     }
     step = Step_0(form_payload)
-    assert step.is_complete() == True
-    assert step.next_step() == '/change-or-apply'
+    assert step.validate() == True
+    assert step.is_complete == True
+    # assert step.next_step == '/change-or-apply'
