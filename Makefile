@@ -28,12 +28,13 @@ test: check
 jstest:
 	npm run test
 
-testserver:
+start-testserver:
 	python manage.py runserver 2> testserver.log &
 
-stoptestserver:
+stop-testserver:
 	kill -9 `cat server.pid` && rm server.pid
 
-livetest: testserver jstest stoptestserver
+livetest:
+	bin/live-test.sh
 
 .PHONY: deps venv test dbmigrate run testcov
