@@ -9,3 +9,4 @@ node_modules
 package-lock.json
 git-*
 server.pid
+testserver.log
