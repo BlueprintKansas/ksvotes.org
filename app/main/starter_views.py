@@ -27,10 +27,8 @@ def index():
 
     if request.method == "POST" and form.validate_on_submit():
         step = Step_0(form.data)
-        ## if session id exists update data (assumption people hitting back button/navigating back to homepage)
         if registrant:
             g.registrant.update(form.data)
-        ## create new registrant with any non pii data points
         else:
             registrant = Registrant(
                 county = form.data.get('county'),
@@ -40,14 +38,14 @@ def index():
             db.session.add(registrant)
             session['session_id'] = str(registrant.session_id)
 
-        #validate steps
-        step.validate()
+        #run step
+        step.run()
         #update any non form variables/non
         registrant.reg_lookup_complete = step.reg_lookup_complete
         db.session.commit()
 
         session_manager = SessionManager(registrant, step)
-        return redirect(session_manager.get_next())
+        return redirect(session_manager.get_redirect_url())
 
     return render_template('index.html', form=form)
 

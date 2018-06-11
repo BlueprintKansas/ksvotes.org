@@ -10,10 +10,7 @@ class Step_0(Step):
 	prev_step = None
 	next_step = None
 
-	def all_requirements(self):
-		return self.form_requirements + self.step_requirements
-
-	def validate(self):
+	def run(self):
 		if self.is_complete:
 			return True
 

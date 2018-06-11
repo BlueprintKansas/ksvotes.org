@@ -10,12 +10,12 @@ def test_step_0_is_complete_false(app, session, client):
         "name_first": "foo"
     }
     step = Step_0(form_payload)
-    assert step.validate() == False
+    assert step.run() == False
     assert step.is_complete == False
+    assert step.next_step == None
 
 def test_step_0_is_complete_true_and_none_registered(app,session,client):
     """
-        Verify that all of the information for step 0 is saved to the registrant.
         Verify that next step is VR Step 1
     """
     form_payload = {
@@ -26,11 +26,14 @@ def test_step_0_is_complete_true_and_none_registered(app,session,client):
         "county": "Douglas"
     }
     step = Step_0(form_payload)
-    assert step.validate() == True
+    assert step.run() == True
     assert step.is_complete == True
-    # assert step.next_step == '/vr/citizenship'
+    assert step.next_step == 'Step_VR_1'
 
 def test_step_0_is_complete_true_and_already_registered(app,session,client):
+    """
+        Verify that next step is AB 1
+    """
     form_payload = {
         "name_first": "Jake",
         "name_last": "Lowen",
@@ -39,6 +42,6 @@ def test_step_0_is_complete_true_and_already_registered(app,session,client):
         "county": "Douglas"
     }
     step = Step_0(form_payload)
-    assert step.validate() == True
+    assert step.run() == True
     assert step.is_complete == True
-    # assert step.next_step == '/change-or-apply'
+    assert step.next_step == 'Step_AB_1'
