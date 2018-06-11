@@ -9,10 +9,15 @@ from sqlalchemy.orm import sessionmaker
 
 @pytest.fixture(scope="session")
 def app(request):
-    """
-    Returns session-wide application.
-    """
-    return create_app("testing")
+    app = create_app("testing")
+    ctx = app.app_context()
+    ctx.push()
+
+    def teardown():
+        ctx.pop()
+
+    request.addfinalizer(teardown)
+    return app
 
 
 @pytest.fixture(scope="session")
@@ -27,7 +32,8 @@ def db(app, request):
 @pytest.fixture(scope="session")
 def client(app, request):
     return app.test_client()
-    
+
+
 @pytest.fixture(scope="function", autouse=True)
 def session(app, db, request):
     """

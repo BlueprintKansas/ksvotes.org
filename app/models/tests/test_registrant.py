@@ -24,7 +24,7 @@ def test_insert_get_clerk(app, session, client):
 
 def test_insert_get_registrant_start(app, session, client):
     #data should be dictionary
-    data = {
+    registrant_data = {
         "name_first": "foo",
         "name_last": "bar",
         "dob": "01-01-2018",
@@ -35,7 +35,7 @@ def test_insert_get_registrant_start(app, session, client):
     new_registrant = Registrant(
         lang='en',
         county="Johnson",
-        registration_value = data,
+        registration_value = registrant_data,
     )
     session.add(new_registrant)
     session.commit()
