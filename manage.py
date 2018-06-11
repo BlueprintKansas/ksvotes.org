@@ -1,4 +1,5 @@
 import os
+import signal
 
 from app import create_app, db
 from app.models import *
@@ -15,5 +16,11 @@ def make_shell_context():
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command("db", MigrateCommand)
 
+def write_pid_file():
+    pid = str(os.getpid())
+    with open('server.pid', 'w+') as f:
+        f.write(pid + '\n')
+
 if __name__ == "__main__":
+    write_pid_file()
     manager.run()

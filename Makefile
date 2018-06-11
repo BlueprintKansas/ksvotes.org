@@ -3,6 +3,7 @@ check:
 
 deps:
 	pip install -r requirements.txt
+	npm install
 
 venv:
 	virtualenv venv -p python3
@@ -23,5 +24,16 @@ testcov:
 
 test: check
 	py.test
+
+jstest:
+	npm run test
+
+runbg:
+	python manage.py runserver &
+
+stopbg:
+	kill -9 `cat server.pid` && rm server.pid
+
+livetest: runbg jstest stopbg
 
 .PHONY: deps venv test dbmigrate run testcov
