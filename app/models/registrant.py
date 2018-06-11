@@ -36,7 +36,7 @@ class Registrant(db.Model):
 	signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
 	reg_lookup_complete = db.Column(db.Boolean, default=False)
 	addr_lookup_complete = db.Column(db.Boolean, default=False)
-	
+
 	registration = db.Column(db.String())
 	#create key from environmental key
 	#json stringyify dictionary and encrypt
@@ -73,7 +73,18 @@ class Registrant(db.Model):
 		self.registration_value = registration_value
 
 
-
+	def has_value_for_req(req):
+		"""
+		Given a requirement deterimine if it is a column or a registration value.
+		Deterimine if value exists
+		"""
+		if req in self.__table__.columns:
+			if not getattr(self, req):
+				return False
+		else:
+			if not self.registration_value.get(req):
+				return False
+		return True
 
 
 	#defaults

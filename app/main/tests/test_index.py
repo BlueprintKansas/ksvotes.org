@@ -66,12 +66,12 @@ def test_registered_voter_input_returns_redirect_step_AB_1(app, session, client)
     An already registered voter returns a redirect to ab 1
     """
     form_payload = {
-            "name_first": "Jake",
-            "name_last": "Lowen",
-            "dob":"02/07/1979",
-            "email":"foo@example.com",
-            "county": "Douglas"
-        }
+        "name_first": "Kris",
+        "name_last": "Kobach",
+        "dob":"03/26/1966",
+        "email":"foo@example.com",
+        "county": "Douglas"
+    }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
     assert ('/change-or-apply' in redirect_data) == True

@@ -17,14 +17,14 @@ class SessionManager():
 
     def _init_next_step(self):
         """
-        If the current step has a next step set.  Initialize the next step class and save it to self.
+        If the current step has a next step set, initialize the next step class and save it to self.
         """
         if self.current_step.next_step:
             self.next_step = globals()[self.current_step.next_step]
 
     def _init_prev_step(self):
         """
-        If the current step has a previous step set.  Initialize the previous step class and save it to self.
+        If the current step has a previous step set, initialize the previous step class and save it to self.
         """
         if self.current_step.prev_step:
             self.prev_step = globals()[self.current_step.prev_step]
@@ -49,7 +49,7 @@ class SessionManager():
         # If the requirement is not fulfilled return the previous step url
         for req in self.prev_step:
             # if a requirement is missing return the endpoint for the previous step
-            if not self.check_value_of_requirement(req):
+            if not self.registrant.has_value_for_req(req):
                 return self.prev_step.endpoint
 
         # if the step has been completed move on
@@ -60,15 +60,15 @@ class SessionManager():
         return self.current_step.endpoint
 
 
-    def check_value_of_requirement(req):
-        """
-        For each requirement determine if it is a column in the database table otherwise look for an object in the registration_value string.
-        If the registrant has no value stored for a requirement return false.
-        """
-        if req in self.registrant.__table__.columns:
-            if not getattr(self.registrant, req):
-                return False
-        else:
-            if not self.registrant.registration_value.get(req):
-                return False
-        return True
+    # def check_value_of_requirement(req):
+    #     """
+    #     For each requirement determine if it is a column in the database table otherwise look for an object in the registration_value string.
+    #     If the registrant has no value stored for a requirement return false.
+    #     """
+    #     if req in self.registrant.__table__.columns:
+    #         if not getattr(self.registrant, req):
+    #             return False
+    #     else:
+    #         if not self.registrant.registration_value.get(req):
+    #             return False
+    #     return True
