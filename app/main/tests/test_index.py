@@ -1,5 +1,4 @@
 from app.models import *
-from app.main.forms import FormStep0
 
 #NOTE session in the functions is a bit of a misnomer it is really the db session not the client session
 
@@ -89,4 +88,5 @@ def test_unregistered_voter_input_returns_redirect_step_VR_1(app, session, clien
         }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
+    print(response.status_code)
     assert ('/vr/citizenship' in redirect_data) == True

@@ -14,13 +14,9 @@ class Step_0(Step):
 		if self.is_complete:
 			return True
 
-		## verify all model points are met
-		# if not all(k in self.form_payload for k in self.form_requirements):
-		# 	return False
 		if not self.verify_form_requirements():
 			return False
 
-		
 		reg_lookup = self.lookup_registration(name_first=self.form_payload['name_first'], name_last=self.form_payload['name_last'], dob=self.form_payload['dob'], county=self.form_payload['county'])
 		self.is_complete = True
 		self.reg_lookup_complete = True
