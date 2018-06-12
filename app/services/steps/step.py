@@ -11,3 +11,9 @@ class Step():
 
 	def all_requirements(self):
 		return self.form_requirements + self.step_requirements
+
+	#verify that all model points are met
+	def verify_form_requirements(self):
+		if not all(k in self.form_payload for k in self.form_requirements):
+			return False
+		return True
