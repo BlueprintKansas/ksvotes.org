@@ -26,7 +26,7 @@ def test_update_name_step_0_session_exists_already(app,session,client):
     A returning user with a session id updates the existing registrant model.
     """
     # if active session exists update step 0 records
-    data = {
+    registrant_data = {
         "name_first": "foo",
         "name_last": "bar",
         "dob": "01-01-2018",
@@ -37,7 +37,7 @@ def test_update_name_step_0_session_exists_already(app,session,client):
     new_registrant = Registrant(
         lang='en',
         county="Johnson",
-        registration_value = data,
+        registration_value = registrant_data,
     )
     session.add(new_registrant)
     session.commit()
@@ -88,5 +88,4 @@ def test_unregistered_voter_input_returns_redirect_step_VR_1(app, session, clien
         }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
-    print(response.status_code)
     assert ('/vr/citizenship' in redirect_data) == True

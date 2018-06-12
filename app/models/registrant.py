@@ -73,7 +73,7 @@ class Registrant(db.Model):
 		self.registration_value = registration_value
 
 
-	def has_value_for_req(req):
+	def has_value_for_req(self, req):
 		"""
 		Given a requirement deterimine if it is a column or a registration value.
 		Deterimine if value exists

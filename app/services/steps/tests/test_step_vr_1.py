@@ -19,7 +19,7 @@ def test_step_vr1_is_complete_true(app, session, client):
 
     """
     form_payload = {
-        "citizen": True,
+        "is_citizen": True,
     }
     step = Step_VR_1(form_payload)
     assert step.run() == True
