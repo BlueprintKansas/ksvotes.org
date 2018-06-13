@@ -20,16 +20,16 @@ class SessionManager():
         If the current step has a next step set, initialize the next step class and save it to self.
         """
         if self.current_step.next_step:
-            object = globals()[self.current_step.next_step]
-            self.next_step = object()
+            next_step = globals()[self.current_step.next_step]
+            self.next_step = next_step()
 
     def _init_prev_step(self):
         """
         If the current step has a previous step set, initialize the previous step class and save it to self.
         """
         if self.current_step.prev_step:
-            object = globals()[self.current_step.prev_step]
-            self.prev_step = object()
+            prev_step = globals()[self.current_step.prev_step]
+            self.prev_step = prev_step()
 
     def get_redirect_url(self):
         """
@@ -51,7 +51,6 @@ class SessionManager():
         for req in self.prev_step.all_requirements():
             # if a requirement is missing return the endpoint for the previous step
             if not self.registrant.has_value_for_req(req):
-                print(req)
                 return self.prev_step.endpoint
 
         # if the step has been completed move on
