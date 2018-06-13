@@ -43,7 +43,6 @@ class SessionManager():
             if self.current_step.is_complete:
                 return self.next_step.endpoint
             else:
-                # could use some error message logic here... but a user shouldn't ever get here (famous last words)
                 return self.current_step.endpoint
 
         # For the previous step iterate all of the requirements.
@@ -59,17 +58,3 @@ class SessionManager():
 
         #default to returning current step
         return self.current_step.endpoint
-
-
-    # def check_value_of_requirement(req):
-    #     """
-    #     For each requirement determine if it is a column in the database table otherwise look for an object in the registration_value string.
-    #     If the registrant has no value stored for a requirement return false.
-    #     """
-    #     if req in self.registrant.__table__.columns:
-    #         if not getattr(self.registrant, req):
-    #             return False
-    #     else:
-    #         if not self.registrant.registration_value.get(req):
-    #             return False
-    #     return True
