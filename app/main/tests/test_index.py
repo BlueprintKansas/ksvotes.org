@@ -1,5 +1,4 @@
 from app.models import *
-from app.main.forms import FormStep0
 
 #NOTE session in the functions is a bit of a misnomer it is really the db session not the client session
 
@@ -27,7 +26,7 @@ def test_update_name_step_0_session_exists_already(app,session,client):
     A returning user with a session id updates the existing registrant model.
     """
     # if active session exists update step 0 records
-    data = {
+    registrant_data = {
         "name_first": "foo",
         "name_last": "bar",
         "dob": "01-01-2018",
@@ -38,7 +37,7 @@ def test_update_name_step_0_session_exists_already(app,session,client):
     new_registrant = Registrant(
         lang='en',
         county="Johnson",
-        registration_value = data,
+        registration_value = registrant_data,
     )
     session.add(new_registrant)
     session.commit()
