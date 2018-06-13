@@ -1,7 +1,5 @@
 from app.models import *
 
-#NOTE session in the functions is a bit of a misnomer it is really the db session not the client session
-
 def test_create_new_session_step_0(app, db_session, client):
     """
     A new user has a session id created for them and stored
