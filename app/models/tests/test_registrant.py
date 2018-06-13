@@ -1,10 +1,10 @@
 from app.models import *
 import json
-def test_db_connection(app, session, client):
-    genq = session.query(Registrant).first()
+def test_db_connection(app, db_session, client):
+    genq = db_session.query(Registrant).first()
     assert genq == None
 
-def test_insert_get_clerk(app, session, client):
+def test_insert_get_clerk(app, db_session, client):
     new_clerk = Clerk(
             county = "foo",
             officer = "bar",
@@ -17,12 +17,12 @@ def test_insert_get_clerk(app, session, client):
             state = "KANSAS",
             zip = "55555",
     )
-    session.add(new_clerk)
-    session.commit()
-    clerk = session.query(Clerk).first()
+    db_session.add(new_clerk)
+    db_session.commit()
+    clerk = db_session.query(Clerk).first()
     assert clerk.county == "foo"
 
-def test_insert_get_registrant_start(app, session, client):
+def test_insert_get_registrant_start(app, db_session, client):
     #data should be dictionary
     registrant_data = {
         "name_first": "foo",
@@ -37,11 +37,11 @@ def test_insert_get_registrant_start(app, session, client):
         county="Johnson",
         registration_value = registrant_data,
     )
-    session.add(new_registrant)
-    session.commit()
+    db_session.add(new_registrant)
+    db_session.commit()
 
 
-    registrant = session.query(Registrant).first()
+    registrant = db_session.query(Registrant).first()
     #confirm that registration was modified from dictionary value
     assert isinstance(registrant.registration, (dict)) == False
 
@@ -54,5 +54,5 @@ def test_insert_get_registrant_start(app, session, client):
     assert decrypted.get('name_first') == "foo"
 
     #query by uuid
-    registrant_uuid = session.query(Registrant).filter_by(session_id=registrant.session_id).first()
+    registrant_uuid = db_session.query(Registrant).filter_by(session_id=registrant.session_id).first()
     assert registrant_uuid.registration_value.get('name_first') == "foo"
