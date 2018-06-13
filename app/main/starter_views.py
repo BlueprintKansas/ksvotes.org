@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect,session
+from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session
 import time
 from app.main.forms import *
 from app.models import Registrant
@@ -36,7 +36,7 @@ def index():
                 session_id = uuid4()
             )
             db.session.add(registrant)
-            session['session_id'] = str(registrant.session_id)
+            http_session['session_id'] = str(registrant.session_id)
 
         #run step
         step.run()
