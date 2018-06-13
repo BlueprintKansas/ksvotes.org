@@ -1,7 +1,7 @@
 from app.models import *
 from app.services.steps import Step_VR_1
 
-def test_step_vr1_is_complete_false(app, session, client):
+def test_step_vr1_is_complete_false(app, db_session, client):
     """
         Verify that this registrant is not ready to move on to the next step.
 
@@ -13,7 +13,7 @@ def test_step_vr1_is_complete_false(app, session, client):
     assert step.next_step == None
 
 
-def test_step_vr1_is_complete_true(app, session, client):
+def test_step_vr1_is_complete_true(app, db_session, client):
     """
         Verify that this registrant is not ready to move on to the next step and next step is VR 2.
 

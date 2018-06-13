@@ -35,7 +35,7 @@ def client(app, request):
 
 
 @pytest.fixture(scope="function", autouse=True)
-def session(app, db, request):
+def db_session(app, db, request):
     """
     Returns function-scoped session.
     """
