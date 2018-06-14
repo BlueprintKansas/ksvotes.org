@@ -3,6 +3,7 @@ check:
 
 deps:
 	pip install -r requirements.txt
+	npm install
 
 venv:
 	virtualenv venv -p python3
@@ -22,6 +23,18 @@ testcov:
 	py.test --cov-report term-missing --cov
 
 test: check
-	py.test
+	py.test app/
+
+jstest:
+	npm run test
+
+start-testserver:
+	python manage.py runserver 2> testserver.log &
+
+stop-testserver:
+	kill -9 `cat server.pid` && rm server.pid
+
+livetest:
+	bin/live-test.sh
 
 .PHONY: deps venv test dbmigrate run testcov
