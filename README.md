@@ -126,12 +126,15 @@ and then run `% make locales` to update the corresponding babel files. For examp
 # in foo.py
 gettext('some_key_string')
 
-# in your terminal
+# Then in your terminal
+# update the translation files
 % make locales
 
-# edit the corresponding .pot files for each locale
-# to create the translations
+# edit the corresponding .po files for each locale
 % vi app/translations/en/LC_MESSAGES/messages.po
 % vi app/translations/es/LC_MESSAGES/messages.po
+
+# compile your changes -- not visible to app till you run this.
+% make translate
 ```
 

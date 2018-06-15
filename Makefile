@@ -40,4 +40,7 @@ livetest:
 locales:
 	bin/build-locales
 
+translate:
+	venv/bin/pybabel compile -d app/translations
+
 .PHONY: deps venv test dbmigrate run testcov
