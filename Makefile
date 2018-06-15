@@ -37,4 +37,7 @@ stop-testserver:
 livetest:
 	bin/live-test.sh
 
+locales:
+	bin/build-locales
+
 .PHONY: deps venv test dbmigrate run testcov
