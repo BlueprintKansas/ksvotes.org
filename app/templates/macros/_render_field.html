@@ -1,4 +1,6 @@
 {% macro render_field(field, help_text, additional_attributes) %}
+
+  {{field.widget}}
   {% if field.widget.input_type == 'text' %}
   <div class="md-form">
       {% if additional_attributes %}
@@ -70,5 +72,18 @@
       {% endif %}
     </div>
   {% endif %}
+
+  {% if 'Recaptcha' in field.__class__.__name__ %}
+    {{field}}
+    {% if field.errors %}
+      <ul class="parsley-errors-list filled">
+        {% for error in field.errors %}
+          <li> {{ error }} </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+
 
 {% endmacro %}
