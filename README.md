@@ -54,6 +54,8 @@ The ksvotes.org site makes Kansas online voting registration easy.
   APP_CONFIG=development
   CRYPT_KEY={{generate a secret key | base64}}
   GA_KEY={{google analytics key}}
+  # RECAPTCHA_KEY={{public key}}
+  # RECAPTCHA_SECRET={{private key}}
   ```
 
 ### Migrate Database
