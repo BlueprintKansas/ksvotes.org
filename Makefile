@@ -43,4 +43,6 @@ locales:
 translate:
 	venv/bin/pybabel compile -d app/translations
 
+build: translate
+
 .PHONY: deps venv test dbmigrate run testcov

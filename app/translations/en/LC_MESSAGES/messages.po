@@ -127,7 +127,7 @@ msgstr ""
 #: app/templates/index.html:56
 msgid "0_dob_flag"
 msgstr ""
-"You must be at least 15 years old to use this site. Your dob must be "
+"You must be at least 16 years old to use this site. Your dob must be "
 "mm/dd/yyyy."
 
 #: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
