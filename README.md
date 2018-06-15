@@ -118,16 +118,20 @@ $ npm run watch
 
 ## Internationalization & Localization
 This application is using [Flask-Babel](https://pythonhosted.org/Flask-Babel/)
-To extract all of the gettext() options, in the root directory run:
-**Note: commands are calling directly to our venv/bin/pybabel**
+
+To add a new string, reference the string in the .py code with `gettext()`
+and then run `% make locales` to update the corresponding babel files. For example:
+
 ```
-$ venv/bin/pybabel extract -F babel.cfg -o messages.pot app
+# in foo.py
+gettext('some_key_string')
+
+# in your terminal
+% make locales
+
+# edit the corresponding .pot files for each locale
+# to create the translations
+% vi app/translations/en/LC_MESSAGES/messages.po
+% vi app/translations/es/LC_MESSAGES/messages.po
 ```
-To generate the language catalog for Spanish:
-```
-$ venv/bin/pybabel init -i messages.pot -d app/translations -l es
-```
-To compile translations run:
-```
-$ venv/bin/pybabel compile -d app/translations
-```
+

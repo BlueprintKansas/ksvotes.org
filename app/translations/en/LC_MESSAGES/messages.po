@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-15 09:51-0500\n"
+"POT-Creation-Date: 2018-06-15 14:39-0500\n"
 "PO-Revision-Date: 2018-06-15 09:51-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -123,6 +123,13 @@ msgstr ""
 msgid "0_dob"
 msgstr ""
 
+#: app/main/forms/step_0.py:13 app/templates/index.html:53
+#: app/templates/index.html:56
+msgid "0_dob_flag"
+msgstr ""
+"You must be at least 15 years old to use this site. Your dob must be "
+"mm/dd/yyyy."
+
 #: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
 msgid "0_county"
 msgstr ""
@@ -233,10 +240,6 @@ msgstr ""
 
 #: app/templates/index.html:25 app/templates/index.html:36
 msgid "0_name_help"
-msgstr ""
-
-#: app/templates/index.html:53 app/templates/index.html:56
-msgid "0_dob_flag"
 msgstr ""
 
 #: app/templates/index.html:62

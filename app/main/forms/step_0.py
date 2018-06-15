@@ -10,7 +10,7 @@ import os
 class FormStep0(FlaskForm):
     name_first = StringField(gettext('0_first'), validators=[DataRequired(message=gettext('Required'))])
     name_last = StringField(gettext('0_last'), validators=[DataRequired(message=gettext('Required'))])
-    dob = StringField(gettext('0_dob'), validators=[DataRequired(message=gettext('Required'))])
+    dob = StringField(gettext('0_dob'), validators=[DataRequired(message=gettext('Required')), Regexp('^\d{2}\/\d{2}\/\d{4}$', message=gettext('0_dob_flag'))])
     county = SelectField(gettext('0_county'),
                          validators=[DataRequired(message=gettext('Required'))],
                          choices=construct_county_choices(gettext('0_county'))
