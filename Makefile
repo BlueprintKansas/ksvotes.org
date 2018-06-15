@@ -16,6 +16,9 @@ dbupgrade:
 
 update: dbmigrate dbupgrade
 
+css:
+	npm run css
+
 run:
 	python manage.py runserver
 
