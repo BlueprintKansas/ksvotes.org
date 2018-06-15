@@ -8,6 +8,8 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or "devsk"
     SQLALCHEMY_COMMIT_ON_TEARDOWN = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_KEY')
+    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET')
 
     @staticmethod
     def init_app(app):
@@ -27,6 +29,7 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     JSONIFY_PRETTYPRINT_REGULAR = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    GA_KEY = os.environ.get('GA_KEY')
 
 config = {
     "development": DevelopmentConfig,
