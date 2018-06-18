@@ -15,4 +15,4 @@ before_script:
   - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
   - export $(cat .env | grep -v ^# | xargs)
 
-script: make test
+script: make test livetest

@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "scripts": {
     "css": "node-sass --output-style compressed --include-path scss scss/source.scss app/static/css/compiled.css",
+    "test": "node ./node_modules/mocha/bin/mocha js-test/*.js --reporter spec",
     "watch": "nodemon -e scss -x \"npm run css\""
   },
   "license": "MIT",
   "devDependencies": {
+    "mocha": "5.2.0",
     "node-sass": "^4.5.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "zombie": "6.1.2"
   },
   "dependencies": {
-    "moment": "^2.22.1"
+    "moment": "^2.22.1",
+    "npm": "^6.1.0"
   }
 }
