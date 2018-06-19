@@ -1,5 +1,4 @@
 from app.models import *
-from flask import g
 
 def create_registrant(db_session):
     registrant = Registrant(
