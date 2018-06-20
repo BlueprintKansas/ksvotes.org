@@ -23,7 +23,7 @@ testcov:
 	py.test --cov-report term-missing --cov
 
 test: check
-	py.test app/
+	py.test -s app/
 
 jstest:
 	npm run test
