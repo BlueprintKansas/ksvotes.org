@@ -82,7 +82,7 @@ def test_vr_3_single_invalid_address(app, db_session, client):
     updated_registrant = db_session.query(Registrant).filter_by(session_id = registrant.session_id).first()
     assert updated_registrant.registration_value.get('addr') == '123 Fake St'
     assert 'validated_addresses' in updated_registrant.registration_value
-    assert ('error' in updated_registrant.registration_value['validated_addresses']['current_address'])
+    assert updated_registrant.registration_value['validated_addresses'] == False
 
 
 def test_vr_3_with_prev_address(app, db_session, client):

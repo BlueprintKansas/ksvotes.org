@@ -14,7 +14,7 @@ def test_step_vr3_is_complete_false_with_missing_arguments(app, db_session, clie
 
 def test_step_vr3_is_complete_true_with_one_address(app, db_session, client):
     """
-        Verify that this registrant is not ready to move on to the next step and next step is VR 4.
+        Verify that this registrant is ready to move on to the next step and next step is VR 4.
     """
     form_payload = {
         'addr': "707 Vermont St",
@@ -44,8 +44,7 @@ def test_step_vr3_is_complete_false_with_bad_address(app, db_session, client):
     }
     step = Step_VR_3(form_payload)
     step.run()
-    assert 'current_address' in step.validated_addresses
-    assert 'error' in step.validated_addresses['current_address']
+    assert step.validated_addresses == False
     assert step.is_complete == True
     assert step.addr_lookup_complete == True
 

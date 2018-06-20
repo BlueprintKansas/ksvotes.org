@@ -27,5 +27,5 @@ class Step_VR_3(Step):
 		self.validated_addresses = usps_api.validate_addresses()
 		self.next_step = 'Step_VR_4'
 		self.addr_lookup_complete = True
-		self.is_complete = True
+		self.is_complete = True # always complete, regardless of USPS response. Invalid != incomplete
 		return True
