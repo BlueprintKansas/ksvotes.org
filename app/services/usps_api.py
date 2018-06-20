@@ -3,11 +3,10 @@ from pyusps import address_information
 from collections import OrderedDict
 
 class USPS_API():
-	address_order = ['current_address']
-
 	def __init__(self, address_payload = None):
 		self.address_payload = address_payload
 		self.usps_id = os.getenv('USPS_USER_ID')
+		self.address_order = ['current_address']
 
 	def marshall_single_address(self, address):
 		"""

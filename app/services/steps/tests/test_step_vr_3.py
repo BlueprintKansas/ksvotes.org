@@ -98,35 +98,33 @@ def test_step_vr3_with_bad_prev_address(app, db_session, client):
 
 
 def test_step_vr3_with_prev_address_and_mail_addr(app, db_session, client):
-    print('NEEDS REVIEW')
-#     form_payload3 = {
-#         'addr': "707 Vermont St",
-#         'unit': "Room A",
-#         'city': "Lawrence",
-#         'state': "KANSAS",
-#         'zip': '66044',
-#         'has_prev_addr': True,
-#         'prev_addr': "707 Vermont St",
-#         'prev_unit': "Room B",
-#         'prev_city': "Lawrence",
-#         'prev_state': "KANSAS",
-#         'prev_zip': '66044',
-#         'has_mail_addr': True,
-#         'mail_addr': "707 Vermont St",
-#         'mail_unit': "Room C",
-#         'mail_city': "Lawrence",
-#         'mail_state': "KANSAS",
-#         'mail_zip': '66044',
-#     }
-#     step = Step_VR_3(form_payload3)
-#     step.run()
-#     print(step.validated_addresses)
-#     assert step.is_complete == True
-#     assert step.next_step == 'Step_VR_4'
-#     assert 'current_address' in step.validated_addresses
-#     assert step.validated_addresses['current_address']['unit'] == 'RM A'
-#     assert 'prev_addr' in step.validated_addresses
-#     assert step.validated_addresses['prev_addr']['unit'] == 'RM B'
-#     assert step.addr_lookup_complete == True
-#     assert 'mail_addr' in step.validated_addresses
-#     assert step.validated_addresses['mail_addr']['unit'] == 'RM C'
+     form_payload3 = {
+         'addr': "707 Vermont St",
+         'unit': "Room A",
+         'city': "Lawrence",
+         'state': "KANSAS",
+         'zip': '66044',
+         'has_prev_addr': True,
+         'prev_addr': "707 Vermont St",
+         'prev_unit': "Room B",
+         'prev_city': "Lawrence",
+         'prev_state': "KANSAS",
+         'prev_zip': '66044',
+         'has_mail_addr': True,
+         'mail_addr': "707 Vermont St",
+         'mail_unit': "Room C",
+         'mail_city': "Lawrence",
+         'mail_state': "KANSAS",
+         'mail_zip': '66044',
+     }
+     step = Step_VR_3(form_payload3)
+     step.run()
+     assert step.is_complete == True
+     assert step.next_step == 'Step_VR_4'
+     assert 'current_address' in step.validated_addresses
+     assert step.validated_addresses['current_address']['unit'] == 'RM A'
+     assert 'prev_addr' in step.validated_addresses
+     assert step.validated_addresses['prev_addr']['unit'] == 'RM B'
+     assert step.addr_lookup_complete == True
+     assert 'mail_addr' in step.validated_addresses
+     assert step.validated_addresses['mail_addr']['unit'] == 'RM C'

@@ -151,38 +151,35 @@ def test_vr_3_with_invalid_prev_address(app, db_session, client):
 
 
 
-### NEEDS REVIEW ####
 def test_vr_3_with_mail_address(app, db_session, client):
-    print("needs review")
-#     """
-#     An existing user provides a valid address and valid prev address
-#     """
-#     registrant = create_registrant(db_session)
-#     with client.session_transaction() as http_session:
-#         http_session['session_id'] = str(registrant.session_id)
-#
-#     form_payload = {
-#         'addr': "707 Vermont St",
-#         'unit': "Room A",
-#         'city': "Lawrence",
-#         'state': "KANSAS",
-#         'zip': '66044',
-#         'has_mail_addr': True,
-#         'mail_addr': "707 Vermont St",
-#         'mail_unit': "Room B",
-#         'mail_city': "Lawrence",
-#         'mail_state': "KANSAS",
-#         'mail_zip': '66044',
-#     }
-#
-#     response = client.post('/vr/address', data=form_payload, follow_redirects=False)
-#     redirect_data = response.data.decode()
-#     assert response.status_code == 302
-#     assert ('/vr/party' in redirect_data) == True
-#
-#     updated_registrant = db_session.query(Registrant).filter_by(session_id = registrant.session_id).first()
-#     assert updated_registrant.registration_value.get('addr') == '707 Vermont St'
-#     assert 'validated_addresses' in updated_registrant.registration_value
-#     assert updated_registrant.registration_value['validated_addresses']['current_address']['state'] == 'KS'
-#     print(updated_registrant.registration_value)
-#     assert updated_registrant.registration_value['validated_addresses']['mail_addr']['unit'] == 'RM B'
+     """
+     An existing user provides a valid address and valid prev address
+     """
+     registrant = create_registrant(db_session)
+     with client.session_transaction() as http_session:
+         http_session['session_id'] = str(registrant.session_id)
+
+     form_payload = {
+         'addr': "707 Vermont St",
+         'unit': "Room A",
+         'city': "Lawrence",
+         'state': "KANSAS",
+         'zip': '66044',
+         'has_mail_addr': True,
+         'mail_addr': "707 Vermont St",
+         'mail_unit': "Room B",
+         'mail_city': "Lawrence",
+         'mail_state': "KANSAS",
+         'mail_zip': '66044',
+     }
+
+     response = client.post('/vr/address', data=form_payload, follow_redirects=False)
+     redirect_data = response.data.decode()
+     assert response.status_code == 302
+     assert ('/vr/party' in redirect_data) == True
+
+     updated_registrant = db_session.query(Registrant).filter_by(session_id = registrant.session_id).first()
+     assert updated_registrant.registration_value.get('addr') == '707 Vermont St'
+     assert 'validated_addresses' in updated_registrant.registration_value
+     assert updated_registrant.registration_value['validated_addresses']['current_address']['state'] == 'KS'
+     assert updated_registrant.registration_value['validated_addresses']['mail_addr']['unit'] == 'RM B'
