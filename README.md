@@ -119,7 +119,7 @@ $ npm run watch
 ## Internationalization & Localization
 This application is using [Flask-Babel](https://pythonhosted.org/Flask-Babel/)
 
-To add a new string, reference the string in the .py code with `gettext()`
+To add a new string, reference the string in the .py code with `gettext()` or `lazy_gettext()`
 and then run `% make locales` to update the corresponding babel files. For example:
 
 ```
@@ -130,11 +130,11 @@ gettext('some_key_string')
 # update the translation files
 % make locales
 
-# edit the corresponding .po files for each locale
-% vi app/translations/en/LC_MESSAGES/messages.po
-% vi app/translations/es/LC_MESSAGES/messages.po
+# edit the translations.csv file
+% vi translations.csv
 
 # compile your changes -- not visible to app till you run this.
+# NOTE this requires some Perl modules be installed.
 % make translate
 ```
 
