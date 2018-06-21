@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use Text::CSV_XS;
 use Data::Dump qw( dump );
-use File::Slurper qw( read_text read_lines write_text );
 use Locale::PO;
 
 my $usage = "$0 translations.csv";
