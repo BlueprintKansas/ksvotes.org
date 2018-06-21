@@ -3,6 +3,8 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel
 from config import config, LANGUAGES
+import logging
+from flask.logging import default_handler
 
 db = SQLAlchemy()
 babel = Babel()
@@ -15,6 +17,10 @@ def create_app(config_name):
     db.init_app(app)
     babel.init_app(app)
 
+    # logging config
+    app.logger.setLevel(os.getenv('LOG_LEVEL', default='WARN'))
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    default_handler.setFormatter(formatter)
 
     @babel.localeselector
     def get_locale():
