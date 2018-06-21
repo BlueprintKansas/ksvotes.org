@@ -7,7 +7,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-          <h1 class="h1-responsive">{{_('0_intro')}}</h1>
+          <h1 class="h1-responsive">KS Votes</h1>
+          <div>{{_('0_intro')}}</div>
       </div>
     </div>
   </div>
@@ -53,7 +54,8 @@
                 'data-parsley-pattern-message': _('0_dob_flag'),
                 'data-parsley-pattern': "/^\d{2}\/\d{2}\/\d{4}$/",
                 'data-parsley-dob-limit':"true",
-                'data-parsley-dob-limit-message': _('0_dob_flag')
+                'data-parsley-dob-limit-message': _('0_dob_flag'),
+                'placeholder':'mm/dd/yyyy',
               }
               )}}
 
@@ -84,8 +86,9 @@
               _('0_phone_help'),
               {
                 'data-parsley-trigger': 'focusout',
-                'data-parsley-pattern': '/^\d{3}\-\d{3}\-\d{4}$/',
+                'data-parsley-pattern': '/^\d{3}[\-\.]?\d{3}[\-\.]?\d{4}$/',
                 'data-parsley-pattern-message': _('0_phone_flag'),
+                'placeholder': 'xxx-xxx-xxxx',
               }
               )}}
 
