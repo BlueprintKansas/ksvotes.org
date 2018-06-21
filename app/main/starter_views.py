@@ -30,24 +30,23 @@ def index():
         if registrant:
             g.registrant.update(form.data)
         else:
+            sid = UUID(http_session.get('session_id'), version=4)
             registrant = Registrant(
                 county = form.data.get('county'),
                 registration_value = form.data,
-                session_id = uuid4()
+                session_id = sid
             )
             db.session.add(registrant)
-            http_session['session_id'] = str(registrant.session_id)
 
-        #run step
         step.run()
-        #update any non form variables/non
         registrant.reg_lookup_complete = step.reg_lookup_complete
         db.session.commit()
 
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
 
-    return render_template('index.html', form=form)
+    else:
+        return render_template('index.html', form=form)
 
 @main.route('/change-or-apply', methods=["GET", "POST"])
 @InSession

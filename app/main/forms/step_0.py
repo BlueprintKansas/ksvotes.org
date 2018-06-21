@@ -25,7 +25,6 @@ class FormStep0(FlaskForm):
         time_now = datetime.datetime.utcnow()
         time_dob = datetime.datetime.strptime(field.data, '%m/%d/%Y')
         diff = relativedelta(time_now, time_dob).years
-        print(diff)
         if diff <= 15:
             field.errors.append(gettext('0_dob_help'))
             return False

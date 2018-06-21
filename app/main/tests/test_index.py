@@ -19,7 +19,7 @@ def test_create_new_session_step_0(app, db_session, client):
         registrant = Registrant.query.filter(Registrant.session_id == http_session.get('session_id')).first()
         assert registrant.reg_lookup_complete == True
 
-def test_update_name_step_0_session_exists_already(app,db_session,client):
+def test_update_name_step_0_session_exists_already(app, db_session, client):
     """
     A returning user with a session id updates the existing registrant model.
     """
@@ -69,6 +69,9 @@ def test_registered_voter_input_returns_redirect_step_AB_1(app, db_session, clie
         "email":"foo@example.com",
         "county": "Douglas"
     }
+    with client.session_transaction() as http_session:
+        assert http_session.get('session_id') == None
+
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
     assert ('/change-or-apply' in redirect_data) == True
@@ -78,12 +81,12 @@ def test_unregistered_voter_input_returns_redirect_step_VR_1(app, db_session, cl
     A non registered potential voter returns the step for vr 1.
     """
     form_payload = {
-            "name_first": "foo",
-            "name_last": "bar",
-            "dob":"02/02/1999",
-            "email":"foo@example.com",
-            "county": "Douglas"
-        }
+        "name_first": "foo",
+        "name_last": "bar",
+        "dob":"02/02/1999",
+        "email":"foo@example.com",
+        "county": "Douglas"
+    }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
     assert ('/vr/citizenship' in redirect_data) == True
