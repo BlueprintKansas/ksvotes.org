@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import request, g, session as http_session, redirect
+from flask import request, g, session as http_session, redirect, current_app
 from app.models import Registrant
 from uuid import UUID, uuid4
 
@@ -10,13 +10,12 @@ def InSession(f):
     def decorated(*args, **kwargs):
         session_id = http_session.get('session_id')
         g.registrant = None
-        print(session_id)
+        current_app.logger.info(session_id)
         # if we don't yet have a session_id, assign one.
         if not session_id:
             uuid_str = str(uuid4())
             http_session['session_id'] = uuid_str
             # edge case: a request "in the middle" of the flow.
-            print(session_id)
             if request.path != '/':
                 return redirect('/')
         else:
