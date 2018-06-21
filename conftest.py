@@ -29,10 +29,9 @@ def db(app, request):
         _db.drop_all()
         _db.create_all()
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def client(app, request):
     return app.test_client()
-
 
 @pytest.fixture(scope="function", autouse=True)
 def db_session(app, db, request):
