@@ -29,7 +29,7 @@ jstest:
 	npm run test
 
 start-testserver:
-	python manage.py runserver 2> testserver.log &
+	python manage.py runserver &> testserver.log &
 
 stop-testserver:
 	kill -9 `cat server.pid` && rm server.pid
