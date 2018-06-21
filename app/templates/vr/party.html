@@ -8,6 +8,34 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
+        {% if registrant.registration_value.validated_addresses %}
+          {% for k,v in registrant.registration_value.validated_addresses.items() %}
+
+            <h6>
+            {% if k == 'current_address' %}
+              {{_('3_addr')}}:
+            {% elif k == 'prev_addr'%}
+              {{_('3_prev_addr')}}:
+            {% elif k == 'mail_addr'%}
+              {{_('3_mail_addr')}}:
+            {% endif %}
+            {% if 'error' in registrant.registration_value.validated_addresses[k] %}
+            <span class="address-error">
+                  <i class="fa fa-times"></i>
+                  <a href="{{url_for('main.vr3_address')}}">  _('3_invalid') </a>
+            </span>
+            {% else %}
+             <span class="validated"><i class="fa fa-check"></i>
+               {{registrant.registration_value.validated_addresses.get(k).get('address', '')}}
+               {{registrant.registration_value.validated_addresses.get(k).get('unit', '')}}
+               {{registrant.registration_value.validated_addresses.get(k).get('city', '')}}
+               {{registrant.registration_value.validated_addresses.get(k).get('state', '')}}
+               {{registrant.registration_value.validated_addresses.get(k).get('zip5','')}}
+             </span>
+            {% endif%}
+            <h6>
+          {% endfor %}
+        {% endif %}
         <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
           {{form.hidden_tag()}}
 

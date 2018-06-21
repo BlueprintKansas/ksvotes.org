@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import request, g, session as http_session, redirect
+from flask import request, g, session as http_session, redirect, current_app
 from app.models import Registrant
 from uuid import UUID, uuid4
 
@@ -10,7 +10,7 @@ def InSession(f):
     def decorated(*args, **kwargs):
         session_id = http_session.get('session_id')
         g.registrant = None
-
+        current_app.logger.info(session_id)
         # if we don't yet have a session_id, assign one.
         if not session_id:
             uuid_str = str(uuid4())
@@ -20,10 +20,11 @@ def InSession(f):
                 return redirect('/')
         else:
             sid = UUID(session_id, version=4)
-            g.registrant = Registrant.query.filter(Registrant.session_id == sid).first()
+            g.registrant = Registrant.query.filter(Registrant.session_id == session_id).first()
 
         # edge case: clear stale cookie and start over.
-        if session_id and not g.registrant:
+        # adding in fix for index
+        if session_id and not g.registrant and request.path != '/':
             http_session.pop('session_id')
             return redirect('/')
 
