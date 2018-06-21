@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-30 14:32-0500\n"
+"POT-Creation-Date: 2018-06-15 14:39-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,61 +17,283 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
 
-#: app/templates/index.html:10
-msgid "Test String"
+#: app/main/forms/ab_3.py:9 app/main/forms/vr_3.py:9
+msgid "3_addr"
 msgstr ""
 
-#: app/templates/index.html:21 app/templates/index.html:38
-#: app/templates/index.html:57 app/templates/index.html:76
-#: app/templates/index.html:99
+#: app/main/forms/ab_3.py:9 app/main/forms/ab_3.py:11 app/main/forms/ab_3.py:12
+#: app/main/forms/ab_3.py:13 app/main/forms/ab_3.py:16
+#: app/main/forms/ab_3.py:18 app/main/forms/ab_3.py:19
+#: app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
+#: app/main/forms/step_0.py:11 app/main/forms/step_0.py:12
+#: app/main/forms/step_0.py:13 app/main/forms/step_0.py:15
+#: app/main/forms/step_0.py:18 app/main/forms/vr_1.py:7
+#: app/main/forms/vr_2.py:17 app/main/forms/vr_2.py:19
+#: app/main/forms/vr_2.py:40 app/main/forms/vr_2.py:42 app/main/forms/vr_3.py:9
+#: app/main/forms/vr_3.py:11 app/main/forms/vr_3.py:12
+#: app/main/forms/vr_3.py:13 app/main/forms/vr_3.py:16
+#: app/main/forms/vr_3.py:18 app/main/forms/vr_3.py:19
+#: app/main/forms/vr_3.py:20 app/main/forms/vr_3.py:23
+#: app/main/forms/vr_3.py:25 app/main/forms/vr_3.py:26
+#: app/main/forms/vr_3.py:27 app/main/forms/vr_4.py:8 app/main/forms/vr_5.py:7
+#: app/templates/index.html:28 app/templates/index.html:39
+#: app/templates/index.html:50 app/templates/index.html:65
+#: app/templates/index.html:75 app/templates/vr/address.html:19
+#: app/templates/vr/address.html:36 app/templates/vr/address.html:47
+#: app/templates/vr/address.html:58 app/templates/vr/address.html:77
+#: app/templates/vr/address.html:93 app/templates/vr/address.html:103
+#: app/templates/vr/address.html:113 app/templates/vr/address.html:134
+#: app/templates/vr/address.html:150 app/templates/vr/address.html:160
+#: app/templates/vr/address.html:170 app/templates/vr/citizenship.html:19
+#: app/templates/vr/identification.html:19 app/templates/vr/name.html:25
+#: app/templates/vr/name.html:42 app/templates/vr/name.html:70
+#: app/templates/vr/name.html:86 app/templates/vr/party.html:19
 msgid "Required"
 msgstr ""
 
-#: app/templates/index.html:24
+#: app/main/forms/ab_3.py:10 app/main/forms/vr_3.py:10
+#: app/templates/vr/address.html:27
+msgid "3_unit"
+msgstr ""
+
+#: app/main/forms/ab_3.py:11 app/main/forms/vr_3.py:11
+#: app/templates/vr/address.html:33
+msgid "3_city"
+msgstr ""
+
+#: app/main/forms/ab_3.py:12 app/main/forms/vr_3.py:12
+#: app/templates/vr/address.html:44
+msgid "3_state"
+msgstr ""
+
+#: app/main/forms/ab_3.py:13 app/main/forms/vr_3.py:13
+msgid "3_zip"
+msgstr ""
+
+#: app/main/forms/ab_3.py:13 app/main/forms/ab_3.py:20
+#: app/main/forms/vr_3.py:13 app/main/forms/vr_3.py:20
+#: app/main/forms/vr_3.py:27 app/templates/vr/address.html:55
+#: app/templates/vr/address.html:111
+msgid "3_zip_help"
+msgstr ""
+
+#: app/main/forms/ab_3.py:15 app/main/forms/vr_3.py:22
+#: app/templates/vr/address.html:124
+msgid "3_has_mail_addr"
+msgstr ""
+
+#: app/main/forms/ab_3.py:16 app/main/forms/vr_3.py:23
+#: app/templates/vr/address.html:132
+msgid "3b_mail_addr"
+msgstr ""
+
+#: app/main/forms/ab_3.py:17 app/main/forms/vr_3.py:24
+#: app/templates/vr/address.html:142
+msgid "3b_mail_unit"
+msgstr ""
+
+#: app/main/forms/ab_3.py:18 app/main/forms/vr_3.py:25
+#: app/templates/vr/address.html:148
+msgid "3b_mail_city"
+msgstr ""
+
+#: app/main/forms/ab_3.py:19 app/main/forms/vr_3.py:26
+#: app/templates/vr/address.html:158
+msgid "3b_mail_state"
+msgstr ""
+
+#: app/main/forms/ab_3.py:20 app/main/forms/vr_3.py:27
+msgid "3b_mail_zip"
+msgstr ""
+
+#: app/main/forms/ab_5.py:7 app/main/forms/vr_5.py:7
+msgid "5_id"
+msgstr ""
+
+#: app/main/forms/step_0.py:11
 msgid "0_first"
 msgstr ""
 
-#: app/templates/index.html:25 app/templates/index.html:42
-msgid "0_name_help"
-msgstr ""
-
-#: app/templates/index.html:41
+#: app/main/forms/step_0.py:12
 msgid "0_last"
 msgstr ""
 
-#: app/templates/index.html:58
-msgid "0_dob_flag"
-msgstr ""
-
-#: app/templates/index.html:61
+#: app/main/forms/step_0.py:13
 msgid "0_dob"
 msgstr ""
 
-#: app/templates/index.html:62
-msgid "0_dob_help"
+#: app/main/forms/step_0.py:13 app/templates/index.html:53
+#: app/templates/index.html:56
+msgid "0_dob_flag"
 msgstr ""
 
-#: app/templates/index.html:84
-msgid "0_county_help"
+#: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
+msgid "0_county"
 msgstr ""
 
-#: app/templates/index.html:101
-msgid "0_email_flag"
-msgstr ""
-
-#: app/templates/index.html:104
+#: app/main/forms/step_0.py:18
 msgid "0_email"
 msgstr ""
 
-#: app/templates/index.html:105
+#: app/main/forms/step_0.py:18 app/templates/index.html:78
+msgid "0_email_flag"
+msgstr ""
+
+#: app/main/forms/step_0.py:19
+msgid "0_phone"
+msgstr ""
+
+#: app/main/forms/step_0.py:19 app/templates/index.html:84
+msgid "0_phone_help"
+msgstr ""
+
+#: app/main/forms/step_0.py:27 app/templates/index.html:47
+msgid "0_dob_help"
+msgstr ""
+
+#: app/main/forms/vr_1.py:7
+msgid "1_citizen"
+msgstr ""
+
+#: app/main/forms/vr_1.py:8
+msgid "1_18"
+msgstr ""
+
+#: app/main/forms/vr_2.py:8 app/main/forms/vr_2.py:10
+msgid "2_prefix"
+msgstr ""
+
+#: app/main/forms/vr_2.py:17
+msgid "2_first"
+msgstr ""
+
+#: app/main/forms/vr_2.py:18
+msgid "2_middle"
+msgstr ""
+
+#: app/main/forms/vr_2.py:19
+msgid "2_last"
+msgstr ""
+
+#: app/main/forms/vr_2.py:20 app/main/forms/vr_2.py:22
+msgid "2_suffix"
+msgstr ""
+
+#: app/main/forms/vr_2.py:30 app/templates/vr/name.html:56
+msgid "2_has_prev_name"
+msgstr ""
+
+#: app/main/forms/vr_2.py:31 app/main/forms/vr_2.py:33
+msgid "2a_prev_prefix"
+msgstr ""
+
+#: app/main/forms/vr_2.py:40
+msgid "2a_prev_first"
+msgstr ""
+
+#: app/main/forms/vr_2.py:41
+msgid "2a_prev_middle"
+msgstr ""
+
+#: app/main/forms/vr_2.py:42
+msgid "2a_prev_last"
+msgstr ""
+
+#: app/main/forms/vr_2.py:43 app/main/forms/vr_2.py:45
+msgid "2a_prev_suffix"
+msgstr ""
+
+#: app/main/forms/vr_3.py:15 app/templates/vr/address.html:68
+msgid "3_has_prev_addr"
+msgstr ""
+
+#: app/main/forms/vr_3.py:16 app/templates/vr/address.html:75
+msgid "3a_prev_addr"
+msgstr ""
+
+#: app/main/forms/vr_3.py:17 app/templates/vr/address.html:85
+msgid "3a_prev_unit"
+msgstr ""
+
+#: app/main/forms/vr_3.py:18 app/templates/vr/address.html:91
+msgid "3a_prev_city"
+msgstr ""
+
+#: app/main/forms/vr_3.py:19 app/templates/vr/address.html:101
+msgid "3a_prev_state"
+msgstr ""
+
+#: app/main/forms/vr_3.py:20
+msgid "3a_prev_zip"
+msgstr ""
+
+#: app/main/forms/vr_4.py:7 app/main/forms/vr_4.py:10
+msgid "4_party"
+msgstr ""
+
+#: app/templates/index.html:10
+msgid "0_intro"
+msgstr ""
+
+#: app/templates/index.html:25 app/templates/index.html:36
+msgid "0_name_help"
+msgstr ""
+
+#: app/templates/index.html:62
+msgid "0_county_help"
+msgstr ""
+
+#: app/templates/index.html:72
 msgid "0_email_help"
 msgstr ""
 
-#: app/templates/index.html:119
+#: app/templates/index.html:89
 msgid "0_phone_flag"
 msgstr ""
 
-#: app/templates/index.html:122
-msgid "0_phone_help"
+#: app/templates/vr/address.html:16
+msgid "3_addr_help"
+msgstr ""
+
+#: app/templates/vr/address.html:61 app/templates/vr/address.html:116
+#: app/templates/vr/address.html:173
+msgid "0_zip_help"
+msgstr ""
+
+#: app/templates/vr/address.html:72
+msgid "3a_header"
+msgstr ""
+
+#: app/templates/vr/address.html:129
+msgid "3b_header"
+msgstr ""
+
+#: app/templates/vr/address.html:168
+msgid "3b_zip_help"
+msgstr ""
+
+#: app/templates/vr/citizenship.html:16
+msgid "1_citizen_help"
+msgstr ""
+
+#: app/templates/vr/citizenship.html:25
+msgid "1_18_help"
+msgstr ""
+
+#: app/templates/vr/identification.html:13
+msgid "5_id_help"
+msgstr ""
+
+#: app/templates/vr/identification.html:16
+msgid "2_id_help"
+msgstr ""
+
+#: app/templates/vr/name.html:22 app/templates/vr/name.html:33
+#: app/templates/vr/name.html:39
+msgid "2_name_help"
+msgstr ""
+
+#: app/templates/vr/party.html:16
+msgid "4_party_help"
 msgstr ""
 

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+venv/bin/pybabel extract -F babel.cfg -o messages.pot app
+venv/bin/pybabel update -i messages.pot -d app/translations -l es
+venv/bin/pybabel update -i messages.pot -d app/translations -l en
