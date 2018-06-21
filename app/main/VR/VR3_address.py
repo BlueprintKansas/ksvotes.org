@@ -29,6 +29,7 @@ def vr3_address():
         mail_state = g.registrant.registration_value.get('mail_state', ''),
         mail_zip = g.registrant.registration_value.get('mail_zip', ''),
     )
+    print(g.registrant.registration_value)
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_3(form.data)
         step.run()

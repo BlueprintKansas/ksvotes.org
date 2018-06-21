@@ -196,6 +196,22 @@
 $(function () {
   //initialize form with parsley validation
   var form = $('#step_3');
+  // for refresh/backbutton initialization 
+  if($('input[name=has_prev_addr]').is(':checked')) {
+    $('.previous-address-fields').show();
+    $('#prev_zip').attr("required", true);
+    $('#prev_state').attr("required", true);
+    $('#prev_city').attr("required", true);
+    $('#prev_addr').attr("required", true);
+  }
+  if($('input[name=has_mail_addr]').is(':checked')) {
+    $('.mail-address-fields').show();
+    $('#mail_zip').attr("required", true);
+    $('#mail_state').attr("required", true);
+    $('#mail_city').attr("required", true);
+    $('#mail_addr').attr("required", true);
+  }
+
   $('input[name=has_prev_addr]').change(
       function(){
           if (this.checked) {
