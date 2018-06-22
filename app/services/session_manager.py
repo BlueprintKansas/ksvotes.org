@@ -1,4 +1,5 @@
 from app.services.steps import *
+from flask import g
 
 class SessionManager():
     """
@@ -31,6 +32,13 @@ class SessionManager():
             prev_step = globals()[self.current_step.prev_step]
             self.prev_step = prev_step()
 
+    def get_locale_url(self, endpoint):
+        lang_code = g.get('lang_code', None)
+        if lang_code:
+            return '/' + lang_code + endpoint
+        else:
+            return endpoint
+
     def get_redirect_url(self):
         """
         Should always return a url path.  Look at the current step and determine if the user needs to:
@@ -41,20 +49,20 @@ class SessionManager():
         # For Step 0 when no previous step exists
         if not self.prev_step:
             if self.current_step.is_complete:
-                return self.next_step.endpoint
+                return self.get_locale_url(self.next_step.endpoint)
             else:
-                return self.current_step.endpoint
+                return self.get_locale_url(self.current_step.endpoint)
 
         # For the previous step iterate all of the requirements.
         # If the requirement is not fulfilled return the previous step url
         for req in self.prev_step.all_requirements():
             # if a requirement is missing return the endpoint for the previous step
             if not self.registrant.has_value_for_req(req):
-                return self.prev_step.endpoint
+                return self.get_locale_url(self.prev_step.endpoint)
 
         # if the step has been completed move on
         if self.current_step.is_complete:
-            return self.next_step.endpoint
+            return self.get_locale_url(self.next_step.endpoint)
 
         #default to returning current step
-        return self.current_step.endpoint
+        return self.get_locale_url(self.current_step.endpoint)

@@ -10,7 +10,7 @@ This program will walk you through the process of filling out the federal voter 
 0,footer_contact,0_footer_contact,,Contact Us
 0,footer_partners,0_footer_partners,,KSVotes.org was built in partnership with Loud Light and GPS Impact
 0,name_help,0_name_help,,"Enter your full name in this section. Do not use nicknames or initials. If this application is for a change of name, enter your current name here. We will ask you for your previous name later."
-0,first,0_first,First Name,First Name
+0,first,0_first,First Name,First Name,Primer Nombre
 0,last,0_last,Last Name,Last Name
 0,dob,0_dob,Date of Birth,Date of Birth
 0,dob_help,0_dob_help,format mm/dd/yyyy required,Format mm/dd/yyyy required
