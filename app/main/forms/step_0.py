@@ -6,11 +6,12 @@ from dateutil.relativedelta import relativedelta
 import datetime
 from app.main.helpers import construct_county_choices
 import os
+import re
 
 class FormStep0(FlaskForm):
     name_first = StringField(lazy_gettext('0_first'), validators=[DataRequired(message=lazy_gettext('Required'))])
     name_last = StringField(lazy_gettext('0_last'), validators=[DataRequired(message=lazy_gettext('Required'))])
-    dob = StringField(lazy_gettext('0_dob'), validators=[DataRequired(message=lazy_gettext('Required')), Regexp('^\d{2}\/\d{2}\/\d{4}$', message=lazy_gettext('0_dob_flag'))])
+    dob = StringField(lazy_gettext('0_dob'), validators=[DataRequired(message=lazy_gettext('Required')), Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext('0_dob_flag'))])
     county = SelectField(lazy_gettext('0_county'),
                          validators=[DataRequired(message=lazy_gettext('Required'))],
                          choices=construct_county_choices(lazy_gettext('0_county'))
@@ -23,7 +24,8 @@ class FormStep0(FlaskForm):
 
     def validate_dob(self, field):
         time_now = datetime.datetime.utcnow()
-        time_dob = datetime.datetime.strptime(field.data, '%m/%d/%Y')
+        dob = re.sub('\D', '', field.data)
+        time_dob = datetime.datetime.strptime(dob, '%m%d%Y')
         diff = relativedelta(time_now, time_dob).years
         if diff <= 15:
             field.errors.append(lazy_gettext('0_dob_help'))

@@ -52,7 +52,7 @@
                 'autocomplete':'off',
                 'data-parsley-trigger':'focusout',
                 'data-parsley-pattern-message': _('0_dob_flag'),
-                'data-parsley-pattern': "/^\d{2}\/\d{2}\/\d{4}$/",
+                'data-parsley-pattern': "/^\d{2}[\/-]?\d{2}[\/\-]?\d{4}$/",
                 'data-parsley-dob-limit':"true",
                 'data-parsley-dob-limit-message': _('0_dob_flag'),
                 'placeholder':'mm/dd/yyyy',
@@ -117,10 +117,15 @@ $(function () {
   window.Parsley.addValidator('dobLimit', {
     requirementType: 'string',
     validateString: function(value) {
-      var compare = Math.floor(moment(new Date()).diff(moment(value,"MM/DD/YYYY"),'years',true))
-      if(compare <= 15) {
+      var mdy = value.match(/^(\d{2})[\/-]?(\d{2})[\/\-]?(\d{4})$/);
+      mdy.shift();
+      var dob = mdy.join('/');
+      //console.log(mdy, dob);
+      var compare = Math.floor(moment(new Date()).diff(moment(dob,"MM/DD/YYYY"),'years',true));
+      if (compare <= 15) {
         return false;
       }
+      $('#dob').val(dob); // normalize input
       return true;
     }
   })
