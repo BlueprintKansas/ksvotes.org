@@ -39,8 +39,8 @@ for my $msgid ( sort keys %translations ) {
         -msgid  => $msgid,
         -msgstr => $translations{$msgid}->{es}
     );
-    $en_locale_po->{$msgid} = $en_po;
-    $es_locale_po->{$msgid} = $es_po;
+    $en_locale_po->{qq{"$msgid"}} = $en_po;
+    $es_locale_po->{qq{"$msgid"}} = $es_po;
 }
 
 Locale::PO->save_file_fromhash( $en_po_file, $en_locale_po, 'utf8' );
