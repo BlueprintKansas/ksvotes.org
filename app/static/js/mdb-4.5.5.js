@@ -15525,7 +15525,10 @@ Waves.init();
     $(document).on('blur', input_selector, function (e) {
       var $this = $(e.target);
       var noValue = !$this.val();
-      var invalid = !e.target.validity.badInput;
+      var invalid = false;
+      if (e.target.validity) {
+        invalid = !e.target.validity.badInput;
+      }
       var noPlaceholder = $this.attr('placeholder') === undefined;
 
       if (noValue && invalid && noPlaceholder) {
