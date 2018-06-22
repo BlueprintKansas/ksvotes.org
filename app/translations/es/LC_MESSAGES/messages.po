@@ -1,55 +1,10 @@
-# Spanish translations for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
-#
+# DO NOT EDIT - edit translations.csv instead
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-22 01:03-0500\n"
-"PO-Revision-Date: 2018-06-22 01:03-0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
 
-msgid "0_county"
-msgstr "County"
-
-msgid "0_county_help"
-msgstr "Enter the county in which you currently reside."
-
-msgid "0_dob"
-msgstr "Date of Birth"
-
-msgid "0_dob_flag"
-msgstr "Make sure your date of birth is in the correct format (mm/dd/yyyy) and that you are at least 16 years old."
-
-msgid "0_dob_help"
-msgstr "Format mm/dd/yyyy required"
-
-msgid "0_email"
-msgstr "Email Address"
-
-msgid "0_email_flag"
-msgstr "Must be a valid email address"
-
-msgid "0_email_help"
-msgstr "Enter your email address. We will use it to send you a copy of your form to confirm the registration process. See our <Privacy Policy> and <Terms of Service> for more information."
-
-msgid "0_first"
-msgstr "Primer Nombre"
-
-msgid "0_footer_contact"
-msgstr "Contact Us"
-
-msgid "0_footer_partners"
-msgstr "KSVotes.org was built in partnership with Loud Light and GPS Impact"
+msgid "0_intro"
+msgstr "Welcome to the KSVotes.org Online Voter Registration Application\nThis program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form.\n\n Please enter your information below, and we'll check to see if you're already registered to vote in Kansas."
 
 msgid "0_footer_priv"
 msgstr "Privacy Policy"
@@ -57,84 +12,65 @@ msgstr "Privacy Policy"
 msgid "0_footer_tos"
 msgstr "Terms of Service"
 
-msgid "0_intro"
-msgstr ""
-"Welcome to the KSVotes.org Online Voter Registration Application\n"
-"This program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form.\n"
-"\n"
-" Please enter your information below, and we'll check to see if you're already registered to vote in Kansas."
+msgid "0_footer_contact"
+msgstr "Contact Us"
 
-msgid "0_last"
-msgstr "Last Name"
-
-msgid "0_match"
-msgstr ""
-"You are registered to vote in Kansas, with the information below. If you wish to re-register to change your name, address, or political party, please continue by clicking Next.\n"
-"\n"
-"Or, if the information below is fully up-to-date, click here to <apply to vote by mail>."
+msgid "0_footer_partners"
+msgstr "KSVotes.org was built in partnership with Loud Light and GPS Impact"
 
 msgid "0_name_help"
 msgstr "Enter your full name in this section. Do not use nicknames or initials. If this application is for a change of name, enter your current name here. We will ask you for your previous name later."
 
-msgid "0_nomatch"
-msgstr ""
-"We couldn't find your information in the Kansas voter registration records. Please continue to the registration form by clicking Next.\n"
-"\n"
-"Note: If you recently submitted a registration application, your information may still be in process. You can still <apply to vote by mail>."
+msgid "0_first"
+msgstr "Primer Nombre"
+
+msgid "0_last"
+msgstr "Last Name"
+
+msgid "0_dob"
+msgstr "Date of Birth"
+
+msgid "0_dob_help"
+msgstr "Format mm/dd/yyyy required"
+
+msgid "0_dob_flag"
+msgstr "Make sure your date of birth is in the correct format (mm/dd/yyyy) and that you are at least 16 years old."
+
+msgid "0_county"
+msgstr "County"
+
+msgid "0_county_help"
+msgstr "Enter the county in which you currently reside."
+
+msgid "0_email"
+msgstr "Email Address"
+
+msgid "0_email_help"
+msgstr "Enter your email address. We will use it to send you a copy of your form to confirm the registration process. See our <Privacy Policy> and <Terms of Service> for more information."
+
+msgid "0_email_flag"
+msgstr "Must be a valid email address"
 
 msgid "0_phone"
 msgstr "Phone Number"
 
-msgid "0_phone_flag"
-msgstr "Format 000-000-0000 required"
-
 msgid "0_phone_help"
 msgstr "In case there are questions about your application. This field is optional."
 
-#: app/templates/vr/address.html:61 app/templates/vr/address.html:116
-#: app/templates/vr/address.html:173
-msgid "0_zip_help"
-msgstr ""
+msgid "0_phone_flag"
+msgstr "Format 000-000-0000 required"
 
 msgid "0x_intro"
-msgstr ""
-"Welcome to the KSVotes.org Online Voter Registration Application\n"
-"This program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form.\n"
-"\n"
-"The information below was received from the page that directed you here. Please check it and edit anything that's incorrect, and we'll check to see if you're already registered to vote in Kansas."
+msgstr "Welcome to the KSVotes.org Online Voter Registration Application\nThis program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form.\n\nThe information below was received from the page that directed you here. Please check it and edit anything that's incorrect, and we'll check to see if you're already registered to vote in Kansas."
 
-msgid "1AB_party_flag"
-msgstr "Unaffiliated voters must register to vote as a member of a party in order to vote in that party's primary. To submit this application, we will also need to submit a new registration making you a member of that political party."
+msgid "0_match"
+msgstr "You are registered to vote in Kansas, with the information below. If you wish to re-register to change your name, address, or political party, please continue by clicking Next.\n\nOr, if the information below is fully up-to-date, click here to <apply to vote by mail>."
 
-msgid "1AB_party_help"
-msgstr "Political party is required only when requesting a primary election ballot; to vote in a party's primary election, you must be a registered member of that party."
+msgid "0_nomatch"
+msgstr "We couldn't find your information in the Kansas voter registration records. Please continue to the registration form by clicking Next.\n\nNote: If you recently submitted a registration application, your information may still be in process. You can still <apply to vote by mail>."
 
-msgid "1AB_perm_help"
-msgstr "Applicants for permanent advance voting status must have a permanent physical disability or illness or have been diagnosed as having a permanent illness."
-
-msgid "1AB_perm_reason"
-msgstr "The nature of my permanent disability or illness is:"
-
-msgid "1AB_select_election"
-msgstr "Which election would you like to vote by mail in?"
-
-msgid "1AB_select_election_gn2018"
-msgstr "2018 General (November 6)"
-
-msgid "1AB_select_election_pr2018"
-msgstr "2018 Primary (August 7)"
-
-msgid "1AB_select_party"
-msgstr "Political Party"
-
-msgid "1AB_select_perm"
-msgstr "Permanent vote by mail"
-
-msgid "1VR_18"
-msgstr "Will you be at least 18 years old on or before election day?"
-
-msgid "1VR_18_help"
-msgstr "If you will be under 18 on election day (in November), leave this box blank. You will not be allowed to vote in November, but your registration will be processed and held until your 18th birthday."
+msgid "1VR_header"
+msgstr "Are you eligible to register to vote?"
 
 msgid "1VR_citizen"
 msgstr "Are you a citizen of the United States of America?"
@@ -142,35 +78,41 @@ msgstr "Are you a citizen of the United States of America?"
 msgid "1VR_citizen_help"
 msgstr "Voter registration is only available to U.S. citizens."
 
-msgid "1VR_header"
-msgstr "Are you eligible to register to vote?"
+msgid "1VR_18"
+msgstr "Will you be at least 18 years old on or before election day?"
 
-#: app/templates/vr/citizenship.html:25
-msgid "1_18_help"
-msgstr ""
+msgid "1VR_18_help"
+msgstr "If you will be under 18 on election day (in November), leave this box blank. You will not be allowed to vote in November, but your registration will be processed and held until your 18th birthday."
 
-#: app/templates/vr/citizenship.html:16
-msgid "1_citizen_help"
-msgstr ""
+msgid "1AB_select_election"
+msgstr "Which election would you like to vote by mail in?"
 
-msgid "2_first"
-msgstr "First Name"
+msgid "1AB_select_election_pr2018"
+msgstr "2018 Primary (August 7)"
 
-msgid "2_has_prev_name"
-msgstr "Is this application for a change of name?"
+msgid "1AB_select_election_gn2018"
+msgstr "2018 General (November 6)"
+
+msgid "1AB_select_perm"
+msgstr "Permanent vote by mail"
+
+msgid "1AB_perm_help"
+msgstr "Applicants for permanent advance voting status must have a permanent physical disability or illness or have been diagnosed as having a permanent illness."
+
+msgid "1AB_perm_reason"
+msgstr "The nature of my permanent disability or illness is:"
+
+msgid "1AB_select_party"
+msgstr "Political Party"
+
+msgid "1AB_party_help"
+msgstr "Political party is required only when requesting a primary election ballot; to vote in a party's primary election, you must be a registered member of that party."
+
+msgid "1AB_party_flag"
+msgstr "Unaffiliated voters must register to vote as a member of a party in order to vote in that party's primary. To submit this application, we will also need to submit a new registration making you a member of that political party."
 
 msgid "2_header"
 msgstr "What is your name?"
-
-#: app/templates/vr/identification.html:16
-msgid "2_id_help"
-msgstr ""
-
-msgid "2_last"
-msgstr "Last Name"
-
-msgid "2_middle"
-msgstr "Middle Name"
 
 msgid "2_name_help"
 msgstr "Your name has been completed from what you gave us earlier."
@@ -178,100 +120,53 @@ msgstr "Your name has been completed from what you gave us earlier."
 msgid "2_prefix"
 msgstr "Prefix"
 
-msgid "2_prev_first"
+msgid "2_first"
 msgstr "First Name"
 
-msgid "2_prev_header"
-msgstr "What was your name before you changed it?"
-
-msgid "2_prev_last"
-msgstr "Last Name"
-
-msgid "2_prev_middle"
+msgid "2_middle"
 msgstr "Middle Name"
 
-msgid "2_prev_prefix"
-msgstr "Prefix"
-
-msgid "2_prev_suffix"
-msgstr "Suffix"
+msgid "2_last"
+msgstr "Last Name"
 
 msgid "2_suffix"
 msgstr "Suffix"
 
-#: app/main/forms/vr_2.py:40
-msgid "2a_prev_first"
-msgstr ""
+msgid "2_has_prev_name"
+msgstr "Is this application for a change of name?"
 
-#: app/main/forms/vr_2.py:42
-msgid "2a_prev_last"
-msgstr ""
+msgid "2_prev_header"
+msgstr "What was your name before you changed it?"
 
-#: app/main/forms/vr_2.py:41
-msgid "2a_prev_middle"
-msgstr ""
+msgid "2_prev_prefix"
+msgstr "Prefix"
 
-#: app/main/forms/vr_2.py:31 app/main/forms/vr_2.py:33
-msgid "2a_prev_prefix"
-msgstr ""
+msgid "2_prev_first"
+msgstr "First Name"
 
-#: app/main/forms/vr_2.py:43 app/main/forms/vr_2.py:45
-msgid "2a_prev_suffix"
-msgstr ""
+msgid "2_prev_middle"
+msgstr "Middle Name"
 
-msgid "3_addr"
-msgstr "Home Address"
+msgid "2_prev_last"
+msgstr "Last Name"
+
+msgid "2_prev_suffix"
+msgstr "Suffix"
 
 msgid "3_addr_header"
 msgstr "What is your home address?"
 
+msgid "3_addr"
+msgstr "Home Address"
+
 msgid "3_addr_help"
-msgstr "Your address of residence determines the precinct in which you vote. \"Residence\" is defined in Kansas law as \"the place adopted by a person as such person's place of habitation, and to which, whenever such person is absent, such person has the intention of returning.\""
+msgstr "Your address of residence determines the precinct in which you vote. "Residence" is defined in Kansas law as "the place adopted by a person as such person's place of habitation, and to which, whenever such person is absent, such person has the intention of returning.""
+
+msgid "3_unit"
+msgstr "Apt/Lot"
 
 msgid "3_city"
 msgstr "City/Town"
-
-msgid "3_has_mail_addr"
-msgstr "Do you have a different mailing address?"
-
-msgid "3_has_prev_addr"
-msgstr "Were you registered before at a different address?"
-
-msgid "3_header"
-msgstr "What is the address where you get your mail?"
-
-msgid "3_invalid"
-msgstr "This address could not be verified with the US Postal Service. Please double-check that the address you entered is correct and complete."
-
-msgid "3_mail_addr"
-msgstr "Mailing Address"
-
-msgid "3_mail_city"
-msgstr "City/Town"
-
-msgid "3_mail_state"
-msgstr "State"
-
-msgid "3_mail_unit"
-msgstr "Apt/Lot"
-
-msgid "3_mail_zip"
-msgstr "ZIP Code"
-
-msgid "3_prev_addr"
-msgstr "Street"
-
-msgid "3_prev_city"
-msgstr "City/Town"
-
-msgid "3_prev_state"
-msgstr "State"
-
-msgid "3_prev_unit"
-msgstr "Apt/Lot"
-
-msgid "3_prev_zip"
-msgstr "ZIP Code"
 
 msgid "3_state"
 msgstr "State"
@@ -279,102 +174,77 @@ msgstr "State"
 msgid "3_state_help"
 msgstr "KSVotes.org only works for registrants who live and wish to vote in Kansas. If you live in a different state, you can register using https://turbovote.org/"
 
-msgid "3_unit"
-msgstr "Apt/Lot"
-
 msgid "3_zip"
 msgstr "Zip Code"
 
 msgid "3_zip_help"
 msgstr "None current: 5 digit zip required"
 
-#: app/templates/vr/address.html:72
-msgid "3a_header"
-msgstr ""
+msgid "3_has_prev_addr"
+msgstr "Were you registered before at a different address?"
 
-#: app/main/forms/vr_3.py:16 app/templates/vr/address.html:75
-msgid "3a_prev_addr"
-msgstr ""
+msgid "3_has_mail_addr"
+msgstr "Do you have a different mailing address?"
 
-#: app/main/forms/vr_3.py:18 app/templates/vr/address.html:91
-msgid "3a_prev_city"
-msgstr ""
+msgid "3_header"
+msgstr "What was your address where you were registered before?"
 
-#: app/main/forms/vr_3.py:19 app/templates/vr/address.html:101
-msgid "3a_prev_state"
-msgstr ""
+msgid "3_prev_addr"
+msgstr "Street"
 
-#: app/main/forms/vr_3.py:17 app/templates/vr/address.html:85
-msgid "3a_prev_unit"
-msgstr ""
+msgid "3_prev_unit"
+msgstr "Apt/Lot"
 
-#: app/main/forms/vr_3.py:20
-msgid "3a_prev_zip"
-msgstr ""
+msgid "3_prev_city"
+msgstr "City/Town"
 
-#: app/templates/vr/address.html:129
-msgid "3b_header"
-msgstr ""
+msgid "3_prev_state"
+msgstr "State"
 
-#: app/main/forms/ab_3.py:16 app/main/forms/vr_3.py:23
-#: app/templates/vr/address.html:132
-msgid "3b_mail_addr"
-msgstr ""
+msgid "3_prev_zip"
+msgstr "ZIP Code"
 
-#: app/main/forms/ab_3.py:18 app/main/forms/vr_3.py:25
-#: app/templates/vr/address.html:148
-msgid "3b_mail_city"
-msgstr ""
+msgid "3_header"
+msgstr "What is the address where you get your mail?"
 
-#: app/main/forms/ab_3.py:19 app/main/forms/vr_3.py:26
-#: app/templates/vr/address.html:158
-msgid "3b_mail_state"
-msgstr ""
+msgid "3_mail_addr"
+msgstr "Mailing Address"
 
-#: app/main/forms/ab_3.py:17 app/main/forms/vr_3.py:24
-#: app/templates/vr/address.html:142
-msgid "3b_mail_unit"
-msgstr ""
+msgid "3_mail_unit"
+msgstr "Apt/Lot"
 
-#: app/main/forms/ab_3.py:20 app/main/forms/vr_3.py:27
-msgid "3b_mail_zip"
-msgstr ""
+msgid "3_mail_city"
+msgstr "City/Town"
 
-#: app/templates/vr/address.html:168
-msgid "3b_zip_help"
-msgstr ""
+msgid "3_mail_state"
+msgstr "State"
+
+msgid "3_mail_zip"
+msgstr "ZIP Code"
+
+msgid "3_invalid"
+msgstr "This address could not be verified with the US Postal Service. Please double-check that the address you entered is correct and complete."
 
 msgid "4_party"
 msgstr "Choice of Party"
 
 msgid "4_party_help"
-msgstr "You must register with a party if you want to take part in that party’s primary election, caucus, or convention. If you wish to not be associated with any party, please select \"Unaffiliated\""
-
-msgid "5AB_id"
-msgstr "Current Kansas driver's license number or nondriver's identification card number:"
-
-msgid "5AB_id_help"
-msgstr ""
-"If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:\n"
-"• Driver’s license issued by Kansas or another state \n"
-"• Nondriver’s ID card issued by Kansas or another state \n"
-"• U.S. passport \n"
-"• Concealed carry of handgun license issued by Kansas  or another state \n"
-"• Employee badge or ID document issued by a government office\n"
-"• U.S. military ID \n"
-"• Student ID card issued by an accredited Kansas postsecondary educational institution \n"
-"• Public assistance ID card issued by a government office \n"
-"• ID card issued by an Indian tribe"
+msgstr "You must register with a party if you want to take part in that party\u2019s primary election, caucus, or convention. If you wish to not be associated with any party, please select "Unaffiliated""
 
 msgid "5VR_id"
 msgstr "ID Number"
 
 msgid "5VR_id_help"
-msgstr "Your completed voter registration form must contain your state issued driver’s license number or nondriver’s identification card number. If you do not have a driver’s license or nondriver’s identification card, you must include the last four digits of your social security number. If you do not have a driver’s license or a nondriver’s identification card or social security number, please write “NONE” on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
+msgstr "Your completed voter registration form must contain your state issued driver\u2019s license number or nondriver\u2019s identification card number. If you do not have a driver\u2019s license or nondriver\u2019s identification card, you must include the last four digits of your social security number. If you do not have a driver\u2019s license or a nondriver\u2019s identification card or social security number, please write \u201cNONE\u201d on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
 
-#: app/main/forms/ab_5.py:7
-msgid "5_id"
-msgstr ""
+msgid "5AB_id"
+msgstr "Current Kansas driver's license number or nondriver's identification card number:"
+
+msgid "5AB_id_help"
+msgstr "If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:\n\u2022 Driver\u2019s license issued by Kansas or another state \n\u2022 Nondriver\u2019s ID card issued by Kansas or another state \n\u2022 U.S. passport \n\u2022 Concealed carry of handgun license issued by Kansas  or another state \n\u2022 Employee badge or ID document issued by a government office\n\u2022 U.S. military ID \n\u2022 Student ID card issued by an accredited Kansas postsecondary educational institution \n\u2022 Public assistance ID card issued by a government office \n\u2022 ID card issued by an Indian tribe"
+
+msgid "6_loading"
+msgstr "Generating form preview..."
 
 msgid "6_header"
 msgstr "Please look over this form and make sure the answers are correct, then sign in the box below the form."
@@ -382,95 +252,42 @@ msgstr "Please look over this form and make sure the answers are correct, then s
 msgid "6_header2"
 msgstr "You can go back to correct any information that needs to be changed."
 
-msgid "6_loading"
-msgstr "Generating form preview..."
-
 msgid "6_sign"
 msgstr "Please use your finger/mouse to sign below inside the box. We will apply your signature to the form."
 
 msgid "6_sign_help"
 msgstr "Note: This signature will be used to verify your identity on advance ballot envelopes and for other potential voting activities. Try to make it as much like your written signature as you can."
 
-msgid "7_affirm"
-msgstr "I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name."
-
-msgid "7_affirm_header"
-msgstr "I affirm that:"
+msgid "7_header"
+msgstr "Here is your final form preview. Make sure everything looks right!"
 
 msgid "7_county"
 msgstr "What county do you live in?"
 
-msgid "7_county_email"
-msgstr "Email"
-
 msgid "7_county_help"
 msgstr "This has been filled in based on your previous answer."
-
-msgid "7_county_officer"
-msgstr "Officer"
-
-msgid "7_county_phone"
-msgstr "Phone"
-
-msgid "7_header"
-msgstr "Here is your final form preview. Make sure everything looks right!"
 
 msgid "7_loading"
 msgstr "Your county election official's contact information is below."
 
+msgid "7_county_officer"
+msgstr "Officer"
+
+msgid "7_county_email"
+msgstr "Email"
+
+msgid "7_county_phone"
+msgstr "Phone"
+
+msgid "7_affirm_header"
+msgstr "I affirm that:"
+
+msgid "7_affirm"
+msgstr "I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name."
+
 msgid "8_confirm"
-msgstr ""
-"Thank you.\n"
-"We have submitted your application.\n"
-"Thank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.\n"
-"You should receive a card in the mail confirming your registration within 2-4 weeks. If you don’t, contact your local elections office to check on your status. (You can find their contact information here <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), or check your status online here\n"
-"If you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n"
-"Thank you!\n"
-"\n"
-"The KSVotes.org Team"
+msgstr "Thank you.\nWe have submitted your application.\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don\u2019t, contact your local elections office to check on your status. (You can find their contact information here <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), or check your status online here\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\nThank you!\n\nThe KSVotes.org Team"
 
 msgid "9_confirm_email"
-msgstr ""
-"Dear <firstname>,\n"
-"Thank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven’t received the email, please check your spam folder.\n"
-"\n"
-"You should receive a card in the mail confirming your registration within 2-4 weeks. If you don’t, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n"
-"\n"
-"If you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n"
-"\n"
-"Thank you!\n"
-"The KSVotes.org Team"
-
-#: app/main/forms/ab_3.py:9 app/main/forms/ab_3.py:11 app/main/forms/ab_3.py:12
-#: app/main/forms/ab_3.py:13 app/main/forms/ab_3.py:16
-#: app/main/forms/ab_3.py:18 app/main/forms/ab_3.py:19
-#: app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
-#: app/main/forms/step_0.py:11 app/main/forms/step_0.py:12
-#: app/main/forms/step_0.py:13 app/main/forms/step_0.py:15
-#: app/main/forms/step_0.py:18 app/main/forms/vr_1.py:7
-#: app/main/forms/vr_2.py:17 app/main/forms/vr_2.py:19
-#: app/main/forms/vr_2.py:40 app/main/forms/vr_2.py:42 app/main/forms/vr_3.py:9
-#: app/main/forms/vr_3.py:11 app/main/forms/vr_3.py:12
-#: app/main/forms/vr_3.py:13 app/main/forms/vr_3.py:16
-#: app/main/forms/vr_3.py:18 app/main/forms/vr_3.py:19
-#: app/main/forms/vr_3.py:20 app/main/forms/vr_3.py:23
-#: app/main/forms/vr_3.py:25 app/main/forms/vr_3.py:26
-#: app/main/forms/vr_3.py:27 app/main/forms/vr_4.py:8 app/main/forms/vr_5.py:7
-#: app/templates/index.html:29 app/templates/index.html:40
-#: app/templates/index.html:51 app/templates/index.html:67
-#: app/templates/index.html:77 app/templates/vr/address.html:19
-#: app/templates/vr/address.html:36 app/templates/vr/address.html:47
-#: app/templates/vr/address.html:58 app/templates/vr/address.html:77
-#: app/templates/vr/address.html:93 app/templates/vr/address.html:103
-#: app/templates/vr/address.html:113 app/templates/vr/address.html:134
-#: app/templates/vr/address.html:150 app/templates/vr/address.html:160
-#: app/templates/vr/address.html:170 app/templates/vr/citizenship.html:19
-#: app/templates/vr/identification.html:19 app/templates/vr/name.html:25
-#: app/templates/vr/name.html:42 app/templates/vr/name.html:70
-#: app/templates/vr/name.html:86 app/templates/vr/party.html:47
-msgid "Required"
-msgstr ""
-
-msgid "ref"
-msgstr "es"
+msgstr "Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven\u2019t received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don\u2019t, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team"
 
