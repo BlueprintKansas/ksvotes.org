@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-15 14:39-0500\n"
+"POT-Creation-Date: 2018-06-21 23:16-0500\n"
 "PO-Revision-Date: 2018-06-15 09:51-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -145,17 +145,15 @@ msgstr "Voter registration is only available to U.S. citizens."
 msgid "1VR_header"
 msgstr "Are you eligible to register to vote?"
 
-#: app/main/forms/vr_1.py:8
-msgid "1_18"
-msgstr ""
+#~ msgid "1_18"
+#~ msgstr ""
 
 #: app/templates/vr/citizenship.html:25
 msgid "1_18_help"
 msgstr ""
 
-#: app/main/forms/vr_1.py:7
-msgid "1_citizen"
-msgstr ""
+#~ msgid "1_citizen"
+#~ msgstr ""
 
 #: app/templates/vr/citizenship.html:16
 msgid "1_citizen_help"
@@ -368,7 +366,7 @@ msgstr ""
 "• Nondriver’s ID card issued by Kansas or another state \n"
 "• U.S. passport \n"
 "• Concealed carry of handgun license issued by Kansas  or another state \n"
-"• Employee badge or ID document issued by a government office\n"
+"• Employee badge or ID document issued by a government office\n"
 "• U.S. military ID \n"
 "• Student ID card issued by an accredited Kansas postsecondary educational institution \n"
 "• Public assistance ID card issued by a government office \n"
@@ -456,10 +454,7 @@ msgstr ""
 #: app/main/forms/ab_3.py:9 app/main/forms/ab_3.py:11 app/main/forms/ab_3.py:12
 #: app/main/forms/ab_3.py:13 app/main/forms/ab_3.py:16
 #: app/main/forms/ab_3.py:18 app/main/forms/ab_3.py:19
-#: app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
-#: app/main/forms/step_0.py:11 app/main/forms/step_0.py:12
-#: app/main/forms/step_0.py:13 app/main/forms/step_0.py:15
-#: app/main/forms/step_0.py:18 app/main/forms/vr_1.py:7
+#: app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7 app/main/forms/vr_1.py:7
 #: app/main/forms/vr_2.py:17 app/main/forms/vr_2.py:19
 #: app/main/forms/vr_2.py:40 app/main/forms/vr_2.py:42 app/main/forms/vr_3.py:9
 #: app/main/forms/vr_3.py:11 app/main/forms/vr_3.py:12
@@ -468,9 +463,9 @@ msgstr ""
 #: app/main/forms/vr_3.py:20 app/main/forms/vr_3.py:23
 #: app/main/forms/vr_3.py:25 app/main/forms/vr_3.py:26
 #: app/main/forms/vr_3.py:27 app/main/forms/vr_4.py:8 app/main/forms/vr_5.py:7
-#: app/templates/index.html:28 app/templates/index.html:39
-#: app/templates/index.html:50 app/templates/index.html:65
-#: app/templates/index.html:75 app/templates/vr/address.html:19
+#: app/templates/index.html:29 app/templates/index.html:40
+#: app/templates/index.html:51 app/templates/index.html:67
+#: app/templates/index.html:77 app/templates/vr/address.html:19
 #: app/templates/vr/address.html:36 app/templates/vr/address.html:47
 #: app/templates/vr/address.html:58 app/templates/vr/address.html:77
 #: app/templates/vr/address.html:93 app/templates/vr/address.html:103
@@ -479,12 +474,12 @@ msgstr ""
 #: app/templates/vr/address.html:170 app/templates/vr/citizenship.html:19
 #: app/templates/vr/identification.html:19 app/templates/vr/name.html:25
 #: app/templates/vr/name.html:42 app/templates/vr/name.html:70
-#: app/templates/vr/name.html:86 app/templates/vr/party.html:19
+#: app/templates/vr/name.html:86 app/templates/vr/party.html:47
 msgid "Required"
 msgstr ""
 
 msgid "ref"
-msgstr "v2_text"
+msgstr "en"
 
 msgid "0_county"
 msgstr "County"
@@ -735,7 +730,7 @@ msgstr ""
 "• Nondriver’s ID card issued by Kansas or another state \n"
 "• U.S. passport \n"
 "• Concealed carry of handgun license issued by Kansas  or another state \n"
-"• Employee badge or ID document issued by a government office\n"
+"• Employee badge or ID document issued by a government office\n"
 "• U.S. military ID \n"
 "• Student ID card issued by an accredited Kansas postsecondary educational institution \n"
 "• Public assistance ID card issued by a government office \n"
@@ -813,5 +808,5 @@ msgstr ""
 "The KSVotes.org Team"
 
 msgid "ref"
-msgstr "v2_text"
+msgstr "en"
 

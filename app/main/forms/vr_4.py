@@ -1,13 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField
 from wtforms.validators import DataRequired
-from flask_babel import gettext
+from flask_babel import lazy_gettext
 
 class FormVR4(FlaskForm):
-	party = SelectField(gettext('4_party'),
-                            validators=[DataRequired(message=gettext('Required'))],
+	party = SelectField(lazy_gettext('4_party'),
+                            validators=[DataRequired(message=lazy_gettext('Required'))],
 							 choices=[
-								 ('', gettext('4_party')),
+								 ('', lazy_gettext('4_party')),
 								 ('democrat', 'Democrat'),
 								 ('republican', 'Republican'),
 								 ('unafilliated', 'Unafilliated'),

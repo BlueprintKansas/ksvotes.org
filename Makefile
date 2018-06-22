@@ -41,8 +41,8 @@ locales:
 	bin/build-locales
 
 translate:
-	venv/bin/pybabel compile -d app/translations
 	bin/pop-translate.pl translations.csv
+	venv/bin/pybabel compile -d app/translations
 
 build: translate
 
