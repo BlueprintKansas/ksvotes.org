@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, SelectField
 from wtforms.validators import DataRequired, Email, Regexp, Optional
-from flask_babel import gettext, lazy_gettext
+from flask_babel import lazy_gettext
 from dateutil.relativedelta import relativedelta
 import datetime
 from app.main.helpers import construct_county_choices

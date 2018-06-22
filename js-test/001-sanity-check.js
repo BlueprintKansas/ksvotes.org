@@ -14,4 +14,12 @@ describe('User visits home page', function() {
     });
   });
 
+  describe('language respected', function() {
+    it('returns Spanish', function() {
+      browser.visit('/es/', function() {
+        browser.assert.text('label', 'Primer Nombre');
+      });
+    });
+  });
+
 });
