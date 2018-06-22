@@ -5,6 +5,10 @@ import csv
 en_po = open('app/translations/en/LC_MESSAGES/messages.po', 'w')
 es_po = open('app/translations/es/LC_MESSAGES/messages.po', 'w')
 
+comment = "# DO NOT EDIT - edit translations.csv instead\n\nmsgid \"\"\nmsgstr \"\"\n\n"
+en_po.write(comment)
+es_po.write(comment)
+
 with open('translations.csv', newline="\n") as csvfile:
   next(csvfile)  # skip headers
   csvreader = csv.reader(csvfile)
