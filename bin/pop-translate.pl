@@ -30,6 +30,8 @@ close $fh;
 my $en_locale_po = Locale::PO->load_file_ashash( $en_po_file, 'utf8' );
 my $es_locale_po = Locale::PO->load_file_ashash( $es_po_file, 'utf8' );
 
+dump $en_locale_po;
+
 for my $msgid ( sort keys %translations ) {
     my $en_po = Locale::PO->new(
         -msgid  => $msgid,
