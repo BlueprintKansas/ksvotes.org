@@ -125,17 +125,13 @@ and then run `% make locales` to update the corresponding babel files. For examp
 
 ```
 # in foo.py
-gettext('some_key_string')
+lazy_gettext('some_key_string')
+
+# add 'some_key_string' to translations.csv
+% vi translations.csv
 
 # Then in your terminal
 # update the translation files
 % make locales
-
-# edit the translations.csv file
-% vi translations.csv
-
-# compile your changes -- not visible to app till you run this.
-# NOTE this requires some Perl modules be installed.
-% make translate
 ```
 
