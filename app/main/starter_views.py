@@ -85,5 +85,4 @@ def referring_org():
     )
     db.session.add(registrant)
     db.session.commit()
-    print("saved Registrant with id %s\n" %(sid))
     return redirect('/')

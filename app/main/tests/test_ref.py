@@ -15,3 +15,7 @@ def test_ref_post_external_org(app, db_session, client):
 		assert sid != None
 		assert registrant.try_value('name_first') == 'Foo'
 		assert registrant.ref == 'someorg'
+
+def test_ref_get_fails(app, db_session, client):
+	assert client.get('/ref/?ref=foo').status_code == 404
+	assert client.post('/ref/').status_code == 404

@@ -29,7 +29,11 @@ jstest:
 	npm run test
 
 start-testserver:
+ifeq ($(DEBUG), zombie)
+	python manage.py runserver &
+else
 	python manage.py runserver &> testserver.log &
+endif
 
 stop-testserver:
 	kill -9 `cat server.pid` && rm server.pid
