@@ -26,6 +26,7 @@ class Registrant(db.Model):
 	last_completed_step = db.Column(db.Integer)
 	completed_at = db.Column(db.DateTime, default=None)
 	session_id = db.Column(UUID(as_uuid=True), unique=True, nullable=False, default=uuid.uuid4())
+	ref = db.Column(db.String())
 
 	#registration steps
 	is_citizen = db.Column(db.Boolean, default=False)
@@ -86,6 +87,12 @@ class Registrant(db.Model):
 				return False
 		return True
 
+	def try_value(self, field_name):
+		return self.registration_value.get(field_name, '')
+
+	@classmethod
+	def lookup_by_session_id(cls, sid):
+		return cls.query.filter(cls.session_id == sid).first()
 
 	#defaults
 
