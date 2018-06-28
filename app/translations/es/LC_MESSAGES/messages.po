@@ -37,7 +37,7 @@ msgid "0_dob_flag"
 msgstr "Make sure your date of birth is in the correct format (mm/dd/yyyy) and that you are at least 16 years old."
 
 msgid "0_county"
-msgstr "County"
+msgstr "Select a County..."
 
 msgid "0_county_help"
 msgstr "Enter the county in which you currently reside."

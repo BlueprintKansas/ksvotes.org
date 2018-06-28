@@ -15,7 +15,7 @@ This program will walk you through the process of filling out the federal voter 
 0,dob,0_dob,Date of Birth,Date of Birth
 0,dob_help,0_dob_help,format mm/dd/yyyy required,Format mm/dd/yyyy required
 0,dob_flag,0_dob_flag,,Make sure your date of birth is in the correct format (mm/dd/yyyy) and that you are at least 16 years old.
-0,county,0_county,,County
+0,county,0_county,,Select a County...
 0,county_help,0_county_help,,Enter the county in which you currently reside.
 0,email,0_email,,Email Address
 0,email_help,0_email_help,,Enter your email address. We will use it to send you a copy of your form to confirm the registration process. See our <Privacy Policy> and <Terms of Service> for more information.
