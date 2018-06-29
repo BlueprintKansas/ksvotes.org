@@ -10,7 +10,7 @@
       <div class="col-md-6">
         <form name="step_5" id="step_5" method="POST" action="{{url_for('main.vr5_identification')}}">
           {{form.hidden_tag()}}
-          <p> {{_('5_id_help')}} </p>
+          <p> {{_('5VR_id_help')}} </p>
           {{wtf.render_field(
               form.identification,
               _('2_id_help'),

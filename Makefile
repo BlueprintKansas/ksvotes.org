@@ -29,7 +29,11 @@ jstest:
 	npm run test
 
 start-testserver:
-	python manage.py runserver 2> testserver.log &
+ifeq ($(DEBUG), zombie)
+	python manage.py runserver &
+else
+	python manage.py runserver &> testserver.log &
+endif
 
 stop-testserver:
 	kill -9 `cat server.pid` && rm server.pid
@@ -40,10 +44,6 @@ livetest:
 locales:
 	bin/build-locales
 
-translate:
-	venv/bin/pybabel compile -d app/translations
-	bin/pop-translate.pl translations.csv
-
-build: translate
+build: locales
 
 .PHONY: deps venv test dbmigrate run testcov

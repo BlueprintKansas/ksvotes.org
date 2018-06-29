@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session
+from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort
 import time
 from app.main.forms import *
 from app.models import Registrant
@@ -60,3 +60,29 @@ def index():
 @InSession
 def change_or_apply():
     return render_template('change-or-apply.html')
+
+@main.route('/ref', methods=['POST'])
+def referring_org():
+    # we will accept whatever subset of step0 fields are provided.
+    # we always start a new session, but we require a 'ref' code.
+    if not request.values.get('ref'):
+        return abort(404)
+
+    sid = str(uuid4())
+    http_session['session_id'] = sid
+    registration = {
+        'name_last': request.values.get('name_last', ''),
+        'name_first': request.values.get('name_first', ''),
+        'dob': request.values.get('dob', ''),
+        'email': request.values.get('email', ''),
+        'phone': request.values.get('phone', ''),
+    }
+    registrant = Registrant(
+        session_id = sid,
+        county = request.values.get('county', ''),
+        ref = request.values['ref'],
+        registration_value = registration
+    )
+    db.session.add(registrant)
+    db.session.commit()
+    return redirect('/')
