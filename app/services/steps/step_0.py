@@ -6,6 +6,7 @@ class Step_0(Step):
 	form_requirements = ['name_first', 'name_last', 'dob', 'county', 'email']
 	step_requirements = ['reg_lookup_complete']
 	reg_lookup_complete = False
+	reg_found = False
 	endpoint = '/'
 	prev_step = None
 	next_step = None
@@ -17,11 +18,11 @@ class Step_0(Step):
 		if not self.verify_form_requirements():
 			return False
 
-		reg_lookup = self.lookup_registration(name_first=self.form_payload['name_first'], name_last=self.form_payload['name_last'], dob=self.form_payload['dob'], county=self.form_payload['county'])
+		self.reg_found = self.lookup_registration(name_first=self.form_payload['name_first'], name_last=self.form_payload['name_last'], dob=self.form_payload['dob'], county=self.form_payload['county'])
 		self.is_complete = True
 		self.reg_lookup_complete = True
 
-		if reg_lookup:
+		if self.reg_found:
 			self.next_step = 'Step_AB_1'
 			return True
 

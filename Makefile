@@ -46,4 +46,7 @@ locales:
 
 build: locales
 
+routes:
+	python manage.py list_routes
+
 .PHONY: deps venv test dbmigrate run testcov

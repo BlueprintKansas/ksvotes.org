@@ -38,6 +38,14 @@ Note: If you recently submitted a registration application, your information may
 1VR,citizen_help,1VR_citizen_help, ,Voter registration is only available to U.S. citizens.
 1VR,18,1VR_18,Will you be at least 18 years of age by the next election?,Will you be at least 18 years old on or before election day?
 1VR,18_help,1VR_18_help,,"If you will be under 18 on election day (in November), leave this box blank. You will not be allowed to vote in November, but your registration will be processed and held until your 18th birthday."
+1AB,reg_found_title,1AB_reg_found_title,,Success! We found your Kansas voter registration.,
+1AB,whats_next,1AB_whats_next,,What do you want to do next?,
+1AB,change_reg_link,1AB_change_reg_link,,"Change your existing registration, if you have changed your address, name, or political party.",
+1AB,apply_ab_link,1AB_apply_ab_link,,Apply for an Advanced Ballot for an upcoming election.,
+1AB,apply_perm_ab_link,1AB_apply_perm_ab_link,,Apply for a Permanent Advanced Ballot.,,
+1AB,sorry_no_reg_title,1AB_sorry_no_reg_title,,"Sorry, we could not find your voter registration.",
+1AB,sorry_no_reg_help,1AB_sorry_no_reg_help,,"If you registered recently, please know that it can take a few days to show up in the state system. Check with your county clerk if you have questions about your current registration.",
+1AB,sorry_no_reg_link,1AB_sorry_no_reg_link,,Click here to start the registration process.,
 1AB,select_election,1AB_select_election,,Which election would you like to vote by mail in?
 1AB,select_election_pr2018,1AB_select_election_pr2018,,2018 Primary (August 7)
 1AB,select_election_gn2018,1AB_select_election_gn2018,,2018 General (November 6)

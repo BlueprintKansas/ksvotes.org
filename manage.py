@@ -5,6 +5,7 @@ from app import create_app, db
 from app.models import *
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
+from flask import url_for
 
 app = create_app(os.getenv('APP_CONFIG') or 'default')
 manager = Manager(app)
@@ -20,6 +21,24 @@ def write_pid_file():
     pid = str(os.getpid())
     with open('server.pid', 'w+') as f:
         f.write(pid + '\n')
+
+@manager.command
+def list_routes():
+    import urllib
+    output = []
+    for rule in app.url_map.iter_rules():
+
+        options = {}
+        for arg in rule.arguments:
+            options[arg] = "[{0}]".format(arg)
+
+        methods = ','.join(rule.methods)
+        url = url_for(rule.endpoint, **options)
+        line = urllib.parse.unquote("{:50s} {:20s} {}".format(rule.endpoint, methods, url))
+        output.append(line)
+    
+    for line in sorted(output):
+        print(line)
 
 if __name__ == "__main__":
     write_pid_file()

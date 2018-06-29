@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-28 17:29-0500\n"
+"POT-Creation-Date: 2018-06-29 00:42-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,6 +246,34 @@ msgstr ""
 
 #: app/templates/base.html:93
 msgid "0_footer_contact"
+msgstr ""
+
+#: app/templates/change-or-apply.html:9
+msgid "1AB_reg_found_title"
+msgstr ""
+
+#: app/templates/change-or-apply.html:11
+msgid "1AB_whats_next"
+msgstr ""
+
+#: app/templates/change-or-apply.html:12
+msgid "1AB_change_reg_link"
+msgstr ""
+
+#: app/templates/change-or-apply.html:13
+msgid "1AB_apply_ab_link"
+msgstr ""
+
+#: app/templates/change-or-apply.html:16
+msgid "1AB_sorry_no_reg_title"
+msgstr ""
+
+#: app/templates/change-or-apply.html:17
+msgid "1AB_sorry_no_reg_link"
+msgstr ""
+
+#: app/templates/change-or-apply.html:17
+msgid "1AB_sorry_no_reg_help"
 msgstr ""
 
 #: app/templates/index.html:11

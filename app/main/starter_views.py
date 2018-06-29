@@ -50,16 +50,20 @@ def index():
         registrant.reg_lookup_complete = step.reg_lookup_complete
         db.session.commit()
 
+        http_session['reg_found'] = str(step.reg_found)
+
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
 
     else:
         return render_template('index.html', form=form)
 
-@main.route('/change-or-apply', methods=["GET", "POST"])
+@main.route('/change-or-apply/', methods=["GET"])
 @InSession
 def change_or_apply():
-    return render_template('change-or-apply.html')
+    reg_found = http_session.get('reg_found', None)
+    http_session['reg_found'] = None # do not persist
+    return render_template('change-or-apply.html', reg_found=reg_found)
 
 @main.route('/ref', methods=['POST'])
 def referring_org():

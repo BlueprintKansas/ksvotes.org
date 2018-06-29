@@ -84,6 +84,30 @@ msgstr "Will you be at least 18 years old on or before election day?"
 msgid "1VR_18_help"
 msgstr "If you will be under 18 on election day (in November), leave this box blank. You will not be allowed to vote in November, but your registration will be processed and held until your 18th birthday."
 
+msgid "1AB_reg_found_title"
+msgstr ""
+
+msgid "1AB_whats_next"
+msgstr ""
+
+msgid "1AB_change_reg_link"
+msgstr ""
+
+msgid "1AB_apply_ab_link"
+msgstr ""
+
+msgid "1AB_apply_perm_ab_link"
+msgstr ""
+
+msgid "1AB_sorry_no_reg_title"
+msgstr ""
+
+msgid "1AB_sorry_no_reg_help"
+msgstr ""
+
+msgid "1AB_sorry_no_reg_link"
+msgstr ""
+
 msgid "1AB_select_election"
 msgstr "Which election would you like to vote by mail in?"
 
