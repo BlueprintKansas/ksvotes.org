@@ -6,8 +6,8 @@ describe('User fills out step0 form', function() {
 
   const browser = new Browser();
 
-  before(function(done) {
-    browser.visit('/', done);
+  before(function() {
+    return browser.visit('/');
   });
 
   describe('completes form', function() {
