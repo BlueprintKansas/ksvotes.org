@@ -1,11 +1,11 @@
 from app.services.steps import Step
 from flask import g
 
-class Step_AB_1(Step):
-    form_requirements = ['elections']
+class Step_AB_3(Step):
+    form_requirements = []
     step_requirements = []
-    endpoint = '/ab/election_picker'
-    prev_step = 'Step_0'
+    endpoint = '/ab/address'
+    prev_step = 'Step_AB_1'
     next_step = None
 
     def run(self):
@@ -16,9 +16,5 @@ class Step_AB_1(Step):
             return False
 
         self.is_complete = True
-        if g.registrant.completed_at:
-            self.next_step = 'Step_VR_6'
-        else:
-            self.next_step = 'Step_AB_3'
-
+        self.next_step = 'Step_AB_5'
         return True

@@ -9,8 +9,9 @@ from flask.logging import default_handler
 db = SQLAlchemy()
 babel = Babel()
 
-def create_app(config_name):
-    os.environ["FLASK_ENV"] = config_name
+def create_app(script_info):
+    config_name = os.getenv('APP_CONFIG')
+    os.environ['FLASK_ENV'] = config_name
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
