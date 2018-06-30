@@ -44,4 +44,4 @@ def test_step_0_is_complete_true_and_already_registered(app,db_session,client):
     step = Step_0(form_payload)
     assert step.run() == True
     assert step.is_complete == True
-    assert step.next_step == 'Step_AB_1'
+    assert step.next_step == 'Step_1'

@@ -10,7 +10,12 @@ db = SQLAlchemy()
 babel = Babel()
 
 def create_app(script_info):
-    config_name = os.getenv('APP_CONFIG')
+    # if evoked from "flask shell", get the env ourselves,
+    # since manage.py does this for us otherwise.
+    if type(script_info) is str:
+        config_name = script_info
+    else:
+        config_name = os.getenv('APP_CONFIG')
     os.environ['FLASK_ENV'] = config_name
     app = Flask(__name__)
     app.config.from_object(config[config_name])
