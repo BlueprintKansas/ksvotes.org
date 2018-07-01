@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-22 09:41-0500\n"
+"POT-Creation-Date: 2018-06-28 17:29-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,9 @@ msgstr ""
 #: app/main/forms/ab_3.py:13 app/main/forms/ab_3.py:16
 #: app/main/forms/ab_3.py:18 app/main/forms/ab_3.py:19
 #: app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
-#: app/main/forms/step_0.py:11 app/main/forms/step_0.py:12
-#: app/main/forms/step_0.py:13 app/main/forms/step_0.py:15
-#: app/main/forms/step_0.py:18 app/main/forms/vr_1.py:7
+#: app/main/forms/step_0.py:12 app/main/forms/step_0.py:13
+#: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
+#: app/main/forms/step_0.py:19 app/main/forms/vr_1.py:7
 #: app/main/forms/vr_2.py:17 app/main/forms/vr_2.py:19
 #: app/main/forms/vr_2.py:40 app/main/forms/vr_2.py:42 app/main/forms/vr_3.py:9
 #: app/main/forms/vr_3.py:11 app/main/forms/vr_3.py:12
@@ -111,44 +111,44 @@ msgstr ""
 msgid "5_id"
 msgstr ""
 
-#: app/main/forms/step_0.py:11
+#: app/main/forms/step_0.py:12
 msgid "0_first"
 msgstr ""
 
-#: app/main/forms/step_0.py:12
+#: app/main/forms/step_0.py:13
 msgid "0_last"
 msgstr ""
 
-#: app/main/forms/step_0.py:13
+#: app/main/forms/step_0.py:14
 msgid "0_dob"
 msgstr ""
 
-#: app/main/forms/step_0.py:13 app/templates/index.html:54
+#: app/main/forms/step_0.py:14 app/templates/index.html:54
 #: app/templates/index.html:57
 msgid "0_dob_flag"
 msgstr ""
 
-#: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
+#: app/main/forms/step_0.py:15 app/main/forms/step_0.py:17
 msgid "0_county"
 msgstr ""
 
-#: app/main/forms/step_0.py:18
+#: app/main/forms/step_0.py:19
 msgid "0_email"
 msgstr ""
 
-#: app/main/forms/step_0.py:18 app/templates/index.html:80
+#: app/main/forms/step_0.py:19 app/templates/index.html:80
 msgid "0_email_flag"
 msgstr ""
 
-#: app/main/forms/step_0.py:19
+#: app/main/forms/step_0.py:20
 msgid "0_phone"
 msgstr ""
 
-#: app/main/forms/step_0.py:19 app/templates/index.html:86
+#: app/main/forms/step_0.py:20 app/templates/index.html:86
 msgid "0_phone_help"
 msgstr ""
 
-#: app/main/forms/step_0.py:29 app/templates/index.html:48
+#: app/main/forms/step_0.py:31 app/templates/index.html:48
 msgid "0_dob_help"
 msgstr ""
 
