@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-29 00:42-0500\n"
+"POT-Creation-Date: 2018-06-30 22:52-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
 
-#: app/main/forms/ab_3.py:9 app/main/forms/vr_3.py:9
-#: app/templates/vr/party.html:16
-msgid "3_addr"
+#: app/main/helpers.py:15
+msgid "1AB_select_election_primary"
 msgstr ""
 
-#: app/main/forms/ab_3.py:9 app/main/forms/ab_3.py:11 app/main/forms/ab_3.py:12
-#: app/main/forms/ab_3.py:13 app/main/forms/ab_3.py:16
-#: app/main/forms/ab_3.py:18 app/main/forms/ab_3.py:19
-#: app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
+#: app/main/helpers.py:16
+msgid "1AB_select_election_general"
+msgstr ""
+
+#: app/main/forms/ab_1.py:37 app/templates/ab/election_picker.html:51
+msgid "1AB_select_election"
+msgstr ""
+
+#: app/main/forms/ab_1.py:40 app/main/forms/ab_3.py:9 app/main/forms/ab_3.py:11
+#: app/main/forms/ab_3.py:12 app/main/forms/ab_3.py:13
+#: app/main/forms/ab_3.py:16 app/main/forms/ab_3.py:18
+#: app/main/forms/ab_3.py:19 app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
 #: app/main/forms/step_0.py:12 app/main/forms/step_0.py:13
 #: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
 #: app/main/forms/step_0.py:19 app/main/forms/vr_1.py:7
@@ -37,19 +44,29 @@ msgstr ""
 #: app/main/forms/vr_3.py:20 app/main/forms/vr_3.py:23
 #: app/main/forms/vr_3.py:25 app/main/forms/vr_3.py:26
 #: app/main/forms/vr_3.py:27 app/main/forms/vr_4.py:8 app/main/forms/vr_5.py:7
-#: app/templates/index.html:29 app/templates/index.html:40
-#: app/templates/index.html:51 app/templates/index.html:67
-#: app/templates/index.html:77 app/templates/vr/address.html:19
-#: app/templates/vr/address.html:36 app/templates/vr/address.html:47
-#: app/templates/vr/address.html:58 app/templates/vr/address.html:77
-#: app/templates/vr/address.html:93 app/templates/vr/address.html:103
-#: app/templates/vr/address.html:113 app/templates/vr/address.html:134
-#: app/templates/vr/address.html:150 app/templates/vr/address.html:160
-#: app/templates/vr/address.html:170 app/templates/vr/citizenship.html:19
-#: app/templates/vr/identification.html:19 app/templates/vr/name.html:25
-#: app/templates/vr/name.html:42 app/templates/vr/name.html:70
-#: app/templates/vr/name.html:86 app/templates/vr/party.html:47
+#: app/templates/ab/election_picker.html:17 app/templates/index.html:30
+#: app/templates/index.html:41 app/templates/index.html:52
+#: app/templates/index.html:68 app/templates/index.html:78
+#: app/templates/vr/address.html:19 app/templates/vr/address.html:36
+#: app/templates/vr/address.html:47 app/templates/vr/address.html:58
+#: app/templates/vr/address.html:77 app/templates/vr/address.html:93
+#: app/templates/vr/address.html:103 app/templates/vr/address.html:113
+#: app/templates/vr/address.html:134 app/templates/vr/address.html:150
+#: app/templates/vr/address.html:160 app/templates/vr/address.html:170
+#: app/templates/vr/citizenship.html:19 app/templates/vr/identification.html:19
+#: app/templates/vr/name.html:25 app/templates/vr/name.html:42
+#: app/templates/vr/name.html:70 app/templates/vr/name.html:86
+#: app/templates/vr/party.html:47
 msgid "Required"
+msgstr ""
+
+#: app/main/forms/ab_1.py:43 app/main/forms/ab_1.py:44
+msgid "1AB_select_party"
+msgstr ""
+
+#: app/main/forms/ab_3.py:9 app/main/forms/vr_3.py:9
+#: app/templates/vr/party.html:16
+msgid "3_addr"
 msgstr ""
 
 #: app/main/forms/ab_3.py:10 app/main/forms/vr_3.py:10
@@ -123,8 +140,8 @@ msgstr ""
 msgid "0_dob"
 msgstr ""
 
-#: app/main/forms/step_0.py:14 app/templates/index.html:54
-#: app/templates/index.html:57
+#: app/main/forms/step_0.py:14 app/templates/index.html:55
+#: app/templates/index.html:58
 msgid "0_dob_flag"
 msgstr ""
 
@@ -136,7 +153,7 @@ msgstr ""
 msgid "0_email"
 msgstr ""
 
-#: app/main/forms/step_0.py:19 app/templates/index.html:80
+#: app/main/forms/step_0.py:19 app/templates/index.html:81
 msgid "0_email_flag"
 msgstr ""
 
@@ -144,11 +161,11 @@ msgstr ""
 msgid "0_phone"
 msgstr ""
 
-#: app/main/forms/step_0.py:20 app/templates/index.html:86
+#: app/main/forms/step_0.py:20 app/templates/index.html:87
 msgid "0_phone_help"
 msgstr ""
 
-#: app/main/forms/step_0.py:31 app/templates/index.html:48
+#: app/main/forms/step_0.py:31 app/templates/index.html:49
 msgid "0_dob_help"
 msgstr ""
 
@@ -236,15 +253,15 @@ msgstr ""
 msgid "5VR_id"
 msgstr ""
 
-#: app/templates/base.html:91
+#: app/templates/base.html:93
 msgid "0_footer_tos"
 msgstr ""
 
-#: app/templates/base.html:92
+#: app/templates/base.html:94
 msgid "0_footer_priv"
 msgstr ""
 
-#: app/templates/base.html:93
+#: app/templates/base.html:95
 msgid "0_footer_contact"
 msgstr ""
 
@@ -280,20 +297,32 @@ msgstr ""
 msgid "0_intro"
 msgstr ""
 
-#: app/templates/index.html:26 app/templates/index.html:37
+#: app/templates/index.html:27 app/templates/index.html:38
 msgid "0_name_help"
 msgstr ""
 
-#: app/templates/index.html:64
+#: app/templates/index.html:65
 msgid "0_county_help"
 msgstr ""
 
-#: app/templates/index.html:74
+#: app/templates/index.html:75
 msgid "0_email_help"
 msgstr ""
 
-#: app/templates/index.html:90
+#: app/templates/index.html:91
 msgid "0_phone_flag"
+msgstr ""
+
+#: app/templates/ab/election_picker.html:3
+msgid "AB1_title"
+msgstr ""
+
+#: app/templates/ab/election_picker.html:14
+msgid "1AB_election_help"
+msgstr ""
+
+#: app/templates/ab/election_picker.html:24
+msgid "1AB_party_help"
 msgstr ""
 
 #: app/templates/vr/address.html:16

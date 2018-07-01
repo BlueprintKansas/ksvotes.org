@@ -47,12 +47,13 @@ Note: If you recently submitted a registration application, your information may
 1AB,sorry_no_reg_help,1AB_sorry_no_reg_help,,"If you registered recently, please know that it can take a few days to show up in the state system. Check with your county clerk if you have questions about your current registration.",
 1AB,sorry_no_reg_link,1AB_sorry_no_reg_link,,Click here to start the registration process.,
 1AB,select_election,1AB_select_election,,Which election would you like to vote by mail in?
-1AB,select_election_pr2018,1AB_select_election_pr2018,,2018 Primary (August 7)
-1AB,select_election_gn2018,1AB_select_election_gn2018,,2018 General (November 6)
+1AB,election_help,1AB_election_help,,You may register for advanced ballots for elections in the current calendar year.
+1AB,select_election_primary,1AB_select_election_primary,,"Primary (August 7, 2018)"
+1AB,select_election_general,1AB_select_election_general,,"General (November 6, 2018)"
 1AB,select_perm,1AB_select_perm,,Permanent vote by mail
 1AB,perm_help,1AB_perm_help,,Applicants for permanent advance voting status must have a permanent physical disability or illness or have been diagnosed as having a permanent illness.
 1AB,perm_reason,1AB_perm_reason,,The nature of my permanent disability or illness is:
-1AB,select_party,1AB_select_party,,Political Party
+1AB,select_party,1AB_select_party,,Select a Political Party...
 1AB,party_help,1AB_party_help,,"Political party is required only when requesting a primary election ballot; to vote in a party's primary election, you must be a registered member of that party."
 1AB,party_flag,1AB_party_flag,,"Unaffiliated voters must register to vote as a member of a party in order to vote in that party's primary. To submit this application, we will also need to submit a new registration making you a member of that political party."
 2,header,2_header,,What is your name?

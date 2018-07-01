@@ -90,6 +90,10 @@ class Registrant(db.Model):
 	def try_value(self, field_name):
 		return self.registration_value.get(field_name, '')
 
+	def save(self, db_session):
+		db_session.add(self)
+		db_session.commit()
+
 	@classmethod
 	def lookup_by_session_id(cls, sid):
 		return cls.query.filter(cls.session_id == sid).first()
