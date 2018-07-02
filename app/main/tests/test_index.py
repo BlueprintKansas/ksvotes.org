@@ -58,9 +58,9 @@ def test_update_name_step_0_session_exists_already(app, db_session, client):
         assert current_registrant_updated.id == current_registrant.id
 
 
-def test_registered_voter_input_returns_redirect_step_AB_1(app, db_session, client):
+def test_registered_voter_input_returns_redirect_change_or_apply(app, db_session, client):
     """
-    An already registered voter returns a redirect to ab 1
+    An already registered voter returns a redirect to change-or-apply endpoint
     """
     form_payload = {
         "name_first": "Kris",
