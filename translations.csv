@@ -81,13 +81,13 @@ Note: If you recently submitted a registration application, your information may
 3,zip_help,3_zip_help,,None current: 5 digit zip required
 3,has_prev_addr,3_has_prev_addr,Were you previously registered to vote at a different address?,Were you registered before at a different address?
 3,has_mail_addr,3_has_mail_addr,,Do you have a different mailing address?
-3,header,3_header,Have you recently moved? What was your previous address?,What was your address where you were registered before?
+3,prev_addr_header,3_prev_addr_header,Have you recently moved? What was your previous address?,What was your address where you were registered before?
 3,prev_addr,3_prev_addr,Home Address,Street
 3,prev_unit,3_prev_unit,Apt/Lot,Apt/Lot
 3,prev_city,3_prev_city,City/Town,City/Town
 3,prev_state,3_prev_state,State,State
 3,prev_zip,3_prev_zip,Zip Code,ZIP Code
-3,header,3_header,Do you have a different mailing address? What is your mailing address?,What is the address where you get your mail?
+3,mail_addr_header,3_mail_addr_header,Do you have a different mailing address? What is your mailing address?,What is the address where you get your mail?
 3,mail_addr,3_mail_addr,Mailing Address,Mailing Address
 3,mail_unit,3_mail_unit,,Apt/Lot
 3,mail_city,3_mail_city,City/Town,City/Town

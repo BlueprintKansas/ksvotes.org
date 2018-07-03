@@ -87,8 +87,8 @@ class Registrant(db.Model):
 				return False
 		return True
 
-	def try_value(self, field_name):
-		return self.registration_value.get(field_name, '')
+	def try_value(self, field_name, default_value=''):
+		return self.registration_value.get(field_name, default_value)
 
 	def save(self, db_session):
 		db_session.add(self)

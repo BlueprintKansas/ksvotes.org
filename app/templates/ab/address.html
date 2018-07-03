@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form name="step_3" id="step_3" method="POST" action="{{url_for('main.vr3_address')}}">
+        <form name="step_3" id="step_3" method="POST" action="{{url_for('main.ab3_address')}}">
           {{form.hidden_tag()}}
 
           {{wtf.render_field(
@@ -62,62 +62,6 @@
                 'data-parsley-pattern': "/^\d{5}$/",
               }
               )}}
-
-              {{wtf.render_field(
-                form.has_prev_addr,
-                _('3_has_prev_addr'),
-                )}}
-
-          <div class="previous-address-fields">
-            <h1 class="h1-responsive"> {{_('3_prev_addr_header')}} </h1>
-            {{wtf.render_field(
-              form.prev_addr,
-              _('3a_prev_addr'),
-              {
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
-
-              {{wtf.render_field(
-                form.prev_unit,
-                _('3a_prev_unit'),
-                None,
-                )}}
-
-              {{wtf.render_field(
-                form.prev_city,
-                _('3a_prev_city'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
-
-              {{wtf.render_field(
-                form.prev_state,
-                _('3a_prev_state'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
-
-              {{wtf.render_field(
-                form.prev_zip,
-                _('3_zip_help'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout',
-                  'data-parsley-pattern-message': _('0_zip_help'),
-                  'data-parsley-pattern': "/^\d{5}$/",
-                }
-                )}}
-          </div><!--/previous-address-fields-->
 
           {{wtf.render_field(
             form.has_mail_addr,
@@ -197,13 +141,6 @@ $(function () {
   //initialize form with parsley validation
   var form = $('#step_3');
   // for refresh/backbutton initialization 
-  if($('input[name=has_prev_addr]').is(':checked')) {
-    $('.previous-address-fields').show();
-    $('#prev_zip').attr("required", true);
-    $('#prev_state').attr("required", true);
-    $('#prev_city').attr("required", true);
-    $('#prev_addr').attr("required", true);
-  }
   if($('input[name=has_mail_addr]').is(':checked')) {
     $('.mail-address-fields').show();
     $('#mail_zip').attr("required", true);
@@ -211,24 +148,6 @@ $(function () {
     $('#mail_city').attr("required", true);
     $('#mail_addr').attr("required", true);
   }
-
-  $('input[name=has_prev_addr]').change(
-      function(){
-          if (this.checked) {
-              $('.previous-address-fields').show();
-              $('#prev_zip').attr("required", true);
-              $('#prev_state').attr("required", true);
-              $('#prev_city').attr("required", true);
-              $('#prev_addr').attr("required", true);
-
-          } else {
-              $('.previous-address-fields').hide();
-              $('#prev_zip').removeAttr("required").val('').blur();
-              $('#prev_state').removeAttr("required").val('').blur();
-              $('#prev_city').removeAttr("required").val('').blur();
-              $('#prev_addr').removeAttr("required").val('').blur();
-          }
-      });
 
   $('input[name=has_mail_addr]').change(
       function(){
