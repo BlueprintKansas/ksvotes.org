@@ -1,12 +1,23 @@
 from app.main import main
-from flask import g, url_for, render_template, redirect
-from app.models import Registrant
+from flask import g, url_for, render_template, redirect, request
 from app.main.forms import FormAB5
+from app import db
 from app.decorators import InSession
+from app.services import SessionManager
+from app.services.steps import Step_AB_5
 
-@main.route('/ab/address', methods=["GET", "POST"])
-def ab3_name():
-    form = FormAB5()
+@main.route('/ab/identification', methods=["GET", "POST"])
+@InSession
+def ab5_identification():
+    form = FormAB5(
+        identification = g.registrant.try_value('identification'),
+    )
     if request.method == "POST" and form.validate_on_submit():
-        return jsonify({"post": "success"})
-    return render_template('/ab/address.html', form=form)
+        step = Step_AB_5(form.data)
+        if step.run():
+            g.registrant.update(form.data)
+            db.session.commit()
+            session_manager = SessionManager(g.registrant, step)
+            return redirect(session_manager.get_redirect_url())
+
+    return render_template('ab/identification.html', form=form)

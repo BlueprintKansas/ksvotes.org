@@ -265,10 +265,13 @@ msgid "5VR_id_help"
 msgstr "Your completed voter registration form must contain your state issued driver\u2019s license number or nondriver\u2019s identification card number. If you do not have a driver\u2019s license or nondriver\u2019s identification card, you must include the last four digits of your social security number. If you do not have a driver\u2019s license or a nondriver\u2019s identification card or social security number, please write \u201cNONE\u201d on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
 
 msgid "5AB_id"
-msgstr "Current Kansas driver's license number or nondriver's identification card number:"
+msgstr "Current Kansas driver's license number or nondriver's identification card number"
+
+msgid "5AB_id_shorthelp"
+msgstr "Your ID is used to match your signature"
 
 msgid "5AB_id_help"
-msgstr "If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:\n\u2022 Driver\u2019s license issued by Kansas or another state \n\u2022 Nondriver\u2019s ID card issued by Kansas or another state \n\u2022 U.S. passport \n\u2022 Concealed carry of handgun license issued by Kansas  or another state \n\u2022 Employee badge or ID document issued by a government office\n\u2022 U.S. military ID \n\u2022 Student ID card issued by an accredited Kansas postsecondary educational institution \n\u2022 Public assistance ID card issued by a government office \n\u2022 ID card issued by an Indian tribe"
+msgstr "If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:\n<ul>\n<li>Driver's license issued by Kansas or another state</li>\n<li>Nondriver's ID card issued by Kansas or another state</li>\n<li>U.S. passport</li> \n<li>Concealed carry of handgun license issued by Kansas  or another state</li>\n<li>Employee badge or ID document issued by a government office</li>\n<li>U.S. military ID</li>\n<li>Student ID card issued by an accredited Kansas postsecondary educational institution</li>\n<li>Public assistance ID card issued by a government office</li>\n<li>ID card issued by an Indian tribe</li>\n</ul>"
 
 msgid "6_loading"
 msgstr "Generating form preview..."
