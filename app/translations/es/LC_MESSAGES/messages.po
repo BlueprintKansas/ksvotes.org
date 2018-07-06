@@ -85,28 +85,28 @@ msgid "1VR_18_help"
 msgstr "If you will be under 18 on election day (in November), leave this box blank. You will not be allowed to vote in November, but your registration will be processed and held until your 18th birthday."
 
 msgid "1AB_reg_found_title"
-msgstr ""
+msgstr "Success! We found your Kansas voter registration."
 
 msgid "1AB_whats_next"
-msgstr ""
+msgstr "What do you want to do next?"
 
 msgid "1AB_change_reg_link"
-msgstr ""
+msgstr "Change your existing registration, if you have changed your address, name, or political party."
 
 msgid "1AB_apply_ab_link"
-msgstr ""
+msgstr "Apply for an Advanced Ballot for an upcoming election."
 
 msgid "1AB_apply_perm_ab_link"
-msgstr ""
+msgstr "Apply for a Permanent Advanced Ballot."
 
 msgid "1AB_sorry_no_reg_title"
-msgstr ""
+msgstr "Sorry, we could not find your voter registration."
 
 msgid "1AB_sorry_no_reg_help"
-msgstr ""
+msgstr "If you registered recently, please know that it can take a few days to show up in the state system. Check with your county clerk if you have questions about your current registration."
 
 msgid "1AB_sorry_no_reg_link"
-msgstr ""
+msgstr "Click here to start the registration process."
 
 msgid "1AB_select_election"
 msgstr "Which election would you like to vote by mail in?"

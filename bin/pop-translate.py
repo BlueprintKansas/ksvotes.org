@@ -17,9 +17,8 @@ with open('translations.csv', newline="\n") as csvfile:
         next
       msgid = row[2]
       en_txt = row[4]
-      try:
-        es_txt = row[5]
-      except:
+      es_txt = row[5]
+      if len(es_txt) == 0:
         es_txt = en_txt
 
       en_po.write("msgid \"%s\"\n" %(msgid))
