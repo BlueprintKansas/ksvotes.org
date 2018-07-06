@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
+
+{% block title %} Identification {% endblock %}
+
+{% block content %}
+<section id="formsection">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form name="step_AB5" id="step_AB5" method="POST" action="{{url_for('main.ab5_identification')}}">
+          {{form.hidden_tag()}}
+          <p> {{_('5AB_id_help')}} </p>
+          {{wtf.render_field(
+              form.identification,
+              _('5AB_id_shorthelp'),
+              {
+                'required':'required',
+                'data-parsley-error-message': _('Required'),
+                'autocomplete':'off',
+                'data-parsley-trigger':'focusout'
+              }
+              )}}
+
+
+          <div class="text-right mt-4">
+              <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block js_footer %}
+<script>
+$(function () {
+  //initialize form with parsley validation
+  var form = $('#step_5AB');
+  form.parsley()
+});
+
+</script>
+{% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-03 09:45-0500\n"
+"POT-Creation-Date: 2018-07-05 09:41-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,8 @@ msgstr ""
 #: app/templates/ab/address.html:47 app/templates/ab/address.html:58
 #: app/templates/ab/address.html:78 app/templates/ab/address.html:94
 #: app/templates/ab/address.html:104 app/templates/ab/address.html:114
-#: app/templates/ab/election_picker.html:17 app/templates/index.html:30
+#: app/templates/ab/election_picker.html:17
+#: app/templates/ab/identification.html:19 app/templates/index.html:30
 #: app/templates/index.html:41 app/templates/index.html:52
 #: app/templates/index.html:68 app/templates/index.html:78
 #: app/templates/vr/address.html:19 app/templates/vr/address.html:36
@@ -131,7 +132,7 @@ msgid "3_mail_zip"
 msgstr ""
 
 #: app/main/forms/ab_5.py:7
-msgid "5_id"
+msgid "5AB_id"
 msgstr ""
 
 #: app/main/forms/step_0.py:12
@@ -343,6 +344,14 @@ msgstr ""
 
 #: app/templates/ab/election_picker.html:24
 msgid "1AB_party_help"
+msgstr ""
+
+#: app/templates/ab/identification.html:13
+msgid "5AB_id_help"
+msgstr ""
+
+#: app/templates/ab/identification.html:16
+msgid "5AB_id_shorthelp"
 msgstr ""
 
 #: app/templates/vr/address.html:72

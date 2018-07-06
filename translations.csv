@@ -98,17 +98,20 @@ Note: If you recently submitted a registration application, your information may
 4,party_help,4_party_help,"You must register with a party if you want to take part in that party’s primary election, caucus, or convention.","You must register with a party if you want to take part in that party’s primary election, caucus, or convention. If you wish to not be associated with any party, please select ""Unaffiliated"""
 5VR,id,5VR_id,Identification,ID Number
 5VR,id_help,5VR_id_help,"Your completed voter registration form must contain your state issued driver’s license number or nondriver’s identification card number. If you do not have a driver’s license or nondriver’s identification card, you must include the last four digits of your social security number. If you do not have a driver’s license or a nondriver’s identification card or social security number, please write “NONE” on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public.","Your completed voter registration form must contain your state issued driver’s license number or nondriver’s identification card number. If you do not have a driver’s license or nondriver’s identification card, you must include the last four digits of your social security number. If you do not have a driver’s license or a nondriver’s identification card or social security number, please write “NONE” on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
-5AB,id,5AB_id,,Current Kansas driver's license number or nondriver's identification card number:
+5AB,id,5AB_id,,"Current Kansas driver's license number or nondriver's identification card number"
+5AB,id_shorthelp,5AB_id_shorthelp,,"Your ID is used to match your signature"
 5AB,id_help,5AB_id_help,,"If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:
-• Driver’s license issued by Kansas or another state 
-• Nondriver’s ID card issued by Kansas or another state 
-• U.S. passport 
-• Concealed carry of handgun license issued by Kansas  or another state 
-• Employee badge or ID document issued by a government office
-• U.S. military ID 
-• Student ID card issued by an accredited Kansas postsecondary educational institution 
-• Public assistance ID card issued by a government office 
-• ID card issued by an Indian tribe"
+<ul>
+<li>Driver's license issued by Kansas or another state</li>
+<li>Nondriver's ID card issued by Kansas or another state</li>
+<li>U.S. passport</li> 
+<li>Concealed carry of handgun license issued by Kansas  or another state</li>
+<li>Employee badge or ID document issued by a government office</li>
+<li>U.S. military ID</li>
+<li>Student ID card issued by an accredited Kansas postsecondary educational institution</li>
+<li>Public assistance ID card issued by a government office</li>
+<li>ID card issued by an Indian tribe</li>
+</ul>"
 6,loading,6_loading,Generating form preview...,Generating form preview...
 6,header,6_header,Everything look good? You can go back and change anything or hit next to proceed to signing.,"Please look over this form and make sure the answers are correct, then sign in the box below the form."
 6,header2,6_header2,,You can go back to correct any information that needs to be changed.
