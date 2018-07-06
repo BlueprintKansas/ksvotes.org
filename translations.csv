@@ -30,9 +30,7 @@ The information below was received from the page that directed you here. Please 
 0,match,0_match,,"You are registered to vote in Kansas, with the information below. If you wish to re-register to change your name, address, or political party, please continue by clicking Next.
 
 Or, if the information below is fully up-to-date, click here to <apply to vote by mail>.",
-0,nomatch,0_nomatch,,"We couldn't find your information in the Kansas voter registration records. Please continue to the registration form by clicking Next.
-
-Note: If you recently submitted a registration application, your information may still be in process. You can still <apply to vote by mail>.",
+0,nomatch,0_nomatch,,"We couldn't find your information in the Kansas voter registration records. Please continue to the registration form by clicking Next. Note: If you recently submitted a registration application, your information may still be in process. You can still <apply to vote by mail>.",
 1VR,header,1VR_header,,"Are you eligible to register to vote?",
 1VR,citizen,1VR_citizen,"Are you a citizen of the United States?","Are you a citizen of the United States of America?",
 1VR,citizen_help,1VR_citizen_help," ","Voter registration is only available to U.S. citizens.",
