@@ -1,11 +1,69 @@
 {% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
+{% block title %} {{_('AB1_title')}} {% endblock %}
 
 {% block content %}
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-     TODO pick your election form
+      <form name="step_ab1" id="step_ab1" method="POST" action="{{url_for('main.ab1_election_picker')}}" novalidate>
+        {{form.hidden_tag()}}
+
+        {{wtf.render_field(
+            form.elections,
+            _('1AB_election_help'),
+            {
+              'required': 'required',
+              'data-parsley-required-message': _('Required'),
+              'data-parsley-trigger': 'focusout'
+            }
+          )}}
+        <div id="party-picker">
+        {{wtf.render_field(
+              form.party,
+              _('1AB_party_help'),
+              {
+              }
+              )}}
+        </div>
+
+        <div class="text-right mt-4">
+          <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
+        </div>
+
+      </form>
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block js_footer %}
+<script>
+$(function () {
+  //initialize form with parsley validation
+  var form = $('#step_ab1');
+  form.parsley();
+
+  // toggle party select visibility if elections contains a primary
+  let $party_picker = $('#party-picker');
+  $party_picker.hide();
+  $('#elections').select2({
+    placeholder: '{{_("1AB_select_election")}}',
+  });
+  $('#elections').on('select2:select', function(e) {
+    let payload = e.params.data;
+    if (payload.text.match(/Primary/)) {
+      $party_picker.show();
+    }
+  });
+  $('#elections').on('select2:unselect', function(e) {
+    let payload = e.params.data;
+    if (payload.text.match(/Primary/)) {
+      $party_picker.hide();
+    }
+  });
+
+});
+
+</script>
 {% endblock %}

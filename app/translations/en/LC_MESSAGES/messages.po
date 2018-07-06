@@ -111,11 +111,14 @@ msgstr "Click here to start the registration process."
 msgid "1AB_select_election"
 msgstr "Which election would you like to vote by mail in?"
 
-msgid "1AB_select_election_pr2018"
-msgstr "2018 Primary (August 7)"
+msgid "1AB_election_help"
+msgstr "You may register for advanced ballots for elections in the current calendar year."
 
-msgid "1AB_select_election_gn2018"
-msgstr "2018 General (November 6)"
+msgid "1AB_select_election_primary"
+msgstr "Primary (August 7, 2018)"
+
+msgid "1AB_select_election_general"
+msgstr "General (November 6, 2018)"
 
 msgid "1AB_select_perm"
 msgstr "Permanent vote by mail"
@@ -127,7 +130,7 @@ msgid "1AB_perm_reason"
 msgstr "The nature of my permanent disability or illness is:"
 
 msgid "1AB_select_party"
-msgstr "Political Party"
+msgstr "Select a Political Party..."
 
 msgid "1AB_party_help"
 msgstr "Political party is required only when requesting a primary election ballot; to vote in a party's primary election, you must be a registered member of that party."

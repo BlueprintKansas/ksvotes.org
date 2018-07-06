@@ -23,7 +23,7 @@ class Step_0(Step):
 		self.reg_lookup_complete = True
 
 		if self.reg_found:
-			self.next_step = 'Step_AB_1'
+			self.next_step = 'Step_1'
 			return True
 
 		self.next_step = 'Step_VR_1'
