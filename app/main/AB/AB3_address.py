@@ -1,12 +1,36 @@
 from app.main import main
-from flask import g, url_for, render_template, redirect
-from app.models import Registrant
+from flask import g, url_for, render_template, redirect, request
 from app.main.forms import FormAB3
 from app.decorators import InSession
+from app.services.steps import Step_AB_3
+from app import db
+from app.services import SessionManager
 
 @main.route('/ab/address', methods=["GET", "POST"])
-def ab3_name():
-    form = FormAB3()
+@InSession
+def ab3_address():
+    form = FormAB3(
+        addr = g.registrant.try_value('addr'),
+        unit = g.registrant.try_value('unit'),
+        city = g.registrant.try_value('city'),
+        state = g.registrant.try_value('state', 'KANSAS'),
+        zip = g.registrant.try_value('zip'),
+        has_mail_addr = g.registrant.try_value('has_mail_addr'),
+        mail_addr = g.registrant.try_value('mail_addr'),
+        mail_unit = g.registrant.try_value('mail_unit'),
+        mail_city = g.registrant.try_value('mail_city'),
+        mail_state = g.registrant.try_value('mail_state'),
+        mail_zip = g.registrant.try_value('mail_zip'),
+    )
     if request.method == "POST" and form.validate_on_submit():
-        return jsonify({"post": "success"})
+        step = Step_AB_3(form.data)
+        if step.run():
+            update_data = form.data
+            update_data['validated_addresses'] = step.validated_addresses
+            g.registrant.update(update_data)
+            g.registrant.addr_lookup_complete = step.addr_lookup_complete
+            db.session.commit()
+            session_manager = SessionManager(g.registrant, step)
+            return redirect(session_manager.get_redirect_url())
+    
     return render_template('/ab/address.html', form=form)

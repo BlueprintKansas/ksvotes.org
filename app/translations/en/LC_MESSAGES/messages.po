@@ -213,7 +213,7 @@ msgstr "Were you registered before at a different address?"
 msgid "3_has_mail_addr"
 msgstr "Do you have a different mailing address?"
 
-msgid "3_header"
+msgid "3_prev_addr_header"
 msgstr "What was your address where you were registered before?"
 
 msgid "3_prev_addr"
@@ -231,7 +231,7 @@ msgstr "State"
 msgid "3_prev_zip"
 msgstr "ZIP Code"
 
-msgid "3_header"
+msgid "3_mail_addr_header"
 msgstr "What is the address where you get your mail?"
 
 msgid "3_mail_addr"
