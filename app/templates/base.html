@@ -58,7 +58,6 @@
 
     <main>
       {% if config['ENV'] == 'development' %}
-      <!-- nav won't be in production -->
       <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <a class="navbar-brand" href="#">Quicklinks</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,10 +79,11 @@
       </nav>
       {% endif %}
 
+      <div id="main-content">
       {% block content %}
 
-
       {% endblock %}
+      </div>
     </main>
 
     {% block footer %}

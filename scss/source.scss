@@ -4,7 +4,22 @@ body {
   line-height: 28px;
   background-color: #FAFAFA;
 }
+img {
+  max-width: 100%;
+  display: block;
+}
+#main-content {
+  margin-top: 24px;
+}
 
+#signature {
+  width: 400px;
+  height: 60px;
+  border: 2px solid $primary-color;
+  display: block;
+  margin: 0 auto;
+  background-color: #ddd;
+}
 .form-group {
   label {
     color: #757575;

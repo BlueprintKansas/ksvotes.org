@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% import 'macros/_render_field.html' as wtf %}
+
+{% block title %} Preview {% endblock %}
+
+{% block content %}
+<section id="formsection">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h3 class="h3-responsive">{{_('6_header')}}</h3>
+        <h5 class="h5-responsive">{{_('6_header2')}}</h5>
+
+          <img src="{{registrant.registration_value.filled_form_string}}"/>
+
+
+          <form name="step_6" id="step_6" method="POST"  action="{{url_for('main.vr6_preview_sign')}}">
+            {{form.hidden_tag()}}
+            <label> {{_('6_sign')}}            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i></label>
+
+            <div id="signature"></div>
+            {% if form.signature_string.errors %}
+              <ul class="parsley-errors-list filled">
+                {% for error in form.signature_string.errors %}
+                  <li> {{ error }} </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <div class="text-right mt-4">
+                <button class="btn btn-outline-info" onclick="$('#signature').jSignature('reset'); return false;">Clear</button>
+                <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Sign </button>
+            </div>
+
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block js_footer %}
+<script src="{{url_for('static', filename='js/jSignature.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $("#signature").jSignature({
+          'height': 56,
+          'width': 396,
+          'background-color': '#ffffff',
+          'decor-color': 'transparent',
+        });
+        $('#signature').jSignature('setData', $('#signature_string').val());
+    })
+    $("#signature").bind('change', function(e){
+      if( $('#signature').jSignature('getData', 'native').length == 0) {
+         return;
+      } else {
+        $('#signature_string').val($('#signature').jSignature('getData'));
+      }
+    });
+</script>
+<script>
+$(function () {
+  //initialize form with parsley validation
+  var form = $('#step_6');
+  form.parsley()
+});
+
+</script>
+{% endblock %}
