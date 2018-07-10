@@ -28,6 +28,9 @@ test: check
 jstest:
 	npm run test
 
+css:
+	npm run css
+
 start-testserver:
 ifeq ($(DEBUG), zombie)
 	python manage.py runserver &

@@ -10,12 +10,14 @@ from app.main.VR.example_form import img_fill
 @main.route('/vr/affirmation', methods=["GET", "POST"])
 @InSession
 def vr7_affirmation():
+    registrant = g.registrant
     form = FormVR7()
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_7(form.data)
-        step.run()
-        g.registrant.update(form.data)
-        db.session.commit()
-        session_manager = SessionManager(g.registrant, step)
-        return redirect(session_manager.get_redirect_url())
-    return render_template('vr/affirm.html', registrant=g.registrant, form=form)
+        if step.run():
+            g.registrant.update(form.data)
+            db.session.commit()
+            session_manager = SessionManager(g.registrant, step)
+            return redirect(session_manager.get_redirect_url())
+
+    return render_template('vr/affirmation.html', registrant=g.registrant, form=form)

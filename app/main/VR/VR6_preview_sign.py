@@ -11,12 +11,15 @@ from app.services.steps import Step_VR_6
 @main.route('/vr/preview', methods=["GET", "POST"])
 @InSession
 def vr6_preview_sign():
-    form = FormVR6()
+    form = FormVR6(
+        signature_string = g.registrant.try_value('signature_string')
+    )
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_6(form.data)
-        step.run()
-        g.registrant.update(form.data)
-        db.session.commit()
-        session_manager = SessionManager(g.registrant, step)
-        return redirect(session_manager.get_redirect_url())
+        if step.run():
+            g.registrant.update(form.data)
+            db.session.commit()
+            session_manager = SessionManager(g.registrant, step)
+            return redirect(session_manager.get_redirect_url())
+
     return render_template('vr/preview-sign.html', registrant=g.registrant, form=form)
