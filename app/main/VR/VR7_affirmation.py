@@ -4,19 +4,18 @@ from app import db
 from app.models import Registrant
 from app.decorators import InSession
 from app.services import SessionManager
-from app.main.forms import FormVR6
+from app.main.forms import FormVR7
 from app.main.VR.example_form import img_fill
-from app.services.steps import Step_VR_6
 
-@main.route('/vr/preview', methods=["GET", "POST"])
+@main.route('/vr/affirmation', methods=["GET", "POST"])
 @InSession
-def vr6_preview_sign():
-    form = FormVR6()
+def vr7_affirmation():
+    form = FormVR7()
     if request.method == "POST" and form.validate_on_submit():
-        step = Step_VR_6(form.data)
+        step = Step_VR_7(form.data)
         step.run()
         g.registrant.update(form.data)
         db.session.commit()
         session_manager = SessionManager(g.registrant, step)
         return redirect(session_manager.get_redirect_url())
-    return render_template('vr/preview-sign.html', registrant=g.registrant, form=form)
+    return render_template('vr/affirm.html', registrant=g.registrant, form=form)
