@@ -5,3 +5,4 @@ from .VR4_party import vr4_party
 from .VR5_identification import vr5_identification
 from .VR6_preview_sign import vr6_preview_sign
 from .VR7_affirmation import vr7_affirmation
+from .VR8_submission import vr8_submission

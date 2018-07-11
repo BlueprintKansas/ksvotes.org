@@ -52,4 +52,7 @@ build: locales
 routes:
 	python manage.py list_routes
 
+load-clerks:
+	python manage.py load_clerks
+
 .PHONY: deps venv test dbmigrate run testcov

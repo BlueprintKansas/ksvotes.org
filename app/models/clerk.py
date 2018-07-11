@@ -17,3 +17,20 @@ class Clerk(db.Model):
     city = db.Column(db.String())
     state = db.Column(db.String(), default='KS')
     zip = db.Column(db.String())
+
+    def save(self, db_session):
+        db_session.add(self)
+        db_session.commit()
+
+    @classmethod
+    def find_by_county(cls, county_name):
+        return cls.query.filter(cls.county == county_name).first()
+
+    @classmethod
+    def find_or_create_by(cls, **kwargs):
+        found_one = cls.query.filter_by(**kwargs).first()
+        if found_one:
+            return found_one
+        else:
+            clerk = cls(**kwargs)
+            return clerk

@@ -53,6 +53,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
   SECRET_KEY={{generate a secret key}}
   APP_CONFIG=development
   LOG_LEVEL=INFO
+  NAV=true
   CRYPT_KEY={{generate a secret key | base64}}
   GA_KEY={{google analytics key}}
   # RECAPTCHA_KEY={{public key}}
@@ -61,6 +62,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # AWS_ACCESS_KEY_ID={{from role with at least rds and an ses access}}
   # AWS_SECRET_ACCESS_KEY={{from role with at least rds and an ses access}}
   # AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
+  # NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
   ```
 
 ### Migrate Database
@@ -100,6 +102,9 @@ $(venv) py.test --cov-report term-missing --cov --ignore=node_modules
 
 ## Styling
 Code is currently setup to SCSS with node scripts to compile.
+
+Edit `scss/source.scss` and compile with `% make css`.
+
 Alternatively you can create your own .css style sheet in *app/static/css* and replace
 ```
 <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">

@@ -4,20 +4,34 @@ from app import db
 from app.models import Registrant
 from app.decorators import InSession
 from app.services import SessionManager
+from app.services.nvris_client import NVRISClient
+from app.services.county_mailer import CountyMailer
+from app.services.steps import Step_VR_7
 from app.main.forms import FormVR7
-from app.main.VR.example_form import img_fill
 
 @main.route('/vr/affirmation', methods=["GET", "POST"])
 @InSession
 def vr7_affirmation():
-    registrant = g.registrant
+    reg = g.registrant
     form = FormVR7()
+
+    # if we don't have a VR form to affirm, redirect to Step 0
+    if not reg.try_value('vr_form', False):
+        return redirect(url_for('main.index'))
+
+    vr_form = reg.try_value('vr_form')
+
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_7(form.data)
         if step.run():
-            g.registrant.update(form.data)
-            db.session.commit()
-            session_manager = SessionManager(g.registrant, step)
+            reg.update(form.data)
+            reg.last_completed_step = 7
+            reg.save(db.session)
+
+            mailer = CountyMailer(reg, vr_form)
+            mailer.send()
+
+            session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
-    return render_template('vr/affirmation.html', registrant=g.registrant, form=form)
+    return render_template('vr/affirmation.html', preview_img=vr_form, registrant=reg, form=form)

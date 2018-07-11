@@ -19,6 +19,7 @@ def create_app(script_info):
     os.environ['FLASK_ENV'] = config_name
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    app.config['NAV'] = os.getenv('NAV')
     config[config_name].init_app(app)
     db.init_app(app)
     babel.init_app(app)

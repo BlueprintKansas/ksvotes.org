@@ -9,12 +9,19 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
 
-
-          <img src="{{registrant.registration_value.filled_form_string}}"/>
-
+          <img src="{{preview_img}}"/>
 
           <form name="step_7" id="step_7" method="POST"  action="{{url_for('main.vr7_affirmation')}}">
             {{form.hidden_tag()}}
+
+            {{wtf.render_field(
+            form.affirmation,
+            _('7_affirm_help'),
+            {
+              'required':'required',
+              'data-parsley-error-message': _('Required'),
+            }
+            )}}
 
             <div class="text-right mt-4">
                 <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Sign </button>

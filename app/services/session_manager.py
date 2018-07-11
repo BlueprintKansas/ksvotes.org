@@ -32,6 +32,9 @@ class SessionManager():
             prev_step = globals()[self.current_step.prev_step]
             self.prev_step = prev_step()
 
+    def vr_completed(self):
+        return self.registrant.last_completed_step == 7 and self.registrant.try_value('vr_form', False)
+
     def get_locale_url(self, endpoint):
         lang_code = g.get('lang_code', None)
         if lang_code:
