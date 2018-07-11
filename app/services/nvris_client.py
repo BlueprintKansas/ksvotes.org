@@ -13,9 +13,8 @@ class NVRISClient():
         self.nvris_url = os.getenv('NVRIS_URL')
 
     def get_vr_form(self):
-        print(self.nvris_url)
-        print(self.lang)
         url = self.nvris_url + '/vr/' + self.lang
+        current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
         payload = self.marshall_payload()
         resp = requests.post(url, json=payload)
         resp_payload = resp.json()
