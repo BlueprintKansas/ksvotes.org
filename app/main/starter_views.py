@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort
+from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app
 import time
 from app.main.forms import *
 from app.models import Registrant

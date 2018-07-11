@@ -1,7 +1,8 @@
 from functools import wraps
-from flask import request, g, session as http_session, redirect, current_app
+from flask import request, g, session as http_session, redirect, current_app, url_for
 from app.models import Registrant
 from uuid import UUID, uuid4
+from app.main.helpers import guess_locale
 
 # check for session_id cookie, and corresponding Registrant db record.
 # if can't find both, redirect to start page.
@@ -15,6 +16,7 @@ def InSession(f):
 
         session_id = http_session.get('session_id')
         g.registrant = None
+        g.locale = guess_locale() # so we have it available for all template rendering
 
         # if we don't yet have a session_id, assign one.
         if not session_id:

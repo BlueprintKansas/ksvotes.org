@@ -10,6 +10,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_KEY')
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET')
+    BABEL_DEFAULT_LOCALE = 'en'
 
     @staticmethod
     def init_app(app):

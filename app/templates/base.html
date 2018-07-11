@@ -57,9 +57,10 @@
     {% endif %}
 
     <main>
-      {% if config['NAV'] %}
-      <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">Quicklinks</a>
+     {% block header %}
+     <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Quicklinks</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,23 +68,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}"> Home </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr1_citizenship')}}"> Citizenship </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr2_name')}}"> Name </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr3_address')}}"> Address </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr4_party')}}"> Party </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr5_identification')}}"> Identification </a></li>
+            {% if g.locale == 'es' %}
+            <li class="nav-item"><a class="nav-link" href="{{url_for('main.index', lang_code='en')}}">English</a></li>
+            {% endif %}
 
           </ul>
 
         </div>
       </nav>
-      {% endif %}
+     </header>
+     {% endblock %}
 
-      <div id="main-content">
+     <div id="main-content">
       {% block content %}
 
       {% endblock %}
-      </div>
+     </div>
     </main>
 
     {% block footer %}
