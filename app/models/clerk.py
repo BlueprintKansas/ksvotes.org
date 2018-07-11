@@ -32,6 +32,5 @@ class Clerk(db.Model):
         if found_one:
             return found_one
         else:
-            #params = dict((k, v) for k, v in kwargs.iteritems() if not isinstance(v, ClauseElement))
             clerk = cls(**kwargs)
             return clerk
