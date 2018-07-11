@@ -12,18 +12,27 @@ from app.services.steps import Step_VR_6
 @main.route('/vr/preview', methods=["GET", "POST"])
 @InSession
 def vr6_preview_sign():
+    reg = g.registrant
     form = FormVR6(
-        signature_string = g.registrant.try_value('signature_string')
+        signature_string = reg.try_value('signature_string')
     )
+    nvris_client = NVRISClient(reg)
+
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_6(form.data)
         if step.run():
-            g.registrant.update(form.data)
-            db.session.commit()
-            session_manager = SessionManager(g.registrant, step)
-            return redirect(session_manager.get_redirect_url())
+            # add signature img but do not save till we have signed form too.
+            reg.update(form.data)
 
-    # TODO worry about DDoS if we preview on every GET?
-    nvris_client = NVRISClient(g.registrant)
+            # sign the form and cache the image for next step
+            signed_vr_form = nvris_client.get_vr_form()
+            if signed_vr_form:
+                reg.update({'vr_form':signed_vr_form})
+                reg.save(db.session)
+                session_manager = SessionManager(reg, step)
+                return redirect(session_manager.get_redirect_url())
+
+    # always generate a new unsigned form for preview
     preview_img = nvris_client.get_vr_form()
-    return render_template('vr/preview-sign.html', preview_img=preview_img, registrant=g.registrant, form=form)
+    return render_template('vr/preview-sign.html', preview_img=preview_img, registrant=reg, form=form)
+
