@@ -4,6 +4,7 @@ from app import db
 from app.models import Registrant
 from app.decorators import InSession
 from app.services import SessionManager
+from app.services.nvris_client import NVRISClient
 from app.main.forms import FormVR6
 from app.main.VR.example_form import img_fill
 from app.services.steps import Step_VR_6
@@ -22,4 +23,7 @@ def vr6_preview_sign():
             session_manager = SessionManager(g.registrant, step)
             return redirect(session_manager.get_redirect_url())
 
-    return render_template('vr/preview-sign.html', registrant=g.registrant, form=form)
+    # TODO worry about DDoS if we preview on every GET?
+    nvris_client = NVRISClient(g.registrant)
+    preview_img = nvris_client.get_vr_form()
+    return render_template('vr/preview-sign.html', preview_img=preview_img, registrant=g.registrant, form=form)

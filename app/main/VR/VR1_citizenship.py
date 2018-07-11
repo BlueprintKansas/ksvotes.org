@@ -17,10 +17,10 @@ def vr1_citizenship():
 
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_1(form.data)
-        step.run()
-        g.registrant.update(form.data)
-        db.session.commit()
-        session_manager = SessionManager(g.registrant, step)
-        return redirect(session_manager.get_redirect_url())
+        if step.run():
+            g.registrant.update(form.data)
+            db.session.commit()
+            session_manager = SessionManager(g.registrant, step)
+            return redirect(session_manager.get_redirect_url())
 
     return render_template('vr/citizenship.html', form=form)

@@ -42,7 +42,8 @@ def index():
             registrant = Registrant(
                 county = form.data.get('county'),
                 registration_value = form.data,
-                session_id = sid
+                session_id = sid,
+                lang = g.lang_code,
             )
             db.session.add(registrant)
 
