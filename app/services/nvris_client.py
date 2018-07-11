@@ -1,4 +1,5 @@
 from flask import g, current_app
+from app.main.VR.example_form import signature_img_string
 import os
 import requests
 import json
@@ -13,14 +14,27 @@ class NVRISClient():
         self.nvris_url = os.getenv('NVRIS_URL')
 
     def get_vr_form(self):
+        if self.nvris_url == 'TESTING': # magic URL for testing mode
+            return signature_img_string
+
         url = self.nvris_url + '/vr/' + self.lang
         current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
-        payload = self.marshall_payload()
-        resp = requests.post(url, json=payload)
-        resp_payload = resp.json()
+        payload = self.marshall_vr_payload()
+
+        # remove the signature from payload if null because NVRIS will balk
+        if not payload['signature']:
+            payload.pop('signature')
+
+        #print("payload: %s" %(payload)) # debug only -- no PII in logs
+        try:
+            resp = requests.post(url, json=payload)
+            resp_payload = resp.json()
+        except json.JSONDecodeError as e:
+            current_app.logger.error("NVRIS responded with bad JSON: %s" %(e))
+            return None
         return resp_payload['img']
 
-    def marshall_payload(self):
+    def marshall_vr_payload(self):
         r = self.registrant
         return {
             "00_citizen_yes": True if r.is_citizen else False,
@@ -74,5 +88,5 @@ class NVRISClient():
             "B_state": r.try_value('prev_state'),
             "B_zipCode": r.try_value('prev_zip'),
             "D_helper": r.try_value('helper'),
-            "signature": r.try_value('signature_string'),
+            "signature": r.try_value('signature_string', None),
         }

@@ -6,7 +6,6 @@ from app.decorators import InSession
 from app.services import SessionManager
 from app.services.nvris_client import NVRISClient
 from app.main.forms import FormVR6
-from app.main.VR.example_form import img_fill
 from app.services.steps import Step_VR_6
 
 @main.route('/vr/preview', methods=["GET", "POST"])
