@@ -32,6 +32,8 @@ def create_app(script_info):
     @babel.localeselector
     def get_locale():
         from app.main.helpers import guess_locale
+        if g.locale:
+            return g.locale
         return guess_locale()
 
     @app.url_defaults
