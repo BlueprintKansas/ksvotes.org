@@ -43,6 +43,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
     <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
 
 
 
@@ -56,44 +57,67 @@
     <!-- End Google Tag Manager (noscript) -->
     {% endif %}
 
+    <div id="mask"></div>
+
     <main>
-      {% if config['NAV'] %}
-      <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">Quicklinks</a>
+     {% block header %}
+     <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{url_for('main.index')}}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}"> Home </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr1_citizenship')}}"> Citizenship </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr2_name')}}"> Name </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr3_address')}}"> Address </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr4_party')}}"> Party </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('main.vr5_identification')}}"> Identification </a></li>
+            {% if current_step %}
+            <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}">Register to Vote</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}">Advanced Ballot</a></li>
+            {% endif %}
+            {% if g.locale == 'es' %}
+            <li class="nav-item"><a class="nav-link" href="{{url_for('main.index', lang_code='en')}}">English</a></li>
+            {% endif %}
 
           </ul>
 
         </div>
       </nav>
-      {% endif %}
+     </header>
+     {% endblock %}
 
-      <div id="main-content">
+     {% if current_step %}
+     <div id="step-nav">
+       Step {{current_step}} of 8
+     </div>
+     {% endif %}
+
+     <div id="main-content">
       {% block content %}
 
       {% endblock %}
-      </div>
+     </div>
     </main>
 
     {% block footer %}
-    <footer>
-     <h2>ksvotes.org</h2>
-     <ul class="navbar-nav mr-auto">
-       <li class="nav-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a></li>
-       <li class="nav-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a></li>
-       <li class="nav-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
-     </ul>
+    <footer class="page-footer font-small pt-4 unique-color">
+     <div class="container-fluid text-center text-md-left">
+      <div class="row">
+       <div class="col-md-6 mt-md-0 mt-3">
+         <h4>ksvotes.org</h4>
+       </div>
+       <hr class="clearfix w-100 d-md-none pb-3">
+       <div class="col-md-6 mb-md-0 mb-3">
+        <ul class="list-unstyled">
+         <li class="nav-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a></li>
+         <li class="nav-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a></li>
+         <li class="nav-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
+        </ul>
+       </div>
+      </div><!-- row -->
+     </div><!-- container -->
+     <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://blueprintkansas.org/">Blueprint Kansas</a>
+     </div>
     </footer>
     {% endblock %}
 
@@ -112,7 +136,19 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/parsley.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/moment.min.js')}}"></script>
 
+    <script type="text/javascript" src="{{url_for('static', filename='js/p-loading.min.js')}}"></script>
+
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('form').submit(function(ev) {
+          var $mask = $('#mask');
+          $mask.show();
+          $mask.ploading({ action: 'show' });
+        });
+      });
+    </script>
 
     {% block js_footer %}
 

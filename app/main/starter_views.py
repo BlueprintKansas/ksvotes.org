@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort
+from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app
 import time
 from app.main.forms import *
 from app.models import Registrant
@@ -8,13 +8,16 @@ from uuid import UUID, uuid4
 from app.decorators import InSession
 from app.services import SessionManager
 from app.services.steps import Step_0
+from app.main.helpers import guess_locale
 
 @main.route('/terms-of-service', methods=['GET'])
 def terms():
+    g.locale = guess_locale()
     return render_template('terms-of-service.html')
 
 @main.route('/privacy-policy', methods=['GET'])
 def privacy():
+    g.locale = guess_locale()
     return render_template('privacy-policy.html')
 
 #step 0 / 0x

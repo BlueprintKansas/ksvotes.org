@@ -31,9 +31,10 @@ def create_app(script_info):
 
     @babel.localeselector
     def get_locale():
-        locale = g.get('lang_code', app.config['BABEL_DEFAULT_LOCALE'])
-        app.logger.info("Locale set to %s" %(locale))
-        return locale
+        from app.main.helpers import guess_locale
+        if g.locale:
+            return g.locale
+        return guess_locale()
 
     @app.url_defaults
     def set_language_code(endpoint, values):
