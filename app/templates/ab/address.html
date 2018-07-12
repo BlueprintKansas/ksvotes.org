@@ -9,6 +9,9 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form name="step_3" id="step_3" method="POST" action="{{url_for('main.ab3_address')}}">
+         <fieldset>
+          <legend>{{_('3_legend')}}</legend>
+
           {{form.hidden_tag()}}
 
           {{wtf.render_field(
@@ -122,10 +125,12 @@
 
 
           <div class="text-right mt-4">
-                <button class="btn btn-outline-default" type="submit">
-                 <i class="fa checkmark fa-check mr-2"></i>{{_('btn_next')}}
-                </button>
+             <button class="btn btn-outline-default" type="submit">
+              <i class="fa checkmark fa-check mr-2"></i>{{_('btn_next')}}
+             </button>
           </div>
+
+         </fieldset>
         </form>
       </div>
     </div>
