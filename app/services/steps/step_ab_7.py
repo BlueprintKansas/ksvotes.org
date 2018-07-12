@@ -1,10 +1,10 @@
 from app.services.steps import Step
 
-class Step_AB_6(Step):
-	endpoint = '/ab/preview'
-	form_requirements = ['signature_string']
+class Step_AB_7(Step):
+	endpoint = '/ab/affirmation'
+	form_requirements = ['affirmation']
 	step_requirements = []
-	prev_step = 'Step_AB_5'
+	prev_step = 'Step_AB_6'
 	next_step = None
 
 	def run(self):
@@ -15,5 +15,5 @@ class Step_AB_6(Step):
 			return False
 
 		self.is_complete = True
-		self.next_step = 'Step_AB_7'
+		self.next_step = 'Step_AB_8'
 		return True

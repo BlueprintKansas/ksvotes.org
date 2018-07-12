@@ -19,20 +19,82 @@ class NVRISClient():
 
         url = self.nvris_url + '/vr/' + self.lang
         current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
-        payload = self.marshall_vr_payload()
+        payload = self.marshall_payload('vr')
+
+        #print("payload: %s" %(payload)) # debug only -- no PII in logs
+        return self.fetch_nvris_img(url, payload)
+
+    def get_ab_form(self):
+        if self.nvris_url == 'TESTING': # magic URL for testing mode
+            return signature_img_string
+
+        if self.registrant.try_value('ab_permanent'):
+            flavor = 'ksav2'
+        else:
+            flavor = 'ksav1'
+    
+        url = self.nvris_url + '/av/' + flavor
+
+        current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
+        payload = self.marshall_payload(flavor)
+
+        #print("payload: %s" %(payload)) # debug only -- no PII in logs
+        return self.fetch_nvris_img(url, payload)
+
+    def fetch_nvris_img(self, url, payload):
+        try:
+            resp = requests.post(url, json=payload)
+            resp_payload = resp.json()
+        except requests.exceptions.ConnectionError as e:
+            current_app.logger.error("NVRIS did not respond: %s" %(e))
+            return None
+        except json.JSONDecodeError as e:
+            current_app.logger.error("NVRIS responded with bad JSON: %s" %(e))
+            return None
+        return resp_payload['img']
+
+    def marshall_payload(self, flavor):
+        if flavor == 'vr':
+            payload = self.marshall_vr_payload()
+        elif flavor == 'ksav1':
+            payload = self.marshall_ksav1_payload()
+        elif flavor == 'ksav2':
+            payload = self.marshall_ksav2_payload()
+        else:
+            raise Exception("unknown payload flavor %s" %(flavor))
 
         # remove the signature from payload if null because NVRIS will balk
         if not payload['signature']:
             payload.pop('signature')
 
-        #print("payload: %s" %(payload)) # debug only -- no PII in logs
-        try:
-            resp = requests.post(url, json=payload)
-            resp_payload = resp.json()
-        except json.JSONDecodeError as e:
-            current_app.logger.error("NVRIS responded with bad JSON: %s" %(e))
-            return None
-        return resp_payload['img']
+        return payload
+
+    def marshall_ksav1_payload(self):
+        r = self.registrant
+        return {
+            'state': 'Kansas', # TODO r.try_value('state'),
+            'county_2': r.county, # TODO corresponds with 'state'
+            'county_1': r.county, # TODO different?
+            'id_number': r.try_value('id_number'),
+            'last_name': r.try_value('name_last'),
+            'first_name': r.try_value('name_first'),
+            'middle_initial': r.try_value('name_middle', ' ')[0], # TODO brittle
+            'dob': r.try_value('dob'),
+            'residential_address': r.try_value('addr'),
+            'residential_city': r.try_value('city'),
+            'residential_state': r.try_value('state'),
+            'residential_zip': r.try_value('zip'),
+            'mailing_address': r.try_value('mail_addr'),
+            'mailing_city': r.try_value('mail_city'),
+            'mailing_state': r.try_value('mail_state'),
+            'mailing_zip': r.try_value('mail_zip'),
+            'election_date': r.try_value('tmp_election_date'),
+            'signature': r.try_value('signature_string', None),
+            'signature_date': r.signed_at.strftime('%m/%d/%Y'),
+            'phone_number': r.try_value('phone'),
+            'democratic': True if r.party == 'democratic' else False,
+            'republican': True if r.party == 'republican' else False,
+        }
 
     def marshall_vr_payload(self):
         r = self.registrant
