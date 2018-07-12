@@ -43,6 +43,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
     <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
 
 
 
@@ -56,6 +57,8 @@
     <!-- End Google Tag Manager (noscript) -->
     {% endif %}
 
+    <div id="mask"></div>
+
     <main>
      {% block header %}
      <header>
@@ -68,6 +71,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}">Register to Vote</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}">Advanced Ballot</a></li>
             {% if g.locale == 'es' %}
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.index', lang_code='en')}}">English</a></li>
             {% endif %}
@@ -78,6 +82,12 @@
       </nav>
      </header>
      {% endblock %}
+
+     {% if current_step %}
+     <div id="step-nav">
+       Step {{current_step}} of 8
+     </div>
+     {% endif %}
 
      <div id="main-content">
       {% block content %}
@@ -112,7 +122,19 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/parsley.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/moment.min.js')}}"></script>
 
+    <script type="text/javascript" src="{{url_for('static', filename='js/p-loading.min.js')}}"></script>
+
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('form').submit(function(ev) {
+          var $mask = $('#mask');
+          $mask.show();
+          $mask.ploading({ action: 'show' });
+        });
+      });
+    </script>
 
     {% block js_footer %}
 
