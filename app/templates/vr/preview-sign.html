@@ -15,6 +15,9 @@
           <img src="{{preview_img}}"/>
 
           <form name="step_6" id="step_6" method="POST"  action="{{url_for('main.vr6_preview_sign')}}">
+           <fieldset>
+            <legend>{{_('6_legend')}}</legend>
+
             {{form.hidden_tag()}}
             <label> {{_('6_sign')}}            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i></label>
 
@@ -28,7 +31,7 @@
                 <button class="btn btn-outline-info" onclick="return resetHiddenSignatureImg()">Clear</button>
                 <button id="sign-button" class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Sign </button>
             </div>
-
+           </fieldset>
           </form>
       </div>
     </div>
