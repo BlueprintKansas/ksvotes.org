@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-12 12:07-0500\n"
+"POT-Creation-Date: 2018-07-12 17:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "1AB_select_election_general"
 msgstr ""
 
-#: app/main/forms/ab_1.py:37 app/templates/ab/election_picker.html:51
+#: app/main/forms/ab_1.py:37 app/templates/ab/election_picker.html:53
 msgid "1AB_select_election"
 msgstr ""
 
@@ -33,6 +33,7 @@ msgstr ""
 #: app/main/forms/ab_3.py:12 app/main/forms/ab_3.py:13
 #: app/main/forms/ab_3.py:16 app/main/forms/ab_3.py:18
 #: app/main/forms/ab_3.py:19 app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
+#: app/main/forms/ab_6.py:8 app/main/forms/ab_7.py:7
 #: app/main/forms/step_0.py:12 app/main/forms/step_0.py:13
 #: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
 #: app/main/forms/step_0.py:19 app/main/forms/vr_1.py:7
@@ -49,7 +50,9 @@ msgstr ""
 #: app/templates/ab/address.html:47 app/templates/ab/address.html:58
 #: app/templates/ab/address.html:78 app/templates/ab/address.html:94
 #: app/templates/ab/address.html:104 app/templates/ab/address.html:114
+#: app/templates/ab/affirmation.html:26
 #: app/templates/ab/election_picker.html:17
+#: app/templates/ab/election_picker.html:27
 #: app/templates/ab/identification.html:19 app/templates/index.html:41
 #: app/templates/index.html:52 app/templates/index.html:63
 #: app/templates/index.html:79 app/templates/index.html:89
@@ -136,6 +139,15 @@ msgstr ""
 msgid "5AB_id"
 msgstr ""
 
+#: app/main/forms/ab_6.py:7 app/main/forms/vr_6.py:7
+#: app/templates/ab/preview-sign.html:22 app/templates/vr/preview-sign.html:22
+msgid "6_sign"
+msgstr ""
+
+#: app/main/forms/ab_7.py:7
+msgid "AB7_affirm"
+msgstr ""
+
 #: app/main/forms/step_0.py:12
 msgid "0_first"
 msgstr ""
@@ -149,7 +161,7 @@ msgid "0_dob"
 msgstr ""
 
 #: app/main/forms/step_0.py:14 app/templates/index.html:66
-#: app/templates/index.html:69
+#: app/templates/index.html:69 app/templates/index.html:104
 msgid "0_dob_flag"
 msgstr ""
 
@@ -261,10 +273,6 @@ msgstr ""
 msgid "5VR_id"
 msgstr ""
 
-#: app/main/forms/vr_6.py:7 app/templates/vr/preview-sign.html:22
-msgid "6_sign"
-msgstr ""
-
 #: app/main/forms/vr_7.py:7
 msgid "7_affirm"
 msgstr ""
@@ -355,6 +363,14 @@ msgstr ""
 msgid "3_mail_addr_header"
 msgstr ""
 
+#: app/templates/ab/affirmation.html:17 app/templates/vr/affirmation.html:17
+msgid "7_legend"
+msgstr ""
+
+#: app/templates/ab/affirmation.html:23 app/templates/vr/affirmation.html:23
+msgid "7_affirm_help"
+msgstr ""
+
 #: app/templates/ab/election_picker.html:3
 msgid "AB1_title"
 msgstr ""
@@ -373,6 +389,22 @@ msgstr ""
 
 #: app/templates/ab/identification.html:16
 msgid "5AB_id_shorthelp"
+msgstr ""
+
+#: app/templates/ab/preview-sign.html:12 app/templates/vr/preview-sign.html:12
+msgid "6_header"
+msgstr ""
+
+#: app/templates/ab/preview-sign.html:13 app/templates/vr/preview-sign.html:13
+msgid "6_header2"
+msgstr ""
+
+#: app/templates/ab/preview-sign.html:19 app/templates/vr/preview-sign.html:19
+msgid "6_legend"
+msgstr ""
+
+#: app/templates/ab/preview-sign.html:22 app/templates/vr/preview-sign.html:22
+msgid "6_sign_help"
 msgstr ""
 
 #: app/templates/vr/address.html:14
@@ -397,14 +429,6 @@ msgstr ""
 
 #: app/templates/vr/address.html:105
 msgid "3a_prev_state"
-msgstr ""
-
-#: app/templates/vr/affirmation.html:17
-msgid "7_legend"
-msgstr ""
-
-#: app/templates/vr/affirmation.html:23
-msgid "7_affirm_help"
 msgstr ""
 
 #: app/templates/vr/citizenship.html:14
@@ -446,22 +470,6 @@ msgstr ""
 
 #: app/templates/vr/party.html:48
 msgid "4_party_help"
-msgstr ""
-
-#: app/templates/vr/preview-sign.html:12
-msgid "6_header"
-msgstr ""
-
-#: app/templates/vr/preview-sign.html:13
-msgid "6_header2"
-msgstr ""
-
-#: app/templates/vr/preview-sign.html:19
-msgid "6_legend"
-msgstr ""
-
-#: app/templates/vr/preview-sign.html:22
-msgid "6_sign_help"
 msgstr ""
 
 #: app/templates/vr/submission.html:8
