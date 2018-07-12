@@ -3,8 +3,17 @@
 msgid ""
 msgstr ""
 
+msgid "0_title"
+msgstr "Welcome to KSVotes.org"
+
+msgid "0_lead"
+msgstr "Your Online Voter Registration Application"
+
 msgid "0_intro"
-msgstr "Welcome to the KSVotes.org Online Voter Registration Application\nThis program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form.\n\n Please enter your information below, and we'll check to see if you're already registered to vote in Kansas."
+msgstr "This program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form."
+
+msgid "0_form_explain"
+msgstr "Enter your information below, and we'll check to see if you're already registered to vote in Kansas."
 
 msgid "0_footer_priv"
 msgstr "Privacy Policy"
@@ -67,7 +76,7 @@ msgid "0_match"
 msgstr "You are registered to vote in Kansas, with the information below. If you wish to re-register to change your name, address, or political party, please continue by clicking Next.\n\nOr, if the information below is fully up-to-date, click here to <apply to vote by mail>."
 
 msgid "0_nomatch"
-msgstr "We couldn't find your information in the Kansas voter registration records. Please continue to the registration form by clicking Next.\n\nNote: If you recently submitted a registration application, your information may still be in process. You can still <apply to vote by mail>."
+msgstr "We couldn't find your information in the Kansas voter registration records. Please continue to the registration form by clicking Next. Note: If you recently submitted a registration application, your information may still be in process. You can still <apply to vote by mail>."
 
 msgid "1VR_header"
 msgstr "Are you eligible to register to vote?"
@@ -256,13 +265,16 @@ msgid "4_party"
 msgstr "Choice of Party"
 
 msgid "4_party_help"
-msgstr "You must register with a party if you want to take part in that party\u2019s primary election, caucus, or convention. If you wish to not be associated with any party, please select "Unaffiliated""
+msgstr "You must register with a party if you want to take part in that party's primary election, caucus, or convention. If you wish to not be associated with any party, please select "Unaffiliated""
 
 msgid "5VR_id"
 msgstr "ID Number"
 
 msgid "5VR_id_help"
-msgstr "Your completed voter registration form must contain your state issued driver\u2019s license number or nondriver\u2019s identification card number. If you do not have a driver\u2019s license or nondriver\u2019s identification card, you must include the last four digits of your social security number. If you do not have a driver\u2019s license or a nondriver\u2019s identification card or social security number, please write \u201cNONE\u201d on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
+msgstr "Your completed voter registration form must contain your state issued driver's license number or nondriver's identification card number. If you do not have a driver's license or nondriver's identification card, you must include the last four digits of your social security number. If you do not have a driver's license or a nondriver's identification card or social security number, please write "NONE" on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
+
+msgid "5VR_id_shorthelp"
+msgstr "Your ID should be drivers license #, nondrivers id card #, last 4 of SSN, or NONE."
 
 msgid "5AB_id"
 msgstr "Current Kansas driver's license number or nondriver's identification card number"
@@ -316,8 +328,29 @@ msgid "7_affirm"
 msgstr "I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name."
 
 msgid "8_confirm"
-msgstr "Thank you.\nWe have submitted your application.\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don\u2019t, contact your local elections office to check on your status. (You can find their contact information here <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), or check your status online here\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\nThank you!\n\nThe KSVotes.org Team"
+msgstr "Thank you.\nWe have submitted your application.\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), or check your status online here\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\nThank you!\n\nThe KSVotes.org Team"
 
 msgid "9_confirm_email"
-msgstr "Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven\u2019t received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don\u2019t, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team"
+msgstr "Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team"
+
+msgid "1_legend"
+msgstr "Citizenship and Age"
+
+msgid "2_legend"
+msgstr "Name"
+
+msgid "3_legend"
+msgstr "Address"
+
+msgid "4_legend"
+msgstr "Party"
+
+msgid "5_legend"
+msgstr "Identification"
+
+msgid "6_legend"
+msgstr "Signature"
+
+msgid "7_legend"
+msgstr "Affirmation"
 

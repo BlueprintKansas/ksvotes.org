@@ -10,11 +10,14 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form name="step_5" id="step_5" method="POST" action="{{url_for('main.vr5_identification')}}">
+         <fieldset>
+          <legend>{{_('5_legend')}}</legend>
+
           {{form.hidden_tag()}}
           <p> {{_('5VR_id_help')}} </p>
           {{wtf.render_field(
               form.identification,
-              _('2_id_help'),
+              _('5VR_id_shorthelp'),
               {
                 'required':'required',
                 'data-parsley-error-message': _('Required'),
@@ -27,6 +30,7 @@
           <div class="text-right mt-4">
               <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
           </div>
+         </fieldset>
         </form>
       </div>
     </div>

@@ -10,6 +10,9 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form name="step_1" id="step_1" method="POST" action="{{url_for('main.vr1_citizenship')}}">
+         <fieldset>
+          <legend>{{_('1_legend')}}</legend>
+
           {{form.hidden_tag()}}
 
           {{wtf.render_field(
@@ -29,6 +32,7 @@
           <div class="text-right mt-4">
               <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
           </div>
+         </fieldset>
         </form>
       </div>
     </div>

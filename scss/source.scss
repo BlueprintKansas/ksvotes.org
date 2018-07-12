@@ -1,4 +1,9 @@
+// KSVotes branding
+$ksv-green: #007682;
+$ksv-red: #aa3339;
+
 @import "MDB/scss/mdb";
+
 body {
   font-size: 18px;
   line-height: 28px;
@@ -6,13 +11,67 @@ body {
 }
 footer {
   margin-top: 24px;
+
+  img.logo {
+    max-width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a:hover {
+    color: $gray-300;
+    transition: $navbar-scrolling-transition;
+  }
+
 }
+
+#hero {
+  img.logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 img {
   max-width: 100%;
   display: block;
 }
 #main-content {
   margin-top: 24px;
+}
+
+#step-nav {
+  text-align: center;
+  color: $ksv-green;
+  margin: 12px;
+}
+
+a {
+  color: $ksv-green;
+}
+
+a:hover {
+  color: $ksv-red;
+}
+
+a.icon {
+  color: $ksv-red;
+  font-size: 48px;
+}
+
+.navbar.navbar-dark {
+  img.logo {
+    max-height: 48px;
+  }
+}
+
+.ksv-green {
+  background-color: $ksv-green;
+}
+
+.btn-outline-default {
+  color: $ksv-green;
+  border-color: $ksv-green;
 }
 
 #signature {
@@ -77,6 +136,12 @@ form {
   }
   .mail-address-fields {
     display: none;
+  }
+
+  fieldset {
+    legend {
+      margin-bottom: 12px;
+    }
   }
 }
 

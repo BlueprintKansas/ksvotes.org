@@ -61,9 +61,13 @@
 
     <main>
      {% block header %}
+     {% if use_hero %}
+     {% else %}
      <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('main.index')}}">Home</a>
+      <nav class="navbar navbar-expand-lg navbar-dark font-small ksv-green">
+        <a class="navbar-brand" href="{{url_for('main.index')}}">
+         <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,6 +87,7 @@
         </div>
       </nav>
      </header>
+     {% endif %}
      {% endblock %}
 
      {% if current_step %}
@@ -99,18 +104,18 @@
     </main>
 
     {% block footer %}
-    <footer class="page-footer font-small pt-4 unique-color">
-     <div class="container-fluid text-center text-md-left">
+    <footer class="page-footer accent-4 font-small pt-4 ksv-green">
+     <div class="container-fluid text-center">
       <div class="row">
-       <div class="col-md-6 mt-md-0 mt-3">
-         <h4>ksvotes.org</h4>
+       <div class="col-md-12 mt-md-0 mt-3">
+         <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
        </div>
        <hr class="clearfix w-100 d-md-none pb-3">
-       <div class="col-md-6 mb-md-0 mb-3">
-        <ul class="list-unstyled">
-         <li class="nav-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a></li>
-         <li class="nav-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a></li>
-         <li class="nav-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
+       <div class="col-md-12 mb-md-0 mb-3">
+        <ul class="list-unstyled list-inline">
+         <li class="list-inline-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a> &nbsp;&nbsp;|</li>
+         <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> &nbsp;&nbsp;|</li>
+         <li class="list-inline-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
         </ul>
        </div>
       </div><!-- row -->
