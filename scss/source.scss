@@ -1,4 +1,9 @@
+// KSVotes branding
+$ksv-green: #007682;
+$ksv-red: #aa3339;
+
 @import "MDB/scss/mdb";
+
 body {
   font-size: 18px;
   line-height: 28px;
@@ -13,6 +18,29 @@ img {
 }
 #main-content {
   margin-top: 24px;
+}
+
+a {
+  color: $ksv-green;
+}
+
+a:hover {
+  color: $ksv-red;
+}
+
+.navbar {
+  a {
+    color: $white-base;
+  }
+}
+
+.ksv-green {
+  background-color: $ksv-green;
+}
+
+.btn-outline-default {
+  color: $ksv-green;
+  border-color: $ksv-green;
 }
 
 #signature {

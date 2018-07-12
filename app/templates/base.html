@@ -61,8 +61,10 @@
 
     <main>
      {% block header %}
+     {% if hide_header %}
+     {% else %}
      <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg font-small ksv-green">
         <a class="navbar-brand" href="{{url_for('main.index')}}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -83,6 +85,7 @@
         </div>
       </nav>
      </header>
+     {% endif %}
      {% endblock %}
 
      {% if current_step %}
@@ -99,7 +102,7 @@
     </main>
 
     {% block footer %}
-    <footer class="page-footer font-small pt-4 unique-color">
+    <footer class="page-footer font-small pt-4 ksv-green">
      <div class="container-fluid text-center text-md-left">
       <div class="row">
        <div class="col-md-6 mt-md-0 mt-3">
