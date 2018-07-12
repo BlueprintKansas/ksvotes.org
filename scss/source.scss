@@ -11,13 +11,39 @@ body {
 }
 footer {
   margin-top: 24px;
+
+  img.logo {
+    max-width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a:hover {
+    color: $gray-300;
+    transition: $navbar-scrolling-transition;
+  }
+
 }
+
+#hero {
+  img.logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 img {
   max-width: 100%;
   display: block;
 }
 #main-content {
   margin-top: 24px;
+}
+
+#step-nav {
+  text-align: center;
+  color: $ksv-red;
+  margin: 12px;
 }
 
 a {
@@ -28,9 +54,14 @@ a:hover {
   color: $ksv-red;
 }
 
-.navbar {
-  a {
-    color: $white-base;
+a.icon {
+  color: $ksv-red;
+  font-size: 48px;
+}
+
+.navbar.navbar-dark {
+  img.logo {
+    max-height: 48px;
   }
 }
 
@@ -105,6 +136,12 @@ form {
   }
   .mail-address-fields {
     display: none;
+  }
+
+  fieldset {
+    legend {
+      margin-bottom: 12px;
+    }
   }
 }
 
