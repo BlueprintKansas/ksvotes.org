@@ -78,7 +78,7 @@ class NVRISClient():
             'id_number': r.try_value('id_number'),
             'last_name': r.try_value('name_last'),
             'first_name': r.try_value('name_first'),
-            'middle_initial': r.try_value('name_middle', ' ')[0], # TODO brittle
+            'middle_initial': r.middle_initial(),
             'dob': r.try_value('dob'),
             'residential_address': r.try_value('addr'),
             'residential_city': r.try_value('city'),

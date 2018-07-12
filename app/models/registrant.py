@@ -98,6 +98,13 @@ class Registrant(db.Model):
 	def lookup_by_session_id(cls, sid):
 		return cls.query.filter(cls.session_id == sid).first()
 
+	def middle_initial(self):
+		middle_name = self.try_value('name_middle')
+		if middle_name and len(middle_name) > 0:
+			return middle_name[0]
+		else:
+			return None
+
 	#defaults
 
 	# registration JSON column encrypted and includes
