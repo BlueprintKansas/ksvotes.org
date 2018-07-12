@@ -99,13 +99,25 @@
     </main>
 
     {% block footer %}
-    <footer>
-     <h2>ksvotes.org</h2>
-     <ul class="navbar-nav mr-auto">
-       <li class="nav-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a></li>
-       <li class="nav-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a></li>
-       <li class="nav-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
-     </ul>
+    <footer class="page-footer font-small pt-4 unique-color">
+     <div class="container-fluid text-center text-md-left">
+      <div class="row">
+       <div class="col-md-6 mt-md-0 mt-3">
+         <h4>ksvotes.org</h4>
+       </div>
+       <hr class="clearfix w-100 d-md-none pb-3">
+       <div class="col-md-6 mb-md-0 mb-3">
+        <ul class="list-unstyled">
+         <li class="nav-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a></li>
+         <li class="nav-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a></li>
+         <li class="nav-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
+        </ul>
+       </div>
+      </div><!-- row -->
+     </div><!-- container -->
+     <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://blueprintkansas.org/">Blueprint Kansas</a>
+     </div>
     </footer>
     {% endblock %}
 
