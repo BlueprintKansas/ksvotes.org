@@ -17,5 +17,5 @@ with open('translations.json') as jsonfile:
         es_txt = entry['es']
         en_po.write("msgid \"%s\"\n" %(msgid))
         es_po.write("msgid \"%s\"\n" %(msgid))
-        en_po.write("msgstr \"%s\"\n\n" %(en_txt.encode('unicode_escape').decode('utf-8')))
-        es_po.write("msgstr \"%s\"\n\n" %(es_txt.encode('unicode_escape').decode('utf-8')))
+        en_po.write("msgstr \"%s\"\n\n" %(en_txt.replace("\n", "\\n")))
+        es_po.write("msgstr \"%s\"\n\n" %(es_txt.replace("\n", "\\n")))

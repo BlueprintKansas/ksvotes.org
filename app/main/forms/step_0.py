@@ -9,15 +9,15 @@ import os
 import re
 
 class FormStep0(FlaskForm):
-    name_first = StringField(lazy_gettext('0_first'), validators=[DataRequired(message=lazy_gettext('Required'))])
-    name_last = StringField(lazy_gettext('0_last'), validators=[DataRequired(message=lazy_gettext('Required'))])
-    dob = StringField(lazy_gettext('0_dob'), validators=[DataRequired(message=lazy_gettext('Required')), Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext('0_dob_flag'))])
-    county = SelectField(lazy_gettext('0_county'),
-                         validators=[DataRequired(message=lazy_gettext('Required'))],
-                         choices=construct_county_choices(lazy_gettext('0_county'))
+    name_first = StringField(lazy_gettext(u'0_first'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
+    name_last = StringField(lazy_gettext(u'0_last'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
+    dob = StringField(lazy_gettext(u'0_dob'), validators=[DataRequired(message=lazy_gettext(u'Required')), Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext(u'0_dob_flag'))])
+    county = SelectField(lazy_gettext(u'0_county'),
+                         validators=[DataRequired(message=lazy_gettext(u'Required'))],
+                         choices=construct_county_choices(lazy_gettext(u'0_county'))
                          )
-    email = StringField(lazy_gettext('0_email'), validators=[DataRequired(message=lazy_gettext('Required')), Email(message=lazy_gettext('0_email_flag'))])
-    phone = StringField(lazy_gettext('0_phone'), validators=[Optional(), Regexp('^\d{3}[\-\.]?\d{3}[\-\.]?\d{4}$', message=lazy_gettext('0_phone_help'))])
+    email = StringField(lazy_gettext(u'0_email'), validators=[DataRequired(message=lazy_gettext(u'Required')), Email(message=lazy_gettext(u'0_email_flag'))])
+    phone = StringField(lazy_gettext(u'0_phone'), validators=[Optional(), Regexp('^\d{3}[\-\.]?\d{3}[\-\.]?\d{4}$', message=lazy_gettext(u'0_phone_help'))])
 
     if os.getenv('RECAPTCHA_KEY'):
         recaptcha = RecaptchaField()
@@ -28,6 +28,6 @@ class FormStep0(FlaskForm):
         time_dob = datetime.datetime.strptime(dob, '%m%d%Y')
         diff = relativedelta(time_now, time_dob).years
         if diff <= 15:
-            field.errors.append(lazy_gettext('0_dob_help'))
+            field.errors.append(lazy_gettext(u'0_dob_help'))
             return False
         return True
