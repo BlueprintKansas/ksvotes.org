@@ -96,11 +96,14 @@
      </div>
      {% endif %}
 
-     <div id="main-content">
-      {% block content %}
+     {% block content %}
+      {% if use_hero %}
+        {{ super() }}
+      {% else %}
+        <div id="main-content">{{ super() }}</div>
+      {% endif %}
+     {% endblock %}
 
-      {% endblock %}
-     </div>
     </main>
 
     {% block footer %}
