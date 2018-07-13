@@ -26,8 +26,8 @@ def construct_county_choices(default):
 
 def list_of_elections():
     elect_list = [('','')]
-    elect_list.append((lazy_gettext('1AB_select_election_primary'), lazy_gettext('1AB_select_election_primary')))
-    elect_list.append((lazy_gettext('1AB_select_election_general'), lazy_gettext('1AB_select_election_general')))
+    elect_list.append((lazy_gettext(u'1AB_select_election_primary'), lazy_gettext(u'1AB_select_election_primary')))
+    elect_list.append((lazy_gettext(u'1AB_select_election_general'), lazy_gettext(u'1AB_select_election_general')))
     return elect_list
 
 class RequiredIfBool(DataRequired):

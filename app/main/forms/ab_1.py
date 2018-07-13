@@ -34,14 +34,14 @@ class OptionalUnlessFieldContains(Optional):
 
 
 class FormAB1(FlaskForm):
-    elections = Select2MultipleField(lazy_gettext('1AB_select_election'),
+    elections = Select2MultipleField(lazy_gettext(u'1AB_select_election'),
         choices=list_of_elections(),
         render_kw={"multiple": "multiple"},
-        validators=[DataRequired(message=lazy_gettext('Required'))]
+        validators=[DataRequired(message=lazy_gettext(u'Required'))]
         )
 
-    party = SelectField(lazy_gettext('1AB_select_party'),
-        choices=[('', lazy_gettext('1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
+    party = SelectField(lazy_gettext(u'1AB_select_party'),
+        choices=[('', lazy_gettext(u'1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
         validators=[OptionalUnlessFieldContains('elections', 'Primary')]
         )
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-13 08:59-0500\n"
+"POT-Creation-Date: 2018-07-13 14:39-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -381,6 +381,10 @@ msgstr ""
 msgid "7_affirm_help"
 msgstr ""
 
+#: app/templates/ab/affirmation.html:41 app/templates/vr/affirmation.html:39
+msgid "7_clerk_send_to"
+msgstr ""
+
 #: app/templates/ab/election_picker.html:3
 msgid "AB1_title"
 msgstr ""
@@ -428,6 +432,10 @@ msgstr ""
 
 #: app/templates/ab/submission.html:8
 msgid "AB8_confirm"
+msgstr ""
+
+#: app/templates/ab/submission.html:11 app/templates/vr/submission.html:10
+msgid "8_clerk_sent_to"
 msgstr ""
 
 #: app/templates/vr/address.html:76

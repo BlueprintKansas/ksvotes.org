@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired
 from flask_babel import lazy_gettext
 
 class FormVR1(FlaskForm):
-    is_citizen = BooleanField(lazy_gettext('1VR_citizen'), validators=[DataRequired(message=lazy_gettext('Required'))])
-    is_eighteen = BooleanField(lazy_gettext('1VR_18'))
+    is_citizen = BooleanField(lazy_gettext(u'1VR_citizen'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
+    is_eighteen = BooleanField(lazy_gettext(u'1VR_18'))
