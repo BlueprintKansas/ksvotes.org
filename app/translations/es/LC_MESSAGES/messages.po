@@ -363,3 +363,9 @@ msgstr "Signature"
 msgid "7_legend"
 msgstr "Affirmation"
 
+msgid "7_clerk_send_to"
+msgstr "Your application(s) will be sent to:"
+
+msgid "8_clerk_sent_to"
+msgstr "Your application(s) were sent to:"
+
