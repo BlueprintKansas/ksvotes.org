@@ -5,17 +5,17 @@
 
 {% block content %}
 <section id="hero">
+ <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_CMYK.png')}}" alt="hero ksvotes" />
  <div class="jumbotron">
   <div class="container text-center">
    <div class="row">
     <div class="col-md-12">
-     <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_CMYK.png')}}" alt="hero ksvotes" />
      <div class="splash">
       <h1 class="h1-responsive">{{_('0_title')}}</h1>
       <p class="lead">{{_('0_lead')}}</p>
       <hr class="my-2">
       <p>{{_('0_intro')}}</p>
-      <a href="#step_0" class="icon"><i class="fa fa-angle-down fa-lg"></i></a>
+      <a id="arrow-down" href="#step_0" class="icon"><i class="fa fa-angle-down fa-lg"></i></a>
     </div>
    </div>
   </div>
@@ -152,7 +152,16 @@ $(function () {
       return true; // no actual check, just normalize
     }
   });
-  form.parsley()
+  form.parsley();
+
+  // smooth scroll effect
+  $('#arrow-down').click(function() {
+    let tag = $(this);
+    let scrollTarget = tag.attr('href');
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $(scrollTarget).offset().top
+    }, 1000);
+  });
 });
 
 </script>

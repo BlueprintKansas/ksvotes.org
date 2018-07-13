@@ -31,8 +31,17 @@ footer {
 
 #hero {
   img.logo {
+    max-height: 124px;
     margin-left: auto;
     margin-right: auto;
+  }
+  .jumbotron {
+    background: url(../img/KSVotes_Hero.png) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
   }
 }
 
