@@ -1,0 +1,28 @@
+<table class="clerk-details">
+ <tbody>
+  <tr>
+   <th>County</th><td>{{clerk.county}}</td>
+  </tr>
+  <tr>
+   <th>Officer</th><td>{{clerk.officer}}</td>
+  </tr>
+  <tr>
+   <th>Email</th><td>{{clerk.email}}</td>
+  </tr>
+  <tr>
+   <th>Phone</th><td>{{clerk.phone}}</td>
+  </tr>
+  <tr>
+   <th>Fax</th><td>{{clerk.fax}}</td>
+  </tr>
+  <tr>
+   <th>Address</th>
+   <td>{{clerk.address1}}<br/>
+       {% if clerk.address2 %}
+       {{clerk.address2}}<br/>
+       {% endif %}
+       {{clerk.city}}, {{clerk.state}}, {{clerk.zip}}
+   </td>
+  </tr>
+ </tbody>
+</table>

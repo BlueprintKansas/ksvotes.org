@@ -202,3 +202,18 @@ form {
   display: none;
   z-index: 1001;
 }
+
+div.clerk-details {
+  margin: 12px;
+}
+
+table.clerk-details {
+  th, td {
+    padding: 4px 8px;
+    vertical-align: top;
+  }
+  th {
+    text-align: right;
+  }
+}
+  
