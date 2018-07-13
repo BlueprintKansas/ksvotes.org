@@ -324,11 +324,20 @@ msgstr "Phone"
 msgid "7_affirm_header"
 msgstr "I affirm that:"
 
+msgid "7_affirm_help"
+msgstr "Checking the box means you agree with the Affirmation."
+
 msgid "7_affirm"
 msgstr "I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name."
 
+msgid "AB7_affirm"
+msgstr "I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated."
+
 msgid "8_confirm"
 msgstr "Thank you.\nWe have submitted your application.\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), or check your status online here\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\nThank you!\n\nThe KSVotes.org Team"
+
+msgid "AB8_confirm"
+msgstr "Thank you. Your advanced ballot application(s) have been submitted. You should receive a copy of the email soon."
 
 msgid "9_confirm_email"
 msgstr "Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team"

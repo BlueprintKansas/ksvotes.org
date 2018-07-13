@@ -122,7 +122,9 @@ Or, if the information below is fully up-to-date, click here to <apply to vote b
 7,county_email,7_county_email,EMAIL,Email,
 7,county_phone,7_county_phone,PHONE,Phone,
 7,affirm_header,7_affirm_header,"I affirm that:","I affirm that:",
+7,affirm_help,7_affirm_help,,Checking the box means you agree with the Affirmation.,
 7,affirm,7_affirm,"I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name.","I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name.",
+AB7,affirm,AB7_affirm,,"I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated.",
 8,confirm,8_confirm,"Thank you.
 We have submitted your application.
 Thank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.
@@ -138,6 +140,7 @@ If you have any questions, please call Kate Davis of Blueprint Kansas at 785-414
 Thank you!
 
 The KSVotes.org Team",
+AB8,confirm,AB8_confirm,,"Thank you. Your advanced ballot application(s) have been submitted. You should receive a copy of the email soon.",
 9,confirm_email,9_confirm_email,"Dear Kate,
 Thank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.
 

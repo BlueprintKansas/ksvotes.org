@@ -23,12 +23,16 @@
               form.party,
               _('1AB_party_help'),
               {
+                'data-parsley-trigger':'focusout',
+                'data-parsley-required-message': _('Required')
               }
               )}}
         </div>
 
         <div class="text-right mt-4">
-          <button class="btn btn-outline-default" type="submit"><i class="fa fa-spinner fa-spin loading mr-2"></i><i class="fa checkmark fa-check mr-2"></i> Next </button>
+           <button id="submit-btn" class="btn btn-outline-default" type="submit">
+             <i class="fa checkmark fa-check mr-2"></i>{{_('btn_next')}}
+           </button>
         </div>
 
       </form>
@@ -41,10 +45,10 @@
 <script>
 $(function () {
   //initialize form with parsley validation
-  var form = $('#step_ab1');
-  form.parsley();
+  let $form = $('#step_ab1');
+  $form.parsley();
 
-  // toggle party select visibility if elections contains a primary
+  // toggle party select visibility/requirement if elections contains a primary
   let $party_picker = $('#party-picker');
   $party_picker.hide();
   $('#elections').select2({
@@ -53,13 +57,31 @@ $(function () {
   $('#elections').on('select2:select', function(e) {
     let payload = e.params.data;
     if (payload.text.match(/Primary/)) {
+      $('#party').attr("required", true);
       $party_picker.show();
     }
   });
   $('#elections').on('select2:unselect', function(e) {
     let payload = e.params.data;
     if (payload.text.match(/Primary/)) {
+      $('#party').removeAttr("required");
       $party_picker.hide();
+    }
+  });
+  // party required if primary election
+  $('#submit-btn').click(function(ev) {
+    let hasPrimary = false;
+    $.each($('#elections').val(), function(idx, v) {
+      if (v.match(/Primary/)) {
+        hasPrimary = true;
+      }
+    });
+    if (hasPrimary) {
+      if ($('#party').val() == "") {
+        $form.parsley().validate();
+        ev.preventDefault();
+        return false;
+      }
     }
   });
 

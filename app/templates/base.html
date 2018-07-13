@@ -148,9 +148,15 @@
     <script type="text/javascript">
       $(document).ready(function() {
         $('form').submit(function(ev) {
-          var $mask = $('#mask');
-          $mask.show();
-          $mask.ploading({ action: 'show' });
+          var $form = $(this);
+          $form.parsley().validate();
+          if ($form.parsley().isValid()) {
+            var $mask = $('#mask');
+            $mask.show();
+            $mask.ploading({ action: 'show' });
+          } else {
+            ev.preventDefault();
+          }
         });
       });
     </script>

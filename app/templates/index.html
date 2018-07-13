@@ -100,6 +100,8 @@
                 'data-parsley-trigger': 'focusout',
                 'data-parsley-pattern': '/^\d{3}[\-\.]?\d{3}[\-\.]?\d{4}$/',
                 'data-parsley-pattern-message': _('0_phone_flag'),
+                'data-parsley-phone-limit':"true",
+                'data-parsley-phone-limit-message': _('0_dob_flag'),
                 'placeholder': 'xxx-xxx-xxxx',
               }
               )}}
@@ -140,7 +142,16 @@ $(function () {
       $('#dob').val(dob); // normalize input
       return true;
     }
-  })
+  });
+  window.Parsley.addValidator('phoneLimit', {
+    requirementType: 'string',
+    validateString: function(value) {
+      var phone_parts = value.match(/^(\d{3})[\.\-]?(\d{3})[\.\-]?(\d{4})$/);
+      phone_parts.shift();
+      $('#phone').val(phone_parts.join('-')); // normalize
+      return true; // no actual check, just normalize
+    }
+  });
   form.parsley()
 });
 
