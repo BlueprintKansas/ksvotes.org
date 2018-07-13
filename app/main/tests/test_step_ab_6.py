@@ -14,7 +14,7 @@ def create_registrant(db_session):
             "state": "KANSAS",
             "zip": "66044",
             "identification": "nnnnn",
-            "elections": "General",
+            "elections": "General (11/7/2018)",
         },
         county="Douglas",
         reg_lookup_complete = True,
