@@ -24,7 +24,7 @@ class NVRISClient():
         #print("payload: %s" %(payload)) # debug only -- no PII in logs
         return self.fetch_nvris_img(url, payload)
 
-    def get_ab_form(self):
+    def get_ab_form(self, election):
         if self.nvris_url == 'TESTING': # magic URL for testing mode
             return signature_img_string
 
@@ -36,7 +36,7 @@ class NVRISClient():
         url = self.nvris_url + '/av/' + flavor
 
         current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
-        payload = self.marshall_payload(flavor)
+        payload = self.marshall_payload(flavor, election=election)
 
         #print("payload: %s" %(payload)) # debug only -- no PII in logs
         return self.fetch_nvris_img(url, payload)
@@ -53,11 +53,11 @@ class NVRISClient():
             return None
         return resp_payload['img']
 
-    def marshall_payload(self, flavor):
+    def marshall_payload(self, flavor, **kwargs):
         if flavor == 'vr':
             payload = self.marshall_vr_payload()
         elif flavor == 'ksav1':
-            payload = self.marshall_ksav1_payload()
+            payload = self.marshall_ksav1_payload(**kwargs)
         elif flavor == 'ksav2':
             payload = self.marshall_ksav2_payload()
         else:
@@ -69,7 +69,14 @@ class NVRISClient():
 
         return payload
 
-    def marshall_ksav1_payload(self):
+    def parse_election_date(self, election):
+        import re
+        pattern = '(Primary|General) \((.+)\)'
+        m = re.match(pattern, election)
+        return m.group(2)
+
+    def marshall_ksav1_payload(self, **kwargs):
+        election = kwargs['election']
         r = self.registrant
         return {
             'state': 'Kansas', # TODO r.try_value('state'),
@@ -88,7 +95,7 @@ class NVRISClient():
             'mailing_city': r.try_value('mail_city'),
             'mailing_state': r.try_value('mail_state'),
             'mailing_zip': r.try_value('mail_zip'),
-            'election_date': r.try_value('tmp_election_date'),
+            'election_date': self.parse_election_date(election),
             'signature': r.try_value('signature_string', None),
             'signature_date': r.signed_at.strftime('%m/%d/%Y'),
             'phone_number': r.try_value('phone'),

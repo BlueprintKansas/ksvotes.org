@@ -16,10 +16,10 @@ def ab7_affirmation():
     form = FormAB7()
 
     # if we don't have a AB form to affirm, redirect to Step 0
-    if not reg.try_value('ab_form', False):
+    if not reg.try_value('ab_forms', False):
         return redirect(url_for('main.index'))
 
-    vr_form = reg.try_value('ab_form')
+    ab_forms = reg.try_value('ab_forms')
 
     if request.method == "POST" and form.validate_on_submit():
         step = Step_AB_7(form.data)
@@ -28,10 +28,11 @@ def ab7_affirmation():
             reg.last_completed_step = 7
             reg.save(db.session)
 
-            mailer = CountyMailer(reg, vr_form)
-            mailer.send()
+            for ab_form in ab_forms:
+                mailer = CountyMailer(reg, ab_form)
+                mailer.send()
 
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
-    return render_template('ab/affirmation.html', preview_img=vr_form, registrant=reg, form=form)
+    return render_template('ab/affirmation.html', preview_imgs=ab_forms, registrant=reg, form=form)

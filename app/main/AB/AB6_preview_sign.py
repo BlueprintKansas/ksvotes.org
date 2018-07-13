@@ -24,15 +24,24 @@ def ab6_preview_sign():
             reg.update(form.data)
 
             # sign the form and cache the image for next step
-            # TODO one form for each election(s)
-            signed_ab_form = nvris_client.get_ab_form()
-            if signed_ab_form:
-                reg.update({'ab_form':signed_ab_form})
+            ab_forms = []
+            for election in reg.try_value('elections').split('|'):
+                signed_ab_form = nvris_client.get_ab_form(election)
+                if signed_ab_form:
+                    ab_forms.append(signed_ab_form)
+
+            if len(ab_forms) > 0:
+                reg.update({'ab_forms':ab_forms})
                 reg.save(db.session)
                 session_manager = SessionManager(reg, step)
                 return redirect(session_manager.get_redirect_url())
 
     # always generate a new unsigned form for preview
-    preview_img = nvris_client.get_ab_form()
-    return render_template('ab/preview-sign.html', preview_img=preview_img, registrant=reg, form=form)
+    preview_imgs = []
+    for election in reg.try_value('elections').split('|'):
+        preview_img = nvris_client.get_ab_form(election)
+        if preview_img:
+            preview_imgs.append(preview_img)
+
+    return render_template('ab/preview-sign.html', preview_imgs=preview_imgs, registrant=reg, form=form)
 
