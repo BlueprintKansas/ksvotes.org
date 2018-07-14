@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, g, abort
+from flask_sslify import SSLify
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel
 from config import config, LANGUAGES
@@ -19,7 +20,10 @@ def create_app(script_info):
     os.environ['FLASK_ENV'] = config_name
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    app.config['NAV'] = os.getenv('NAV')
+
+    if not app.testing and not app.debug and not app.config['SSL_DISABLE']:
+        sslify = SSLify(app, permanent=True)
+
     config[config_name].init_app(app)
     db.init_app(app)
     babel.init_app(app)
