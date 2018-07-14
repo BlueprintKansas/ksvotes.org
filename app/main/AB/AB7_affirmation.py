@@ -29,7 +29,7 @@ def ab7_affirmation():
             reg.save(db.session)
 
             for ab_form in ab_forms:
-                mailer = CountyMailer(reg, ab_form)
+                mailer = CountyMailer(reg, ab_form, "New Advance Ballot application(s) for {}".format(reg.name()))
                 mailer.send()
 
             session_manager = SessionManager(reg, step)

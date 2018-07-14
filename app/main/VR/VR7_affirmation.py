@@ -28,7 +28,7 @@ def vr7_affirmation():
             reg.last_completed_step = 7
             reg.save(db.session)
 
-            mailer = CountyMailer(reg, vr_form)
+            mailer = CountyMailer(reg, vr_form, "New Voter Registration for {}".format(reg.name()))
             mailer.send()
 
             session_manager = SessionManager(reg, step)
