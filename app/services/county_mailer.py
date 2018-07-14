@@ -1,5 +1,4 @@
 from flask import current_app
-from flask_babel import lazy_gettext
 from app.models import Clerk
 import hashlib
 import base64
@@ -10,13 +9,14 @@ import boto3
 
 class CountyMailer():
 
-    def __init__(self, registrant, form_imgs, subject):
+    def __init__(self, registrant, form_imgs, subject, body):
         self.registrant = registrant
         self.form_imgs = form_imgs
         self.clerk = Clerk.find_by_county(registrant.county)
         if self.clerk == None:
             raise Exception("No Clerk for County %s" %(registrant.county))
         self.subject = subject
+        self.body = body
 
     def send(self):
         current_app.logger.info("%s SEND mail to %s" %(self.registrant.session_id, self.clerk.email))
@@ -52,7 +52,7 @@ class CountyMailer():
         recip_cc = kwargs['cc'] if 'cc' in kwargs else []
         recip_bcc = kwargs['bcc'] if 'bcc' in kwargs else []
         subject = kwargs['subject'] if 'subject' in kwargs else ''
-        body = kwargs['body'] if 'body' in kwargs else lazy_gettext(u'9_confirm_email')
+        body = kwargs['body'] if 'body' in kwargs else self.body
         attachments = kwargs['attach'] if 'attach' in kwargs else None
         if not attachments:
             raise('attach required')
