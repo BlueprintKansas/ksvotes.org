@@ -11,6 +11,11 @@ class Config:
     RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_KEY')
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET')
     BABEL_DEFAULT_LOCALE = 'en'
+    EMAIL_FROM = os.getenv('EMAIL_FROM', 'noreply@ksvotes.org')
+    AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    SEND_EMAIL = os.getenv('SEND_EMAIL')
 
     @staticmethod
     def init_app(app):
@@ -26,6 +31,7 @@ class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("TESTING_DATABASE_URL")
     WTF_CSRF_ENABLED = False
+    SQLALCHEMY_ECHO = True if os.getenv('SQL_DEBUG') else False
 
 class ProductionConfig(Config):
     JSONIFY_PRETTYPRINT_REGULAR = False

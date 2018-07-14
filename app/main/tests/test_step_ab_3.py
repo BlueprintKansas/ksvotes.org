@@ -9,7 +9,7 @@ def create_registrant(db_session):
             "email": "foo@example.com",
             "elections": "General",
         },
-        county="Douglas",
+        county="TEST",
         reg_lookup_complete = True,
         is_citizen=True
     )

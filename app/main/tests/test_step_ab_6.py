@@ -16,7 +16,7 @@ def create_registrant(db_session):
             "identification": "nnnnn",
             "elections": "General (11/7/2018)",
         },
-        county="Douglas",
+        county="TEST",
         reg_lookup_complete = True,
         addr_lookup_complete = True,
         is_citizen=True,

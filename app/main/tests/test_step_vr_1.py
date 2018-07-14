@@ -8,7 +8,7 @@ def create_registrant(db_session):
             "dob":"01/01/2000",
             "email":"foo@example.com",
         },
-        county="Douglas",
+        county="TEST",
         reg_lookup_complete = True,
     )
     db_session.add(registrant)

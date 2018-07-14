@@ -46,3 +46,23 @@ def test_registrant_doesnt_have_values(app, db_session, client):
 
     session_manager = SessionManager(registrant, step)
     assert session_manager.get_redirect_url() == '/'
+
+def test_completion_logic(app, db_session, client):
+    registrant = create_registrant(db_session)
+    step = Step_0()
+    session_manager = SessionManager(registrant, step)
+    assert session_manager.vr_completed() == False
+    assert session_manager.ab_completed() == False
+
+    registrant.last_completed_step = 7
+    registrant.update({'vr_form':'foobar'})
+    registrant.save(db_session)
+    session_manager = SessionManager(registrant, step)
+    assert session_manager.vr_completed() == True
+    assert session_manager.ab_completed() == False
+
+    registrant.update({'ab_forms':'foobar'})
+    registrant.save(db_session)
+    session_manager = SessionManager(registrant, step)
+    assert session_manager.vr_completed() == True
+    assert session_manager.ab_completed() == True

@@ -105,6 +105,9 @@ class Registrant(db.Model):
 		else:
 			return None
 
+	def name(self):
+		return "{} {}".format(self.try_value('name_first'), self.try_value('name_last'))
+
 	#defaults
 
 	# registration JSON column encrypted and includes

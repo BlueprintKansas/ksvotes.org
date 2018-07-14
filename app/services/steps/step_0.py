@@ -30,6 +30,8 @@ class Step_0(Step):
 		return True
 
 	def lookup_registration(self, name_first, name_last, dob, county):
+		if county == 'TEST':
+			return False
 		kmvi = ksmyvoteinfo.KsMyVoteInfo()
 		dob = dob.split('/')
 		formatted_dob = "{year}-{month}-{day}".format(year=dob[2], month=dob[0], day=dob[1])

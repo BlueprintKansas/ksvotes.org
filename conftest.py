@@ -4,6 +4,7 @@ import pytest
 
 from app import create_app
 from app import db as _db
+from app.models import Clerk
 from sqlalchemy import event
 from sqlalchemy.orm import sessionmaker
 
@@ -28,6 +29,7 @@ def db(app, request):
     with app.app_context():
         _db.drop_all()
         _db.create_all()
+        Clerk.load_fixtures()
 
 @pytest.fixture(scope="function")
 def client(app, request):

@@ -6,21 +6,21 @@ def test_db_connection(app, db_session, client):
 
 def test_insert_get_clerk(app, db_session, client):
     new_clerk = Clerk(
-            county = "foo",
-            officer = "bar",
-            email = "foo@bar.com",
-            phone = "5555555555",
-            fax = "5555555555",
-            address1 = "123 fake st",
-            address2 = "ste 107",
-            city = "springfield",
-            state = "KANSAS",
-            zip = "55555",
+        county = "foo",
+        officer = "bar",
+        email = "foo@bar.com",
+        phone = "5555555555",
+        fax = "5555555555",
+        address1 = "123 fake st",
+        address2 = "ste 107",
+        city = "springfield",
+        state = "KANSAS",
+        zip = "55555",
     )
     db_session.add(new_clerk)
     db_session.commit()
-    clerk = db_session.query(Clerk).first()
-    assert clerk.county == "foo"
+    clerk = Clerk.find_by_county('foo')
+    assert clerk.officer == 'bar'
 
 def test_insert_get_registrant_start(app, db_session, client):
     #data should be dictionary

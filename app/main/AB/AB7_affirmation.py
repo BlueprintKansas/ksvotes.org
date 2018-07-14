@@ -1,5 +1,6 @@
 from app.main import main
 from flask import g, url_for, render_template, redirect, request
+from flask_babel import lazy_gettext
 from app import db
 from app.models import Registrant, Clerk
 from app.decorators import InSession
@@ -28,9 +29,11 @@ def ab7_affirmation():
             reg.last_completed_step = 7
             reg.save(db.session)
 
-            for ab_form in ab_forms:
-                mailer = CountyMailer(reg, ab_form)
-                mailer.send()
+            body = lazy_gettext(u'9_confirm_email')
+            mailer = CountyMailer(reg, 'ab_forms', body)
+            r = mailer.send()
+            reg.update({'ab_forms_message_id': r['MessageId']})
+            reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())

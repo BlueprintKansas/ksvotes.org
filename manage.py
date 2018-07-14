@@ -42,25 +42,7 @@ def list_routes():
 
 @manager.command
 def load_clerks():
-    import csv
-    with open('county-clerks.csv', newline="\n") as csvfile:
-        next(csvfile)  # skip headers
-        # GEOCODE_FORMAT,COUNTY,OFFICER,EMAIL,HOURS,PHONE,FAX,ADDRESS1,ADDRESS2,CITY,STATE,ZIP
-        csvreader = csv.reader(csvfile)
-        for row in csvreader:
-            ucfirst_county = row[1][0] + row[1][1:].lower()
-            clerk = Clerk.find_or_create_by(county=ucfirst_county)
-            clerk.officer = row[2]
-            clerk.email = row[3]
-            clerk.phone = row[5]
-            clerk.fax = row[6]
-            clerk.address1 = row[7]
-            clerk.address2 = row[8]
-            clerk.city = row[9]
-            clerk.state = row[10]
-            clerk.zip = row[11]
-            clerk.save(db.session)
-
+    Clerk.load_fixtures()
 
 if __name__ == "__main__":
     write_pid_file()
