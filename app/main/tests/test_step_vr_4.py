@@ -13,7 +13,7 @@ def create_registrant(db_session):
             "state": "KANSAS",
             "zip": "66044"
         },
-        county="Douglas",
+        county="TEST",
         reg_lookup_complete = True,
         addr_lookup_complete = True,
         is_citizen=True

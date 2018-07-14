@@ -18,12 +18,16 @@ class CountyMailer():
         self.clerk = Clerk.find_by_county(registrant.county)
         if self.clerk == None:
             raise Exception("No Clerk for County %s" %(registrant.county))
-        if form_imgs == 'ab_forms':
-            subject = "New Advance Ballot application(s) for {}".format(registrant.name())
-        elif form_imgs == 'vb_form':
-            subject = "New Voter Registration for {}".format(registrant.name())
-        self.subject = subject
+        self.set_subject(form_imgs)
         self.body = body
+
+    def set_subject(self, form_imgs):
+        subject = 'No Subject'
+        if form_imgs == 'ab_forms':
+            subject = "New Advance Ballot application(s) for {}".format(self.registrant.name())
+        elif form_imgs == 'vb_form':
+            subject = "New Voter Registration for {}".format(self.registrant.name())
+        self.subject = subject
 
     def clerk_email(self):
         if self.clerk.county == 'TEST':
@@ -43,7 +47,7 @@ class CountyMailer():
         )
         r = self.send_msg(msg, current_app.config['EMAIL_FROM'])
         current_app.logger.info("%s SENT %s" %(self.registrant.session_id, r))
-        return True
+        return r
 
     def build_attachments(self):
         attachments = []

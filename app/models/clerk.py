@@ -34,3 +34,39 @@ class Clerk(db.Model):
         else:
             clerk = cls(**kwargs)
             return clerk
+
+    @classmethod
+    def load_fixtures(cls):
+        import os
+        import csv
+        from flask import current_app
+        csv_file = 'county-clerks.csv'
+        with open(csv_file, newline="\n") as csvfile:
+            next(csvfile)  # skip headers
+            # GEOCODE_FORMAT,COUNTY,OFFICER,EMAIL,HOURS,PHONE,FAX,ADDRESS1,ADDRESS2,CITY,STATE,ZIP
+            csvreader = csv.reader(csvfile)
+            for row in csvreader:
+                ucfirst_county = row[1][0] + row[1][1:].lower()
+                clerk = Clerk.find_or_create_by(county=ucfirst_county)
+                clerk.officer = row[2]
+                clerk.email = row[3]
+                clerk.phone = row[5]
+                clerk.fax = row[6]
+                clerk.address1 = row[7]
+                clerk.address2 = row[8]
+                clerk.city = row[9]
+                clerk.state = row[10]
+                clerk.zip = row[11]
+                clerk.save(db.session)
+    
+        # add the TEST fixture
+        test_clerk = Clerk.find_or_create_by(county='TEST')
+        test_clerk.email = 'registration@ksvotes.org'
+        test_clerk.phone = 'test'
+        test_clerk.fax = 'test'
+        test_clerk.officer = 'test'
+        test_clerk.address1 = 'test'
+        test_clerk.city = 'test'
+        test_clerk.state = 'KS'
+        test_clerk.zip = 'test'
+        test_clerk.save(db.session)

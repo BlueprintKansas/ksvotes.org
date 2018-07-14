@@ -31,7 +31,9 @@ def vr7_affirmation():
 
             body = lazy_gettext(u'9_confirm_email')
             mailer = CountyMailer(reg, 'vr_form', body)
-            mailer.send()
+            r = mailer.send()
+            reg.update({'vr_form_message_id': r['MessageId']})
+            reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())

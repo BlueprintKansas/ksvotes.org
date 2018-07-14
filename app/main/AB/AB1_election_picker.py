@@ -14,7 +14,8 @@ def ab1_election_picker():
         step = Step_AB_1(form.data)
         if step.run():
             g.registrant.update(form.data)
-            db.session.commit()
+            g.registrant.last_completed_step = 1
+            g.registrant.save(db.session)
             session_manager = SessionManager(g.registrant, step)
             return redirect(session_manager.get_redirect_url())
 

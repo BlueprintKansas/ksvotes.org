@@ -31,7 +31,9 @@ def ab7_affirmation():
 
             body = lazy_gettext(u'9_confirm_email')
             mailer = CountyMailer(reg, 'ab_forms', body)
-            mailer.send()
+            r = mailer.send()
+            reg.update({'ab_forms_message_id': r['MessageId']})
+            reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())

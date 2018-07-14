@@ -14,7 +14,7 @@ def create_registrant(db_session):
             "zip": "66044",
             "elections": "General"
         },
-        county="Douglas",
+        county="TEST",
         reg_lookup_complete = True,
         addr_lookup_complete = True,
         is_citizen=True,

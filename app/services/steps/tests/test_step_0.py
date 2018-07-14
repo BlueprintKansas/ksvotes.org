@@ -23,7 +23,7 @@ def test_step_0_is_complete_true_and_none_registered(app,db_session,client):
         "name_last": "bar",
         "dob":"01/01/2000",
         "email":"foo@example.com",
-        "county": "Douglas"
+        "county": "TEST"
     }
     step = Step_0(form_payload)
     assert step.run() == True
@@ -39,7 +39,7 @@ def test_step_0_is_complete_true_and_already_registered(app,db_session,client):
         "name_last": "Kobach",
         "dob":"03/26/1966",
         "email":"foo@example.com",
-        "county": "Douglas"
+        "county": "TEST"
     }
     step = Step_0(form_payload)
     assert step.run() == True
