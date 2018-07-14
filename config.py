@@ -31,6 +31,7 @@ class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("TESTING_DATABASE_URL")
     WTF_CSRF_ENABLED = False
+    SQLALCHEMY_ECHO = True if os.getenv('SQL_DEBUG') else False
 
 class ProductionConfig(Config):
     JSONIFY_PRETTYPRINT_REGULAR = False

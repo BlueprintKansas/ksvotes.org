@@ -67,7 +67,7 @@ def test_registered_voter_input_returns_redirect_change_or_apply(app, db_session
         "name_last": "Kobach",
         "dob":"03/26/1966",
         "email":"foo@example.com",
-        "county": "TEST"
+        "county": "Douglas"
     }
     with client.session_transaction() as http_session:
         assert http_session.get('session_id') == None
