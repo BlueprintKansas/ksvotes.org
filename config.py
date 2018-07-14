@@ -11,10 +11,11 @@ class Config:
     RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_KEY')
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET')
     BABEL_DEFAULT_LOCALE = 'en'
-    SES_EMAIL_FROM = 'noreply@ksvotes.org'
+    SES_EMAIL_FROM = os.getenv('EMAIL_FROM', 'noreply@ksvotes.org')
     AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    SEND_EMAIL = os.getenv('SEND_EMAIL')
 
     @staticmethod
     def init_app(app):

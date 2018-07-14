@@ -61,6 +61,18 @@ def load_clerks():
             clerk.zip = row[11]
             clerk.save(db.session)
 
+    # add the TEST fixture
+    test_clerk = Clerk.find_or_create_by(county='TEST')
+    test_clerk.email = 'registration@ksvotes.org'
+    test_clerk.phone = 'test'
+    test_clerk.fax = 'test'
+    test_clerk.officer = 'test'
+    test_clerk.address1 = 'test'
+    test_clerk.city = 'test'
+    test_clerk.state = 'KS'
+    test_clerk.zip = 'test'
+    test_clerk.save(db.session)
+
 
 if __name__ == "__main__":
     write_pid_file()

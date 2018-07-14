@@ -1,5 +1,6 @@
 from flask import current_app
 from app.models import Clerk
+import os
 import hashlib
 import base64
 from email.mime.application import MIMEApplication
@@ -9,18 +10,30 @@ import boto3
 
 class CountyMailer():
 
-    def __init__(self, registrant, form_imgs, subject, body):
+    def __init__(self, registrant, form_imgs, body):
         self.registrant = registrant
-        self.form_imgs = form_imgs
+        self.form_imgs = registrant.try_value(form_imgs)
+        if isinstance(self.form_imgs, str):
+            self.form_imgs = [self.form_imgs]
         self.clerk = Clerk.find_by_county(registrant.county)
         if self.clerk == None:
             raise Exception("No Clerk for County %s" %(registrant.county))
+        if form_imgs == 'ab_forms':
+            subject = "New Advance Ballot application(s) for {}".format(registrant.name())
+        elif form_imgs == 'vb_form':
+            subject = "New Voter Registration for {}".format(registrant.name())
         self.subject = subject
         self.body = body
 
+    def clerk_email(self):
+        if self.clerk.county == 'TEST':
+            return os.getenv('TEST_CLERK_EMAIL', self.clerk.email)
+        else:
+            return self.clerk.email
+
     def send(self):
-        current_app.logger.info("%s SEND mail to %s" %(self.registrant.session_id, self.clerk.email))
-        to = [self.clerk.email]
+        current_app.logger.info("%s SEND mail to %s" %(self.registrant.session_id, self.clerk_email()))
+        to = [self.clerk_email()]
         cc = [self.registrant.try_value('email')]
         msg = self.build_msg(
             attach=self.build_attachments(),
@@ -28,7 +41,7 @@ class CountyMailer():
             cc=cc,
             subject=self.subject,
         )
-        r = self.send_msg(msg, current_app.config['SES_EMAIL_FROM'])
+        r = self.send_msg(msg, current_app.config['EMAIL_FROM'])
         current_app.logger.info("%s SENT %s" %(self.registrant.session_id, r))
         return True
 
@@ -73,11 +86,11 @@ class CountyMailer():
 
         return msg
 
-    def send_msg(msg, sender):
+    def send_msg(self, msg, sender):
         msg['From'] = sender
         # no email sent unless explicitly configured.
         if not current_app.config['SEND_EMAIL']:
-            return {'msg': msg, 'MessageId': 'email-not-sent'}
+            return {'msg': msg, 'MessageId': 'set SEND_EMAIL env var to enable email'}
 
         ses = boto3.client('ses',
             region_name=current_app.config['AWS_DEFAULT_REGION'],

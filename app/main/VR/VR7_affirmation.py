@@ -30,8 +30,7 @@ def vr7_affirmation():
             reg.save(db.session)
 
             body = lazy_gettext(u'9_confirm_email')
-            subject = "New Voter Registration for {}".format(reg.name())
-            mailer = CountyMailer(reg, [vr_form], subject, body)
+            mailer = CountyMailer(reg, 'vr_form', body)
             mailer.send()
 
             session_manager = SessionManager(reg, step)

@@ -30,8 +30,7 @@ def ab7_affirmation():
             reg.save(db.session)
 
             body = lazy_gettext(u'9_confirm_email')
-            subject = "New Advance Ballot application(s) for {}".format(reg.name())
-            mailer = CountyMailer(reg, ab_forms, subject, body)
+            mailer = CountyMailer(reg, 'ab_forms', body)
             mailer.send()
 
             session_manager = SessionManager(reg, step)

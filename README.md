@@ -62,6 +62,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # AWS_SECRET_ACCESS_KEY={{from role with at least rds and an ses access}}
   # AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
   # NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
+  # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
+  # EMAIL_FROM={{override the From email header in all email}}
+  # SEND_EMAIL=true # default is not to send actual email unless this is present
   ```
 
 ### Migrate Database
