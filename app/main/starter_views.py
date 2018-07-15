@@ -25,6 +25,7 @@ def privacy():
 @InSession
 def index():
     registrant = g.get("registrant")
+    form = FormStep0()
     if http_session.get('ref'):
         form = FormStep0(ref = http_session.get('ref'))
     elif request.cookies.get('ref'):
