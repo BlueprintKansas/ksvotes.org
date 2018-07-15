@@ -29,13 +29,20 @@ def InSession(f):
 
             # edge case: a request "in the middle" of the flow.
             if not request_is_root():
-                current_app.logger.info("redirect to flow start")
+                current_app.logger.error("redirect to flow start")
                 if request.method == 'POST':
                     flash(lazy_gettext('session_interrupted_error'), 'warning')
                 return redirect(url_for('main.index'))
         else:
             current_app.logger.info("found session uuid %s" %(session_id))
-            g.registrant = Registrant.query.filter(Registrant.session_id == session_id).first()
+            g.registrant = Registrant.lookup_by_session_id(session_id)
+            # Security belt-and-suspenders. Disallow session continuation if the Registrant
+            # has not been updated within the SESSION_TTL window.
+            if not g.registrant.updated_since(current_app.config['SESSION_TTL']):
+                current_app.logger.error("Discontinuing old session for existing Registrant.")
+                if request.method == 'POST':
+                    flash(lazy_gettext('session_interrupted_error'), 'warning')
+                return redirect(url_for('main.index'))
 
         # edge case: clear stale cookie and start over.
         # adding in fix for index

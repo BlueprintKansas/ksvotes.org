@@ -1,6 +1,6 @@
 import os
 from app import db
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 from sqlalchemy.dialects.postgresql import JSON
 from cryptography.fernet import Fernet
@@ -23,6 +23,7 @@ class Registrant(db.Model):
 	__tablename__ = "registrants"
 	id = db.Column(db.Integer, primary_key=True)
 	created_at = db.Column(db.DateTime, default=datetime.utcnow())
+	updated_at = db.Column(db.DateTime, default=datetime.utcnow())
 	last_completed_step = db.Column(db.Integer)
 	completed_at = db.Column(db.DateTime, default=None)
 	session_id = db.Column(UUID(as_uuid=True), unique=True, nullable=False, default=uuid.uuid4())
@@ -91,6 +92,7 @@ class Registrant(db.Model):
 		return self.registration_value.get(field_name, default_value)
 
 	def save(self, db_session):
+		self.updated_at = datetime.utcnow()
 		db_session.add(self)
 		db_session.commit()
 
@@ -108,57 +110,12 @@ class Registrant(db.Model):
 	def name(self):
 		return "{} {}".format(self.try_value('name_first'), self.try_value('name_last'))
 
-	#defaults
+	def updated_since(self, n_minutes):
+		# returns boolean based on comparison of updated_at in last n_minutes
+		since_last_updated = datetime.utcnow() - self.updated_at
+		window = timedelta(minutes=int(n_minutes))
+		if since_last_updated > window:
+			return False
+		else:
+			return True
 
-	# registration JSON column encrypted and includes
-	# {
-	#     #section 1 federal form
-	#     "prefix": "String",
-	#     "suffix": "String",
-	#     "name_first": "String",
-	#     "name_middle": "String",
-	#     "name_last": "String",
-	#     "name_middle": "String",
-	##section 2 federal form
-	#     "address_home": "String",
-	#     "address_apt_lot": "String",
-	#     "address_city_town": "String",
-	#     "address_state": "String",
-				#default KANSAS
-	#     "address_zipcode": "String",
-	##section 3 federal form
-	#     "mail_address": "String",
-	#     "mail_address_city_town": "String",
-	#     "mail_address_state": "String",
-	#     "mail_address_zipcode": "String",
-	##section 4 federal form
-	#     "dob": "String",
-				#formatted MM-DD-YYYY
-	##section 5 federal form
-	#     "telephone": "String",
-				#formatted NNN-NNN-NNNN
-	##section 6 federal form
-	#     "id_number": "String",
-	##section 7 federal form party: SKIPPED FOR NON PII
-	##section 8 federal form race: SKIPPED FOR NON PII
-	##section 9 federal form date signed: PARTIALLY SKIPPED FOR NON PII
-	#     "signature_path": "String",
-				#url to signature image (deleted on form submission)
-	##section A federal form
-	#     "previous_prefix": "String",
-	#     "previous_suffix": "String",
-	#     "previous_name_first": "String",
-	#     "previous_name_middle": "String",
-	#     "previous_name_last": "String",
-	#     "previous_name_middle": "String",
-	##section B federal form
-	#     "previous_address_home": "String",
-	#     "previous_address_apt_lot": "String",
-	#     "previous_address_city_town": "String",
-	#     "previous_address_state": "String",
-				#default KANSAS
-	#     "previous_address_zipcode": "String",
-	##section d federal form
-	#     "helper": "String"
-				#long string of help pii
-	# }
