@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-13 14:39-0500\n"
+"POT-Creation-Date: 2018-07-14 22:48-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
 
-#: app/main/helpers.py:29
+#: app/main/helpers.py:33
 msgid "1AB_select_election_primary"
 msgstr ""
 
-#: app/main/helpers.py:30
+#: app/main/helpers.py:34
 msgid "1AB_select_election_general"
+msgstr ""
+
+#: app/main/AB/AB7_affirmation.py:32 app/main/VR/VR7_affirmation.py:32
+msgid "9_confirm_email"
 msgstr ""
 
 #: app/main/forms/ab_1.py:37 app/templates/ab/election_picker.html:55
@@ -51,8 +55,8 @@ msgstr ""
 #: app/templates/ab/address.html:81 app/templates/ab/address.html:97
 #: app/templates/ab/address.html:107 app/templates/ab/address.html:117
 #: app/templates/ab/affirmation.html:28
-#: app/templates/ab/election_picker.html:17
-#: app/templates/ab/election_picker.html:27
+#: app/templates/ab/election_picker.html:20
+#: app/templates/ab/election_picker.html:30
 #: app/templates/ab/identification.html:23 app/templates/index.html:41
 #: app/templates/index.html:52 app/templates/index.html:63
 #: app/templates/index.html:79 app/templates/index.html:89
@@ -140,7 +144,7 @@ msgid "5AB_id"
 msgstr ""
 
 #: app/main/forms/ab_6.py:7 app/main/forms/vr_6.py:7
-#: app/templates/ab/preview-sign.html:24 app/templates/vr/preview-sign.html:22
+#: app/templates/ab/preview-sign.html:26 app/templates/vr/preview-sign.html:24
 msgid "6_sign"
 msgstr ""
 
@@ -277,16 +281,20 @@ msgstr ""
 msgid "7_affirm"
 msgstr ""
 
-#: app/templates/base.html:116
+#: app/templates/base.html:119
 msgid "0_footer_tos"
 msgstr ""
 
-#: app/templates/base.html:117
+#: app/templates/base.html:120
 msgid "0_footer_priv"
 msgstr ""
 
-#: app/templates/base.html:118
+#: app/templates/base.html:121
 msgid "0_footer_contact"
+msgstr ""
+
+#: app/templates/base.html:125
+msgid "0_footer_partners"
 msgstr ""
 
 #: app/templates/change-or-apply.html:9
@@ -315,6 +323,15 @@ msgstr ""
 
 #: app/templates/change-or-apply.html:17
 msgid "1AB_sorry_no_reg_help"
+msgstr ""
+
+#: app/templates/ab/preview-sign.html:36 app/templates/form-buttons.html:4
+#: app/templates/vr/preview-sign.html:34
+msgid "btn_back"
+msgstr ""
+
+#: app/templates/form-buttons.html:9 app/templates/index.html:117
+msgid "btn_next"
 msgstr ""
 
 #: app/templates/index.html:14
@@ -367,12 +384,6 @@ msgstr ""
 msgid "3_mail_addr_header"
 msgstr ""
 
-#: app/templates/ab/address.html:129 app/templates/ab/affirmation.html:34
-#: app/templates/ab/election_picker.html:34
-#: app/templates/ab/identification.html:32 app/templates/vr/affirmation.html:32
-msgid "btn_next"
-msgstr ""
-
 #: app/templates/ab/affirmation.html:19 app/templates/vr/affirmation.html:17
 msgid "7_legend"
 msgstr ""
@@ -381,7 +392,7 @@ msgstr ""
 msgid "7_affirm_help"
 msgstr ""
 
-#: app/templates/ab/affirmation.html:41 app/templates/vr/affirmation.html:39
+#: app/templates/ab/affirmation.html:38 app/templates/vr/affirmation.html:36
 msgid "7_clerk_send_to"
 msgstr ""
 
@@ -389,11 +400,15 @@ msgstr ""
 msgid "AB1_title"
 msgstr ""
 
-#: app/templates/ab/election_picker.html:14
+#: app/templates/ab/election_picker.html:11
+msgid "AB1_legend"
+msgstr ""
+
+#: app/templates/ab/election_picker.html:17
 msgid "1AB_election_help"
 msgstr ""
 
-#: app/templates/ab/election_picker.html:24
+#: app/templates/ab/election_picker.html:27
 msgid "1AB_party_help"
 msgstr ""
 
@@ -418,15 +433,15 @@ msgstr ""
 msgid "6_header2"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:21 app/templates/vr/preview-sign.html:19
+#: app/templates/ab/preview-sign.html:23 app/templates/vr/preview-sign.html:21
 msgid "6_legend"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:24 app/templates/vr/preview-sign.html:22
+#: app/templates/ab/preview-sign.html:26 app/templates/vr/preview-sign.html:24
 msgid "6_sign_help"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:35
+#: app/templates/ab/preview-sign.html:42 app/templates/vr/preview-sign.html:40
 msgid "btn_sign"
 msgstr ""
 
