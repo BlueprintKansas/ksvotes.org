@@ -82,7 +82,7 @@ class NVRISClient():
             'state': 'Kansas', # TODO r.try_value('state'),
             'county_2': r.county, # TODO corresponds with 'state'
             'county_1': r.county, # TODO different?
-            'id_number': r.try_value('id_number'),
+            'id_number': r.try_value('identification'),
             'last_name': r.try_value('name_last'),
             'first_name': r.try_value('name_first'),
             'middle_initial': r.middle_initial(),
@@ -133,7 +133,7 @@ class NVRISClient():
             "03_zipCode": r.try_value('mail_zip'),
             "04_dob": r.try_value('dob'),
             "05_telephone": r.try_value('phone'),
-            "06_idNumber": r.try_value('id_number'),
+            "06_idNumber": r.try_value('identification'),
             "07_party": r.party,
             "08_raceEthnic": '',
             "09_month": r.signed_at.strftime('%m'),

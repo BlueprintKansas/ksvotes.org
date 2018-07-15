@@ -46,13 +46,13 @@ msgid "0_form_explain"
 msgstr "Enter your information below, and we'll check to see if you're already registered to vote in Kansas."
 
 msgid "0_intro"
-msgstr "This program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form."
+msgstr "We can help you register to vote, check your registration, or apply to vote by mail. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas."
 
 msgid "0_last"
 msgstr "Last Name"
 
 msgid "0_lead"
-msgstr "Your Online Voter Registration Application"
+msgstr "Your Online Voter Registration and Information Service"
 
 msgid "0_match"
 msgstr "You are registered to vote in Kansas, with the information below. If you wish to re-register to change your name, address, or political party, please continue by clicking Next.\n\nOr, if the information below is fully up-to-date, click here to <apply to vote by mail>."
@@ -79,16 +79,16 @@ msgid "0x_intro"
 msgstr "Welcome to the KSVotes.org Online Voter Registration Application\nThis program will walk you through the process of filling out the federal voter registration form, create a completed image of the federal form, and ask you to sign using a stylus, finger, or mouse. Once completed, we will email the form to your county clerk to submit your registration form.\n\nThe information below was received from the page that directed you here. Please check it and edit anything that's incorrect, and we'll check to see if you're already registered to vote in Kansas."
 
 msgid "1AB_apply_ab_link"
-msgstr "Apply for an Advanced Ballot for an upcoming election."
+msgstr "Apply for an Advance Ballot for an upcoming election."
 
 msgid "1AB_apply_perm_ab_link"
-msgstr "Apply for a Permanent Advanced Ballot."
+msgstr "Apply for a Permanent Advance Ballot."
 
 msgid "1AB_change_reg_link"
 msgstr "Change your existing registration, if you have changed your address, name, or political party."
 
 msgid "1AB_election_help"
-msgstr "You may register for advanced ballots for elections in the current calendar year."
+msgstr "You may register for advance ballots for elections in the current calendar year."
 
 msgid "1AB_party_flag"
 msgstr "Unaffiliated voters must register to vote as a member of a party in order to vote in that party's primary. To submit this application, we will also need to submit a new registration making you a member of that political party."
@@ -268,7 +268,7 @@ msgid "3_zip"
 msgstr "Zip Code"
 
 msgid "3_zip_help"
-msgstr "None current: 5 digit zip required"
+msgstr "5 digit zip required"
 
 msgid "4_legend"
 msgstr "Party"
@@ -363,9 +363,21 @@ msgstr "Thank you.\nWe have submitted your application.\nThank you for registeri
 msgid "9_confirm_email"
 msgstr "Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team"
 
+msgid "AB1_legend"
+msgstr "Election(s)"
+
 msgid "AB7_affirm"
 msgstr "I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated."
 
 msgid "AB8_confirm"
-msgstr "Thank you. Your advanced ballot application(s) have been submitted. You should receive a copy of the email soon."
+msgstr "Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon."
+
+msgid "btn_back"
+msgstr "Back"
+
+msgid "btn_next"
+msgstr "Next"
+
+msgid "btn_sign"
+msgstr "Sign"
 

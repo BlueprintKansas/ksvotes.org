@@ -121,6 +121,9 @@
          <li class="list-inline-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
         </ul>
        </div>
+       <div class="col-md-12 mb-md-0 mb-3">
+         {{_('0_footer_partners')}}
+       </div>
       </div><!-- row -->
      </div><!-- container -->
      <div class="footer-copyright text-center py-3">© 2018 Copyright:
@@ -162,6 +165,14 @@
           }
         });
       });
+      {% if previous_step_url is defined %}
+      $('#btn-back').attr('href', '{{previous_step_url}}');
+      $('#btn-back').click(function(ev) {
+        var $mask = $('#mask');
+        $mask.show();
+        $mask.ploading({ action: 'show' });
+      });
+      {% endif %}
     </script>
 
     {% block js_footer %}

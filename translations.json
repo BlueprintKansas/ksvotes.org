@@ -538,6 +538,7 @@
     "en":"Citizenship and Age",
     "es":"SPANISH NEEDED"
   },
+  "AB1_legend": {"en": "Election(s)", "es": "Elección(s)" },
   "2_legend":{"wiki_step":"2","ref":"2_legend","en":"Name","es":"SPANISH NEEDED"},
   "3_legend":{"wiki_step":"3","ref":"3_legend","en":"Address","es":"SPANISH NEEDED"},
   "4_legend":{"wiki_step":"4","ref":"4_legend","en":"Party","es":"SPANISH NEEDED"},
@@ -555,5 +556,8 @@
     "ref":"8_clerk_sent_to",
     "en":"Your application(s) were sent to:",
     "es":"SPANISH NEEDED"
-  }
+  },
+  "btn_next":{ "en": "Next", "es": "Siguiente" },
+  "btn_back":{ "en": "Back", "es": "Espalda" },
+  "btn_sign":{ "en": "Sign", "es": "Firmar" }
 }

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% set current_step = '7' %}
+{% set previous_step_url = url_for('main.ab6_preview_sign') %}
 {% import 'macros/_render_field.html' as wtf %}
 
 {% block title %} Preview {% endblock %}
@@ -8,12 +9,12 @@
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
+      <div class="col-md-12">
+        {% for preview_img in preview_imgs %}
+          <img src="{{preview_img}}"/>
+        {% endfor %}
+      </div>
       <div class="col-md-6">
-
-          {% for preview_img in preview_imgs %}
-            <img src="{{preview_img}}"/>
-          {% endfor %}
-
           <form name="step_7" id="step_7" method="POST"  action="{{url_for('main.ab7_affirmation')}}">
            <fieldset>
             <legend>{{_('7_legend')}}</legend>
@@ -29,11 +30,8 @@
             }
             )}}
 
-            <div class="text-right mt-4">
-                <button class="btn btn-outline-default" type="submit">
-                 <i class="fa checkmark fa-check mr-2"></i>{{_('btn_next')}}
-                </button>
-            </div>
+            {% include 'form-buttons.html' %}
+
            </fieldset>
           </form>
 

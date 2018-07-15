@@ -34,7 +34,7 @@ msgid "0_footer_contact"
 msgstr "Contactenos"
 
 msgid "0_footer_partners"
-msgstr "KSVotes.org fue construido en asociación con Loud Light y GPS Impact"
+msgstr "KSVotes.org fue construido en asociación con Loud Light y GPS Impact SPANISH NEEDED"
 
 msgid "0_footer_priv"
 msgstr "Poliza de Privacidad"
@@ -46,13 +46,13 @@ msgid "0_form_explain"
 msgstr "SPANISH NEEDED"
 
 msgid "0_intro"
-msgstr "Este programa lo guiará en el proceso de completar el formulario federal de inscripción de votantes, crear una imagen completa del formulario federal y solicitarle que firme con un lápiz, un dedo o un mouse. Una vez completado, enviaremos el formulario por correo electrónico a su secretario del condado para enviar su formulario de registro. Ingrese su información a continuación, y verificaremos si ya está registrado para votar en Kansas."
+msgstr "SPANISH NEEDED"
 
 msgid "0_last"
 msgstr "Apellido "
 
 msgid "0_lead"
-msgstr "Su solicitud de registro de votante en línea"
+msgstr "SPANISH NEEDED"
 
 msgid "0_match"
 msgstr "Usted está registrado para votar en Kansas, con la siguiente información. Si desea volver a registrarse para cambiar su nombre, dirección o partido político, continúe haciendo clic en Siguiente.\n\nO bien, si la información a continuación está completamente actualizada, haga clic aquí para <solicitar votar por correo>.\n\nTambién puede hacer clic aquí para visitar el sitio del Secretario de Estado de Kansas para consultar su casilla de votación y ver su boleta de muestra. Nota: Este enlace lo aleja de KSVotes.org y del sitio web de la Secretaría de Estado"
@@ -109,10 +109,10 @@ msgid "1AB_select_election"
 msgstr "¿Qué elección le gustaría votar por correo?"
 
 msgid "1AB_select_election_general"
-msgstr "SPANISH NEEDED"
+msgstr "General (Noviembre 6, 2018)"
 
 msgid "1AB_select_election_primary"
-msgstr "SPANISH NEEDED"
+msgstr "Primaria (Agosto 7, 2018)"
 
 msgid "1AB_select_party"
 msgstr "Partido Politico"
@@ -223,7 +223,7 @@ msgid "3_mail_addr"
 msgstr "Dirección de envio"
 
 msgid "3_mail_addr_header"
-msgstr "SPANISH NEEDED"
+msgstr "¿Cuál es la dirección donde obtienes tu correo?"
 
 msgid "3_mail_city"
 msgstr "Ciudada/Pueblo"
@@ -241,7 +241,7 @@ msgid "3_prev_addr"
 msgstr "direccion previa"
 
 msgid "3_prev_addr_header"
-msgstr "SPANISH NEEDED"
+msgstr "¿Cuál era su dirección donde se registró anteriormente?"
 
 msgid "3_prev_city"
 msgstr "Ciudada/Pueblo"
@@ -268,13 +268,13 @@ msgid "3_zip"
 msgstr "Codigo Postal"
 
 msgid "3_zip_help"
-msgstr "Se requiere un zip de 5 dígitos\n"
+msgstr "Se requiere un zip de 5 dígitos"
 
 msgid "4_legend"
 msgstr "SPANISH NEEDED"
 
 msgid "4_party"
-msgstr "eleccion de partido"
+msgstr "Eleccion de partido"
 
 msgid "4_party_help"
 msgstr "Debe registrarse con una de las partes si desea participar en las elecciones primarias, caucus o convenciones de ese partido. Si no desea asociarse con ninguna de las partes, seleccione "No afiliados""
@@ -363,9 +363,21 @@ msgstr "Gracias.\nHemos enviado su solicitud.\nGracias por registrarse para vota
 msgid "9_confirm_email"
 msgstr "Estimado <primer nombre>,\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario electoral local, y usted debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, verifique su carpeta de spam.\n\nDebería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. (Puede encontrar su información de contacto aquí: http://www.kssos.org/elections/elections_registration_ceo_display.aspx), o verifique su estado en línea aquí: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do\n\nSi tiene alguna pregunta, llame a Kate Davis de Blueprint Kansas al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org"
 
+msgid "AB1_legend"
+msgstr "Elección(s)"
+
 msgid "AB7_affirm"
 msgstr "SPANISH NEEDED"
 
 msgid "AB8_confirm"
 msgstr "SPANISH NEEDED"
+
+msgid "btn_back"
+msgstr "Espalda"
+
+msgid "btn_next"
+msgstr "Siguiente"
+
+msgid "btn_sign"
+msgstr "Firmar"
 
