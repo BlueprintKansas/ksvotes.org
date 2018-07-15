@@ -56,6 +56,7 @@ def create_app(script_info):
     def ensure_lang_support():
         lang_code = g.get('lang_code', None)
         if lang_code and lang_code not in LANGUAGES.keys():
+            app.logger.info('ensure_lang_support failed to find %s in LANGUAGES' %(lang_code))
             return abort(404)
 
     from app.main import main as main_blueprint

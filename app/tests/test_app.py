@@ -8,3 +8,6 @@ def test_homepage(app, db_session, client):
 def test_404(app, db_session, client):
     response = client.get('/asdfasdfadcasdcmasdocasdf/')
     assert response.status_code == 404
+
+    response = client.get('/es/foo/bar')
+    assert response.status_code == 404
