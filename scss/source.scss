@@ -56,7 +56,11 @@ img {
 #step-nav {
   text-align: center;
   color: $ksv-green;
-  margin: 12px;
+  padding: 15px 40px 15px 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 6px -6px #ddd;
+  position: relative;
 }
 
 a {
@@ -212,6 +216,11 @@ form {
 
 div.clerk-details {
   margin: 12px;
+  padding: 15px 40px 15px 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 6px -6px #ddd;
+  position: relative;
 }
 
 table.clerk-details {

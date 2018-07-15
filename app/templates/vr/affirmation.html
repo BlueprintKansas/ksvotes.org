@@ -9,6 +9,10 @@
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
+      <div class="clerk-details col-md-6">
+        <p>{{_('7_clerk_send_to')}}</p>
+        {% include 'clerk-details.html' %}
+      </div>
       <div class="col-md-12">
         <img src="{{preview_img}}"/>
       </div>
@@ -32,11 +36,6 @@
 
            </fieldset>
           </form>
-
-          <div class="clerk-details">
-            <p>{{_('7_clerk_send_to')}}</p>
-            {% include 'clerk-details.html' %}
-          </div>
       </div>
     </div>
   </div>
