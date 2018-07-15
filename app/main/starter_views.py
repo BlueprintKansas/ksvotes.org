@@ -26,8 +26,13 @@ def privacy():
 def index():
     registrant = g.get("registrant")
     form = FormStep0()
+    if http_session.get('ref'):
+        form = FormStep0(ref = http_session.get('ref'))
+    elif request.cookies.get('ref'):
+        form = FormStep0(ref = request.cookies.get('ref').value)
     if registrant:
         form = FormStep0(
+            ref = http_session.get('ref'),
             name_first = registrant.registration_value.get('name_first'),
             name_last = registrant.registration_value.get('name_last'),
             dob = registrant.registration_value.get('dob'),
@@ -69,7 +74,7 @@ def change_or_apply():
     http_session['reg_found'] = None # do not persist
     return render_template('change-or-apply.html', reg_found=reg_found)
 
-@main.route('/ref', methods=['POST'])
+@main.route('/ref', methods=['GET', 'POST'])
 def referring_org():
     # we will accept whatever subset of step0 fields are provided.
     # we always start a new session, but we require a 'ref' code.
@@ -78,6 +83,15 @@ def referring_org():
 
     sid = str(uuid4())
     http_session['session_id'] = sid
+
+    # if this is a GET request, make ref sticky via a cookie
+    # and immediately redirect
+    if request.method == 'GET':
+        http_session['ref'] = request.values['ref']
+        response = current_app.make_response(redirect(url_for('main.index')))
+        response.set_cookie('ref', value=request.values['ref'])
+        return response
+
     registration = {
         'name_last': request.values.get('name_last', ''),
         'name_first': request.values.get('name_first', ''),
@@ -93,4 +107,5 @@ def referring_org():
     )
     db.session.add(registrant)
     db.session.commit()
-    return redirect('/')
+    return redirect(url_for('main.index'))
+

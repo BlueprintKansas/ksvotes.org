@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, SelectField
+from wtforms import StringField, SelectField, HiddenField
 from wtforms.validators import DataRequired, Email, Regexp, Optional
 from flask_babel import lazy_gettext
 from dateutil.relativedelta import relativedelta
@@ -9,6 +9,7 @@ import os
 import re
 
 class FormStep0(FlaskForm):
+    ref = HiddenField()
     name_first = StringField(lazy_gettext(u'0_first'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
     name_last = StringField(lazy_gettext(u'0_last'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
     dob = StringField(lazy_gettext(u'0_dob'), validators=[DataRequired(message=lazy_gettext(u'Required')), Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext(u'0_dob_flag'))])
