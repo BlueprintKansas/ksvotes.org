@@ -58,6 +58,7 @@
     {% endif %}
 
     <div id="mask"></div>
+    {% include 'session-timeout-modal.html' %}
 
     <main>
      {% block header %}
@@ -162,14 +163,17 @@
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
     <script type="text/javascript">
+      var showMask = function() {
+        var $mask = $('#mask');
+        $mask.show();
+        $mask.ploading({ action: 'show' });
+      };
       $(document).ready(function() {
         $('form').submit(function(ev) {
           var $form = $(this);
           $form.parsley().validate();
           if ($form.parsley().isValid()) {
-            var $mask = $('#mask');
-            $mask.show();
-            $mask.ploading({ action: 'show' });
+            showMask();
           } else {
             ev.preventDefault();
           }
@@ -178,9 +182,7 @@
       {% if previous_step_url is defined %}
       $('#btn-back').attr('href', '{{previous_step_url}}');
       $('#btn-back').click(function(ev) {
-        var $mask = $('#mask');
-        $mask.show();
-        $mask.ploading({ action: 'show' });
+        showMask();
       });
       {% endif %}
     </script>
@@ -195,7 +197,12 @@
         }, 3000);
       });
     </script>
-
+    <script>
+      $('#modal-session-expired').on('hidden.bs.modal', function() {
+        console.log('you may not simply dismiss the modal');
+        window.location = '{{url_for('main.index')}}';
+      });
+    </script>
     {% block js_footer %}
 
     {% endblock %}

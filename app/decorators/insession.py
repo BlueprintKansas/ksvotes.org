@@ -38,7 +38,7 @@ def InSession(f):
             g.registrant = Registrant.lookup_by_session_id(session_id)
             # Security belt-and-suspenders. Disallow session continuation if the Registrant
             # has not been updated within the SESSION_TTL window.
-            if not g.registrant.updated_since(current_app.config['SESSION_TTL']):
+            if g.registrant and not g.registrant.updated_since(current_app.config['SESSION_TTL']):
                 current_app.logger.error("Discontinuing old session for existing Registrant.")
                 if request.method == 'POST':
                     flash(lazy_gettext('session_interrupted_error'), 'warning')
