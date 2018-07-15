@@ -20,7 +20,7 @@ run:
 	python manage.py runserver
 
 testcov:
-	py.test --cov-report term-missing --cov
+	py.test --cov-report term-missing --cov --ignore=node_modules
 
 test: check
 	py.test -s app/

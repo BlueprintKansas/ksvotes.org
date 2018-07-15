@@ -33,7 +33,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
   $ . venv/bin/activate
   ```
   ```
-  $(venv) pip install -r requirements.txt
+  $(venv) make deps
   ```
 
 ### Database Setup
@@ -76,19 +76,16 @@ The ksvotes.org site makes Kansas online voting registration easy.
   $(venv) python manage.py db init
   ```
 
-  ```
-  $(venv) python manage.py db migrate
-  ```
+When you modify the model classes and want to apply to the schema:
 
   ```
-  $(venv) python manage.py db upgrade
+  $(venv) make update
   ```
-
 
 ### Run the Application
   Let's get up and running.
   ```
-  $(venv) python manage.py runserver
+  $(venv) make run
   ```
 
   Navigate to [127.0.0.1:5000](127.0.0.1:5000)
@@ -98,7 +95,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
 ## Tests
 To run all tests with coverage:
 ```
-$(venv) py.test --cov-report term-missing --cov --ignore=node_modules
+$(venv) make testcov
 ```
 
 
@@ -134,8 +131,8 @@ and then run `% make locales` to update the corresponding babel files. For examp
 # in foo.py
 lazy_gettext('some_key_string')
 
-# add 'some_key_string' to translations.csv
-% vi translations.csv
+# add 'some_key_string' to translations.json
+% vi translations.json
 
 # Then in your terminal
 # update the translation files
