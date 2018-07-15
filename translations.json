@@ -556,4 +556,6 @@
     "en":"Your application(s) were sent to:",
     "es":"SPANISH NEEDED"
   }
+  "btn_next":{ "en": "Next", "es": "Siguiente" },
+  "btn_back":{ "en": "Back", "es": "Espalda" }
 }

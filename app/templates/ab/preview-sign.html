@@ -17,7 +17,7 @@
             <img src="{{preview_img}}"/>
           {% endfor %}
       </div>
-      <div class="col-md-6">
+      <div class="col-md-12">
           <form name="step_6" id="step_6" method="POST"  action="{{url_for('main.ab6_preview_sign')}}">
            <fieldset>
             <legend>{{_('6_legend')}}</legend>
@@ -31,11 +31,16 @@
                   <li> {{ error }} </li>
                 {% endfor %}
               </ul>
-            <div class="text-right mt-4">
-                <button class="btn btn-outline-info" onclick="return resetHiddenSignatureImg()">Clear</button>
-                <button id="sign-button" class="btn btn-outline-default" type="submit">
-                 <i class="fa checkmark fa-check mr-2"></i>{{_('btn_sign')}}
-                </button>
+            <div class="float-left mt-4">
+              <a id="btn-back" class="btn btn-outline-primary">
+               <i class="fa fa-angle-left m2-2"></i> {{_('btn_back')}}
+              </a>
+            </div>
+            <div class="float-right mt-4">
+              <button class="btn btn-outline-info" onclick="return resetHiddenSignatureImg()">Clear</button>
+              <button id="sign-button" class="btn btn-outline-default" type="submit">
+               <i class="fa checkmark fa-check mr-2"></i>{{_('btn_sign')}}
+              </button>
             </div>
            </fieldset>
           </form>
@@ -50,8 +55,6 @@
 <script>
     $(document).ready(function() {
         $("#signature").jSignature({
-          'height': 56,
-          'width': 396,
           'background-color': '#ffffff',
           'decor-color': 'transparent',
         });
@@ -81,13 +84,10 @@
       $('#signature_string').val('');
       return false; // abort onclick handler
     };
-</script>
-<script>
-$(function () {
-  //initialize form with parsley validation
-  var form = $('#step_6');
-  form.parsley()
-});
-
+  $(function () {
+    //initialize form with parsley validation
+    var form = $('#step_6');
+    form.parsley()
+  });
 </script>
 {% endblock %}

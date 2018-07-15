@@ -165,6 +165,8 @@
           }
         });
       });
+      // TODO this might get confusing if for some reason they navigated away from our site and then back.
+      $('#btn-back').attr('href', document.referrer);
     </script>
 
     {% block js_footer %}
