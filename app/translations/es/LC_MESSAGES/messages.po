@@ -363,6 +363,9 @@ msgstr "Gracias.\nHemos enviado su solicitud.\nGracias por registrarse para vota
 msgid "9_confirm_email"
 msgstr "Estimado <primer nombre>,\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario electoral local, y usted debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, verifique su carpeta de spam.\n\nDebería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. (Puede encontrar su información de contacto aquí: http://www.kssos.org/elections/elections_registration_ceo_display.aspx), o verifique su estado en línea aquí: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do\n\nSi tiene alguna pregunta, llame a Kate Davis de Blueprint Kansas al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org"
 
+msgid "AB1_legend"
+msgstr "Elección(s)"
+
 msgid "AB7_affirm"
 msgstr "SPANISH NEEDED"
 
