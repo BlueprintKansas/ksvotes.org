@@ -1,5 +1,6 @@
 from functools import wraps
-from flask import request, g, session as http_session, redirect, current_app, url_for
+from flask import request, g, session as http_session, redirect, current_app, url_for, flash
+from flask_babel import lazy_gettext
 from app.models import Registrant
 from uuid import UUID, uuid4
 from app.main.helpers import guess_locale
@@ -14,12 +15,14 @@ def InSession(f):
                 return True
             return False
 
+        http_session.permanent = True # enforce expiration TTL
         session_id = http_session.get('session_id')
         g.registrant = None
         g.locale = guess_locale() # so we have it available for all template rendering
 
         # if we don't yet have a session_id, assign one.
         if not session_id:
+            current_app.logger.info("No session_id found")
             uuid_str = str(uuid4())
             http_session['session_id'] = uuid_str
             current_app.logger.info("created session uuid %s" %(uuid_str))
@@ -27,7 +30,9 @@ def InSession(f):
             # edge case: a request "in the middle" of the flow.
             if not request_is_root():
                 current_app.logger.info("redirect to flow start")
-                return redirect('/') # TODO preserve lang_code?
+                if request.method == 'POST':
+                    flash(lazy_gettext('session_interrupted_error'), 'warning')
+                return redirect(url_for('main.index'))
         else:
             current_app.logger.info("found session uuid %s" %(session_id))
             g.registrant = Registrant.query.filter(Registrant.session_id == session_id).first()
@@ -37,7 +42,7 @@ def InSession(f):
         if session_id and not g.registrant and not request_is_root():
             current_app.logger.info('reset session')
             http_session.pop('session_id')
-            return redirect('/') # TODO preserve lang_code?
+            return redirect(url_for('main.index'))
 
         return f(*args, **kwargs)
 

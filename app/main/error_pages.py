@@ -14,6 +14,8 @@ def page_exception(_e):
 
 @main.errorhandler(Exception)
 def unhandled_exception(e):
+    if current_app.debug:
+        raise e
     current_app.logger.error('Unhandled Exception: %s', (e))
     return page_exception(e)
 

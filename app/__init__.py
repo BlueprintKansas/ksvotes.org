@@ -1,5 +1,6 @@
 import os
-from flask import Flask, request, g, abort
+from flask import Flask, request, g, abort, session as http_session
+from datetime import timedelta
 from flask_sslify import SSLify
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel
@@ -23,6 +24,11 @@ def create_app(script_info):
 
     if not app.testing and not app.debug and not app.config['SSL_DISABLE']:
         sslify = SSLify(app, permanent=True)
+        app.config['SESSION_COOKIE_SECURE'] = True
+
+    # Session TTL 
+    app.config['SESSION_REFRESH_EACH_REQUEST'] = True
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=int(app.config['SESSION_TTL']))
 
     config[config_name].init_app(app)
     db.init_app(app)
@@ -58,6 +64,7 @@ def create_app(script_info):
         if lang_code and lang_code not in LANGUAGES.keys():
             app.logger.info('ensure_lang_support failed to find %s in LANGUAGES' %(lang_code))
             return abort(404)
+
 
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)

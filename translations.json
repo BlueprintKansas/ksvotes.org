@@ -559,5 +559,9 @@
   },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
-  "btn_sign":{ "en": "Sign", "es": "Firmar" }
+  "btn_sign":{ "en": "Sign", "es": "Firmar" },
+  "session_interrupted_error": {
+    "en": "To protect your privacy, your KSVotes session was restarted after a period of inactivity.",
+    "es": "Para proteger su privacidad, su sesión de KSVotes se reinició después de un período de inactividad."
+  }
 }

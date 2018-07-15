@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-14 23:08-0500\n"
+"POT-Creation-Date: 2018-07-15 16:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
+
+#: app/decorators/insession.py:34
+msgid "session_interrupted_error"
+msgstr ""
 
 #: app/main/helpers.py:33
 msgid "1AB_select_election_primary"
@@ -38,9 +42,9 @@ msgstr ""
 #: app/main/forms/ab_3.py:16 app/main/forms/ab_3.py:18
 #: app/main/forms/ab_3.py:19 app/main/forms/ab_3.py:20 app/main/forms/ab_5.py:7
 #: app/main/forms/ab_6.py:8 app/main/forms/ab_7.py:7
-#: app/main/forms/step_0.py:12 app/main/forms/step_0.py:13
-#: app/main/forms/step_0.py:14 app/main/forms/step_0.py:16
-#: app/main/forms/step_0.py:19 app/main/forms/vr_1.py:7
+#: app/main/forms/step_0.py:13 app/main/forms/step_0.py:14
+#: app/main/forms/step_0.py:15 app/main/forms/step_0.py:17
+#: app/main/forms/step_0.py:20 app/main/forms/vr_1.py:7
 #: app/main/forms/vr_2.py:17 app/main/forms/vr_2.py:19
 #: app/main/forms/vr_2.py:40 app/main/forms/vr_2.py:42 app/main/forms/vr_3.py:9
 #: app/main/forms/vr_3.py:11 app/main/forms/vr_3.py:12
@@ -54,7 +58,7 @@ msgstr ""
 #: app/templates/ab/address.html:52 app/templates/ab/address.html:63
 #: app/templates/ab/address.html:83 app/templates/ab/address.html:99
 #: app/templates/ab/address.html:109 app/templates/ab/address.html:119
-#: app/templates/ab/affirmation.html:29
+#: app/templates/ab/affirmation.html:33
 #: app/templates/ab/election_picker.html:22
 #: app/templates/ab/election_picker.html:32
 #: app/templates/ab/identification.html:25 app/templates/index.html:41
@@ -66,7 +70,7 @@ msgstr ""
 #: app/templates/vr/address.html:108 app/templates/vr/address.html:118
 #: app/templates/vr/address.html:139 app/templates/vr/address.html:155
 #: app/templates/vr/address.html:165 app/templates/vr/address.html:175
-#: app/templates/vr/affirmation.html:27 app/templates/vr/citizenship.html:24
+#: app/templates/vr/affirmation.html:31 app/templates/vr/citizenship.html:24
 #: app/templates/vr/identification.html:24 app/templates/vr/name.html:30
 #: app/templates/vr/name.html:47 app/templates/vr/name.html:75
 #: app/templates/vr/name.html:91 app/templates/vr/party.html:52
@@ -152,44 +156,44 @@ msgstr ""
 msgid "AB7_affirm"
 msgstr ""
 
-#: app/main/forms/step_0.py:12
+#: app/main/forms/step_0.py:13
 msgid "0_first"
 msgstr ""
 
-#: app/main/forms/step_0.py:13
+#: app/main/forms/step_0.py:14
 msgid "0_last"
 msgstr ""
 
-#: app/main/forms/step_0.py:14
+#: app/main/forms/step_0.py:15
 msgid "0_dob"
 msgstr ""
 
-#: app/main/forms/step_0.py:14 app/templates/index.html:66
+#: app/main/forms/step_0.py:15 app/templates/index.html:66
 #: app/templates/index.html:69 app/templates/index.html:104
 msgid "0_dob_flag"
 msgstr ""
 
-#: app/main/forms/step_0.py:15 app/main/forms/step_0.py:17
+#: app/main/forms/step_0.py:16 app/main/forms/step_0.py:18
 msgid "0_county"
 msgstr ""
 
-#: app/main/forms/step_0.py:19
+#: app/main/forms/step_0.py:20
 msgid "0_email"
 msgstr ""
 
-#: app/main/forms/step_0.py:19 app/templates/index.html:92
+#: app/main/forms/step_0.py:20 app/templates/index.html:92
 msgid "0_email_flag"
 msgstr ""
 
-#: app/main/forms/step_0.py:20
+#: app/main/forms/step_0.py:21
 msgid "0_phone"
 msgstr ""
 
-#: app/main/forms/step_0.py:20 app/templates/index.html:98
+#: app/main/forms/step_0.py:21 app/templates/index.html:98
 msgid "0_phone_help"
 msgstr ""
 
-#: app/main/forms/step_0.py:31 app/templates/index.html:60
+#: app/main/forms/step_0.py:32 app/templates/index.html:60
 msgid "0_dob_help"
 msgstr ""
 
@@ -281,19 +285,19 @@ msgstr ""
 msgid "7_affirm"
 msgstr ""
 
-#: app/templates/base.html:119
+#: app/templates/base.html:129
 msgid "0_footer_tos"
 msgstr ""
 
-#: app/templates/base.html:120
+#: app/templates/base.html:130
 msgid "0_footer_priv"
 msgstr ""
 
-#: app/templates/base.html:121
+#: app/templates/base.html:131
 msgid "0_footer_contact"
 msgstr ""
 
-#: app/templates/base.html:125
+#: app/templates/base.html:135
 msgid "0_footer_partners"
 msgstr ""
 
@@ -384,16 +388,16 @@ msgstr ""
 msgid "3_mail_addr_header"
 msgstr ""
 
-#: app/templates/ab/affirmation.html:20 app/templates/vr/affirmation.html:18
+#: app/templates/ab/affirmation.html:13 app/templates/vr/affirmation.html:13
+msgid "7_clerk_send_to"
+msgstr ""
+
+#: app/templates/ab/affirmation.html:24 app/templates/vr/affirmation.html:22
 msgid "7_legend"
 msgstr ""
 
-#: app/templates/ab/affirmation.html:26 app/templates/vr/affirmation.html:24
+#: app/templates/ab/affirmation.html:30 app/templates/vr/affirmation.html:28
 msgid "7_affirm_help"
-msgstr ""
-
-#: app/templates/ab/affirmation.html:39 app/templates/vr/affirmation.html:37
-msgid "7_clerk_send_to"
 msgstr ""
 
 #: app/templates/ab/election_picker.html:5

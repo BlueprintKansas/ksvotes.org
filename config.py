@@ -17,6 +17,7 @@ class Config:
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     SEND_EMAIL = os.getenv('SEND_EMAIL')
     SSL_DISABLE = os.getenv('SSL_DISABLE', False)
+    SESSION_TTL = os.getenv('SESSION_TTL', '10')
 
     @staticmethod
     def init_app(app):

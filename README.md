@@ -65,6 +65,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
   # EMAIL_FROM={{override the From email header in all email}}
   # SEND_EMAIL=true # default is not to send actual email unless this is present
+  SESSION_TTL=10  # number of minutes before idle session expires
   ```
 
 ### Migrate Database

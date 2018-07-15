@@ -381,3 +381,6 @@ msgstr "Next"
 msgid "btn_sign"
 msgstr "Sign"
 
+msgid "session_interrupted_error"
+msgstr "To protect your privacy, your KSVotes session was restarted after a period of inactivity."
+

@@ -381,3 +381,6 @@ msgstr "Siguiente"
 msgid "btn_sign"
 msgstr "Firmar"
 
+msgid "session_interrupted_error"
+msgstr "Para proteger su privacidad, su sesión de KSVotes se reinició después de un período de inactividad."
+

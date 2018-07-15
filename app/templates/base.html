@@ -96,6 +96,16 @@
      </div>
      {% endif %}
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="container-fluid text-center col-md-6 flashes">
+        {% for category, message in messages %}
+         <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
      {% block content %}
       {% if use_hero %}
         {{ super() }}
@@ -173,6 +183,17 @@
         $mask.ploading({ action: 'show' });
       });
       {% endif %}
+    </script>
+
+    <script>
+    // hide flash messages after 3 secs
+      $(function() {
+        window.setTimeout(function() {
+          $(".flashes").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+          });
+        }, 3000);
+      });
     </script>
 
     {% block js_footer %}
