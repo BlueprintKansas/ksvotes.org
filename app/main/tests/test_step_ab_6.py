@@ -20,7 +20,7 @@ def create_registrant(db_session):
         reg_lookup_complete = True,
         addr_lookup_complete = True,
         is_citizen=True,
-        party="unafilliated"
+        party="unaffiliated"
     )
     db_session.add(registrant)
     db_session.commit()

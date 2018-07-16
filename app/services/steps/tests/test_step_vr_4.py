@@ -19,7 +19,7 @@ def test_step_vr4_is_complete_true(app, db_session, client):
 
     """
     form_payload = {
-        "party": "unafilliated"
+        "party": "unaffiliated"
     }
     step = Step_VR_4(form_payload)
     assert step.run() == True
