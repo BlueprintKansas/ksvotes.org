@@ -15,9 +15,6 @@ def test_step_0_is_complete_false(app, db_session, client):
     assert step.next_step == None
 
 def test_step_0_is_complete_true_and_none_registered(app,db_session,client):
-    """
-        Verify that next step is VR Step 1
-    """
     form_payload = {
         "name_first": "foo",
         "name_last": "bar",
@@ -28,7 +25,7 @@ def test_step_0_is_complete_true_and_none_registered(app,db_session,client):
     step = Step_0(form_payload)
     assert step.run() == True
     assert step.is_complete == True
-    assert step.next_step == 'Step_VR_1'
+    assert step.next_step == 'Step_1'
 
 def test_step_0_is_complete_true_and_already_registered(app,db_session,client):
     """
