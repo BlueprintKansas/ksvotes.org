@@ -100,6 +100,47 @@ class Registrant(db.Model):
 	def lookup_by_session_id(cls, sid):
 		return cls.query.filter(cls.session_id == sid).first()
 
+	def is_demo(self):
+		return True if str(self.session_id) == os.getenv('DEMO_UUID') else False
+
+	@classmethod
+	def load_fixtures(cls):
+		if not os.getenv('DEMO_UUID'):
+			raise Exception("Must defined env var DEMO_UUID")
+
+		r = cls.find_or_create_by(session_id=os.getenv('DEMO_UUID'))
+		r.registration_value = {}
+		r.update({
+			'name_first':   'No',
+			'name_middle':  'Such',
+			'name_last':		'Person',
+			'dob':					'01/01/2000',
+			'addr':         '123 Main St',
+			'city':         'Nowhere',
+			'state':        'KS',
+			'zip':          '12345',
+			'email':        'nosuchperson@example.com',
+			'phone':        '555-555-1234',
+			'identification': 'NONE',
+		})
+		r.party = 'unaffliated'
+		r.reg_lookup_complete = True
+		r.addr_lookup_complete = True
+		r.is_citizen = True
+		r.county = 'TEST'
+		r.save(db.session)
+
+	@classmethod
+	def find_or_create_by(cls, **kwargs):
+		found_one = cls.query.filter_by(**kwargs).first()
+		if found_one:
+			return found_one
+		else:
+			r = cls(**kwargs)
+			r.registration_value = {}
+			r.save(db.session)
+			return r
+
 	def middle_initial(self):
 		middle_name = self.try_value('name_middle')
 		if middle_name and len(middle_name) > 0:

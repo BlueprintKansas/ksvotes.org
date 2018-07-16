@@ -44,6 +44,10 @@ def list_routes():
 def load_clerks():
     Clerk.load_fixtures()
 
+@manager.command
+def load_demo():
+    Registrant.load_fixtures()
+
 if __name__ == "__main__":
     write_pid_file()
     manager.run()

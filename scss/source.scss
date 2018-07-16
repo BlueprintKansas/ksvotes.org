@@ -115,6 +115,17 @@ a.icon {
     padding: .5em;
     padding-right: 1.5em;
   }
+  .postfix {
+    color: #ced4da;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    &:hover,
+    &:focus,
+    &:active {
+      color: $default-color;
+    }
+  }
 }
 form {
   padding: 15px 40px 15px 15px;

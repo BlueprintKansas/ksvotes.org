@@ -40,7 +40,7 @@
         {% endif %}
         <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
          <fieldset>
-          <legend>{{_('4_legend')}}</legend>
+          <!-- <legend>{{_('4_legend')}}</legend> single field makes it redundant -->
 
           {{form.hidden_tag()}}
 

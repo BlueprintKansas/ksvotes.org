@@ -285,6 +285,7 @@
     "es":"Su nombre se ha completado a partir de lo que nos dio antes."
   },
   "2_prefix":{"wiki_step":"2","ref":"2_prefix","en":"Prefix","es":"Prefijo"},
+  "2_optional_select":{"en":"(None)","es":"(Ninguna)"},
   "2_first":{"wiki_step":"2","ref":"2_first","en":"First Name","es":"Primer Nombre"},
   "2_middle":{"wiki_step":"2","ref":"2_middle","en":"Middle Name","es":"Segundo Nombre"},
   "2_last":{"wiki_step":"2","ref":"2_last","en":"Last Name","es":"Apellido "},

@@ -55,4 +55,9 @@ routes:
 load-clerks:
 	python manage.py load_clerks
 
-.PHONY: deps venv test dbmigrate run testcov
+load-demo:
+	python manage.py load_demo
+
+fixtures: load-clerks load-demo
+
+.PHONY: deps venv test dbmigrate run testcov fixtures

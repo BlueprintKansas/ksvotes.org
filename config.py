@@ -18,6 +18,7 @@ class Config:
     SEND_EMAIL = os.getenv('SEND_EMAIL')
     SSL_DISABLE = os.getenv('SSL_DISABLE', False)
     SESSION_TTL = os.getenv('SESSION_TTL', '10')
+    DEMO_UUID = os.getenv('DEMO_UUID', None)
 
     @staticmethod
     def init_app(app):

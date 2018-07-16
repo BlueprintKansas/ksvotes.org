@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-15 16:56-0500\n"
+"POT-Creation-Date: 2018-07-15 22:48-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
 
-#: app/decorators/insession.py:34
+#: app/decorators/insession.py:34 app/decorators/insession.py:46
 msgid "session_interrupted_error"
 msgstr ""
 
@@ -205,8 +205,12 @@ msgstr ""
 msgid "1VR_18"
 msgstr ""
 
-#: app/main/forms/vr_2.py:8 app/main/forms/vr_2.py:10
+#: app/main/forms/vr_2.py:8
 msgid "2_prefix"
+msgstr ""
+
+#: app/main/forms/vr_2.py:10 app/main/forms/vr_2.py:22
+msgid "2_optional_select"
 msgstr ""
 
 #: app/main/forms/vr_2.py:17
@@ -221,7 +225,7 @@ msgstr ""
 msgid "2_last"
 msgstr ""
 
-#: app/main/forms/vr_2.py:20 app/main/forms/vr_2.py:22
+#: app/main/forms/vr_2.py:20
 msgid "2_suffix"
 msgstr ""
 
@@ -273,7 +277,7 @@ msgstr ""
 msgid "3_prev_zip"
 msgstr ""
 
-#: app/main/forms/vr_4.py:7 app/main/forms/vr_4.py:10
+#: app/main/forms/vr_4.py:7
 msgid "4_party"
 msgstr ""
 
@@ -285,19 +289,19 @@ msgstr ""
 msgid "7_affirm"
 msgstr ""
 
-#: app/templates/base.html:129
+#: app/templates/base.html:132
 msgid "0_footer_tos"
 msgstr ""
 
-#: app/templates/base.html:130
+#: app/templates/base.html:133
 msgid "0_footer_priv"
 msgstr ""
 
-#: app/templates/base.html:131
+#: app/templates/base.html:134
 msgid "0_footer_contact"
 msgstr ""
 
-#: app/templates/base.html:135
+#: app/templates/base.html:138
 msgid "0_footer_partners"
 msgstr ""
 
@@ -368,6 +372,22 @@ msgstr ""
 
 #: app/templates/index.html:102
 msgid "0_phone_flag"
+msgstr ""
+
+#: app/templates/session-timeout-modal.html:7
+msgid "session_timeout_header"
+msgstr ""
+
+#: app/templates/session-timeout-modal.html:12
+msgid "your_session_has_expired"
+msgstr ""
+
+#: app/templates/session-timeout-modal.html:15
+msgid "session_expired_due_to_inactivity"
+msgstr ""
+
+#: app/templates/session-timeout-modal.html:17
+msgid "btn_start_session"
 msgstr ""
 
 #: app/templates/ab/address.html:15 app/templates/vr/address.html:15

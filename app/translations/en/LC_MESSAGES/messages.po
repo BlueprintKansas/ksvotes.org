@@ -171,6 +171,9 @@ msgstr "Middle Name"
 msgid "2_name_help"
 msgstr "Your name has been completed from what you gave us earlier."
 
+msgid "2_optional_select"
+msgstr "(None)"
+
 msgid "2_prefix"
 msgstr "Prefix"
 
@@ -202,7 +205,7 @@ msgid "3_addr_header"
 msgstr "What is your home address?"
 
 msgid "3_addr_help"
-msgstr "Your address of residence determines the precinct in which you vote. "Residence" is defined in Kansas law as "the place adopted by a person as such person's place of habitation, and to which, whenever such person is absent, such person has the intention of returning.""
+msgstr "Your address of residence determines the precinct in which you vote. \"Residence\" is defined in Kansas law as \"the place adopted by a person as such person's place of habitation, and to which, whenever such person is absent, such person has the intention of returning.\""
 
 msgid "3_city"
 msgstr "City/Town"
@@ -277,7 +280,7 @@ msgid "4_party"
 msgstr "Choice of Party"
 
 msgid "4_party_help"
-msgstr "You must register with a party if you want to take part in that party's primary election, caucus, or convention. If you wish to not be associated with any party, please select "Unaffiliated""
+msgstr "You must register with a party if you want to take part in that party's primary election, caucus, or convention. If you wish to not be associated with any party, please select \"Unaffiliated\""
 
 msgid "5AB_id"
 msgstr "Current Kansas driver's license number or nondriver's identification card number"
@@ -292,7 +295,7 @@ msgid "5VR_id"
 msgstr "ID Number"
 
 msgid "5VR_id_help"
-msgstr "Your completed voter registration form must contain your state issued driver's license number or nondriver's identification card number. If you do not have a driver's license or nondriver's identification card, you must include the last four digits of your social security number. If you do not have a driver's license or a nondriver's identification card or social security number, please write "NONE" on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
+msgstr "Your completed voter registration form must contain your state issued driver's license number or nondriver's identification card number. If you do not have a driver's license or nondriver's identification card, you must include the last four digits of your social security number. If you do not have a driver's license or a nondriver's identification card or social security number, please write \"NONE\" on the form. A unique identifying number will be assigned by the State. The number you provide will be used for administrative purposes only and will not be disclosed to the public."
 
 msgid "5VR_id_shorthelp"
 msgstr "Your ID should be drivers license #, nondrivers id card #, last 4 of SSN, or NONE."

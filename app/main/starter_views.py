@@ -36,7 +36,7 @@ def index():
             name_first = registrant.registration_value.get('name_first'),
             name_last = registrant.registration_value.get('name_last'),
             dob = registrant.registration_value.get('dob'),
-            county = registrant.registration_value.get('county'),
+            county = registrant.county,
             email = registrant.registration_value.get('email'),
             phone = registrant.registration_value.get('phone')
         )
@@ -74,6 +74,11 @@ def change_or_apply():
     http_session['reg_found'] = None # do not persist
     return render_template('change-or-apply.html', reg_found=reg_found)
 
+# easy to remember
+@main.route('/demo', methods=['GET'])
+def demo_mode():
+    return redirect('/ref?ref=demo')
+
 @main.route('/ref', methods=['GET', 'POST'])
 def referring_org():
     # we will accept whatever subset of step0 fields are provided.
@@ -82,6 +87,11 @@ def referring_org():
         return abort(404)
 
     sid = str(uuid4())
+
+    # special 'ref' value of 'demo' attaches to the DEMO_UUID if defined
+    if current_app.config['DEMO_UUID']:
+        sid = current_app.config['DEMO_UUID']
+
     http_session['session_id'] = sid
 
     # if this is a GET request, make ref sticky via a cookie

@@ -171,6 +171,9 @@ msgstr "Segundo Nombre"
 msgid "2_name_help"
 msgstr "Su nombre se ha completado a partir de lo que nos dio antes."
 
+msgid "2_optional_select"
+msgstr "(Ninguna)"
+
 msgid "2_prefix"
 msgstr "Prefijo"
 
@@ -202,7 +205,7 @@ msgid "3_addr_header"
 msgstr "¿Cual es la dirección de tu casa?"
 
 msgid "3_addr_help"
-msgstr "Su dirección de residencia determina el precinto en el que usted vota. "Residencia" se define en la ley de Kansas como "el lugar adoptado por una persona como lugar de habitación de esa persona, y al cual, cuando esa persona está ausente, dicha persona tiene la intención de regresar"."
+msgstr "Su dirección de residencia determina el precinto en el que usted vota. \"Residencia\" se define en la ley de Kansas como \"el lugar adoptado por una persona como lugar de habitación de esa persona, y al cual, cuando esa persona está ausente, dicha persona tiene la intención de regresar\"."
 
 msgid "3_city"
 msgstr "Ciudada/Pueblo"
@@ -277,7 +280,7 @@ msgid "4_party"
 msgstr "Eleccion de partido"
 
 msgid "4_party_help"
-msgstr "Debe registrarse con una de las partes si desea participar en las elecciones primarias, caucus o convenciones de ese partido. Si no desea asociarse con ninguna de las partes, seleccione "No afiliados""
+msgstr "Debe registrarse con una de las partes si desea participar en las elecciones primarias, caucus o convenciones de ese partido. Si no desea asociarse con ninguna de las partes, seleccione \"No afiliados\""
 
 msgid "5AB_id"
 msgstr "Número actual de licencia de conducir de Kansas o número de tarjeta de identificación de no conductor:"
@@ -292,7 +295,7 @@ msgid "5VR_id"
 msgstr "Numero de ID"
 
 msgid "5VR_id_help"
-msgstr "Su formulario de registro de votante completado debe contener su número de licencia de conducir emitido por el estado o número de tarjeta de identificación del no conductor. Si no tiene una licencia de conducir o una tarjeta de identificación de no conductor, debe incluir los últimos cuatro dígitos de su número de seguro social. Si no tiene una licencia de conducir o una tarjeta de identificación del conductor o un número de seguro social, escriba "NINGUNO" en el formulario. El Estado asignará un número de identificación único. El número que proporcione se usará únicamente con fines administrativos y no se divulgará al público."
+msgstr "Su formulario de registro de votante completado debe contener su número de licencia de conducir emitido por el estado o número de tarjeta de identificación del no conductor. Si no tiene una licencia de conducir o una tarjeta de identificación de no conductor, debe incluir los últimos cuatro dígitos de su número de seguro social. Si no tiene una licencia de conducir o una tarjeta de identificación del conductor o un número de seguro social, escriba \"NINGUNO\" en el formulario. El Estado asignará un número de identificación único. El número que proporcione se usará únicamente con fines administrativos y no se divulgará al público."
 
 msgid "5VR_id_shorthelp"
 msgstr "SPANISH NEEDED"

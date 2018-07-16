@@ -7,7 +7,7 @@ class FormVR4(FlaskForm):
 	party = SelectField(lazy_gettext(u'4_party'),
                             validators=[DataRequired(message=lazy_gettext(u'Required'))],
 							 choices=[
-								 ('', lazy_gettext(u'4_party')),
+								 ('', ''),
 								 ('democratic', 'Democratic'),
 								 ('republican', 'Republican'),
 								 ('unafilliated', 'Unafilliated'),

@@ -2,13 +2,13 @@
 
   {% if field.widget.input_type == 'text' %}
   <div class="md-form">
+      {{field.label}}
+
       {% if additional_attributes %}
         {{field(class="form-control", **additional_attributes)}}
       {% else%}
         {{field(class="form-control")}}
       {% endif %}
-
-    {{field.label}}
 
       {% if help_text %}
         <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
@@ -49,8 +49,8 @@
   {% endif %}
 
   {% if 'Select' in field.__class__.__name__  %}
-    <div class="form-group md-form">
-      {{field.label(class="sr-only")}}
+    <div class="form-group ">
+      {{field.label}}
 
       {% if additional_attributes %}
         {{field(class="form-control", **additional_attributes)}}

@@ -7,7 +7,7 @@ from app.main.helpers import RequiredIfBool
 class FormVR2(FlaskForm):
 	prefix = SelectField(lazy_gettext(u'2_prefix'),
 							 choices=[
-								 ('', lazy_gettext(u'2_prefix')),
+								 ('', lazy_gettext(u'2_optional_select')),
 								 ('mr', 'Mr.'),
 								 ('mrs', 'Mrs.'),
 								 ('miss', 'Miss'),
@@ -19,7 +19,7 @@ class FormVR2(FlaskForm):
 	name_last = StringField(lazy_gettext(u'2_last'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
 	suffix = SelectField(lazy_gettext(u'2_suffix'),
 							 choices=[
-								 ('', lazy_gettext(u'2_suffix')),
+								 ('', lazy_gettext(u'2_optional_select')),
 								 ('jr', 'Jr.'),
 								 ('sr', 'Sr.'),
 								 ('ii', 'II'),
