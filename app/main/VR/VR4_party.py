@@ -16,7 +16,8 @@ def vr4_party():
         step = Step_VR_4(form.data)
         step.run()
         g.registrant.update(form.data)
-        db.session.commit()
-        session_manager = SessionManager(g.registrant,step)
+        g.registrant.save(db.session)
+        session_manager = SessionManager(g.registrant, step)
         return redirect(session_manager.get_redirect_url())
-    return render_template('vr/party.html', form=form, registrant=g.registrant)
+
+    return render_template('vr/party.html', form=form)
