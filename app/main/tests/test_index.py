@@ -76,10 +76,7 @@ def test_registered_voter_input_returns_redirect_change_or_apply(app, db_session
     redirect_data = response.data.decode()
     assert ('/change-or-apply' in redirect_data) == True
 
-def test_unregistered_voter_input_returns_redirect_step_VR_1(app, db_session, client):
-    """
-    A non registered potential voter returns the step for vr 1.
-    """
+def test_unregistered_voter_input_returns_redirect_step_1(app, db_session, client):
     form_payload = {
         "name_first": "foo",
         "name_last": "bar",
@@ -89,4 +86,4 @@ def test_unregistered_voter_input_returns_redirect_step_VR_1(app, db_session, cl
     }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
-    assert ('/vr/citizenship' in redirect_data) == True
+    assert ('/change-or-apply' in redirect_data) == True

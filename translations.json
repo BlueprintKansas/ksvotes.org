@@ -564,5 +564,29 @@
   "session_interrupted_error": {
     "en": "To protect your privacy, your KSVotes session was restarted after a period of inactivity.",
     "es": "Para proteger su privacidad, su sesión de KSVotes se reinició después de un período de inactividad."
+  },
+  "your_session_has_expired": {
+    "en": "Your KSVotes session has expired",
+    "es": "Su sesión de KSVotes ha expirado"
+  },
+  "session_timeout_header": {
+    "en": "You still there?",
+    "es": "¿Todavía estás ahí?"
+  },
+  "session_expired_due_to_inactivity": {
+    "en": "To protect your privacy, your KSVotes session was discontinued after a period of inactivity.",
+    "es": "Para proteger su privacidad, su sesión de KSVotes se suspendió después de un período de inactividad."
+  },
+  "btn_start_session": {
+    "en": "Start again",
+    "es": "Empezar de nuevo"
+  },
+  "session_forgotten": {
+    "en": "We've cleaned up all your personal information to protect your privacy.",
+    "es": "Hemos limpiado toda su información personal para proteger su privacidad."
+  },
+  "btn_forget_session": {
+    "en": "I'm all done!",
+    "es": "¡Ya terminé!"
   }
 }

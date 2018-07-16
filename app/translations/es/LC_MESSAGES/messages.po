@@ -378,12 +378,30 @@ msgstr "SPANISH NEEDED"
 msgid "btn_back"
 msgstr "Espalda"
 
+msgid "btn_forget_session"
+msgstr "¡Ya terminé!"
+
 msgid "btn_next"
 msgstr "Siguiente"
 
 msgid "btn_sign"
 msgstr "Firmar"
 
+msgid "btn_start_session"
+msgstr "Empezar de nuevo"
+
+msgid "session_expired_due_to_inactivity"
+msgstr "Para proteger su privacidad, su sesión de KSVotes se suspendió después de un período de inactividad."
+
+msgid "session_forgotten"
+msgstr "Hemos limpiado toda su información personal para proteger su privacidad."
+
 msgid "session_interrupted_error"
 msgstr "Para proteger su privacidad, su sesión de KSVotes se reinició después de un período de inactividad."
+
+msgid "session_timeout_header"
+msgstr "¿Todavía estás ahí?"
+
+msgid "your_session_has_expired"
+msgstr "Su sesión de KSVotes ha expirado"
 

@@ -378,12 +378,30 @@ msgstr "Thank you. Your advance ballot application(s) have been submitted. You s
 msgid "btn_back"
 msgstr "Back"
 
+msgid "btn_forget_session"
+msgstr "I'm all done!"
+
 msgid "btn_next"
 msgstr "Next"
 
 msgid "btn_sign"
 msgstr "Sign"
 
+msgid "btn_start_session"
+msgstr "Start again"
+
+msgid "session_expired_due_to_inactivity"
+msgstr "To protect your privacy, your KSVotes session was discontinued after a period of inactivity."
+
+msgid "session_forgotten"
+msgstr "We've cleaned up all your personal information to protect your privacy."
+
 msgid "session_interrupted_error"
 msgstr "To protect your privacy, your KSVotes session was restarted after a period of inactivity."
+
+msgid "session_timeout_header"
+msgstr "You still there?"
+
+msgid "your_session_has_expired"
+msgstr "Your KSVotes session has expired"
 

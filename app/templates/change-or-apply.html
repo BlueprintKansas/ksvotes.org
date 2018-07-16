@@ -4,17 +4,40 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="task">
-      {% if reg_found: %}
+      <div class="mt-4">
+      {% if sos_reg: %}
+
         <h3>{{_('1AB_reg_found_title')}}</h3>
-        {{reg_found|safe}}
-        <h4>{{_('1AB_whats_next')}}</h4>
-        <p><a href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_change_reg_link')}}</a></p>
-        <p><a href="{{url_for('main.ab1_election_picker')}}">{{_('1AB_apply_ab_link')}}</a></p>
+
+        {% include 'voter-view-details.html' %}
+
+        <div class="mt-4">
+         <h4>{{_('1AB_whats_next')}}</h4>
+
+         <p><a href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_change_reg_link')}}</a></p>
+         <p><a href="{{url_for('main.ab1_election_picker')}}">{{_('1AB_apply_ab_link')}}</a></p>
         {# <p><a href="{{url_for('main.ab1_perm')}}">{{_('1AB_apply_perm_ab_link')}}</a>{{_('1AB_perm_help')}}</p> #}
+
+        </div>
+
       {% else %}
-        <h3>{{_('1AB_sorry_no_reg_title')}}</h3>
-        <p><a href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_sorry_no_reg_link')}}</a>{{_('1AB_sorry_no_reg_help')}}</p>
+
+       <div class="card">
+        <div class="card-body">
+         <h3>{{_('1AB_sorry_no_reg_title')}}</h3>
+         <p>
+          <a href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_sorry_no_reg_link')}}</a>
+          {{_('1AB_sorry_no_reg_help')}}
+         </p>
+
+         {% if clerk %}
+         <div class="clerk-details">
+          {% include 'clerk-details.html' %}
+         </div>
+         {% endif %}
+        </div>
+       </div>
+  
       {% endif %}
       </div>
     </div>

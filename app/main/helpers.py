@@ -23,7 +23,7 @@ def guess_locale():
     return locale
 
 def construct_county_choices(default):
-    county_list = [('',default)]
+    county_list = [('','')]
     for county in COUNTIES:
         county_list.append((county, county))
     return county_list

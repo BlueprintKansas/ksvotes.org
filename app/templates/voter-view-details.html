@@ -1,0 +1,22 @@
+<div id="voter-view">
+ <div class="card">
+  <div class="card-body">
+ {% if sos_reg|length == 1 %}
+
+   {% set r = sos_reg[0] %}
+   <table>
+    <tbody>
+     {% for th, td in r.items() %}
+      <tr><th>{{th}}</th><td>{{td|safe}}</td></tr>
+     {% endfor %}
+    </tbody>
+   </table>
+
+ {% elif sos_reg|length > 1 %}
+
+  <p>Sorry, there were too many results matching your name and DOB</p>
+
+ {% endif %}
+  </div>
+ </div>
+</div>

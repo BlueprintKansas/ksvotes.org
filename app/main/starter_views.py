@@ -1,8 +1,9 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app
+from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app, flash
+from flask_babel import lazy_gettext
 import time
 from app.main.forms import *
-from app.models import Registrant
+from app.models import Registrant, Clerk
 from app import db
 from uuid import UUID, uuid4
 from app.decorators import InSession
@@ -57,10 +58,8 @@ def index():
 
         step.run()
         registrant.reg_lookup_complete = step.reg_lookup_complete
-        db.session.commit()
-
-        http_session['reg_found'] = str(step.reg_found)
-
+        registrant.update({'sos_reg': list(map(lambda x: x['tree'], step.reg_found)) if step.reg_found else None})
+        registrant.save(db.session)
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
 
@@ -70,9 +69,20 @@ def index():
 @main.route('/change-or-apply/', methods=["GET"])
 @InSession
 def change_or_apply():
-    reg_found = http_session.get('reg_found', None)
-    http_session['reg_found'] = None # do not persist
-    return render_template('change-or-apply.html', reg_found=reg_found)
+    sos_reg = g.registrant.try_value('sos_reg')
+    county = g.registrant.county
+    clerk = None
+    if county:
+        clerk = Clerk.find_by_county(county)
+
+    return render_template('change-or-apply.html', sos_reg=sos_reg, clerk=clerk)
+
+@main.route('/forget', methods=['GET', 'POST'])
+def forget_session():
+    g.locale = guess_locale()
+    http_session['session_id'] = None
+    flash(lazy_gettext('session_forgotten'), 'info')
+    return redirect(url_for('main.index'))
 
 # easy to remember
 @main.route('/demo', methods=['GET'])

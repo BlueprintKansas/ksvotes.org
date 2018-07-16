@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-15 22:48-0500\n"
+"POT-Creation-Date: 2018-07-16 13:38-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 msgid "1AB_select_election_general"
 msgstr ""
 
+#: app/main/starter_views.py:82
+msgid "session_forgotten"
+msgstr ""
+
 #: app/main/AB/AB7_affirmation.py:32 app/main/VR/VR7_affirmation.py:32
 msgid "9_confirm_email"
 msgstr ""
@@ -44,7 +48,7 @@ msgstr ""
 #: app/main/forms/ab_6.py:8 app/main/forms/ab_7.py:7
 #: app/main/forms/step_0.py:13 app/main/forms/step_0.py:14
 #: app/main/forms/step_0.py:15 app/main/forms/step_0.py:17
-#: app/main/forms/step_0.py:20 app/main/forms/vr_1.py:7
+#: app/main/forms/step_0.py:22 app/main/forms/vr_1.py:7
 #: app/main/forms/vr_2.py:17 app/main/forms/vr_2.py:19
 #: app/main/forms/vr_2.py:40 app/main/forms/vr_2.py:42 app/main/forms/vr_3.py:9
 #: app/main/forms/vr_3.py:11 app/main/forms/vr_3.py:12
@@ -173,27 +177,27 @@ msgstr ""
 msgid "0_dob_flag"
 msgstr ""
 
-#: app/main/forms/step_0.py:16 app/main/forms/step_0.py:18
+#: app/main/forms/step_0.py:16 app/main/forms/step_0.py:19
 msgid "0_county"
 msgstr ""
 
-#: app/main/forms/step_0.py:20
+#: app/main/forms/step_0.py:21
 msgid "0_email"
 msgstr ""
 
-#: app/main/forms/step_0.py:20 app/templates/index.html:92
+#: app/main/forms/step_0.py:23 app/templates/index.html:92
 msgid "0_email_flag"
 msgstr ""
 
-#: app/main/forms/step_0.py:21
+#: app/main/forms/step_0.py:25
 msgid "0_phone"
 msgstr ""
 
-#: app/main/forms/step_0.py:21 app/templates/index.html:98
+#: app/main/forms/step_0.py:26 app/templates/index.html:98
 msgid "0_phone_help"
 msgstr ""
 
-#: app/main/forms/step_0.py:32 app/templates/index.html:60
+#: app/main/forms/step_0.py:38 app/templates/index.html:60
 msgid "0_dob_help"
 msgstr ""
 
@@ -305,41 +309,42 @@ msgstr ""
 msgid "0_footer_partners"
 msgstr ""
 
-#: app/templates/change-or-apply.html:9
+#: app/templates/change-or-apply.html:10
 msgid "1AB_reg_found_title"
 msgstr ""
 
-#: app/templates/change-or-apply.html:11
+#: app/templates/change-or-apply.html:15
 msgid "1AB_whats_next"
 msgstr ""
 
-#: app/templates/change-or-apply.html:12
+#: app/templates/change-or-apply.html:17
 msgid "1AB_change_reg_link"
 msgstr ""
 
-#: app/templates/change-or-apply.html:13
+#: app/templates/change-or-apply.html:18
 msgid "1AB_apply_ab_link"
 msgstr ""
 
-#: app/templates/change-or-apply.html:16
+#: app/templates/change-or-apply.html:27
 msgid "1AB_sorry_no_reg_title"
 msgstr ""
 
-#: app/templates/change-or-apply.html:17
+#: app/templates/change-or-apply.html:29
 msgid "1AB_sorry_no_reg_link"
 msgstr ""
 
-#: app/templates/change-or-apply.html:17
+#: app/templates/change-or-apply.html:30
 msgid "1AB_sorry_no_reg_help"
+msgstr ""
+
+#: app/templates/forget-session-button.html:4 app/templates/form-buttons.html:9
+#: app/templates/index.html:117
+msgid "btn_next"
 msgstr ""
 
 #: app/templates/ab/preview-sign.html:37 app/templates/form-buttons.html:4
 #: app/templates/vr/preview-sign.html:35
 msgid "btn_back"
-msgstr ""
-
-#: app/templates/form-buttons.html:9 app/templates/index.html:117
-msgid "btn_next"
 msgstr ""
 
 #: app/templates/index.html:14

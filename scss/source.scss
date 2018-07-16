@@ -226,7 +226,6 @@ form {
 }
 
 div.clerk-details {
-  margin: 12px;
   padding: 15px 40px 15px 15px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -234,7 +233,8 @@ div.clerk-details {
   position: relative;
 }
 
-table.clerk-details {
+table.clerk-details,
+#voter-view table {
   th, td {
     padding: 4px 8px;
     vertical-align: top;
