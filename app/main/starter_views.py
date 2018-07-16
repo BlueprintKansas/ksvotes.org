@@ -1,5 +1,6 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app
+from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app, flash
+from flask_babel import lazy_gettext
 import time
 from app.main.forms import *
 from app.models import Registrant, Clerk
@@ -75,6 +76,13 @@ def change_or_apply():
         clerk = Clerk.find_by_county(county)
 
     return render_template('change-or-apply.html', sos_reg=sos_reg, clerk=clerk)
+
+@main.route('/forget', methods=['GET', 'POST'])
+def forget_session():
+    g.locale = guess_locale()
+    http_session['session_id'] = None
+    flash(lazy_gettext('session_forgotten'), 'info')
+    return redirect(url_for('main.index'))
 
 # easy to remember
 @main.route('/demo', methods=['GET'])
