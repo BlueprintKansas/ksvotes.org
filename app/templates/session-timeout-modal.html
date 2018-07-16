@@ -4,7 +4,7 @@
     <div class="modal-content"><!--Content-->
 
       <!--Header-->
-      <div class="modal-header alert alert-warning">{{_('session_timeout_header')}}</div>
+      <div class="modal-header text-center alert alert-warning">{{_('session_timeout_header')}}</div>
 
       <!--Body-->
       <div class="modal-body text-center mb-1">
@@ -22,9 +22,9 @@
     </div><!--/.Content-->
   </div><!--modal-dialog-->
 </div>
-<!--
+{% if config['DEBUG'] %}
 <div class="text-center">
-  <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modal-session-expired">Test Session</a>
+  <a href="#" data-toggle="modal" data-target="#modal-session-expired">Test Session</a>
 </div>
--->
+{% endif %}
 {% endblock %}

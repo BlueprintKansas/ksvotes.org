@@ -58,7 +58,9 @@
     {% endif %}
 
     <div id="mask"></div>
+    {% if registrant %}
     {% include 'session-timeout-modal.html' %}
+    {% endif %}
 
     <main>
      {% block header %}
@@ -202,6 +204,12 @@
         console.log('you may not simply dismiss the modal');
         window.location = '{{url_for('main.index')}}';
       });
+      window.setTimeout(function() {
+        $('#modal-session-expired').modal('show');
+        //console.log('session ttl check fired');
+      }, 60000 * {{config['SESSION_TTL']}}); // TTL is minutes
+      // this does not actually expire the session, just improves UX.
+      // the browser cookie will expire and so will the server-side session.
     </script>
     {% block js_footer %}
 

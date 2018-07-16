@@ -65,6 +65,10 @@ def create_app(script_info):
             app.logger.info('ensure_lang_support failed to find %s in LANGUAGES' %(lang_code))
             return abort(404)
 
+    @app.context_processor
+    def inject_dict_for_all_templates():
+        return dict(registrant=g.get('registrant'))
+
 
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
