@@ -105,7 +105,7 @@ def referring_org():
     sid = str(uuid4())
 
     # special 'ref' value of 'demo' attaches to the DEMO_UUID if defined
-    if current_app.config['DEMO_UUID']:
+    if request.values['ref'] == 'demo' and current_app.config['DEMO_UUID']:
         sid = current_app.config['DEMO_UUID']
 
     http_session['session_id'] = sid
