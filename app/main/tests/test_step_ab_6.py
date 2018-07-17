@@ -13,7 +13,7 @@ def create_registrant(db_session):
             "city": "Lawrence",
             "state": "KANSAS",
             "zip": "66044",
-            "identification": "nnnnn",
+            "ab_identification": "nnnnn",
             "elections": "General (11/7/2018)",
         },
         county="TEST",

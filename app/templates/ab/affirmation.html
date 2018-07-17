@@ -9,13 +9,17 @@
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="clerk-details col-md-6">
+      <div class="mt-4 clerk-details col-md-6">
         <p>{{_('7_clerk_send_to')}}</p>
         {% include 'clerk-details.html' %}
       </div>
-      <div class="col-md-12">
+      <div class="mt-4 mb-4 col-md-12">
         {% for preview_img in preview_imgs %}
+        <div class="card">
+         <div class="card-body">
           <img src="{{preview_img}}"/>
+         </div>
+        </div>
         {% endfor %}
       </div>
       <div class="col-md-6">
