@@ -58,7 +58,13 @@ def index():
 
         step.run()
         registrant.reg_lookup_complete = step.reg_lookup_complete
-        registrant.update({'sos_reg': list(map(lambda x: x['tree'], step.reg_found)) if step.reg_found else None})
+        sos_reg = None
+        if step.reg_found:
+          sos_reg = []
+          for rec in step.reg_found:
+            sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
+
+        registrant.update({'sos_reg': sos_reg})
         registrant.save(db.session)
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
