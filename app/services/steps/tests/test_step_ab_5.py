@@ -11,7 +11,7 @@ def test_step_ab5_is_complete_false(app, db_session, client):
 
 def test_step_ab5_is_complete_true(app, db_session, client):
     form_payload = {
-        "identification": "nnnnnnn"
+        "ab_identification": "nnnnnnn"
     }
     step = Step_AB_5(form_payload)
     assert step.run() == True

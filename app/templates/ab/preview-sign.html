@@ -9,16 +9,24 @@
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h3 class="h3-responsive">{{_('6_header')}}</h3>
-        <h5 class="h5-responsive">{{_('6_header2')}}</h5>
+      <div class="col-md-6 mb-2">
+       <div class="card">
+        <div class="card-body">
+         <p>{{_('6_header')}}</p>
+         <p>{{_('6_header2')}}</p>
+        </div>
+       </div>
       </div>
       <div class="col-md-12">
-          {% for preview_img in preview_imgs %}
-            <img src="{{preview_img}}"/>
-          {% endfor %}
+       {% for preview_img in preview_imgs %}
+       <div class="card">
+        <div class="card-body">
+          <img src="{{preview_img}}"/>
+        </div>
+       </div>
+       {% endfor %}
       </div>
-      <div class="col-md-12">
+      <div class="mt-2 col-md-12">
           <form name="step_6" id="step_6" method="POST"  action="{{url_for('main.ab6_preview_sign')}}">
            <fieldset>
             <legend>{{_('6_legend')}}</legend>

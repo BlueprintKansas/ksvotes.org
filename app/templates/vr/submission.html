@@ -5,14 +5,22 @@
 {% block content %}
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+   <div class="col-md-6">
+    <div class="card">
+     <div class="card-body">
       <p>{{_('8_confirm')}}</p>
       <div class="clerk-details">
         <p>{{_('8_clerk_sent_to')}}</p>
         {% include 'clerk-details.html' %}
       </div>
+
+      <a class="btn btn-outline-default" href="{{url_for('main.ab1_election_picker')}}">{{_('1AB_apply_ab_link')}}</a>
+
       {% include 'forget-session-button.html' %}
+
+     </div>
     </div>
+   </div>
   </div>
 </div>
 {% endblock %}

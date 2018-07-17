@@ -9,8 +9,9 @@ from app.services.steps import Step_AB_5
 @main.route('/ab/identification', methods=["GET", "POST"])
 @InSession
 def ab5_identification():
+    idn = g.registrant.try_value('ab_identification')
     form = FormAB5(
-        identification = g.registrant.try_value('identification'),
+        identification = idn
     )
     if request.method == "POST" and form.validate_on_submit():
         step = Step_AB_5(form.data)

@@ -82,7 +82,7 @@ class NVRISClient():
             'state': 'Kansas', # TODO r.try_value('state'),
             'county_2': r.county, # TODO corresponds with 'state'
             'county_1': r.county, # TODO different?
-            'id_number': r.try_value('identification'),
+            'id_number': r.try_value('ab_identification'),
             'last_name': r.try_value('name_last'),
             'first_name': r.try_value('name_first'),
             'middle_initial': r.middle_initial(),

@@ -58,7 +58,13 @@ def index():
 
         step.run()
         registrant.reg_lookup_complete = step.reg_lookup_complete
-        registrant.update({'sos_reg': list(map(lambda x: x['tree'], step.reg_found)) if step.reg_found else None})
+        sos_reg = None
+        if step.reg_found:
+          sos_reg = []
+          for rec in step.reg_found:
+            sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
+
+        registrant.update({'sos_reg': sos_reg})
         registrant.save(db.session)
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
@@ -99,7 +105,7 @@ def referring_org():
     sid = str(uuid4())
 
     # special 'ref' value of 'demo' attaches to the DEMO_UUID if defined
-    if current_app.config['DEMO_UUID']:
+    if request.values['ref'] == 'demo' and current_app.config['DEMO_UUID']:
         sid = current_app.config['DEMO_UUID']
 
     http_session['session_id'] = sid

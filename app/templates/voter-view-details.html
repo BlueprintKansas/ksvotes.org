@@ -6,8 +6,14 @@
    {% set r = sos_reg[0] %}
    <table>
     <tbody>
-     {% for th, td in r.items() %}
+     {% for th, td in r['tree'].items() %}
       <tr><th>{{th}}</th><td>{{td|safe}}</td></tr>
+     {% endfor %}
+     {% for sample_ballot in r['sample_ballot'] %}
+      <tr>
+       <th>Sample Ballot</th>
+       <td><a href="{{sample_ballot['href']}}" target="_blank">{{sample_ballot['text']}}</a></td>
+      </tr>
      {% endfor %}
     </tbody>
    </table>
