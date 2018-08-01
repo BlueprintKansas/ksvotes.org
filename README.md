@@ -6,8 +6,8 @@
 The ksvotes.org site makes Kansas online voting registration easy.
 
 ## Table of Contents
+* [Database Setup](#database-setup)
 * [Setup & Installation](#setup-&-installation)
-    * [Database Setup](#database-setup)
     * [Environmental Variables](#environmental-variables)
     * [Migrate Database](#migrate-database)
     * [Run the application](#run-the-application)
@@ -20,12 +20,8 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
   [DB setup reference](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
 
-  Create databases for development and testing.
+  Create databases for development and testing. In the [Environmental Variables](#environmental-variables) section below we assume the names you picked were `ksvotes_dev` and `ksvotes_test`.
 
-```
-$ createdb ksvotes_dev
-$ createdb ksvotes_test
-```
 
 ## Setup & Installation
   Recommendations for running after cloning:
