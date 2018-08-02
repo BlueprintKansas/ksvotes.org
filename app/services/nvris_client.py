@@ -78,6 +78,7 @@ class NVRISClient():
     def marshall_ksav1_payload(self, **kwargs):
         election = kwargs['election']
         r = self.registrant
+        sig = r.try_value('signature_string', None)
         return {
             'state': 'Kansas', # TODO r.try_value('state'),
             'county_2': r.county, # TODO corresponds with 'state'
@@ -96,8 +97,8 @@ class NVRISClient():
             'mailing_state': r.try_value('mail_state'),
             'mailing_zip': r.try_value('mail_zip'),
             'election_date': self.parse_election_date(election),
-            'signature': r.try_value('signature_string', None),
-            'signature_date': r.signed_at.strftime('%m/%d/%Y'),
+            'signature': sig,
+            'signature_date': r.signed_at.strftime('%m/%d/%Y') if sig else False,
             'phone_number': r.try_value('phone'),
             'democratic': True if r.party == 'democratic' else False,
             'republican': True if r.party == 'republican' else False,
@@ -105,6 +106,7 @@ class NVRISClient():
 
     def marshall_vr_payload(self):
         r = self.registrant
+        sig = r.try_value('signature_string', None)
         return {
             "00_citizen_yes": True if r.is_citizen else False,
             "00_citizen_no": False if r.is_citizen else True,
@@ -136,9 +138,9 @@ class NVRISClient():
             "06_idNumber": r.try_value('identification'),
             "07_party": r.party,
             "08_raceEthnic": '',
-            "09_month": r.signed_at.strftime('%m'),
-            "09_day": r.signed_at.strftime('%d'),
-            "09_year": r.signed_at.strftime('%Y'),
+            "09_month": r.signed_at.strftime('%m') if sig else False,
+            "09_day": r.signed_at.strftime('%d') if sig else False,
+            "09_year": r.signed_at.strftime('%Y') if sig else False,
             "A_prefix_mr": True if r.try_value('prev_prefix') == 'mr' else False,
             "A_prefix_mrs": True if r.try_value('prev_prefix') == 'mrs' else False,
             "A_prefix_miss": True if r.try_value('prev_prefix') == 'miss' else False,
@@ -157,5 +159,5 @@ class NVRISClient():
             "B_state": r.try_value('prev_state'),
             "B_zipCode": r.try_value('prev_zip'),
             "D_helper": r.try_value('helper'),
-            "signature": r.try_value('signature_string', None),
+            "signature": sig,
         }
