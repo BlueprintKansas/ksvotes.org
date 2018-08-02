@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-16 13:38-0500\n"
+"POT-Creation-Date: 2018-08-02 11:07-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "1AB_select_election_general"
 msgstr ""
 
-#: app/main/starter_views.py:82
+#: app/main/starter_views.py:90
 msgid "session_forgotten"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 #: app/templates/ab/address.html:52 app/templates/ab/address.html:63
 #: app/templates/ab/address.html:83 app/templates/ab/address.html:99
 #: app/templates/ab/address.html:109 app/templates/ab/address.html:119
-#: app/templates/ab/affirmation.html:33
+#: app/templates/ab/affirmation.html:37
 #: app/templates/ab/election_picker.html:22
 #: app/templates/ab/election_picker.html:32
 #: app/templates/ab/identification.html:25 app/templates/index.html:41
@@ -74,7 +74,7 @@ msgstr ""
 #: app/templates/vr/address.html:108 app/templates/vr/address.html:118
 #: app/templates/vr/address.html:139 app/templates/vr/address.html:155
 #: app/templates/vr/address.html:165 app/templates/vr/address.html:175
-#: app/templates/vr/affirmation.html:31 app/templates/vr/citizenship.html:24
+#: app/templates/vr/affirmation.html:35 app/templates/vr/citizenship.html:24
 #: app/templates/vr/identification.html:24 app/templates/vr/name.html:30
 #: app/templates/vr/name.html:47 app/templates/vr/name.html:75
 #: app/templates/vr/name.html:91 app/templates/vr/party.html:52
@@ -152,7 +152,7 @@ msgid "5AB_id"
 msgstr ""
 
 #: app/main/forms/ab_6.py:7 app/main/forms/vr_6.py:7
-#: app/templates/ab/preview-sign.html:27 app/templates/vr/preview-sign.html:25
+#: app/templates/ab/preview-sign.html:35 app/templates/vr/preview-sign.html:33
 msgid "6_sign"
 msgstr ""
 
@@ -293,6 +293,14 @@ msgstr ""
 msgid "7_affirm"
 msgstr ""
 
+#: app/templates/404.html:8
+msgid "404_error"
+msgstr ""
+
+#: app/templates/500.html:8
+msgid "500_error"
+msgstr ""
+
 #: app/templates/base.html:132
 msgid "0_footer_tos"
 msgstr ""
@@ -321,7 +329,7 @@ msgstr ""
 msgid "1AB_change_reg_link"
 msgstr ""
 
-#: app/templates/change-or-apply.html:18
+#: app/templates/change-or-apply.html:18 app/templates/vr/submission.html:17
 msgid "1AB_apply_ab_link"
 msgstr ""
 
@@ -329,7 +337,7 @@ msgstr ""
 msgid "1AB_sorry_no_reg_title"
 msgstr ""
 
-#: app/templates/change-or-apply.html:29
+#: app/templates/change-or-apply.html:29 app/templates/change-or-apply.html:40
 msgid "1AB_sorry_no_reg_link"
 msgstr ""
 
@@ -337,14 +345,17 @@ msgstr ""
 msgid "1AB_sorry_no_reg_help"
 msgstr ""
 
-#: app/templates/forget-session-button.html:4 app/templates/form-buttons.html:9
-#: app/templates/index.html:117
-msgid "btn_next"
+#: app/templates/forget-session-button.html:4
+msgid "btn_forget_session"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:37 app/templates/form-buttons.html:4
-#: app/templates/vr/preview-sign.html:35
+#: app/templates/ab/preview-sign.html:45 app/templates/form-buttons.html:4
+#: app/templates/vr/preview-sign.html:43
 msgid "btn_back"
+msgstr ""
+
+#: app/templates/form-buttons.html:9 app/templates/index.html:117
+msgid "btn_next"
 msgstr ""
 
 #: app/templates/index.html:14
@@ -417,11 +428,11 @@ msgstr ""
 msgid "7_clerk_send_to"
 msgstr ""
 
-#: app/templates/ab/affirmation.html:24 app/templates/vr/affirmation.html:22
+#: app/templates/ab/affirmation.html:28 app/templates/vr/affirmation.html:26
 msgid "7_legend"
 msgstr ""
 
-#: app/templates/ab/affirmation.html:30 app/templates/vr/affirmation.html:28
+#: app/templates/ab/affirmation.html:34 app/templates/vr/affirmation.html:32
 msgid "7_affirm_help"
 msgstr ""
 
@@ -454,23 +465,23 @@ msgstr ""
 msgid "5AB_id_shorthelp"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:13 app/templates/vr/preview-sign.html:13
+#: app/templates/ab/preview-sign.html:15 app/templates/vr/preview-sign.html:15
 msgid "6_header"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:14 app/templates/vr/preview-sign.html:14
+#: app/templates/ab/preview-sign.html:16 app/templates/vr/preview-sign.html:16
 msgid "6_header2"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:24 app/templates/vr/preview-sign.html:22
+#: app/templates/ab/preview-sign.html:32 app/templates/vr/preview-sign.html:30
 msgid "6_legend"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:27 app/templates/vr/preview-sign.html:25
+#: app/templates/ab/preview-sign.html:35 app/templates/vr/preview-sign.html:33
 msgid "6_sign_help"
 msgstr ""
 
-#: app/templates/ab/preview-sign.html:43 app/templates/vr/preview-sign.html:41
+#: app/templates/ab/preview-sign.html:51 app/templates/vr/preview-sign.html:49
 msgid "btn_sign"
 msgstr ""
 
@@ -478,7 +489,7 @@ msgstr ""
 msgid "AB8_confirm"
 msgstr ""
 
-#: app/templates/ab/submission.html:12 app/templates/vr/submission.html:11
+#: app/templates/ab/submission.html:12 app/templates/vr/submission.html:13
 msgid "8_clerk_sent_to"
 msgstr ""
 
@@ -539,7 +550,7 @@ msgstr ""
 msgid "4_party_help"
 msgstr ""
 
-#: app/templates/vr/submission.html:9
+#: app/templates/vr/submission.html:11
 msgid "8_confirm"
 msgstr ""
 

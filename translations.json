@@ -588,5 +588,14 @@
   "btn_forget_session": {
     "en": "I'm all done!",
     "es": "¡Ya terminé!"
+  },
+  "404_error": {
+    "en": "Sorry, we could not find that page.",
+    "es": "Lo sentimos, no pudimos encontrar esa página."
+  },
+  "500_error": {
+    "en": "Sorry, something unexpected happen. But don't worry, your personal information is safe. Try back later.",
+    "es": "Lo siento, sucede algo inesperado. Pero no se preocupe, su información personal está segura. Inténtalo más tarde."
   }
+
 }
