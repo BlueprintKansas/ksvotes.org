@@ -7,6 +7,7 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import boto3
+import botocore
 
 class CountyMailer():
 
@@ -32,6 +33,8 @@ class CountyMailer():
     def clerk_email(self):
         if self.clerk.county == 'TEST':
             return os.getenv('TEST_CLERK_EMAIL', self.clerk.email)
+        elif os.getenv('TEST_CLERK_EMAIL'):
+            return os.getenv('TEST_CLERK_EMAIL')
         else:
             return self.clerk.email
 
@@ -96,15 +99,20 @@ class CountyMailer():
         if not current_app.config['SEND_EMAIL']:
             return {'msg': msg, 'MessageId': 'set SEND_EMAIL env var to enable email'}
 
-        ses = boto3.client('ses',
-            region_name=current_app.config['AWS_DEFAULT_REGION'],
-            aws_access_key_id=current_app.config['AWS_ACCESS_KEY_ID'],
-            aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY']
-        )
-        resp = ses.send_raw_email(
-            RawMessage={'Data': msg.as_string()},
-            Source=sender,
-        )
-        # TODO try/catch resp for success? right now it throws exception on AWS error.
-        return resp
+        try:
+
+            ses = boto3.client('ses',
+                region_name=current_app.config['AWS_DEFAULT_REGION'],
+                aws_access_key_id=current_app.config['AWS_ACCESS_KEY_ID'],
+                aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY']
+            )
+            resp = ses.send_raw_email(
+                RawMessage={'Data': msg.as_string()},
+                Source=sender,
+            )
+            return resp
+
+        except botocore.exceptions.ClientError as err:
+            current_app.logger.error(str(err))
+            return {'msg': msg, 'MessageId': False, 'error': err}
 

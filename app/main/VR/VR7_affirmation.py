@@ -14,6 +14,7 @@ from app.main.forms import FormVR7
 @InSession
 def vr7_affirmation():
     reg = g.registrant
+    clerk = Clerk.find_by_county(reg.county)
     form = FormVR7()
 
     # if we don't have a VR form to affirm, redirect to Step 0
@@ -32,11 +33,15 @@ def vr7_affirmation():
             body = lazy_gettext(u'9_confirm_email')
             mailer = CountyMailer(reg, 'vr_form', body)
             r = mailer.send()
+
+            # any error gets a special page
+            if not r['MessageId']:
+                return render_template('email_error.html', clerk=clerk)
+
             reg.update({'vr_form_message_id': r['MessageId']})
             reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
-    clerk = Clerk.find_by_county(reg.county)
-    return render_template('vr/affirmation.html', clerk=clerk, preview_img=vr_form, registrant=reg, form=form)
+    return render_template('vr/affirmation.html', clerk=clerk, preview_img=vr_form, form=form)

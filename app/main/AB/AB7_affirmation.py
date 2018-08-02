@@ -15,6 +15,7 @@ from app.main.forms import FormAB7
 def ab7_affirmation():
     reg = g.registrant
     form = FormAB7()
+    clerk = Clerk.find_by_county(reg.county)
 
     # if we don't have a AB form to affirm, redirect to Step 0
     if not reg.try_value('ab_forms', False):
@@ -32,11 +33,15 @@ def ab7_affirmation():
             body = lazy_gettext(u'9_confirm_email')
             mailer = CountyMailer(reg, 'ab_forms', body)
             r = mailer.send()
+
+            # any error gets a special page
+            if not r['MessageId']:
+                return render_template('email_error.html', clerk=clerk)
+
             reg.update({'ab_forms_message_id': r['MessageId']})
             reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
-    clerk = Clerk.find_by_county(reg.county)
-    return render_template('ab/affirmation.html', preview_imgs=ab_forms, registrant=reg, form=form, clerk=clerk)
+    return render_template('ab/affirmation.html', preview_imgs=ab_forms, form=form, clerk=clerk)
