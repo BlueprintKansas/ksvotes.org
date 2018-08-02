@@ -596,6 +596,10 @@
   "500_error": {
     "en": "Sorry, something unexpected happen. But don't worry, your personal information is safe. Try back later.",
     "es": "Lo siento, sucede algo inesperado. Pero no se preocupe, su información personal está segura. Inténtalo más tarde."
+  },
+  "btn_clear": {
+    "en": "Clear signature",
+    "es": "Firma clara"
   }
 
 }
