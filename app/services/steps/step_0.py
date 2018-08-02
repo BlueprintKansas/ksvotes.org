@@ -1,5 +1,6 @@
 from app.services.steps import Step
 
+import os
 import ksmyvoteinfo
 
 class Step_0(Step):
@@ -37,16 +38,23 @@ class Step_0(Step):
     def lookup_registration(self, name_first, name_last, dob, county):
         if county == 'TEST':
             return False
-        kmvi = ksmyvoteinfo.KsMyVoteInfo()
-        dob = dob.split('/')
-        formatted_dob = "{year}-{month}-{day}".format(year=dob[2], month=dob[0], day=dob[1])
-        request = kmvi.lookup(
-            first_name = name_first,
-            last_name = name_last,
-            dob = formatted_dob,
-            county = county
-        )
-        if request:
-            return request.parsed()
+        # any failure (exception) means we should try registering,
+        # and leave it up to the counties to sort out dupes.
+        try:
+            kmvi = ksmyvoteinfo.KsMyVoteInfo()
+            if os.getenv('VOTER_VIEW_URL'):
+                kmvi = ksmyvoteinfo.KsMyVoteInfo(url=os.getenv('VOTER_VIEW_URL'))
+            dob = dob.split('/')
+            formatted_dob = "{year}-{month}-{day}".format(year=dob[2], month=dob[0], day=dob[1])
+            request = kmvi.lookup(
+                first_name = name_first,
+                last_name = name_last,
+                dob = formatted_dob,
+                county = county
+            )
+            if request:
+                return request.parsed()
+        except:
+            return False
 
         return False
