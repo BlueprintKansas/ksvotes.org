@@ -10,3 +10,5 @@ package-lock.json
 git-*
 server.pid
 testserver.log
+app/translations
+messages.pot
