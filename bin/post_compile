@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# run by heroku build pack when deploying.
+# called *after* the rest of the buildpack has finished.
+
+make locales
