@@ -1,7 +1,7 @@
 #!/bin/sh
 
-venv/bin/pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot app
-venv/bin/pybabel init -i messages.pot -d app/translations -l es
-venv/bin/pybabel init -i messages.pot -d app/translations -l en
+pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot app
+pybabel init -i messages.pot -d app/translations -l es
+pybabel init -i messages.pot -d app/translations -l en
 bin/pop-translate.py
-venv/bin/pybabel compile -d app/translations
+pybabel compile -d app/translations
