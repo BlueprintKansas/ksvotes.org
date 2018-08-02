@@ -273,6 +273,9 @@ msgstr "Zip Code"
 msgid "3_zip_help"
 msgstr "5 digit zip required"
 
+msgid "404_error"
+msgstr "Sorry, we could not find that page."
+
 msgid "4_legend"
 msgstr "Party"
 
@@ -281,6 +284,9 @@ msgstr "Choice of Party"
 
 msgid "4_party_help"
 msgstr "You must register with a party if you want to take part in that party's primary election, caucus, or convention. If you wish to not be associated with any party, please select \"Unaffiliated\""
+
+msgid "500_error"
+msgstr "Sorry, something unexpected happen. But don't worry, your personal information is safe. Try back later."
 
 msgid "5AB_id"
 msgstr "Current Kansas driver's license number or nondriver's identification card number"

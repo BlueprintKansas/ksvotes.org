@@ -273,6 +273,9 @@ msgstr "Codigo Postal"
 msgid "3_zip_help"
 msgstr "Se requiere un zip de 5 dígitos"
 
+msgid "404_error"
+msgstr "Lo sentimos, no pudimos encontrar esa página."
+
 msgid "4_legend"
 msgstr "SPANISH NEEDED"
 
@@ -281,6 +284,9 @@ msgstr "Eleccion de partido"
 
 msgid "4_party_help"
 msgstr "Debe registrarse con una de las partes si desea participar en las elecciones primarias, caucus o convenciones de ese partido. Si no desea asociarse con ninguna de las partes, seleccione \"No afiliados\""
+
+msgid "500_error"
+msgstr "Lo siento, sucede algo inesperado. Pero no se preocupe, su información personal está segura. Inténtalo más tarde."
 
 msgid "5AB_id"
 msgstr "Número actual de licencia de conducir de Kansas o número de tarjeta de identificación de no conductor:"
