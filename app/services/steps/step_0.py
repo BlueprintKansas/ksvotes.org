@@ -4,7 +4,7 @@ import os
 import ksmyvoteinfo
 
 class Step_0(Step):
-    form_requirements = ['name_first', 'name_last', 'dob', 'county', 'email']
+    form_requirements = ['name_first', 'name_last', 'dob', 'email']
     step_requirements = ['reg_lookup_complete']
     reg_lookup_complete = False
     reg_found = False

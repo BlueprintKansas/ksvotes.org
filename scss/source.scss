@@ -106,6 +106,7 @@ a.icon {
   background-color: #eee;
 }
 .form-group {
+  position: relative;
   label {
     color: #757575;
     font-size: .9em;
@@ -127,16 +128,21 @@ a.icon {
     color: #ced4da;
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: -25px;
     &:hover,
     &:focus,
     &:active {
       color: $default-color;
     }
   }
-
-  margin-bottom: 3rem;
 }
+
+#step_0 {
+  .form-group {
+    margin-bottom: 3rem;
+  }
+}
+
 form {
   padding: 15px 40px 15px 15px;
   background-color: #fff;

@@ -558,6 +558,9 @@
     "en":"Your application(s) were sent to:",
     "es":"SPANISH NEEDED"
   },
+  "btn_apply":{ "en": "Apply change", "es": "Aplicar cambio" },
+  "btn_change_county":{ "en": "Change County", "es": "Cambiar el Condado" },
+  "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
   "btn_sign":{ "en": "Sign", "es": "Firmar" },

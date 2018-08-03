@@ -14,8 +14,7 @@ class FormStep0(FlaskForm):
     name_last = StringField(lazy_gettext(u'0_last'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
     dob = StringField(lazy_gettext(u'0_dob'), validators=[DataRequired(message=lazy_gettext(u'Required')), Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext(u'0_dob_flag'))])
     county = SelectField(lazy_gettext(u'0_county'),
-        validators=[DataRequired(message=lazy_gettext(u'Required'))],
-        #validators=[Optional()], # TODO SOS VV does not require it, need to acquire somehow
+        validators=[Optional()],
         choices=construct_county_choices(lazy_gettext(u'0_county'))
     )
     email = StringField(lazy_gettext(u'0_email'),
