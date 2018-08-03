@@ -20,19 +20,19 @@
     {% block facebook %}
           <meta property="og:url" content="{{url_for('main.index', _external=True)}}"/>
           <meta property="og:site_name" content="KSVotes.org" />
-          <meta property="og:title" content="" />
-          <meta property="og:description" content="" />
+          <meta property="og:title" content="KSVotes.org" />
+          <meta property="og:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
           <meta property="og:type" content="website" />
-          <meta property="og:image" content="" />
+          <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png')}}" />
     {% endblock %}
 
     {% block twitter %}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="{{url_for('main.index', _external=True)}}" />
           <meta name="twitter:creator" content="">
-          <meta name="twitter:title" content="" />
-          <meta name="twitter:image" content="" />
-          <meta name="twitter:description" content="" />
+          <meta name="twitter:title" content="KSVotes.org" />
+          <meta name="twitter:image" content="{{url_for('static', filename='img/KSVotes-square-social.png')}}" />
+          <meta name="twitter:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
     {% endblock %}
 
     {% include 'helpers/favicons.html' %}
