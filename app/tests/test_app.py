@@ -11,3 +11,11 @@ def test_404(app, db_session, client):
 
     response = client.get('/es/foo/bar')
     assert response.status_code == 404
+
+# helpers
+from app.main.helpers import *
+
+def test_helpers(app, db_session, client):
+    election_date = parse_election_date('General')
+    assert election_date == None
+
