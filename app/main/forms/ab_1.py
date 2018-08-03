@@ -12,7 +12,6 @@ class MultiCheckboxField(SelectMultipleField):
         pass
 
     def process_formdata(self, valuelist):
-        print("process formdata %s" %(valuelist))
         if valuelist:
             self.data = "|".join(valuelist)
         else:
