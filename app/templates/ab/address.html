@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% set current_step = '3' %}
 {% set previous_step_url = url_for('main.ab1_election_picker') %}
+{% set flow_flavor = 'ab' %}
 {% import 'macros/_render_field.html' as wtf %}
 
 {% block title %} Address {% endblock %}
