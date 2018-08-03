@@ -26,7 +26,10 @@ def vr7_affirmation():
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_7(form.data)
         if step.run():
-            reg.update(form.data)
+            # TODO we don't want County, just Affirmation
+            # and that must always be true on a POST, so just hardcode it.
+            # if we ever expand the Form fields, we'll need to revisit.
+            reg.update({'affirmation': True})
             reg.last_completed_step = 7
             reg.save(db.session)
 
