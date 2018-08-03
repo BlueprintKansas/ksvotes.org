@@ -134,9 +134,12 @@ a.icon {
       color: $default-color;
     }
   }
-
-  margin-bottom: 3rem;
 }
+
+#step_0.form-group {
+  margin-bottom: 1rem;
+}
+
 form {
   padding: 15px 40px 15px 15px;
   background-color: #fff;

@@ -83,6 +83,27 @@ def change_or_apply():
 
     return render_template('change-or-apply.html', sos_reg=sos_reg, clerk=clerk)
 
+@main.route('/change-county', methods=['POST'])
+@InSession
+def change_county():
+    reg = g.registrant
+    existing_county = reg.county
+    new_county = request.values.get('county')
+    redirect_url = request.values.get('return')
+
+    if not redirect_url:
+        redirect_url = url_for('main.index')
+
+    if not new_county or new_county == existing_county:
+        current_app.logger.info('unable to change county')
+        redirect(redirect_url)
+
+    current_app.logger.info('new county %s return to %s' %(new_county, redirect_url))
+    reg.county = new_county
+    reg.save(db.session)
+
+    return redirect(redirect_url)
+
 @main.route('/forget', methods=['GET', 'POST'])
 def forget_session():
     g.locale = guess_locale()
