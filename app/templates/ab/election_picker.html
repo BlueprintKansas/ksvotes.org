@@ -2,6 +2,7 @@
 {% import 'macros/_render_field.html' as wtf %}
 {% set current_step = '1' %}
 {% set previous_step_url = url_for('main.index') %}
+{% set flow_flavor = 'ab' %}
 {% block title %} {{_('AB1_title')}} {% endblock %}
 
 {% block content %}
