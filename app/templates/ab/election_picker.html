@@ -20,10 +20,13 @@
             {
               'required': 'required',
               'data-parsley-required-message': _('Required'),
-              'data-parsley-trigger': 'focusout'
+              'data-parsley-multiple': 'elections',
             }
           )}}
-        <div id="party-picker">
+        <div id="elections-required-error" class="parsley-error parsley-errors-list" style="display:none">
+          {{_('Required')}}
+        </div>
+        <div id="party-picker" style="display:none">
         {{wtf.render_field(
               form.party,
               _('1AB_party_help'),
@@ -46,38 +49,66 @@
 {% block js_footer %}
 <script>
 $(function () {
+  // toggle party select visibility/requirement if elections contains a primary
+  let $party_picker = $('#party-picker');
+  $party_picker.hide();
+
   //initialize form with parsley validation
   let $form = $('#step_ab1');
   $form.parsley();
 
-  // toggle party select visibility/requirement if elections contains a primary
-  let $party_picker = $('#party-picker');
-  $party_picker.hide();
-  $('#elections').select2({
-    placeholder: '{{_("1AB_select_election")}}',
-  });
-  $('#elections').on('select2:select', function(e) {
-    let payload = e.params.data;
-    if (payload.text.match(/Primary/)) {
-      $('#party').attr("required", true);
-      $party_picker.show();
+  function requireParty() {
+    $('#party').attr("required", true);
+    $party_picker.show();
+  }
+  function unrequireParty() {
+    $('#party').removeAttr("required");
+    $party_picker.hide();
+  }
+
+  $('#elections input').change(function(e) {
+    let checked = $(this).is(':checked');
+    let election = $(this).val();
+    if (election.match(/Primary/)) {
+      if (checked) {
+        requireParty();
+      }
+      else {
+        unrequireParty();
+      }
     }
   });
-  $('#elections').on('select2:unselect', function(e) {
-    let payload = e.params.data;
-    if (payload.text.match(/Primary/)) {
-      $('#party').removeAttr("required");
-      $party_picker.hide();
-    }
-  });
-  // party required if primary election
+
+  // if we only have one election, check it.
+  if ($('#elections input').length == 1) {
+    $('#elections input').prop('checked', true);
+  }
+
+  // handle the Required logic ourselves (too complex for Parsley)
   $('#btn-next').click(function(ev) {
     let hasPrimary = false;
-    $.each($('#elections').val(), function(idx, v) {
-      if (v.match(/Primary/)) {
-        hasPrimary = true;
+    let oneChecked = false;
+    let elections = $('#elections');
+    let error_msg = $('#elections-required-error');
+    error_msg.hide(); // always clear to start with.
+    $('#elections input').each(function(idx, el) {
+      let checkbox = $(el);
+      if (checkbox.is(':checked')) {
+        oneChecked = true;
+        if (checkbox.val().match(/Primary/)) {
+          hasPrimary = true;
+        }
       }
     });
+    //console.log('oneChecked?', oneChecked);
+    //console.log('hasPrimary?', hasPrimary);
+    if (!oneChecked) {
+      // handle field invalidation manually because parsley does not catch it.
+      //console.log('no elections checked');
+      error_msg.show();
+      ev.preventDefault();
+      return false;
+    }
     if (hasPrimary) {
       if ($('#party').val() == "") {
         $form.parsley().validate();
@@ -85,6 +116,7 @@ $(function () {
         return false;
       }
     }
+    return true;
   });
 
 });
