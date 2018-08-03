@@ -23,15 +23,15 @@
           <meta property="og:title" content="KSVotes.org" />
           <meta property="og:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
           <meta property="og:type" content="website" />
-          <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png')}}" />
+          <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
     {% endblock %}
 
     {% block twitter %}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="{{url_for('main.index', _external=True)}}" />
+          <meta name="twitter:site" content="KSVotesorg" />
           <meta name="twitter:creator" content="">
           <meta name="twitter:title" content="KSVotes.org" />
-          <meta name="twitter:image" content="{{url_for('static', filename='img/KSVotes-square-social.png')}}" />
+          <meta name="twitter:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
           <meta name="twitter:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
     {% endblock %}
 
