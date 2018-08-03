@@ -100,8 +100,8 @@ class NVRISClient():
             'signature': sig,
             'signature_date': r.signed_at.strftime('%m/%d/%Y') if sig else False,
             'phone_number': r.try_value('phone'),
-            'democratic': True if r.party == 'democratic' else False,
-            'republican': True if r.party == 'republican' else False,
+            'democratic': True if r.party.lower() == 'democratic' else False,
+            'republican': True if r.party.lower() == 'republican' else False,
         }
 
     def marshall_vr_payload(self):
