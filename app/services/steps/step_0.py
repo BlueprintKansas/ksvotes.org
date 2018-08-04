@@ -12,19 +12,21 @@ class Step_0(Step):
     prev_step = None
     next_step = None
 
-    def run(self):
+    def run(self, skip_sos=False):
         if self.is_complete:
             return True
 
         if not self.verify_form_requirements():
             return False
 
-        self.reg_found = self.lookup_registration(
-            name_first=self.form_payload['name_first'],
-            name_last=self.form_payload['name_last'],
-            dob=self.form_payload['dob'],
-            county=self.form_payload['county']
-        )
+        if not skip_sos:
+            self.reg_found = self.lookup_registration(
+                name_first=self.form_payload['name_first'],
+                name_last=self.form_payload['name_last'],
+                dob=self.form_payload['dob'],
+                county=self.form_payload['county']
+            )
+
         self.is_complete = True
         self.reg_lookup_complete = True
 
