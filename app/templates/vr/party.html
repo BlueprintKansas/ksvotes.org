@@ -10,35 +10,45 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
+       <div id="address-validation" class="">
         {% if registrant.registration_value.validated_addresses %}
           {% for k,v in registrant.registration_value.validated_addresses.items() %}
-
+           <div class="address-{{k}}">
             <h6>
             {% if k == 'current_address' %}
-              {{_('3_addr')}}:
+              {{_('3_addr')}}
             {% elif k == 'prev_addr'%}
-              {{_('3_prev_addr')}}:
+              {{_('3_prev_addr')}}
             {% elif k == 'mail_addr'%}
-              {{_('3_mail_addr')}}:
+              {{_('3_mail_addr')}}
             {% endif %}
+            </h6>
             {% if 'error' in registrant.registration_value.validated_addresses[k] %}
-            <span class="address-error">
-                  <i class="fa fa-times"></i>
-                  <a href="{{url_for('main.vr3_address')}}">  _('3_invalid') </a>
-            </span>
+            <!-- {{registrant.registration_value.validated_addresses[k]['error']}} -->
+            <div class="alert alert-warning address-error">
+              <i class="fa fa-exclamation-triangle amber-text"></i>
+              <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>
+            </div>
             {% else %}
-             <span class="validated"><i class="fa fa-check"></i>
-               {{registrant.registration_value.validated_addresses.get(k).get('address', '')}}
-               {{registrant.registration_value.validated_addresses.get(k).get('unit', '')}}
-               {{registrant.registration_value.validated_addresses.get(k).get('city', '')}}
-               {{registrant.registration_value.validated_addresses.get(k).get('state', '')}}
-               {{registrant.registration_value.validated_addresses.get(k).get('zip5','')}}
-             </span>
+             <div class="alert alert-success validated"><i class="fa fa-check green-text"></i>
+               {% for f in ['address', 'unit', 'city', 'state', 'zip5'] %}
+                 {{registrant.registration_value.validated_addresses.get(k).get(f, '')}}
+               {% endfor %}
+             </div>
             {% endif%}
-            <h6>
+           </div>
           {% endfor %}
+        {% else %}
+          <div class="address-current_address">
+           <h6>{{_('3_addr')}}</h6>
+           <div class="alert alert-warning address-error">
+             <i class="fa fa-exclamation-triangle amber-text"></i>
+             <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>
+           </div>
+          </div>
         {% endif %}
-        <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
+       </div>
+       <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
          <fieldset>
           <!-- <legend>{{_('4_legend')}}</legend> single field makes it redundant -->
 

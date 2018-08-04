@@ -86,12 +86,20 @@ a.icon {
   background-color: $ksv-green;
 }
 
+.ksv-green-color {
+  color: $ksv-green;
+}
+
 .ksv-flow-vr {
   background-color: $ksv-green;
 }
 
 .ksv-flow-ab {
   background-color: $ksv-red;
+}
+
+.ksv-red-color {
+  color: $ksv-red;
 }
 
 .btn-outline-default {
@@ -286,4 +294,10 @@ table.clerk-details,
 #elections.form-check-input {
   position: static;
   list-style: none;
+}
+
+#address-validation {
+  h6 {
+    color: $gray-900;
+  }
 }

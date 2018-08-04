@@ -359,10 +359,10 @@
     "en":"What was your address where you were registered before?",
     "es":"¿Cuál era su dirección donde se registró anteriormente?"
   },
-  "3_prev_addr":{"wiki_step":"3","ref":"3_prev_addr","en":"Street","es":"direccion previa"},
-  "3_prev_unit":{"wiki_step":"3","ref":"3_prev_unit","en":"Apt/Lot","es":"Apt / lote"},
+  "3_prev_addr":{"wiki_step":"3","ref":"3_prev_addr","en":"Previous Address","es":"Direccion Previa"},
+  "3_prev_unit":{"wiki_step":"3","ref":"3_prev_unit","en":"Apt/Lot","es":"Apt/Lote"},
   "3_prev_city":{"wiki_step":"3","ref":"3_prev_city","en":"City/Town","es":"Ciudada/Pueblo"},
-  "3_prev_state":{"wiki_step":"3","ref":"3_prev_state","en":"State","es":"estado"},
+  "3_prev_state":{"wiki_step":"3","ref":"3_prev_state","en":"State","es":"Estado"},
   "3_prev_zip":{"wiki_step":"3","ref":"3_prev_zip","en":"ZIP Code","es":"Codigo Postal"},
   "3_mail_addr_header":{
     "wiki_step":"3",
@@ -376,15 +376,15 @@
     "en":"Mailing Address",
     "es":"Dirección de envio"
   },
-  "3_mail_unit":{"wiki_step":"3","ref":"3_mail_unit","en":"Apt/Lot","es":"Apt / lote"},
+  "3_mail_unit":{"wiki_step":"3","ref":"3_mail_unit","en":"Apt/Lot","es":"Apt/Lote"},
   "3_mail_city":{"wiki_step":"3","ref":"3_mail_city","en":"City/Town","es":"Ciudada/Pueblo"},
-  "3_mail_state":{"wiki_step":"3","ref":"3_mail_state","en":"State","es":"estado"},
+  "3_mail_state":{"wiki_step":"3","ref":"3_mail_state","en":"State","es":"Estado"},
   "3_mail_zip":{"wiki_step":"3","ref":"3_mail_zip","en":"ZIP Code","es":"Codigo Postal"},
   "3_invalid":{
     "wiki_step":"3",
     "ref":"3_invalid",
-    "en":"This address could not be verified with the US Postal Service. Please double-check that the address you entered is correct and complete.",
-    "es":"Esta dirección no se pudo verificar con el Servicio Postal de los EE. UU. Verifique que la dirección que ingresó sea correcta y esté completa."
+    "en":"We couldn't verify your address with the Postal Service. Please double-check and correct it if necessary. An unverifiable address may prevent your registration from being processed.",
+    "es":"No pudimos verificar su dirección con Postal Service. Por favor, verifique y corrija si es necesario. Una dirección no verificable puede evitar que su registro sea procesado."
   },
   "4_party":{
     "wiki_step":"4",
