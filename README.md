@@ -6,14 +6,22 @@
 The ksvotes.org site makes Kansas online voting registration easy.
 
 ## Table of Contents
+* [Database Setup](#database-setup)
 * [Setup & Installation](#setup-&-installation)
-    * [Database Setup](#database-setup)
     * [Environmental Variables](#environmental-variables)
     * [Migrate Database](#migrate-database)
     * [Run the application](#run-the-application)
 * [Tests](#tests)
 * [Styling](styling)
 * [Internationalization & Localization](#internationalization-&-localization)
+
+### Database Setup
+  For Mac installations I like [PostgresApp](https://postgresapp.com/)
+
+  [DB setup reference](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
+
+  Create databases for development and testing. In the [Environmental Variables](#environmental-variables) section below we assume the names you picked were `ksvotes_dev` and `ksvotes_test`.
+
 
 ## Setup & Installation
   Recommendations for running after cloning:
@@ -34,22 +42,14 @@ The ksvotes.org site makes Kansas online voting registration easy.
   ```
   ```
   $(venv) make deps
+  $(venv) make update
   ```
-
-### Database Setup
-  For Mac installations I like [PostgresApp](https://postgresapp.com/)
-
-  [DB setup reference](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
-
-  Setup a development postgres database.
-
-  Setup a testing postgres database.
 
 ### Environmental Variables
   Create a .env file in the root directory and add the following variables.
   ```
-  DATABASE_URL={{your development database connection string}}
-  TESTING_DATABASE_URL={{your testing database connection string}}
+  DATABASE_URL=postgres://localhost/ksvotes_dev
+  TESTING_DATABASE_URL=postgres://localhost/ksvotes_test
   SECRET_KEY={{generate a secret key}}
   APP_CONFIG=development
   LOG_LEVEL=INFO
@@ -64,8 +64,10 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
   # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
   # EMAIL_FROM={{override the From email header in all email}}
-  # SEND_EMAIL=true # default is not to send actual email unless this is present
-  SESSION_TTL=10  # number of minutes before idle session expires
+  # Default is not to send actual email unless SEND_EMAIL is set
+  # SEND_EMAIL=true
+  # Number of minutes before idle session expires. Default is 10.
+  SESSION_TTL=10
   ```
 
 ### Migrate Database
