@@ -56,7 +56,8 @@ def index():
             )
             db.session.add(registrant)
 
-        step.run()
+        skip_sos = request.values.get('skip-sos')
+        step.run(skip_sos)
         registrant.reg_lookup_complete = step.reg_lookup_complete
         sos_reg = None
         if step.reg_found:
@@ -64,7 +65,7 @@ def index():
           for rec in step.reg_found:
             sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
 
-        registrant.update({'sos_reg': sos_reg})
+        registrant.update({'sos_reg': sos_reg, 'skip_sos': skip_sos})
         registrant.save(db.session)
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
@@ -76,12 +77,13 @@ def index():
 @InSession
 def change_or_apply():
     sos_reg = g.registrant.try_value('sos_reg')
+    skip_sos = g.registrant.try_value('skip_sos')
     county = g.registrant.county
     clerk = None
     if county:
         clerk = Clerk.find_by_county(county)
 
-    return render_template('change-or-apply.html', sos_reg=sos_reg, clerk=clerk)
+    return render_template('change-or-apply.html', skip_sos=skip_sos, sos_reg=sos_reg, clerk=clerk)
 
 @main.route('/change-county', methods=['POST'])
 @InSession

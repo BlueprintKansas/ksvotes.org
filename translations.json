@@ -179,14 +179,22 @@
   "1AB_change_reg_link":{
     "wiki_step":"1AB",
     "ref":"1AB_change_reg_link",
-    "en":"Change your existing registration, if you have changed your address, name, or political party.",
-    "es":"SPANISH NEEDED"
+    "en":"Register to vote",
+    "es":"Registrarse para votar"
   },
   "1AB_apply_ab_link":{
     "wiki_step":"1AB",
     "ref":"1AB_apply_ab_link",
-    "en":"Apply for an Advance Ballot for an upcoming election.",
-    "es":"SPANISH NEEDED"
+    "en":"Apply for Advance Ballot",
+    "es":"Solicitar Boleta por Adelantado"
+  },
+  "change_reg_help":{
+    "en": "You must register again if you have changed your name, address, or party affiliation.",
+    "es": "Debes registrarte de nuevo si ha cambiado su nombre, dirección o afiliación partidaria."
+  },
+  "apply_ab_help":{
+    "en": "Advance Ballots allow you to vote early and by mail.",
+    "es": "Las boletas anticipadas le permiten votar anticipadamente y por correo."
   },
   "1AB_apply_perm_ab_link":{
     "wiki_step":"1AB",
@@ -560,6 +568,7 @@
   },
   "btn_apply":{ "en": "Apply change", "es": "Aplicar cambio" },
   "btn_change_county":{ "en": "Change County", "es": "Cambiar el Condado" },
+  "btn_check": { "en": "Check my registration", "es": "Verifica mi registro" },
   "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
@@ -604,6 +613,10 @@
   "btn_clear": {
     "en": "Clear signature",
     "es": "Firma clara"
+  },
+  "skip_sos_check": {
+    "en": "Skip the check, I know I need to register",
+    "es": "Omita el cheque, sé que necesito registrarme"
   }
 
 }

@@ -109,9 +109,12 @@
             {% endif %}
 
           <div class="text-right mt-4">
-              <button class="btn btn-outline-default" type="submit">
-               <i class="fa checkmark fa-check mr-2"></i>{{_('btn_next')}}
-              </button>
+             <button id="btn-next" class="btn btn-outline-default" type="submit">
+              <i class="fa checkmark fa-check mr-2"></i>{{_('btn_check')}}
+             </button>
+             <br/>
+             <input type="hidden" name="skip-sos" id="skip-sos" value="" />
+             <a href="#" id="skip-sos-link" onclick="return false">{{_('skip_sos_check')}}</a>
           </div>
          </fieldset>
         </form>
@@ -159,6 +162,11 @@ $(function () {
     $([document.documentElement, document.body]).animate({
       scrollTop: $(scrollTarget).offset().top
     }, 1000);
+  });
+
+  $('#skip-sos-link').click(function() {
+    $('#skip-sos').val('true');
+    $('#btn-next').trigger('click');
   });
 });
 
