@@ -110,39 +110,31 @@
       {% endif %}
     {% endwith %}
 
-     {% block content %}
+    {% block content %}
       {% if use_hero %}
         {{ super() }}
       {% else %}
-        <div id="main-content">{{ super() }}</div>
+        <div id="main-content">
+          {{ super() }}
+        </div>
       {% endif %}
-     {% endblock %}
+    {% endblock %}
 
     </main>
 
     {% block footer %}
-    <footer class="page-footer accent-4 font-small pt-4 ksv-flow-{{flow_flavor or 'vr'}}">
-     <div class="container-fluid text-center">
-      <div class="row">
-       <div class="col-md-12 mt-md-0 mt-3">
-         <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
-       </div>
-       <hr class="clearfix w-100 d-md-none pb-3">
-       <div class="col-md-12 mb-md-0 mb-3">
-        <ul class="list-unstyled list-inline">
-         <li class="list-inline-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a> &nbsp;&nbsp;|</li>
-         <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> &nbsp;&nbsp;|</li>
-         <li class="list-inline-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
-        </ul>
-       </div>
-       <div class="col-md-12 mb-md-0 mb-3">
-         {{_('0_footer_partners')}}
-       </div>
-      </div><!-- row -->
-     </div><!-- container -->
-     <div class="footer-copyright text-center py-3">© 2018 Copyright
-      <a href="https://blueprintkansas.org/">Blueprint Kansas</a>
-     </div>
+    <footer class="page-footer accent-4 mt-4 fs-14 text-center ksv-flow-{{flow_flavor or 'vr'}}">
+      <img class="mx-auto" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
+      <hr class="clearfix w-100 d-md-none mt-0"> 
+      <ul class="list-unstyled list-inline px-2 mb-3">
+       <li class="list-inline-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a> &nbsp;&nbsp;|</li>
+       <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> &nbsp;&nbsp;|</li>
+       <li class="list-inline-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
+      </ul>
+      <div class="px-2 mb-3">{{_('0_footer_partners')}}</div>
+      <div class="footer-copyright py-2 fs-12">
+        <a href="https://blueprintkansas.org/">© 2018 Blueprint Kansas</a>
+      </div>
     </footer>
     {% endblock %}
 

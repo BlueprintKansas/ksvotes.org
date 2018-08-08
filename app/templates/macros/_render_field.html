@@ -1,7 +1,7 @@
 {% macro render_field(field, help_text, additional_attributes) %}
 
   {% if field.widget.input_type == 'text' %}
-  <div class="md-form">
+  <div class="md-form pr-4">
       {{field.label}}
 
       {% if additional_attributes %}

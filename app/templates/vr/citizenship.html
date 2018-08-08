@@ -1,44 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% set current_step = '1' %}
 {% set previous_step_url = url_for('main.index') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Citizenship {% endblock %}
+{% block title %}Citizenship{% endblock %}
 
-{% block content %}
-<section id="formsection">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form name="step_1" id="step_1" method="POST" action="{{url_for('main.vr1_citizenship')}}">
-         <fieldset>
-          <legend>{{_('1_legend')}}</legend>
+{% block form_content %}
+<form id="step_1" name="step_1" method="POST" action="{{url_for('main.vr1_citizenship')}}">
+ <fieldset>
+  <legend>{{_('1_legend')}}</legend>
 
-          {{form.hidden_tag()}}
+  {{form.hidden_tag()}}
 
-          {{wtf.render_field(
-            form.is_citizen,
-            _('1_citizen_help'),
-            {
-              'required':'required',
-              'data-parsley-error-message': _('Required'),
-            }
-            )}}
+  {{wtf.render_field(
+    form.is_citizen,
+    _('1_citizen_help'),
+    {
+      'required':'required',
+      'data-parsley-error-message': _('Required'),
+    }
+    )}}
 
-            {{wtf.render_field(
-              form.is_eighteen,
-              _('1_18_help'),
+    {{wtf.render_field(
+      form.is_eighteen,
+      _('1_18_help'),
 
-              )}}
+      )}}
 
-          {% include 'form-buttons.html' %}
+  {% include 'form-buttons.html' %}
 
-         </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+ </fieldset>
+</form>
 {% endblock %}
 
 {% block js_footer %}
@@ -48,6 +39,5 @@ $(function () {
   var form = $('#step_1');
   form.parsley();
 });
-
 </script>
 {% endblock %}
