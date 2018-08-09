@@ -11,10 +11,10 @@ from app.services import SessionManager
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
 
-@main.route('/terms-of-service', methods=['GET'])
+@main.route('/terms', methods=['GET'])
 def terms():
     g.locale = guess_locale()
-    return render_template('terms-of-service.html')
+    return render_template('terms.html')
 
 @main.route('/privacy-policy', methods=['GET'])
 def privacy():

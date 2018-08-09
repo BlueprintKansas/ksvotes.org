@@ -32,8 +32,8 @@
   "0_footer_tos":{
     "wiki_step":"0",
     "ref":"0_footer_tos",
-    "en":"Terms of Service",
-    "es":"Terminos de Servicio"
+    "en":"Terms of Use",
+    "es":"Terminos de Uso"
   },
   "0_footer_contact":{
     "wiki_step":"0",
@@ -89,7 +89,7 @@
   "0_email_help":{
     "wiki_step":"0",
     "ref":"0_email_help",
-    "en":"Enter your email address. We will use it to send you a copy of your form to confirm the registration process. See our <Privacy Policy> and <Terms of Service> for more information.",
+    "en":"Enter your email address. We will use it to send you a copy of your form to confirm the registration process. See our <Privacy Policy> and <Terms of Use> for more information.",
     "es":"Ingrese su dirección de correo electrónico Lo usaremos para enviarle una copia de su formulario para confirmar el proceso de registro. Consulte nuestra <Política de privacidad> y <Términos de servicio> para obtener más información."
   },
   "0_email_flag":{
