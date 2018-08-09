@@ -45,7 +45,7 @@
     "wiki_step":"0",
     "ref":"0_footer_partners",
     "en":"KSVotes.org was built in partnership with Loud Light and GPS Impact",
-    "es":"KSVotes.org fue construido en asociación con Loud Light y GPS Impact SPANISH NEEDED"
+    "es":"KSVotes.org fue construido en asociación con Loud Light y GPS Impact, traducido por El Centro Inc."
   },
   "0_name_help":{
     "wiki_step":"0",
@@ -230,7 +230,7 @@
     "wiki_step":"1AB",
     "ref":"1AB_election_help",
     "en":"You may register for advance ballots for elections in the current calendar year.",
-    "es":"SPANISH NEEDED"
+    "es":"Puede inscribirse para las boletas por adelantado para las elecciones en el año calendario actual."
   },
   "1AB_select_election_primary":{
     "wiki_step":"1AB",
@@ -417,7 +417,7 @@
     "wiki_step":"5VR",
     "ref":"5VR_id_shorthelp",
     "en":"Your ID should be drivers license #, nondrivers id card #, last 4 of SSN, or NONE.",
-    "es":"SPANISH NEEDED"
+    "es":"Su ID debe ser número de licencia de conducir, número de tarjeta de identificación de no conductores, los últimos 4 dígitos del número de seguro social o NINGUNO."
   },
   "5AB_id":{
     "wiki_step":"5AB",
@@ -429,12 +429,12 @@
     "wiki_step":"5AB",
     "ref":"5AB_id_shorthelp",
     "en":"Your ID is used to match your signature",
-    "es":"SPANISH NEEDED"
+    "es":"Su identificación se usa para que coincida con su firma."
   },
   "5AB_id_help":{
     "wiki_step":"5AB",
     "ref":"5AB_id_help",
-    "en":"If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:\n<ul>\n<li>Driver's license issued by Kansas or another state</li>\n<li>Nondriver's ID card issued by Kansas or another state</li>\n<li>U.S. passport</li> \n<li>Concealed carry of handgun license issued by Kansas  or another state</li>\n<li>Employee badge or ID document issued by a government office</li>\n<li>U.S. military ID</li>\n<li>Student ID card issued by an accredited Kansas postsecondary educational institution</li>\n<li>Public assistance ID card issued by a government office</li>\n<li>ID card issued by an Indian tribe</li>\n</ul>",
+    "en":"If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to your local elections official in order to receive a ballot:\n<ul>\n<li>Driver's license issued by Kansas or another state</li>\n<li>Nondriver's ID card issued by Kansas or another state</li>\n<li>U.S. passport</li> \n<li>Concealed carry of handgun license issued by Kansas  or another state</li>\n<li>Employee badge or ID document issued by a government office</li>\n<li>U.S. military ID</li>\n<li>Student ID card issued by an accredited Kansas postsecondary educational institution</li>\n<li>Public assistance ID card issued by a government office</li>\n<li>ID card issued by an Indian tribe</li>\n</ul>",
     "es":"Si no tiene un número de licencia de conducir de Kansas vigente o válido o un número de identificación de Kansas que no sea de conductor, debe proporcionar una copia de uno de los siguientes formularios de identificación con foto al oficial de elecciones locales para recibir una boleta:\n• Licencia de conducir emitida por Kansas u otro estado\n• Tarjeta de identificación de no conductor emitida por Kansas u otro estado\n• Pasaporte de EE. UU.\n• Licencia de portar armas de fuego ocultas emitida por Kansas u otro estado\n• Tarjeta de identificación de empleado o documento de identidad emitido por una oficina gubernamental\n• Identificación militar de EE. UU.\n• Tarjeta de identificación de estudiante emitida por una institución educativa postsecundaria acreditada de Kansas\n• Tarjeta de identificación de asistencia pública emitida por una oficina gubernamental\n• Tarjeta de identificación emitida por una tribu india"
   },
   "6_loading":{
@@ -468,16 +468,18 @@
     "es":"Nota: Esta firma se usará para verificar su identidad en sobres de boletas por adelantado y para otras posibles actividades de votación. Intenta que sea lo más parecido posible a tu firma escrita."
   },
   "7_header":{
-    "wiki_step":"7",
-    "ref":"7_header",
-    "en":"Here is your final form preview. Make sure everything looks right!",
-    "es":"Aquí está su vista previa de forma final. ¡Asegúrate de que todo se ve bien!"
+    "en":"Your final form preview is below. If it looks good, we will email it to your county elections official:",
+    "es":"La vista previa de tu forma final está debajo. Si se ve bien, lo enviaremos por correo electrónico al funcionario electoral de su condado:"
+  },
+  "7_explain":{
+    "en": "Just a few more steps:<ul><li>Review the form a final time. Please make sure that your information is correct and that your signature is as close as possible to what you regularly use.</li><li>Check the county clerk information provided. This is where we will email your completed form.</li><li>Affirm your citizenship and click \"Submit\"</li></ul>",
+    "es": "SPANISH NEEDED"
   },
   "7_county":{
     "wiki_step":"7",
     "ref":"7_county",
     "en":"What county do you live in?",
-    "es":"¿En que país vives?"
+    "es":"¿En que condado vives?"
   },
   "7_county_help":{
     "wiki_step":"7",
@@ -509,7 +511,7 @@
     "wiki_step":"7",
     "ref":"7_affirm_help",
     "en":"Checking the box means you agree with the Affirmation.",
-    "es":"SPANISH NEEDED"
+    "es":"Al marcar esta casilla, significa que está de acuerdo con la afirmación."
   },
   "7_affirm":{
     "wiki_step":"7",
@@ -521,7 +523,7 @@
     "wiki_step":"AB7",
     "ref":"AB7_affirm",
     "en":"I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated.",
-    "es":"SPANISH NEEDED"
+    "es":"Declaro solemnemente, bajo pena de perjurio, que soy un elector calificado que reside en la dirección mencionada anteriormente. Tengo derecho a votar una boleta de votación anticipada y no he votado y no votaré en las elecciones que se celebrarán en la (s) fecha (s) indicada (s)."
   },
   "8VR_confirm_1":{
     "en": "Success! We have submitted your application.",
