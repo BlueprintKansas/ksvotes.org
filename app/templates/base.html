@@ -87,9 +87,7 @@
      {% endblock %}
 
      {% if current_step %}
-     <div id="step-nav" class="mb-2">
-       Step {{current_step}} of 8
-     </div>
+     {% include 'step-progress.html' %}
      {% endif %}
 
     {% with messages = get_flashed_messages(with_categories=true) %}
