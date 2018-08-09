@@ -541,6 +541,10 @@
     "en": "If you have any questions, please call Kate Davis of KSVotes.org at 785-414-9678.",
     "es": "Si tiene alguna pregunta, llame a Kate Davis de KSVotes.org al 785-414-9678."
   },
+  "8VR_confirm_5": {
+    "en": "Thank you!<br/>The KSVotes.org Team",
+    "es": "¡Gracias!<br/>El equipo de KSVotes.org"
+  },
   "AB8_confirm":{
     "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder.", 
     "es":"Gracias. Su (s) solicitud (es) de boleta anticipada (s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
