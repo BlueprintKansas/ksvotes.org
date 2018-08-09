@@ -9,6 +9,12 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 mb-2">
+        {{_('7_explain')}}
+      </div>
+
+      {% include 'preview-img.html' %}
+
+      <div class="col-md-6 mb-2">
         <div class="my-3 card">
           <div class="card-body">
             <p>{{_('7_clerk_send_to')}}</p>
@@ -18,13 +24,6 @@
             {% endwith %}
           </div>
         </div>
-      </div>
-      <div class="mt-2 col-md-12">
-       <div class="card">
-        <div class="card-body">
-         <img src="{{preview_img}}"/>
-        </div>
-       </div>
       </div>
       <div class="mt-4 col-md-6">
         <div class='card'>
