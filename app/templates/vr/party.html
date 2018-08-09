@@ -1,76 +1,67 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% set current_step = '4' %}
 {% set previous_step_url = url_for('main.vr3_address') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Party {% endblock %}
+{% block title %}Party{% endblock %}
 
-{% block content %}
-<section id="formsection">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-       <div id="address-validation" class="">
-        {% if registrant.registration_value.validated_addresses %}
-          {% for k,v in registrant.registration_value.validated_addresses.items() %}
-           <div class="address-{{k}}">
-            <h6>
-            {% if k == 'current_address' %}
-              {{_('3_addr')}}
-            {% elif k == 'prev_addr'%}
-              {{_('3_prev_addr')}}
-            {% elif k == 'mail_addr'%}
-              {{_('3_mail_addr')}}
-            {% endif %}
-            </h6>
-            {% if 'error' in registrant.registration_value.validated_addresses[k] %}
-            <!-- {{registrant.registration_value.validated_addresses[k]['error']}} -->
-            <div class="alert alert-warning address-error">
-              <i class="fa fa-exclamation-triangle amber-text"></i>
-              <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>
-            </div>
-            {% else %}
-             <div class="alert alert-success validated"><i class="fa fa-check green-text"></i>
-               {% for f in ['address', 'unit', 'city', 'state', 'zip5'] %}
-                 {{registrant.registration_value.validated_addresses.get(k).get(f, '')}}
-               {% endfor %}
-             </div>
-            {% endif%}
-           </div>
-          {% endfor %}
-        {% else %}
-          <div class="address-current_address">
-           <h6>{{_('3_addr')}}</h6>
-           <div class="alert alert-warning address-error">
-             <i class="fa fa-exclamation-triangle amber-text"></i>
-             <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>
-           </div>
-          </div>
-        {% endif %}
-       </div>
-       <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
-         <fieldset>
-          <!-- <legend>{{_('4_legend')}}</legend> single field makes it redundant -->
-
-          {{form.hidden_tag()}}
-
-          {{wtf.render_field(
-            form.party,
-            _('4_party_help'),
-            {
-              'required':'required',
-              'data-parsley-error-message': _('Required'),
-            }
-            )}}
-
-          {% include 'form-buttons.html' %}
-
-         </fieldset>
-        </form>
-      </div>
+{% block form_content %}
+<div id="address-validation" class="">
+{% if registrant.registration_value.validated_addresses %}
+  {% for k,v in registrant.registration_value.validated_addresses.items() %}
+   <div class="address-{{k}}">
+    <div class='mb-2 h6'>
+    {% if k == 'current_address' %}
+      {{_('3_addr')}}
+    {% elif k == 'prev_addr'%}
+      {{_('3_prev_addr')}}
+    {% elif k == 'mail_addr'%}
+      {{_('3_mail_addr')}}
+    {% endif %}
     </div>
+    {% if 'error' in registrant.registration_value.validated_addresses[k] %}
+    <!-- {{registrant.registration_value.validated_addresses[k]['error']}} -->
+    <div class="alert alert-warning address-error">
+      <i class="fa fa-exclamation-triangle amber-text"></i>
+      <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>
+    </div>
+    {% else %}
+     <div class="alert alert-success validated"><i class="fa fa-check green-text"></i>
+       {% for f in ['address', 'unit', 'city', 'state', 'zip5'] %}
+         {{registrant.registration_value.validated_addresses.get(k).get(f, '')}}
+       {% endfor %}
+     </div>
+    {% endif%}
+   </div>
+  {% endfor %}
+{% else %}
+  <div class="address-current_address">
+   <div class='mb-3 h6'>{{_('3_addr')}}</div>
+   <div class="alert alert-warning address-error">
+     <i class="fa fa-exclamation-triangle amber-text"></i>
+     <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>
+   </div>
   </div>
-</section>
+{% endif %}
+</div>
+<form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
+ <fieldset>
+  <!-- <legend>{{_('4_legend')}}</legend> single field makes it redundant -->
+
+  {{form.hidden_tag()}}
+
+  {{wtf.render_field(
+    form.party,
+    _('4_party_help'),
+    {
+      'required':'required',
+      'data-parsley-error-message': _('Required'),
+    }
+    )}}
+
+  {% include 'form-buttons.html' %}
+
+ </fieldset>
+</form>
 {% endblock %}
 
 {% block js_footer %}

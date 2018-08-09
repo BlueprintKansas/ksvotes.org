@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% set current_step = '7' %}
 {% set previous_step_url = url_for('main.vr6_preview_sign') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Preview {% endblock %}
+{% block title %}Preview{% endblock %}
 
 {% block content %}
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="clerk-details col-md-6">
-        <p>{{_('7_clerk_send_to')}}</p>
-        {% include 'clerk-details.html' %}
-        {% with this_url='main.vr7_affirmation' %}
-        {% include 'change-county.html' %}
-        {% endwith %}
+      <div class="col-md-6 mb-2">
+        <div class="my-3 card">
+          <div class="card-body">
+            <p>{{_('7_clerk_send_to')}}</p>
+            {% include 'clerk-details.html' %}
+            {% with this_url='main.vr7_affirmation' %}
+            {% include 'change-county.html' %}
+            {% endwith %}
+          </div>
+        </div>
       </div>
       <div class="mt-2 col-md-12">
        <div class="card">
@@ -23,28 +26,32 @@
         </div>
        </div>
       </div>
-      <div class="mt-2 col-md-6">
-          <form name="step_7" id="step_7" method="POST"  action="{{url_for('main.vr7_affirmation')}}">
-           <fieldset>
-            <legend>{{_('7_legend')}}</legend>
+      <div class="mt-4 col-md-6">
+        <div class='card'>
+          <div class='card-body'>
+            <form name="step_7" id="step_7" method="POST" action="{{url_for('main.vr7_affirmation')}}">
+             <fieldset>
+              <legend>{{_('7_legend')}}</legend>
 
-            {{form.hidden_tag()}}
+              {{form.hidden_tag()}}
 
-            {{wtf.render_field(
-            form.affirmation,
-            _('7_affirm_help'),
-            {
-              'required':'required',
-              'data-parsley-error-message': _('Required'),
-            }
-            )}}
+              {{wtf.render_field(
+              form.affirmation,
+              _('7_affirm_help'),
+              {
+                'required':'required',
+                'data-parsley-error-message': _('Required'),
+              }
+              )}}
 
-            {% with next_btn=_('btn_submit') %}
-            {% include 'form-buttons.html' %}
-            {% endwith %}
+              {% with next_btn=_('btn_submit') %}
+              {% include 'form-buttons.html' %}
+              {% endwith %}
 
-           </fieldset>
-          </form>
+             </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

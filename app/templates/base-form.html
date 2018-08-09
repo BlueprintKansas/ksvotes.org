@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="formsection">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            {% block form_content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

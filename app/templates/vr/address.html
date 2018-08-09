@@ -1,194 +1,182 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% set current_step = '3' %}
 {% set previous_step_url = url_for('main.vr2_name') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Address {% endblock %}
+{% block title %}Address{% endblock %}
 
-{% block content %}
-<section id="formsection">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form name="step_3" id="step_3" method="POST" action="{{url_for('main.vr3_address')}}">
-         <fieldset>
-          <legend>{{_('3_legend')}}</legend>
+{% block form_content %}
+<form name="step_3" id="step_3" method="POST" action="{{url_for('main.vr3_address')}}">
+ <fieldset>
+  <legend>{{_('3_legend')}}</legend>
 
-          {{form.hidden_tag()}}
+  {{form.hidden_tag()}}
 
-          {{wtf.render_field(
-            form.addr,
-            _('3_addr_help'),
-            {
-              'required':'required',
-              'data-parsley-error-message': _('Required'),
-              'autocomplete':'off',
-              'data-parsley-trigger':'focusout'
-            }
-            )}}
+  {{wtf.render_field(
+    form.addr,
+    _('3_addr_help'),
+    {
+      'required':'required',
+      'data-parsley-error-message': _('Required'),
+      'autocomplete':'off',
+      'data-parsley-trigger':'focusout'
+    }
+    )}}
 
-            {{wtf.render_field(
-              form.unit,
-              _('3_unit'),
-              None,
-              )}}
+    {{wtf.render_field(
+      form.unit,
+      _('3_unit'),
+      None,
+      )}}
 
-            {{wtf.render_field(
-              form.city,
-              _('3_city'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+    {{wtf.render_field(
+      form.city,
+      _('3_city'),
+      {
+        'required':'required',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-            {{wtf.render_field(
-              form.state,
-              _('3_state'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+    {{wtf.render_field(
+      form.state,
+      _('3_state'),
+      {
+        'required':'required',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-            {{wtf.render_field(
-              form.zip,
-              _('3_zip_help'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout',
-                'data-parsley-pattern-message': _('0_zip_help'),
-                'data-parsley-pattern': "/^\d{5}$/",
-              }
-              )}}
+    {{wtf.render_field(
+      form.zip,
+      _('3_zip_help'),
+      {
+        'required':'required',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout',
+        'data-parsley-pattern-message': _('0_zip_help'),
+        'data-parsley-pattern': "/^\d{5}$/",
+      }
+      )}}
 
-              {{wtf.render_field(
-                form.has_prev_addr,
-                _('3_has_prev_addr'),
-                )}}
+      {{wtf.render_field(
+        form.has_prev_addr,
+        _('3_has_prev_addr'),
+        )}}
 
-          <div class="previous-address-fields">
-            <h1 class="h1-responsive"> {{_('3_prev_addr_header')}} </h1>
-            {{wtf.render_field(
-              form.prev_addr,
-              _('3a_prev_addr'),
-              {
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+  <div class="previous-address-fields">
+    <div class='mt-3 h5'>{{_('3_prev_addr_header')}}</div>
+    {{wtf.render_field(
+      form.prev_addr,
+      _('3a_prev_addr'),
+      {
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-              {{wtf.render_field(
-                form.prev_unit,
-                _('3a_prev_unit'),
-                None,
-                )}}
+      {{wtf.render_field(
+        form.prev_unit,
+        _('3a_prev_unit'),
+        None,
+        )}}
 
-              {{wtf.render_field(
-                form.prev_city,
-                _('3a_prev_city'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
+      {{wtf.render_field(
+        form.prev_city,
+        _('3a_prev_city'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout'
+        }
+        )}}
 
-              {{wtf.render_field(
-                form.prev_state,
-                _('3a_prev_state'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
+      {{wtf.render_field(
+        form.prev_state,
+        _('3a_prev_state'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout'
+        }
+        )}}
 
-              {{wtf.render_field(
-                form.prev_zip,
-                _('3_zip_help'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout',
-                  'data-parsley-pattern-message': _('0_zip_help'),
-                  'data-parsley-pattern': "/^\d{5}$/",
-                }
-                )}}
-          </div><!--/previous-address-fields-->
+      {{wtf.render_field(
+        form.prev_zip,
+        _('3_zip_help'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout',
+          'data-parsley-pattern-message': _('0_zip_help'),
+          'data-parsley-pattern': "/^\d{5}$/",
+        }
+        )}}
+  </div><!--/previous-address-fields-->
 
-          {{wtf.render_field(
-            form.has_mail_addr,
-            _('3_has_mail_addr'),
-            )}}
+  {{wtf.render_field(
+    form.has_mail_addr,
+    _('3_has_mail_addr'),
+    )}}
 
-          <div class="mail-address-fields">
+  <div class="mail-address-fields">
+    <div class='mt-3 h5'>{{_('3_mail_addr_header')}}</div>
+    {{wtf.render_field(
+      form.mail_addr,
+      _('3_mail_addr'),
+      {
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-            <h1 class="h1-responsive"> {{_('3_mail_addr_header')}} </h1>
-            {{wtf.render_field(
-              form.mail_addr,
-              _('3_mail_addr'),
-              {
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+      {{wtf.render_field(
+        form.mail_unit,
+        _('3_mail_unit'),
+        None,
+        )}}
 
-              {{wtf.render_field(
-                form.mail_unit,
-                _('3_mail_unit'),
-                None,
-                )}}
+      {{wtf.render_field(
+        form.mail_city,
+        _('3_mail_city'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout'
+        }
+        )}}
 
-              {{wtf.render_field(
-                form.mail_city,
-                _('3_mail_city'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
+      {{wtf.render_field(
+        form.mail_state,
+        _('3_mail_state'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout'
+        }
+        )}}
 
-              {{wtf.render_field(
-                form.mail_state,
-                _('3_mail_state'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
-
-              {{wtf.render_field(
-                form.mail_zip,
-                _('3_zip_help'),
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout',
-                  'data-parsley-pattern-message': _('0_zip_help'),
-                  'data-parsley-pattern': "/^\d{5}$/",
-                }
-                )}}
-          </div><!-- mail address fields -->
-
-          {% include 'form-buttons.html' %}
-
-         </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+      {{wtf.render_field(
+        form.mail_zip,
+        _('3_zip_help'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout',
+          'data-parsley-pattern-message': _('0_zip_help'),
+          'data-parsley-pattern': "/^\d{5}$/",
+        }
+        )}}
+  </div><!-- mail address fields -->
+  {% include 'form-buttons.html' %}
+ </fieldset>
+</form>
 {% endblock %}
 
 {% block js_footer %}

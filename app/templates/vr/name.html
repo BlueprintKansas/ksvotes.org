@@ -1,116 +1,107 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% set current_step = '2' %}
 {% set previous_step_url = url_for('main.vr1_citizenship') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Name {% endblock %}
+{% block title %}Name{% endblock %}
 
-{% block content %}
-<section id="formsection">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form name="step_2" id="step_2" method="POST" action="{{url_for('main.vr2_name')}}" novalidate>
-         <fieldset>
-          <legend>{{_('2_legend')}}</legend>
+{% block form_content %}
+<form name="step_2" id="step_2" method="POST" action="{{url_for('main.vr2_name')}}" novalidate>
+ <fieldset>
+  <legend>{{_('2_legend')}}</legend>
 
-          {{form.hidden_tag()}}
+  {{form.hidden_tag()}}
 
-          {{wtf.render_field(
-            form.prefix,
-            None,
-            None,
-            )}}
+  {{wtf.render_field(
+    form.prefix,
+    None,
+    None,
+    )}}
 
-          {{wtf.render_field(
-              form.name_first,
-              _('2_name_help'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+  {{wtf.render_field(
+      form.name_first,
+      _('2_name_help'),
+      {
+        'required':'required',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-          {{wtf.render_field(
-              form.name_middle,
-              _('2_name_help'),
-              None
-              )}}
+  {{wtf.render_field(
+      form.name_middle,
+      _('2_name_help'),
+      None
+      )}}
 
-          {{wtf.render_field(
-              form.name_last,
-              _('2_name_help'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+  {{wtf.render_field(
+      form.name_last,
+      _('2_name_help'),
+      {
+        'required':'required',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-          {{wtf.render_field(
-            form.suffix,
-            None,
-            None,
-            )}}
+  {{wtf.render_field(
+    form.suffix,
+    None,
+    None,
+    )}}
 
-          {{wtf.render_field(
-            form.has_prev_name,
-            _('2_has_prev_name'),
-            )}}
+  {{wtf.render_field(
+    form.has_prev_name,
+    _('2_has_prev_name'),
+    )}}
 
-          <div class="previous-name-fields">
-            {{wtf.render_field(
-              form.prev_prefix,
-              None,
-              None,
-              )}}
+  <div class="previous-name-fields">
+    {{wtf.render_field(
+      form.prev_prefix,
+      None,
+      None,
+      )}}
 
-            {{wtf.render_field(
-                form.prev_name_first,
-                None,
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
+    {{wtf.render_field(
+        form.prev_name_first,
+        None,
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout'
+        }
+        )}}
 
-            {{wtf.render_field(
-                form.prev_name_middle,
-                None,
-                None
-                )}}
+    {{wtf.render_field(
+        form.prev_name_middle,
+        None,
+        None
+        )}}
 
-            {{wtf.render_field(
-                form.prev_name_last,
-                None,
-                {
-                  'data-parsley-error-message': _('Required'),
-                  'autocomplete':'off',
-                  'data-parsley-trigger':'focusout'
-                }
-                )}}
+    {{wtf.render_field(
+        form.prev_name_last,
+        None,
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout'
+        }
+        )}}
 
-            {{wtf.render_field(
-              form.prev_suffix,
-              None,
-              None,
-              )}}
+    {{wtf.render_field(
+      form.prev_suffix,
+      None,
+      None,
+      )}}
 
 
-          </div><!--previous-name-fields-->
+  </div><!--previous-name-fields-->
 
-          {% include 'form-buttons.html' %}
+  {% include 'form-buttons.html' %}
 
-         </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+ </fieldset>
+</form>
 {% endblock %}
 
 {% block js_footer %}

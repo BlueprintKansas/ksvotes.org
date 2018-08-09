@@ -1,42 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% set current_step = '5' %}
 {% set previous_step_url = url_for('main.ab3_address') %}
 {% set flow_flavor = 'ab' %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Identification {% endblock %}
+{% block title %}Identification{% endblock %}
 
-{% block content %}
-<section id="formsection">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form name="step_AB5" id="step_AB5" method="POST" action="{{url_for('main.ab5_identification')}}">
-         <fieldset>
-          <legend>{{_('5_legend')}}</legend>
-          {{form.hidden_tag()}}
+{% block form_content %}
+<form name="step_AB5" id="step_AB5" method="POST" action="{{url_for('main.ab5_identification')}}">
+ <fieldset>
+  <legend>{{_('5_legend')}}</legend>
+  {{form.hidden_tag()}}
 
-          <div class="help"> {{_('5AB_id_help')}} </div>
+  <div class="help"> {{_('5AB_id_help')}} </div>
 
-          {{wtf.render_field(
-              form.ab_identification,
-              _('5AB_id_shorthelp'),
-              {
-                'required':'required',
-                'data-parsley-error-message': _('Required'),
-                'autocomplete':'off',
-                'data-parsley-trigger':'focusout'
-              }
-              )}}
+  {{wtf.render_field(
+      form.ab_identification,
+      _('5AB_id_shorthelp'),
+      {
+        'required':'required',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout'
+      }
+      )}}
 
-          {% include 'form-buttons.html' %}
+  {% include 'form-buttons.html' %}
 
-         </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+ </fieldset>
+</form>
 {% endblock %}
 
 {% block js_footer %}

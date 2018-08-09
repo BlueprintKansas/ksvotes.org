@@ -1,52 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="mt-4">
-      {% if sos_reg: %}
-
-        <h3>{{_('1AB_reg_found_title')}}</h3>
-
-        {% include 'voter-view-details.html' %}
-
-        <div class="mt-4">
-         <h4>{{_('1AB_whats_next')}}</h4>
-         {% include 'reg-choices.html' %}
-        </div>
-
-      {% elif skip_sos: %}
-
-        <div class="mt-4">
-          <h4>{{_('1AB_whats_next')}}</h4>
-          {% include 'reg-choices.html' %}
-        </div>
-
-      {% else %}
-
-       <div class="card">
+      <div class="card">
         <div class="card-body">
-         <h3>{{_('1AB_sorry_no_reg_title')}}</h3>
-         <p>
-          <a href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_sorry_no_reg_link')}}</a>
-          {{_('1AB_sorry_no_reg_help')}}
-         </p>
+        {% if sos_reg: %}
+          <h3>{{_('1AB_reg_found_title')}}</h3>
+          {% include 'voter-view-details.html' %}
+          <div class="mt-4">
+            <h4>{{_('1AB_whats_next')}}</h4>
+            {% include 'reg-choices.html' %}
+          </div>
+        {% elif skip_sos: %}
+          <h4 class='mb-4'>{{_('1AB_whats_next')}}</h4>
+          {% include 'reg-choices.html' %}
+        {% else %}
+          <h3>{{_('1AB_sorry_no_reg_title')}}</h3>
+          <p>
+            <a href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_sorry_no_reg_link')}}</a>
+            {{_('1AB_sorry_no_reg_help')}}
+          </p>
 
-         {% if clerk %}
-         <div class="clerk-details">
-          {% include 'clerk-details.html' %}
-         </div>
-         {% endif %}
+          {% if clerk %}
+            <div class="clerk-details">{% include 'clerk-details.html' %}</div>
+          {% endif %}
+
+          <a class="btn btn-outline-default w-100" href="{{url_for('main.vr1_citizenship')}}">
+            {{_('1AB_sorry_no_reg_link')}}
+          </a>
+        {% endif %}
         </div>
-
-        <a class="btn btn-outline-default" href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_sorry_no_reg_link')}}</a>
-
-       </div>
-  
-      {% endif %}
       </div>
-    </div>
+    </div>   
   </div>
 </div>
 {% endblock %}

@@ -18,23 +18,23 @@
     {% endif %}
 
     {% block facebook %}
-          <meta property="og:url" content="{{url_for('main.index', _external=True)}}"/>
-          <meta property="og:site_name" content="KSVotes.org" />
-          <meta property="og:title" content="KSVotes.org" />
-          <meta property="og:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
-          <meta property="og:image:width" content="738" />
-          <meta property="og:image:height" content="469" />
+      <meta property="og:url" content="{{url_for('main.index', _external=True)}}"/>
+      <meta property="og:site_name" content="KSVotes.org" />
+      <meta property="og:title" content="KSVotes.org" />
+      <meta property="og:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
+      <meta property="og:image:width" content="738" />
+      <meta property="og:image:height" content="469" />
     {% endblock %}
 
     {% block twitter %}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="KSVotesorg" />
-          <meta name="twitter:creator" content="">
-          <meta name="twitter:title" content="KSVotes.org" />
-          <meta name="twitter:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
-          <meta name="twitter:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="KSVotesorg" />
+      <meta name="twitter:creator" content="">
+      <meta name="twitter:title" content="KSVotes.org" />
+      <meta name="twitter:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
+      <meta name="twitter:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
     {% endblock %}
 
     {% include 'helpers/favicons.html' %}
@@ -45,10 +45,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
     <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
-
-
-
-
   </head>
   <body>
     {% if config['ENV'] == 'production' %}
@@ -65,8 +61,7 @@
 
     <main>
      {% block header %}
-     {% if use_hero %}
-     {% else %}
+     {% if not use_hero %}
      <header>
       <nav class="navbar navbar-expand-lg navbar-dark font-small ksv-flow-{{flow_flavor or 'vr'}}">
         <a class="navbar-brand" href="{{url_for('main.index')}}">
@@ -75,7 +70,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             {% if current_step %}
@@ -85,9 +79,7 @@
             {% if g.locale == 'es' %}
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.index', lang_code='en')}}">English</a></li>
             {% endif %}
-
           </ul>
-
         </div>
       </nav>
      </header>
@@ -110,39 +102,45 @@
       {% endif %}
     {% endwith %}
 
-     {% block content %}
-      {% if use_hero %}
-        {{ super() }}
-      {% else %}
-        <div id="main-content">{{ super() }}</div>
-      {% endif %}
-     {% endblock %}
+    {% if use_hero %}
+      <section id="hero">
+       <div class="jumbotron mb-0 p-sm-4">
+        <div class="container text-center">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="splash">
+            <h1 class="h1-responsive mt-sm-3 bold">{{_('0_title')}}</h1>
+            <p class="lead">{{_('0_lead')}}</p>
+            <hr class="my-3 w-50 border-thick">
+            <p class="measure mx-auto">{{_('0_intro')}}</p>
+            <a class="icon h1 align-bottom line-height-1" id="arrow-down" href="#step_0">
+              <i class="fa fa-angle-down fa-lg"></i>
+            </a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+    {% endif %}
+
+    {% import 'macros/_render_field.html' as wtf %}
+    {% block content %}{% endblock %}
 
     </main>
 
     {% block footer %}
-    <footer class="page-footer accent-4 font-small pt-4 ksv-flow-{{flow_flavor or 'vr'}}">
-     <div class="container-fluid text-center">
-      <div class="row">
-       <div class="col-md-12 mt-md-0 mt-3">
-         <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
-       </div>
-       <hr class="clearfix w-100 d-md-none pb-3">
-       <div class="col-md-12 mb-md-0 mb-3">
-        <ul class="list-unstyled list-inline">
-         <li class="list-inline-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a> &nbsp;&nbsp;|</li>
-         <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> &nbsp;&nbsp;|</li>
-         <li class="list-inline-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
-        </ul>
-       </div>
-       <div class="col-md-12 mb-md-0 mb-3">
-         {{_('0_footer_partners')}}
-       </div>
-      </div><!-- row -->
-     </div><!-- container -->
-     <div class="footer-copyright text-center py-3">© 2018 Copyright
-      <a href="https://blueprintkansas.org/">Blueprint Kansas</a>
-     </div>
+    <footer class="page-footer accent-4 mt-4 fs-14 text-center ksv-flow-{{flow_flavor or 'vr'}}">
+      <img class="mx-auto" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
+      <hr class="clearfix w-100 d-md-none mt-0"> 
+      <ul class="list-unstyled list-inline px-2 mb-3">
+       <li class="list-inline-item"><a href="/terms-of-service">{{_('0_footer_tos')}}</a> &nbsp;&nbsp;|</li>
+       <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> &nbsp;&nbsp;|</li>
+       <li class="list-inline-item"><a href="https://blueprintkansas.org/contact/">{{_('0_footer_contact')}}</a></li>
+      </ul>
+      <div class="px-2 mb-3">{{_('0_footer_partners')}}</div>
+      <div class="footer-copyright py-2 fs-12">
+        <a href="https://blueprintkansas.org/">© 2018 Blueprint Kansas</a>
+      </div>
     </footer>
     {% endblock %}
 

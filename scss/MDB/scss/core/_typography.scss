@@ -1,24 +1,21 @@
 // Typography
 // ROBOTO FONT
 
+// body {
+//   font-family: "Roboto", sans-serif;
+//   font-weight: 300;
+// }
 
-body {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-  font-family: "Montserrat", sans-serif;
-
-}
+// h1, h2, h3, h4, h5, h6 {
+//   font-weight: 300;
+//   font-family: "Montserrat", sans-serif;
+// }
 
 // Responsive headings
 @each $key, $val in $grid-breakpoints {
   @include media-breakpoint-up($key) {
     $y: map-get($responsive-headings, $key);
-    @each $name,
-      $value in $y {
+    @each $name, $value in $y {
       .#{$name}-responsive {
         font-size: $value;
       }
@@ -34,12 +31,17 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   margin-top: $divider-margin-y;
   margin-bottom: $divider-margin-y;
-  > h1, h2, h3, h4, h5, h6 {
+  > h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-bottom: 0;
   }
   &:before,
   &:after {
-    content: "";
+    content: '';
     height: 1.5px;
     flex: 1;
     height: $divider-height;
@@ -56,14 +58,15 @@ h1, h2, h3, h4, h5, h6 {
 // Blockquote
 .blockquote {
   padding: $blockquote-padding-y $blockquote-padding-x;
-  border-left: .25rem solid #eceeef;
+  border-left: 0.25rem solid #eceeef;
   .bq-title {
     margin-bottom: 0;
     font-size: $font-size-large;
     font-weight: 400;
   }
   p {
-    padding: $blockquote-p-padding-t 0 $blockquote-p-padding-b $blockquote-p-padding-l;
+    padding: $blockquote-p-padding-t 0 $blockquote-p-padding-b
+      $blockquote-p-padding-l;
     font-size: $blockquote-p-font-size;
   }
 }
@@ -78,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @each $name, $color in $basic-mdb-colors {
-  @include text-emphasis-variant(".text-#{$name}", $color);
+  @include text-emphasis-variant('.text-#{$name}', $color);
 }
 
 .font-small {

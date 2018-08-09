@@ -1,50 +1,44 @@
-{% extends 'base.html' %}
-{% import 'macros/_render_field.html' as wtf %}
+{% extends 'base-form.html' %}
 {% set current_step = '1' %}
 {% set previous_step_url = url_for('main.index') %}
 {% set flow_flavor = 'ab' %}
-{% block title %} {{_('AB1_title')}} {% endblock %}
 
-{% block content %}
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form name="step_ab1" id="step_ab1" method="POST" action="{{url_for('main.ab1_election_picker')}}" novalidate>
-       <fieldset>
-        <legend>{{_('AB1_legend')}}</legend>
+{% block title %}{{_('AB1_title')}}{% endblock %}
 
-        {{form.hidden_tag()}}
+{% block form_content %}
+<form name="step_ab1" id="step_ab1" method="POST" action="{{url_for('main.ab1_election_picker')}}" novalidate>
+ <fieldset>
+  <legend>{{_('AB1_legend')}}</legend>
 
-        {{wtf.render_field(
-            form.elections,
-            _('1AB_election_help'),
-            {
-              'required': 'required',
-              'data-parsley-required-message': _('Required'),
-              'data-parsley-multiple': 'elections',
-            }
-          )}}
-        <div id="elections-required-error" class="parsley-error parsley-errors-list" style="display:none">
-          {{_('Required')}}
-        </div>
-        <div id="party-picker" style="display:none">
-        {{wtf.render_field(
-              form.party,
-              _('1AB_party_help'),
-              {
-                'data-parsley-trigger':'focusout',
-                'data-parsley-required-message': _('Required')
-              }
-              )}}
-        </div>
+  {{form.hidden_tag()}}
 
-        {% include 'form-buttons.html' %}
-
-       </fieldset>
-      </form>
-    </div>
+  {{wtf.render_field(
+      form.elections,
+      _('1AB_election_help'),
+      {
+        'required': 'required',
+        'data-parsley-required-message': _('Required'),
+        'data-parsley-multiple': 'elections',
+      }
+    )}}
+  <div id="elections-required-error" class="parsley-error parsley-errors-list" style="display:none">
+    {{_('Required')}}
   </div>
-</div>
+  <div id="party-picker" style="display:none">
+  {{wtf.render_field(
+        form.party,
+        _('1AB_party_help'),
+        {
+          'data-parsley-trigger':'focusout',
+          'data-parsley-required-message': _('Required')
+        }
+        )}}
+  </div>
+
+  {% include 'form-buttons.html' %}
+
+ </fieldset>
+</form>
 {% endblock %}
 
 {% block js_footer %}
