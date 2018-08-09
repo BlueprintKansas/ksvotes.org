@@ -1,0 +1,26 @@
+{% if total_steps is not defined %}
+{% set total_steps = 8 %}
+{% endif %}
+<div id="step-nav" class="mb-2">
+ <ul class="list-inline-mb-0">
+  {% for stepN in range(1, total_steps+1) %}
+   <li class="list-inline-item">
+   {% if stepN < current_step|int+1 %}
+    <span class="fa-stack fa-2x complete">
+     <i class="fa fa-check-circle-o fa-2x"></i>
+    </span>
+   {% elif stepN == current_step|int+1 %}
+    <span class="fa-stack fa-2x current">
+      <i class="fa fa-circle-o fa-stack-2x"></i>
+      <strong class="fa-stack-1x">{{stepN}}</strong>
+    </span>
+   {% else %}
+    <span class="fa-stack fa-2x incomplete">
+     <i class="fa fa-circle-o fa-stack-2x"></i>
+     <strong class="fa-stack-1x">{{stepN}}</strong>
+    </span>
+   {% endif %}
+   </li>
+  {% endfor %}
+ </ul>
+</div>
