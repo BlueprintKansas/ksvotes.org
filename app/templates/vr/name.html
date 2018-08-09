@@ -1,9 +1,8 @@
 {% extends 'base-form.html' %}
 {% set current_step = '2' %}
 {% set previous_step_url = url_for('main.vr1_citizenship') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Name {% endblock %}
+{% block title %}Name{% endblock %}
 
 {% block form_content %}
 <form name="step_2" id="step_2" method="POST" action="{{url_for('main.vr2_name')}}" novalidate>

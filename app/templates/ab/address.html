@@ -2,9 +2,8 @@
 {% set current_step = '3' %}
 {% set previous_step_url = url_for('main.ab1_election_picker') %}
 {% set flow_flavor = 'ab' %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Address {% endblock %}
+{% block title %}Address{% endblock %}
 
 {% block form_content %}
 <form name="step_3" id="step_3" method="POST" action="{{url_for('main.ab3_address')}}">

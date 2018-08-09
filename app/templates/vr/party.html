@@ -1,9 +1,8 @@
 {% extends 'base-form.html' %}
 {% set current_step = '4' %}
 {% set previous_step_url = url_for('main.vr3_address') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Party {% endblock %}
+{% block title %}Party{% endblock %}
 
 {% block form_content %}
 <div id="address-validation" class="">
@@ -36,7 +35,7 @@
   {% endfor %}
 {% else %}
   <div class="address-current_address">
-   <div class='mb-2 h6'>{{_('3_addr')}}</div>
+   <div class='mb-3 h6'>{{_('3_addr')}}</div>
    <div class="alert alert-warning address-error">
      <i class="fa fa-exclamation-triangle amber-text"></i>
      <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>

@@ -1,16 +1,13 @@
-<div class="text-center">
- <p>
-  <a class="btn btn-outline-default" href="{{url_for('main.vr1_citizenship')}}">{{_('1AB_change_reg_link')}}</a>
-  <div class="alert alert-light">
-    {{_('change_reg_help')}}
-  </div>
- </p>
- <p>
-  <a class="btn btn-outline-default" href="{{url_for('main.ab1_election_picker')}}">{{_('1AB_apply_ab_link')}}</a>
-  <div class="alert alert-light">
-    {{_('apply_ab_help')}}
-  </div>
- </p>
+<div class='mb-5'>
+  <a class="btn btn-outline-default d-inline-block mb-3" href="{{url_for('main.vr1_citizenship')}}">
+    {{_('1AB_change_reg_link')}}
+  </a>
+  <div class="alert alert-warning">{{_('change_reg_help')}}</div>
+</div>
 
-{# <p><a href="{{url_for('main.ab1_perm')}}">{{_('1AB_apply_perm_ab_link')}}</a>{{_('1AB_perm_help')}}</p> #}
+<div>
+  <a class="btn btn-outline-default d-inline-block mb-3" href="{{url_for('main.ab1_election_picker')}}">
+    {{_('1AB_apply_ab_link')}}
+  </a>
+  <div class="alert alert-warning mb-0">{{_('apply_ab_help')}}</div>
 </div>

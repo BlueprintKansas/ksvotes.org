@@ -1,9 +1,8 @@
 {% extends 'base-form.html' %}
 {% set current_step = '5' %}
 {% set previous_step_url = url_for('main.vr4_party') %}
-{% import 'macros/_render_field.html' as wtf %}
 
-{% block title %} Identification {% endblock %}
+{% block title %}Identification{% endblock %}
 
 {% block form_content %}
 <form name="step_5" id="step_5" method="POST" action="{{url_for('main.vr5_identification')}}">
