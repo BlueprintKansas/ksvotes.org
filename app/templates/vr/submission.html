@@ -5,16 +5,25 @@
 {% block content %}
 <div class="container">
   <div class="row justify-content-center">
-   <div class="col-md-6">
+   <div class="col-md-8">
     <div class="card">
      <div class="card-body">
-      <p>{{_('8_confirm')}}</p>
+      <h1>{{_('8VR_confirm_1')}}</h1>
+      <p>{{_('8VR_confirm_2')}}</p>
+      <p>{{_('8VR_confirm_3')}}</p>
+      <p>{{_('8VR_confirm_4')}}</p>
+      <p>{{_('8VR_confirm_5')}}</p>
       <div class="clerk-details">
         <p>{{_('8_clerk_sent_to')}}</p>
         {% include 'clerk-details.html' %}
       </div>
 
-      <a class="btn btn-outline-default" href="{{url_for('main.ab1_election_picker')}}">{{_('1AB_apply_ab_link')}}</a>
+      <div class="text-center">
+       <a class="btn btn-outline-default" href="{{url_for('main.ab1_election_picker')}}">
+         <i class="fa fa-edit mr-2"></i>
+         {{_('1AB_apply_ab_link')}}
+       </a>
+      </div>
 
       {% include 'forget-session-button.html' %}
 

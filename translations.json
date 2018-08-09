@@ -2,26 +2,26 @@
   "0_title":{
     "wiki_step":"0",
     "ref":"0_title",
-    "en":"Welcome to KSVotes.org",
-    "es":"Bienvenido a KSVotes.org"
+    "en":"Welcome to KSVotes.org!",
+    "es":"¡Bienvenido a KSVotes.org!"
   },
   "0_lead":{
     "wiki_step":"0",
     "ref":"0_lead",
     "en":"Your Online Voter Registration and Information Service",
-    "es":"SPANISH NEEDED"
+    "es":"Su registro de votantes en línea y servicio de información"
   },
   "0_intro":{
     "wiki_step":"0",
     "ref":"0_intro",
     "en":"We can help you register to vote, check your registration, or apply to vote by mail. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
-    "es":"SPANISH NEEDED"
+    "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o postularse para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
   "0_form_explain":{
     "wiki_step":"0",
     "ref":"0_form_explain",
     "en":"Enter your information below, and we'll check to see if you're already registered to vote in Kansas.",
-    "es":"SPANISH NEEDED"
+    "es":"Ingrese su información a continuación, y verificaremos si ya está registrado para votar en Kansas."
   },
   "0_footer_priv":{
     "wiki_step":"0",
@@ -45,7 +45,7 @@
     "wiki_step":"0",
     "ref":"0_footer_partners",
     "en":"KSVotes.org was built in partnership with Loud Light and GPS Impact",
-    "es":"KSVotes.org fue construido en asociación con Loud Light y GPS Impact SPANISH NEEDED"
+    "es":"KSVotes.org fue construido en asociación con Loud Light y GPS Impact, traducido por El Centro Inc."
   },
   "0_name_help":{
     "wiki_step":"0",
@@ -230,7 +230,7 @@
     "wiki_step":"1AB",
     "ref":"1AB_election_help",
     "en":"You may register for advance ballots for elections in the current calendar year.",
-    "es":"SPANISH NEEDED"
+    "es":"Puede inscribirse para las boletas por adelantado para las elecciones en el año calendario actual."
   },
   "1AB_select_election_primary":{
     "wiki_step":"1AB",
@@ -417,7 +417,7 @@
     "wiki_step":"5VR",
     "ref":"5VR_id_shorthelp",
     "en":"Your ID should be drivers license #, nondrivers id card #, last 4 of SSN, or NONE.",
-    "es":"SPANISH NEEDED"
+    "es":"Su ID debe ser número de licencia de conducir, número de tarjeta de identificación de no conductores, los últimos 4 dígitos del número de seguro social o NINGUNO."
   },
   "5AB_id":{
     "wiki_step":"5AB",
@@ -429,12 +429,12 @@
     "wiki_step":"5AB",
     "ref":"5AB_id_shorthelp",
     "en":"Your ID is used to match your signature",
-    "es":"SPANISH NEEDED"
+    "es":"Su identificación se usa para que coincida con su firma."
   },
   "5AB_id_help":{
     "wiki_step":"5AB",
     "ref":"5AB_id_help",
-    "en":"If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to my local elections official in order to receive a ballot:\n<ul>\n<li>Driver's license issued by Kansas or another state</li>\n<li>Nondriver's ID card issued by Kansas or another state</li>\n<li>U.S. passport</li> \n<li>Concealed carry of handgun license issued by Kansas  or another state</li>\n<li>Employee badge or ID document issued by a government office</li>\n<li>U.S. military ID</li>\n<li>Student ID card issued by an accredited Kansas postsecondary educational institution</li>\n<li>Public assistance ID card issued by a government office</li>\n<li>ID card issued by an Indian tribe</li>\n</ul>",
+    "en":"If you do not have a current and valid Kansas driver's license number or Kansas nondriver's identification card number, you must provide a copy of one of the following forms of photo identification to your local elections official in order to receive a ballot:\n<ul>\n<li>Driver's license issued by Kansas or another state</li>\n<li>Nondriver's ID card issued by Kansas or another state</li>\n<li>U.S. passport</li> \n<li>Concealed carry of handgun license issued by Kansas  or another state</li>\n<li>Employee badge or ID document issued by a government office</li>\n<li>U.S. military ID</li>\n<li>Student ID card issued by an accredited Kansas postsecondary educational institution</li>\n<li>Public assistance ID card issued by a government office</li>\n<li>ID card issued by an Indian tribe</li>\n</ul>",
     "es":"Si no tiene un número de licencia de conducir de Kansas vigente o válido o un número de identificación de Kansas que no sea de conductor, debe proporcionar una copia de uno de los siguientes formularios de identificación con foto al oficial de elecciones locales para recibir una boleta:\n• Licencia de conducir emitida por Kansas u otro estado\n• Tarjeta de identificación de no conductor emitida por Kansas u otro estado\n• Pasaporte de EE. UU.\n• Licencia de portar armas de fuego ocultas emitida por Kansas u otro estado\n• Tarjeta de identificación de empleado o documento de identidad emitido por una oficina gubernamental\n• Identificación militar de EE. UU.\n• Tarjeta de identificación de estudiante emitida por una institución educativa postsecundaria acreditada de Kansas\n• Tarjeta de identificación de asistencia pública emitida por una oficina gubernamental\n• Tarjeta de identificación emitida por una tribu india"
   },
   "6_loading":{
@@ -468,16 +468,18 @@
     "es":"Nota: Esta firma se usará para verificar su identidad en sobres de boletas por adelantado y para otras posibles actividades de votación. Intenta que sea lo más parecido posible a tu firma escrita."
   },
   "7_header":{
-    "wiki_step":"7",
-    "ref":"7_header",
-    "en":"Here is your final form preview. Make sure everything looks right!",
-    "es":"Aquí está su vista previa de forma final. ¡Asegúrate de que todo se ve bien!"
+    "en":"Your final form preview is below. If it looks good, we will email it to your county elections official:",
+    "es":"La vista previa de tu forma final está debajo. Si se ve bien, lo enviaremos por correo electrónico al funcionario electoral de su condado:"
+  },
+  "7_explain":{
+    "en": "Just a few more steps:<ul><li>Review the form a final time. Please make sure that your information is correct and that your signature is as close as possible to what you regularly use.</li><li>Check the county clerk information provided. This is where we will email your completed form.</li><li>Affirm your citizenship and click \"Submit\"</li></ul>",
+    "es": "SPANISH NEEDED"
   },
   "7_county":{
     "wiki_step":"7",
     "ref":"7_county",
     "en":"What county do you live in?",
-    "es":"¿En que país vives?"
+    "es":"¿En que condado vives?"
   },
   "7_county_help":{
     "wiki_step":"7",
@@ -509,7 +511,7 @@
     "wiki_step":"7",
     "ref":"7_affirm_help",
     "en":"Checking the box means you agree with the Affirmation.",
-    "es":"SPANISH NEEDED"
+    "es":"Al marcar esta casilla, significa que está de acuerdo con la afirmación."
   },
   "7_affirm":{
     "wiki_step":"7",
@@ -521,50 +523,56 @@
     "wiki_step":"AB7",
     "ref":"AB7_affirm",
     "en":"I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated.",
-    "es":"SPANISH NEEDED"
+    "es":"Declaro solemnemente, bajo pena de perjurio, que soy un elector calificado que reside en la dirección mencionada anteriormente. Tengo derecho a votar una boleta de votación anticipada y no he votado y no votaré en las elecciones que se celebrarán en la (s) fecha (s) indicada (s)."
   },
-  "8_confirm":{
-    "wiki_step":"8",
-    "ref":"8_confirm",
-    "en":"Thank you.\nWe have submitted your application.\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), or check your status online here\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\nThank you!\n\nThe KSVotes.org Team",
-    "es":"Gracias.\nHemos enviado su solicitud.\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario local de elecciones y pronto recibirá una copia de ese correo electrónico. Si no recibe el correo electrónico, verifique su carpeta de spam.\nDebería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. (Puede encontrar su información de contacto aquí <http://www.kssos.org/elections/elections_registration_ceo_display.aspx>), o verifique su estado en línea aquí\nSi tiene alguna pregunta, llame a Kate Davis de Blueprint Kansas al 785-414-9678.\n¡Gracias!\n\nEl equipo de KSVotes.org "
+  "8VR_confirm_1":{
+    "en": "Success! We have submitted your application.",
+    "es": "¡Éxito! Hemos enviado su solicitud."
+  },
+  "8VR_confirm_2":{
+    "en": "Thank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should soon receive a copy of that email. If you do not receive the email, please check your spam folder.",
+    "es": "Gracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario local de elecciones y pronto recibirá una copia de ese correo electrónico. Si no recibe el correo electrónico, verifique su carpeta de spam."
+  },
+  "8VR_confirm_3": {
+    "en": "You should receive a card in the mail confirming your registration within 2-4 weeks. If you don’t, contact your local elections office to check on your status. You will find their contact information below, or check your status online at KSVotes.org.",
+    "es": "Debería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. Encontrarás su información de contacto a continuación, o consultar su estado en línea en KSVotes.org."
+  },
+  "8VR_confirm_4": {
+    "en": "If you have any questions, please call Kate Davis of KSVotes.org at 785-414-9678.",
+    "es": "Si tiene alguna pregunta, llame a Kate Davis de KSVotes.org al 785-414-9678."
+  },
+  "8VR_confirm_5": {
+    "en": "Thank you!<br/>The KSVotes.org Team",
+    "es": "¡Gracias!<br/>El equipo de KSVotes.org"
   },
   "AB8_confirm":{
-    "wiki_step":"AB8",
-    "ref":"AB8_confirm",
-    "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon.",
-    "es":"SPANISH NEEDED"
+    "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder.", 
+    "es":"Gracias. Su (s) solicitud (es) de boleta anticipada (s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
   },
   "9_confirm_email":{
     "wiki_step":"9",
     "ref":"9_confirm_email",
-    "en":"Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. (You can find their contact information here: http://www.kssos.org/elections/elections_registration_ceo_display.aspx ), or check your status online here: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do \n\nIf you have any questions, please call Kate Davis of Blueprint Kansas at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team",
-    "es":"Estimado <primer nombre>,\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario electoral local, y usted debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, verifique su carpeta de spam.\n\nDebería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. (Puede encontrar su información de contacto aquí: http://www.kssos.org/elections/elections_registration_ceo_display.aspx), o verifique su estado en línea aquí: https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do\n\nSi tiene alguna pregunta, llame a Kate Davis de Blueprint Kansas al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org"
+    "en":"Dear <firstname>,\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. You can find their contact information below, or check your status at https://ksvotes.org/\n\nIf you have any questions, please call Kate Davis of KSVotes.org at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team",
+    "es":"Estimado <primer nombre>,\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario electoral local, y usted debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, verifique su carpeta de spam.\n\nDebería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. Encontrarás su información de contacto a continuación, o verifique su estado en línea https://ksvotes.org/\n\nSi tiene alguna pregunta, llame a Kate Davis de KSVotes.org al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org"
   },
   "1_legend":{
-    "wiki_step":"1",
-    "ref":"1_legend",
     "en":"Citizenship and Age",
-    "es":"SPANISH NEEDED"
+    "es":"Ciudadania y Edad"
   },
   "AB1_legend": {"en": "Election(s)", "es": "Elección(s)" },
-  "2_legend":{"wiki_step":"2","ref":"2_legend","en":"Name","es":"SPANISH NEEDED"},
-  "3_legend":{"wiki_step":"3","ref":"3_legend","en":"Address","es":"SPANISH NEEDED"},
-  "4_legend":{"wiki_step":"4","ref":"4_legend","en":"Party","es":"SPANISH NEEDED"},
-  "5_legend":{"wiki_step":"5","ref":"5_legend","en":"Identification","es":"SPANISH NEEDED"},
-  "6_legend":{"wiki_step":"6","ref":"6_legend","en":"Signature","es":"SPANISH NEEDED"},
-  "7_legend":{"wiki_step":"7","ref":"7_legend","en":"Affirmation","es":"SPANISH NEEDED"},
+  "2_legend":{"wiki_step":"2","ref":"2_legend","en":"Name","es":"Nombre"},
+  "3_legend":{"wiki_step":"3","ref":"3_legend","en":"Address","es":"Direccion"},
+  "4_legend":{"wiki_step":"4","ref":"4_legend","en":"Party","es":"Partido Politico"},
+  "5_legend":{"wiki_step":"5","ref":"5_legend","en":"Identification","es":"Identificacion"},
+  "6_legend":{"wiki_step":"6","ref":"6_legend","en":"Signature","es":"Firma"},
+  "7_legend":{"wiki_step":"7","ref":"7_legend","en":"Affirmation","es":"Afirmacion"},
   "7_clerk_send_to":{
-    "wiki_step":"7",
-    "ref":"7_clerk_send_to",
     "en":"Your application(s) will be sent to:",
-    "es":"SPANISH NEEDED"
+    "es":"Su (s) aplicación (es) se enviarán a:"
   },
   "8_clerk_sent_to":{
-    "wiki_step":"8",
-    "ref":"8_clerk_sent_to",
     "en":"Your application(s) were sent to:",
-    "es":"SPANISH NEEDED"
+    "es":"Su (s) aplicación (es) fueron enviadas a:"
   },
   "btn_apply":{ "en": "Apply change", "es": "Aplicar cambio" },
   "btn_change_county":{ "en": "Change County", "es": "Cambiar el Condado" },
