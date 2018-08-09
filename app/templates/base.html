@@ -65,8 +65,7 @@
 
     <main>
      {% block header %}
-     {% if use_hero %}
-     {% else %}
+     {% if not use_hero %}
      <header>
       <nav class="navbar navbar-expand-lg navbar-dark font-small ksv-flow-{{flow_flavor or 'vr'}}">
         <a class="navbar-brand" href="{{url_for('main.index')}}">
@@ -75,7 +74,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             {% if current_step %}
@@ -85,9 +83,7 @@
             {% if g.locale == 'es' %}
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.index', lang_code='en')}}">English</a></li>
             {% endif %}
-
           </ul>
-
         </div>
       </nav>
      </header>
@@ -110,15 +106,28 @@
       {% endif %}
     {% endwith %}
 
-    {% block content %}
-      {% if use_hero %}
-        {{ super() }}
-      {% else %}
-        <div id="main-content">
-          {{ super() }}
+    {% if use_hero %}
+      <section id="hero">
+       <div class="jumbotron mb-0 p-sm-4">
+        <div class="container text-center">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="splash">
+            <h1 class="h1-responsive mt-sm-3 bold">{{_('0_title')}}</h1>
+            <p class="lead">{{_('0_lead')}}</p>
+            <hr class="my-3 w-50 border-thick">
+            <p class="measure mx-auto">{{_('0_intro')}}</p>
+            <a class="icon h1 align-bottom line-height-1" id="arrow-down" href="#step_0">
+              <i class="fa fa-angle-down fa-lg"></i>
+            </a>
+          </div>
+         </div>
         </div>
-      {% endif %}
-    {% endblock %}
+       </div>
+      </section>
+    {% endif %}
+
+    {% block content %}{% endblock %}
 
     </main>
 
