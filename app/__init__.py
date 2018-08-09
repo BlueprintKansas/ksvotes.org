@@ -69,6 +69,11 @@ def create_app(script_info):
     def inject_dict_for_all_templates():
         return dict(registrant=g.get('registrant'))
 
+    @app.template_test('a_text_field')
+    def a_text_field(obj):
+        from wtforms import StringField, DateField
+        return isinstance(obj, StringField) or isinstance(obj, DateField)
+
 
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
