@@ -44,6 +44,30 @@
   </div>
   {% endif %}
 
+  {% if field.type == 'RadioBooleanField' %}
+  <div class="form-group">
+    <div class="form-check form-check-inline">
+    {% if additional_attributes %}
+      {{field(class="form-check-input", **additional_attributes)}}
+    {% else%}
+      {{field(class="form-check-input")}}
+    {% endif %}
+    {{field.label(class="form-check-label pr-3")}}
+    {% if help_text %}
+      <i class="fa fa-info-circle postfix top-5" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
+    {% endif %}
+
+    {% if field.errors %}
+      <ul class="parsley-errors-list filled">
+        {% for error in field.errors %}
+          <li> {{ error }} </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
   {% if 'MultiCheckboxField' in field.__class__.__name__  %}
     <div class="form-group" id="{{field.id}}">
       {{field.label(class="fs-16")}}
