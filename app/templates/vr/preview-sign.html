@@ -29,16 +29,17 @@
             <form name="step_6" id="step_6" class='position-relative' method="POST" action="{{url_for('main.vr6_preview_sign')}}">
              <fieldset>
               <legend>{{_('6_legend')}}</legend>
-
               {{form.hidden_tag()}}
-              <label> {{_('6_sign')}}            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i></label>
-
-              <div id="signature"></div>
+              <div class="form-group">
+                <label>{{_('6_sign')}}</label>
+                <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i>
+                <div id="signature"></div>
                 <ul class="parsley-errors-list filled">
                   {% for error in form.signature_string.errors %}
-                    <li> {{ error }} </li>
+                    <li>{{error}}</li>
                   {% endfor %}
                 </ul>
+              </div>
               <div class="clear-button mt-4">
                <button class="btn btn-primary" onclick="return resetHiddenSignatureImg()">{{_('btn_clear')}}</button>
               </div>

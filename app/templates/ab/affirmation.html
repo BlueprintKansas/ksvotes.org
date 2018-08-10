@@ -13,7 +13,7 @@
         {{_('7_explain')}}
       </div>
 
-      <div class="mt-4 mb-4 col-md-12">
+      <div class="mt-4 col-md-12">
         {% for preview_img in preview_imgs %}
         <div class="card">
          <div class="card-body">
@@ -23,37 +23,44 @@
         {% endfor %}
       </div>
 
-      <div class="mt-4 clerk-details col-md-6">
-        <p>{{_('7_clerk_send_to')}}</p>
-        {% include 'clerk-details.html' %}
-        {% with this_url='main.ab7_affirmation' %}
-        {% include 'change-county.html' %}
-        {% endwith %}
+      <div class="col-md-6">
+        <div class="mt-4 card">
+          <div class="card-body">
+            <p>{{_('7_clerk_send_to')}}</p>
+            {% include 'clerk-details.html' %}
+            {% with this_url='main.ab7_affirmation' %}
+            {% include 'change-county.html' %}
+            {% endwith %}
+          </div>
+        </div>
       </div>
 
-      <div class="col-md-6">
-          <form name="step_7" id="step_7" method="POST"  action="{{url_for('main.ab7_affirmation')}}">
-           <fieldset>
-            <legend>{{_('7_legend')}}</legend>
+      <div class="mt-4 col-md-6">
+        <div class='card'>
+          <div class='card-body'>
+            <form name="step_7" id="step_7" method="POST"  action="{{url_for('main.ab7_affirmation')}}">
+             <fieldset>
+              <legend>{{_('7_legend')}}</legend>
 
-            {{form.hidden_tag()}}
+              {{form.hidden_tag()}}
 
-            {{wtf.render_field(
-            form.affirmation,
-            _('7_affirm_help'),
-            {
-              'required':'required',
-              'data-parsley-error-message': _('Required'),
-            }
-            )}}
+              {{wtf.render_field(
+              form.affirmation,
+              _('7_affirm_help'),
+              {
+                'required':'required',
+                'data-parsley-error-message': _('Required'),
+              }
+              )}}
 
-            {% with next_btn=_('btn_submit') %}
-            {% include 'form-buttons.html' %}
-            {% endwith %}
+              {% with next_btn=_('btn_submit') %}
+              {% include 'form-buttons.html' %}
+              {% endwith %}
 
-           </fieldset>
-          </form>
-
+             </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

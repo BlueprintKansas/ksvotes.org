@@ -11,7 +11,7 @@
   <legend>{{_('5_legend')}}</legend>
   {{form.hidden_tag()}}
 
-  <div class="help"> {{_('5AB_id_help')}} </div>
+  <div class="mb-4">{{_('5AB_id_help')}}</div>
 
   {{wtf.render_field(
       form.ab_identification,
@@ -34,7 +34,7 @@
 <script>
 $(function () {
   //initialize form with parsley validation
-  var form = $('#step_5AB');
+  var form = $('#step_AB5');
   form.parsley()
 });
 

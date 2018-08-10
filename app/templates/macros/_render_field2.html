@@ -1,23 +1,20 @@
 {% macro render_field(field, help_text, additional_attributes) %}
 
-  {% if field.widget.input_type == 'text' %}
-  <div class="md-form pr-4">
+  {% if field is a_text_field or 'Select' in field.__class__.__name__ %}
+  <div class="form-group">
       {{field.label}}
-
       {% if additional_attributes %}
         {{field(class="form-control", **additional_attributes)}}
       {% else%}
         {{field(class="form-control")}}
       {% endif %}
-
       {% if help_text %}
         <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
       {% endif %}
-
       {% if field.errors %}
         <ul class="parsley-errors-list filled">
           {% for error in field.errors %}
-            <li> {{ error }} </li>
+            <li>{{error}}</li>
           {% endfor %}
         </ul>
       {% endif %}
@@ -25,63 +22,48 @@
   {% endif %}
 
   {% if field.widget.input_type == 'checkbox' %}
-  <div class="form-check mb-2 pr-4">
+  <div class="form-group">
+    <div class="form-check">
     {% if additional_attributes %}
       {{field(class="form-check-input", **additional_attributes)}}
     {% else%}
       {{field(class="form-check-input")}}
     {% endif %}
-    {{field.label(class="ml-1 fs-14")}}
+    {{field.label(class="form-check-label pr-3")}}
     {% if help_text %}
       <i class="fa fa-info-circle postfix top-5" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
     {% endif %}
-
     {% if field.errors %}
       <ul class="parsley-errors-list filled">
         {% for error in field.errors %}
-          <li> {{ error }} </li>
+          <li>{{error}}</li>
         {% endfor %}
       </ul>
     {% endif %}
+    </div>
   </div>
   {% endif %}
 
   {% if 'MultiCheckboxField' in field.__class__.__name__  %}
-    <div class="form-group mb-2 pr-4">
-      {{field.label}}
-      {% if additional_attributes %}
-        {{field(class="form-check-input", **additional_attributes)}}
-      {% else%}
-        {{field(class="form-check-input")}}
-      {% endif %}
+    <div class="form-group" id="{{field.id}}">
+      {{field.label(class="fs-16")}}
+      {% for f in field %}
+        <div class="form-check">
+          {% if additional_attributes %}
+            {{f(class="form-check-input", **additional_attributes)}}
+          {% else%}
+            {{f(class="form-check-input")}}
+          {% endif %}
+          {{f.label(class="form-check-label")}}
+        </div>
+      {% endfor %}
       {% if help_text %}
         <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
       {% endif %}
       {% if field.errors %}
         <ul class="parsley-errors-list filled">
           {% for error in field.errors %}
-            <li> {{ error }} </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
-  {% endif %}
-
-  {% if 'Select' in field.__class__.__name__  %}
-    <div class="form-group mb-2 pr-4">
-      {{field.label}}
-      {% if additional_attributes %}
-        {{field(class="form-control", **additional_attributes)}}
-      {% else%}
-        {{field(class="form-control")}}
-      {% endif %}
-      {% if help_text %}
-        <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
-      {% endif %}
-      {% if field.errors %}
-        <ul class="parsley-errors-list filled">
-          {% for error in field.errors %}
-            <li> {{ error }} </li>
+            <li>{{error}}</li>
           {% endfor %}
         </ul>
       {% endif %}

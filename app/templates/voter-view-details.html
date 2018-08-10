@@ -1,8 +1,5 @@
-<div id="voter-view">
- <div class="card">
-  <div class="card-body">
+<div class='mt-4' id="voter-view">
  {% if sos_reg|length == 1 %}
-
    {% set r = sos_reg[0] %}
    <table>
     <tbody>
@@ -17,12 +14,7 @@
      {% endfor %}
     </tbody>
    </table>
-
  {% elif sos_reg|length > 1 %}
-
   <p>Sorry, there were too many results matching your name and DOB</p>
-
  {% endif %}
-  </div>
- </div>
 </div>
