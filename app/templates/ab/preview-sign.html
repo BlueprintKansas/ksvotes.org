@@ -10,7 +10,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 mb-2">
-       <div class="card">
+       <div class="my-3 card">
         <div class="card-body">
          <p>{{_('6_header')}}</p>
          <p>{{_('6_header2')}}</p>
@@ -26,35 +26,42 @@
        </div>
        {% endfor %}
       </div>
-      <div class="mt-2 col-md-12">
-          <form name="step_6" id="step_6" method="POST"  action="{{url_for('main.ab6_preview_sign')}}">
-           <fieldset>
-            <legend>{{_('6_legend')}}</legend>
-
-            {{form.hidden_tag()}}
-            <label> {{_('6_sign')}}            <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i></label>
-
-            <div id="signature"></div>
-              <ul class="parsley-errors-list filled">
-                {% for error in form.signature_string.errors %}
-                  <li> {{ error }} </li>
-                {% endfor %}
-              </ul>
-            <div class="text-center clear-button mt-4">
-             <button class="btn btn-outline-info" onclick="return resetHiddenSignatureImg()">{{_('btn_clear')}}</button>
-            </div>
-            <div class="float-left mt-4">
-              <a id="btn-back" class="btn btn-outline-primary">
-               <i class="fa fa-angle-left mr-2"></i> {{_('btn_back')}}
-              </a>
-            </div>
-            <div class="float-right mt-4">
-              <button id="sign-button" class="btn btn-outline-default" type="submit">
-               <i class="fa checkmark fa-check mr-2"></i>{{_('btn_sign')}}
-              </button>
-            </div>
-           </fieldset>
-          </form>
+      <div class="mt-4 col-md-12">
+        <div class='card'>
+          <div class='card-body'>
+            <form name="step_6" id="step_6" method="POST"  action="{{url_for('main.ab6_preview_sign')}}">
+             <fieldset>
+              <legend>{{_('6_legend')}}</legend>
+              {{form.hidden_tag()}}
+              <div class="form-group">
+                <label>{{_('6_sign')}}</label>
+                <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i>
+                <div id="signature"></div>
+                <ul class="parsley-errors-list filled">
+                  {% for error in form.signature_string.errors %}
+                    <li>{{error}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="clear-button mt-4">
+               <button class="btn btn-primary" onclick="return resetHiddenSignatureImg()">{{_('btn_clear')}}</button>
+              </div>
+              <div class="mt-5">
+                <div class="float-left">
+                  <a id="btn-back" class="btn btn-outline-primary">
+                   <i class="fa fa-angle-left mr-2"></i> {{_('btn_back')}}
+                  </a>
+                </div>
+                <div class="float-right">
+                  <button id="sign-button" class="btn btn-outline-default" type="submit">
+                   <i class="fa checkmark fa-check mr-2"></i>{{_('btn_sign')}}
+                  </button>
+                </div>
+              </div>
+             </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -2,6 +2,10 @@
   font-weight: 700;
 }
 
+.fs-16 {
+  font-size: 16px;
+}
+
 .fs-14 {
   font-size: 14px;
 }
@@ -10,12 +14,20 @@
   font-size: 12px;
 }
 
+.mtn-075 {
+  margin-top: -0.75rem;
+}
+
 .measure {
   max-width: 30em;
 }
 
 .border-thick {
-  border-width: 5px;
+  border-width: 4px;
+}
+
+.border-light-gray {
+  border-color: #f1f1f1;
 }
 
 .line-height-1 {

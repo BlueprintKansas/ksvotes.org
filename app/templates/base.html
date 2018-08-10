@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
 
-    <title>{% block title %} {% endblock %} | KSVotes.org </title>
+    <title>{% block title %} {% endblock %} | KSVotes.org</title>
 
     {% if config['ENV'] == 'production' %}
     <!-- Google Tag Manager -->
@@ -42,7 +41,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
     <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
   </head>
@@ -63,15 +62,15 @@
      {% block header %}
      {% if not use_hero %}
      <header>
-      <nav class="navbar navbar-expand-lg navbar-dark font-small ksv-flow-{{flow_flavor or 'vr'}}">
-        <a class="navbar-brand" href="{{url_for('main.index')}}">
-         <img class="logo" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
+      <nav class="navbar navbar-expand-lg py-1 px-2 navbar-dark font-small ksv-flow-{{flow_flavor or 'vr'}}">
+        <a class="navbar-brand p-0" href="{{url_for('main.index')}}">
+         <img class="logo" width="162" height="60" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav ml-auto fs-14">
             {% if current_step %}
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.index')}}">Register to Vote</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('main.ab1_election_picker')}}">Advance Ballot</a></li>
@@ -121,14 +120,14 @@
       </section>
     {% endif %}
 
-    {% import 'macros/_render_field.html' as wtf %}
+    {% import 'macros/_render_field2.html' as wtf %}
     {% block content %}{% endblock %}
 
     </main>
 
     {% block footer %}
     <footer class="page-footer accent-4 mt-4 fs-14 text-center ksv-flow-{{flow_flavor or 'vr'}}">
-      <img class="mx-auto" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
+      <img class="mx-auto pt-1" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
       <hr class="clearfix w-100 d-md-none mt-0"> 
       <ul class="list-unstyled list-inline px-2 mb-3">
        <li class="list-inline-item"><a href="/terms">{{_('0_footer_tos')}}</a> &nbsp;&nbsp;|</li>

@@ -35,7 +35,7 @@
   {% endfor %}
 {% else %}
   <div class="address-current_address">
-   <div class='mb-3 h6'>{{_('3_addr')}}</div>
+   <h4 class='mb-3'>{{_('3_addr')}}</h4>
    <div class="alert alert-warning address-error">
      <i class="fa fa-exclamation-triangle amber-text"></i>
      <a href="{{url_for('main.vr3_address')}}">{{_('3_invalid')}}</a>

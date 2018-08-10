@@ -9,10 +9,9 @@
         {% if sos_reg: %}
           <h3>{{_('1AB_reg_found_title')}}</h3>
           {% include 'voter-view-details.html' %}
-          <div class="mt-4">
-            <h4>{{_('1AB_whats_next')}}</h4>
-            {% include 'reg-choices.html' %}
-          </div>
+          <hr class='my-4 border-thick border-light-gray' />
+          <h4 class="mb-3">{{_('1AB_whats_next')}}</h4>
+          {% include 'reg-choices.html' %}
         {% elif skip_sos: %}
           <h4 class='mb-4'>{{_('1AB_whats_next')}}</h4>
           {% include 'reg-choices.html' %}

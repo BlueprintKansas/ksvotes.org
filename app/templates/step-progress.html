@@ -27,8 +27,8 @@
 {% if total_steps is not defined %}
  {% set total_steps = flow_map.keys()|length %}
 {% endif %}
-<div id="step-nav" class="mb-2">
- <ul class="list-inline-mb-0">
+<div id="step-nav">
+ <ul class="mb-0 p-0">
   {% for stepN in range(1, total_steps+1) %}
    <li class="list-inline-item {{stepN}}">
     {% set item_url = '#' %}
