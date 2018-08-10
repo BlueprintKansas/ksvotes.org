@@ -29,10 +29,10 @@
 {% endif %}
 <div id="step-nav">
  <ul class="mb-0 p-0">
-  {% for stepN in range(1, total_steps+1) %}
+  {% for stepN in range(1, total_steps) %}
    <li class="list-inline-item {{stepN}}">
     {% set item_url = '#' %}
-    {% if stepN <= current_step|int %}
+    {% if stepN <= current_step|int and current_step|int != total_steps %}
      {% set item_url = flow_map[stepN] %}
     {% endif %}
     <a href="{{item_url}}">
@@ -56,7 +56,7 @@
     </a>
 
    {% if not loop.last %}
-    <i class="fa fa-long-arrow-right"></i>
+    <!-- i class="fa fa-long-arrow-right"></i -->
    {% endif %}
 
    </li>

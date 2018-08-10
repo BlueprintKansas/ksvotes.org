@@ -547,7 +547,7 @@
   },
   "AB8_confirm":{
     "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder.", 
-    "es":"Gracias. Su (s) solicitud (es) de boleta anticipada (s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
+    "es":"Gracias. Su(s) solicitud(es) de boleta anticipada(s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
   },
   "9_confirm_email":{
     "wiki_step":"9",
@@ -625,6 +625,14 @@
   "skip_sos_check": {
     "en": "Skip the check, I know I need to register",
     "es": "Omita el cheque, sé que necesito registrarme"
+  },
+  "nav_register_vote": {
+    "en": "Register to Vote",
+    "es": "Registrarse para Votar"
+  },
+  "nav_advance_ballot": {
+    "en": "Advance Ballot",
+    "es": "Boleta por Adelantado"
   }
 
 }
