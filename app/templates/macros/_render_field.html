@@ -46,7 +46,7 @@
   </div>
   {% endif %}
 
-  {% if field.type == 'RadioField' %}
+  {% if field.type == 'RadioBooleanField' %}
   <div class="form-check form-check-inline">
     {% if additional_attributes %}
       {{field(class="form-check-input", **additional_attributes)}}
