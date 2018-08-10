@@ -32,7 +32,7 @@
   {% for stepN in range(1, total_steps) %}
    <li class="list-inline-item {{stepN}}">
     {% set item_url = '#' %}
-    {% if stepN <= current_step|int %}
+    {% if stepN <= current_step|int and current_step|int != total_steps %}
      {% set item_url = flow_map[stepN] %}
     {% endif %}
     <a href="{{item_url}}">
