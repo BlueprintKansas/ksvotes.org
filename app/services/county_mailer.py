@@ -11,23 +11,26 @@ import botocore
 
 class CountyMailer():
 
-    def __init__(self, registrant, form_imgs, body):
+    def __init__(self, registrant, form_img_type, body):
         self.registrant = registrant
-        self.form_imgs = registrant.try_value(form_imgs)
+        self.form_imgs = registrant.try_value(form_img_type)
         if isinstance(self.form_imgs, str):
             self.form_imgs = [self.form_imgs]
         self.clerk = Clerk.find_by_county(registrant.county)
         if self.clerk == None:
             raise Exception("No Clerk for County %s" %(registrant.county))
-        self.set_subject(form_imgs)
+        self.set_subject(form_img_type)
         self.body = body
 
-    def set_subject(self, form_imgs):
+    def set_subject(self, form_img_type):
         subject = 'No Subject'
-        if form_imgs == 'ab_forms':
+        if form_img_type == 'ab_forms':
             subject = "New Advance Ballot application(s) for {}".format(self.registrant.name())
-        elif form_imgs == 'vb_form':
+        elif form_img_type == 'vr_form':
             subject = "New Voter Registration for {}".format(self.registrant.name())
+        else:
+            raise Exception("Unknown form_img_type %s" %(form_img_type))
+
         self.subject = subject
 
     def clerk_email(self):

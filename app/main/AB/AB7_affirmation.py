@@ -33,7 +33,13 @@ def ab7_affirmation():
             reg.last_completed_step = 7
             reg.save(db.session)
 
-            body = lazy_gettext(u'9_confirm_email')
+            body = lazy_gettext(u'9_confirm_email').format(
+                firstname=reg.try_value('name_first'),
+                county=clerk.county,
+                officer=clerk.officer,
+                email=clerk.email,
+                phone=clerk.phone,
+            )
             mailer = CountyMailer(reg, 'ab_forms', body)
             r = mailer.send()
 
