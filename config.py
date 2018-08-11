@@ -13,8 +13,6 @@ class Config:
     BABEL_DEFAULT_LOCALE = 'en'
     EMAIL_FROM = os.getenv('EMAIL_FROM', 'noreply@ksvotes.org')
     AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     SES_ACCESS_KEY_ID = os.getenv('SES_ACCESS_KEY_ID')
     SES_SECRET_ACCESS_KEY = os.getenv('SES_SECRET_ACCESS_KEY')
     SEND_EMAIL = os.getenv('SEND_EMAIL')
