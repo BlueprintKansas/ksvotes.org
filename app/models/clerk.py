@@ -48,6 +48,8 @@ class Clerk(db.Model):
             csvreader = csv.reader(csvfile)
             for row in csvreader:
                 ucfirst_county = row[1][0] + row[1][1:].lower()
+                if ucfirst_county == 'Mcpherson':
+                    ucfirst_county = 'McPherson'
                 clerk = Clerk.find_or_create_by(county=ucfirst_county)
                 clerk.officer = row[2]
                 clerk.email = row[3]

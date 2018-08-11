@@ -48,6 +48,10 @@ def load_clerks():
 def load_demo():
     Registrant.load_fixtures()
 
+@manager.command
+def load_zipcodes():
+    ZIPCode.load_fixtures()
+
 if __name__ == "__main__":
     write_pid_file()
     manager.run()

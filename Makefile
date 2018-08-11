@@ -58,7 +58,10 @@ load-clerks:
 load-demo:
 	python manage.py load_demo
 
-fixtures: load-clerks load-demo
+load-zipcodes:
+	python manage.py load_zipcodes
+
+fixtures: load-clerks load-demo load-zipcodes
 
 deploy-prod:
 	git push production master
