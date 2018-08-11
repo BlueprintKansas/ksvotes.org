@@ -13,16 +13,18 @@
 
   {{wtf.render_field(
     form.is_citizen,
-    _('1_citizen_help'),
+    _('1VR_citizen_help'),
     {
       'required':'required',
-      'data-parsley-error-message': _('Required'),
     }
     )}}
+    <div id="is-citizen-error" class="parsley-error parsley-errors-list mtn-075" style="display:none">
+      {{_('1VR_citizen_help')}}
+    </div>
 
     {{wtf.render_field(
       form.is_eighteen,
-      _('1_18_help'),
+      _('1VR_18_help'),
 
       )}}
 
@@ -36,8 +38,35 @@
 <script>
 $(function () {
   //initialize form with parsley validation
-  var form = $('#step_1');
-  form.parsley();
+  var $form = $('#step_1');
+  $form.parsley();
+
+  // handle the Required logic ourselves (too complex for Parsley)
+  $('#btn-next').click(function(ev) {
+    let is_citizen = $('#is_citizen');
+    let error_msg = $('#is-citizen-error');
+    error_msg.hide(); // always clear to start with.
+    let curVal = '';
+    $('#is_citizen input').each(function(idx, el) {
+      let radio = $(el);
+      if (radio.is(':checked')) {
+        curVal = radio.val();
+      }
+    });
+    if (!curVal) {
+      // handle field invalidation manually because parsley does not catch it.
+      console.log('no radio checked');
+      error_msg.show();
+      ev.preventDefault();
+      return false;
+    }
+    if (curVal == 'False') {
+      error_msg.show();
+      ev.preventDefault();
+      return false;
+    }
+    return true;
+  });
 });
 </script>
 {% endblock %}

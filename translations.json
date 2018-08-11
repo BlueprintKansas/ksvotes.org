@@ -633,6 +633,8 @@
   "nav_advance_ballot": {
     "en": "Advance Ballot",
     "es": "Boleta por Adelantado"
-  }
+  },
+  "choice_yes": { "en": "Yes", "es":"Sí" },
+  "choice_no": {"en":"No", "es":"No"}
 
 }
