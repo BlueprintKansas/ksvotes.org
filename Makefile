@@ -60,4 +60,7 @@ load-demo:
 
 fixtures: load-clerks load-demo
 
+deploy-prod:
+	git push production master
+
 .PHONY: deps venv test dbmigrate run testcov fixtures
