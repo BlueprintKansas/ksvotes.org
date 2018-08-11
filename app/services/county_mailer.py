@@ -103,8 +103,8 @@ class CountyMailer():
 
             ses = boto3.client('ses',
                 region_name=current_app.config['AWS_DEFAULT_REGION'],
-                aws_access_key_id=current_app.config['AWS_ACCESS_KEY_ID'],
-                aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY']
+                aws_access_key_id=current_app.config['SES_ACCESS_KEY_ID'],
+                aws_secret_access_key=current_app.config['SES_SECRET_ACCESS_KEY']
             )
             resp = ses.send_raw_email(
                 RawMessage={'Data': msg.as_string()},
