@@ -46,13 +46,12 @@
 
   {% if field.type == 'RadioBooleanField' %}
   <div class="form-group">
-    <div class="form-check form-check-inline">
+    {{field.label(class="pr-3")}}
     {% if additional_attributes %}
-      {{field(class="form-check-input", **additional_attributes)}}
+      {{field(**additional_attributes)}}
     {% else%}
-      {{field(class="form-check-input")}}
+      {{field()}}
     {% endif %}
-    {{field.label(class="form-check-label pr-3")}}
     {% if help_text %}
       <i class="fa fa-info-circle postfix top-5" data-toggle="tooltip" data-placement="left" title="{{help_text}}"></i>
     {% endif %}
@@ -64,7 +63,6 @@
         {% endfor %}
       </ul>
     {% endif %}
-    </div>
   </div>
   {% endif %}
 
