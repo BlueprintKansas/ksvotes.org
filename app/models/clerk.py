@@ -5,8 +5,8 @@ class Clerk(db.Model):
     __tablename__ = "clerks"
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     county = db.Column(db.String()) #enum of ks counties
     officer = db.Column(db.String())
     email = db.Column(db.String())
@@ -17,6 +17,7 @@ class Clerk(db.Model):
     city = db.Column(db.String())
     state = db.Column(db.String(), default='KS')
     zip = db.Column(db.String())
+    zipcodes = db.relationship('ZIPCode', lazy=True, backref='clerk')
 
     def save(self, db_session):
         db_session.add(self)
