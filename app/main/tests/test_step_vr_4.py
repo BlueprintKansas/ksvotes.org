@@ -40,7 +40,7 @@ def test_valid_vr_4_returns_redirect(app,db_session,client):
     with client.session_transaction() as http_session:
         http_session["session_id"] = str(registrant.session_id)
 
-    form_payload = {"party": "unaffiliated"}
+    form_payload = {"party": "Unaffiliated"}
 
     response = client.post("/vr/party", data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()

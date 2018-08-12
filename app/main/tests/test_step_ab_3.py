@@ -67,10 +67,6 @@ def test_ab_3_single_address_no_county(app, db_session, client):
     }
 
     response = client.post('/ab/address', data=form_payload, follow_redirects=False)
-    redirect_data = response.data.decode()
-    assert response.status_code == 302
-    assert ('/ab/party' in redirect_data) == True
-
     updated_registrant = Registrant.lookup_by_session_id(registrant.session_id)
     assert updated_registrant.county == 'Douglas'
 
