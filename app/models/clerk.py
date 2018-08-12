@@ -24,6 +24,8 @@ class Clerk(db.Model):
 
     @classmethod
     def find_by_county(cls, county_name):
+        if not county_name or len(county_name) == 0:
+            return None
         return cls.query.filter(cls.county == county_name).first()
 
     @classmethod
