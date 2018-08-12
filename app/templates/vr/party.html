@@ -2,7 +2,7 @@
 {% set current_step = '4' %}
 {% set previous_step_url = url_for('main.vr3_address') %}
 
-{% block title %}Party{% endblock %}
+{% block title %}{{_('4_legend')}}{% endblock %}
 
 {% block form_content %}
 <div id="address-validation" class="">
@@ -45,7 +45,7 @@
 </div>
 <form name="step_4" id="step_4" method="POST" action="{{url_for('main.vr4_party')}}">
  <fieldset>
-  <!-- <legend>{{_('4_legend')}}</legend> single field makes it redundant -->
+  <legend>{{_('4_legend')}}</legend>
 
   {{form.hidden_tag()}}
 
