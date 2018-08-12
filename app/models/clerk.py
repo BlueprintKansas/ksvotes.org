@@ -17,7 +17,6 @@ class Clerk(db.Model):
     city = db.Column(db.String())
     state = db.Column(db.String(), default='KS')
     zip = db.Column(db.String())
-    zipcodes = db.relationship('ZIPCode', lazy=True, backref='clerk')
 
     def save(self, db_session):
         db_session.add(self)

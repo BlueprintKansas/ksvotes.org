@@ -16,6 +16,12 @@ dbupgrade:
 
 update: dbmigrate dbupgrade
 
+db:
+	psql -h localhost ksvotes_dev
+
+shell:
+	python manage.py shell
+
 run:
 	python manage.py runserver
 

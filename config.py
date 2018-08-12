@@ -12,6 +12,7 @@ class Config:
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET')
     BABEL_DEFAULT_LOCALE = 'en'
     EMAIL_FROM = os.getenv('EMAIL_FROM', 'noreply@ksvotes.org')
+    EMAIL_BCC = os.getenv('EMAIL_BCC', 'registration@ksvotes.org')
     AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
     SES_ACCESS_KEY_ID = os.getenv('SES_ACCESS_KEY_ID')
     SES_SECRET_ACCESS_KEY = os.getenv('SES_SECRET_ACCESS_KEY')
