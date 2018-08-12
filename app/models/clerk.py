@@ -5,8 +5,8 @@ class Clerk(db.Model):
     __tablename__ = "clerks"
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     county = db.Column(db.String()) #enum of ks counties
     officer = db.Column(db.String())
     email = db.Column(db.String())
@@ -24,6 +24,8 @@ class Clerk(db.Model):
 
     @classmethod
     def find_by_county(cls, county_name):
+        if not county_name or len(county_name) == 0:
+            return None
         return cls.query.filter(cls.county == county_name).first()
 
     @classmethod
@@ -47,6 +49,8 @@ class Clerk(db.Model):
             csvreader = csv.reader(csvfile)
             for row in csvreader:
                 ucfirst_county = row[1][0] + row[1][1:].lower()
+                if ucfirst_county == 'Mcpherson':
+                    ucfirst_county = 'McPherson'
                 clerk = Clerk.find_or_create_by(county=ucfirst_county)
                 clerk.officer = row[2]
                 clerk.email = row[3]

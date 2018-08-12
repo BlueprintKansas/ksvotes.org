@@ -2,30 +2,40 @@
 {% set current_step = '7' %}
 {% set previous_step_url = url_for('main.vr6_preview_sign') %}
 
-{% block title %}Preview{% endblock %}
+{% block title %}Affirmation{% endblock %}
 
 {% block content %}
 <section id="formsection">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6 mb-2">
+      <div class="col-md-8 mb-2">
         {{_('7_explain')}}
       </div>
 
       {% include 'preview-img.html' %}
 
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="mt-4 card">
           <div class="card-body">
             <p>{{_('7_clerk_send_to')}}</p>
+
+            {% if clerk %}
             {% include 'clerk-details.html' %}
+            {% else %}
+            <div id="county-error" class="alert alert-warning alert-error">
+              <i class="fa fa-exclamation-triangle amber-text"></i>
+              {{_('county_is_required')}}
+            </div>
+            {% endif %}
+
             {% with this_url='main.vr7_affirmation' %}
             {% include 'change-county.html' %}
             {% endwith %}
           </div>
         </div>
       </div>
-      <div class="mt-4 col-md-6">
+    {% if clerk %}
+      <div class="mt-4 col-md-8">
         <div class='card'>
           <div class='card-body'>
             <form name="step_7" id="step_7" method="POST" action="{{url_for('main.vr7_affirmation')}}">
@@ -52,6 +62,7 @@
           </div>
         </div>
       </div>
+    {% endif %}
     </div>
   </div>
 </section>

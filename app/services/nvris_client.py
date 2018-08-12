@@ -51,6 +51,10 @@ class NVRISClient():
         except json.JSONDecodeError as e:
             current_app.logger.error("NVRIS responded with bad JSON: %s" %(e))
             return None
+
+        if 'img' not in resp_payload:
+            current_app.logger.error("NVRIS did not respond with img: %s" %(resp_payload))
+
         return resp_payload['img']
 
     def marshall_payload(self, flavor, **kwargs):

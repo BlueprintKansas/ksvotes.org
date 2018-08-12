@@ -53,14 +53,8 @@ $(function () {
         curVal = radio.val();
       }
     });
-    if (!curVal) {
+    if (!curVal || curVal == 'False') {
       // handle field invalidation manually because parsley does not catch it.
-      console.log('no radio checked');
-      error_msg.show();
-      ev.preventDefault();
-      return false;
-    }
-    if (curVal == 'False') {
       error_msg.show();
       ev.preventDefault();
       return false;

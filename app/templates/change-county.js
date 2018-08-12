@@ -31,3 +31,17 @@ $('#change-county-btn').click(function(ev) {
     disableSubmitBtn();
   }
 });
+
+// MUST have a county selected to proceed
+// In theory we should never get here, but belt-and-suspenders ftw.
+$('#btn-next').click(function(ev) {
+  let county = $('.clerk-details .county').text();
+  let error_msg = $('#county-error');
+  error_msg.hide(); // always clear to start with.
+  if (!county.length) {
+    error_msg.show();
+    ev.preventDefault();
+    return false;
+  }
+  return true;
+});

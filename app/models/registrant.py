@@ -22,8 +22,8 @@ def decryptem(data):
 class Registrant(db.Model):
     __tablename__ = "registrants"
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     last_completed_step = db.Column(db.Integer)
     completed_at = db.Column(db.DateTime, default=None)
     session_id = db.Column(UUID(as_uuid=True), unique=True, nullable=False, default=uuid.uuid4())

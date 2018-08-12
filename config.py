@@ -8,10 +8,12 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or "devsk"
     SQLALCHEMY_COMMIT_ON_TEARDOWN = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    GA_KEY = os.environ.get('GA_KEY')
     RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_KEY')
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET')
     BABEL_DEFAULT_LOCALE = 'en'
     EMAIL_FROM = os.getenv('EMAIL_FROM', 'noreply@ksvotes.org')
+    EMAIL_BCC = os.getenv('EMAIL_BCC', 'registration@ksvotes.org')
     AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
     SES_ACCESS_KEY_ID = os.getenv('SES_ACCESS_KEY_ID')
     SES_SECRET_ACCESS_KEY = os.getenv('SES_SECRET_ACCESS_KEY')
@@ -35,11 +37,11 @@ class TestingConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("TESTING_DATABASE_URL")
     WTF_CSRF_ENABLED = False
     SQLALCHEMY_ECHO = True if os.getenv('SQL_DEBUG') else False
+    SEND_EMAIL = False
 
 class ProductionConfig(Config):
     JSONIFY_PRETTYPRINT_REGULAR = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    GA_KEY = os.environ.get('GA_KEY')
 
 config = {
     "development": DevelopmentConfig,

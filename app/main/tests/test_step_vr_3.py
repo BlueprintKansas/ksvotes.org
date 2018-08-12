@@ -1,6 +1,5 @@
 from app.models import *
 
-
 def create_registrant(db_session):
     registrant = Registrant(
         registration_value={
@@ -58,6 +57,30 @@ def test_vr_3_single_valid_address(app, db_session, client):
     assert updated_registrant.registration_value.get('addr') == '707 Vermont St'
     assert 'validated_addresses' in updated_registrant.registration_value
     assert updated_registrant.registration_value['validated_addresses']['current_address']['state'] == 'KS'
+
+def test_vr_3_single_address_no_county(app, db_session, client):
+    registrant = create_registrant(db_session)
+    registrant.county = None
+    registrant.save(db_session)
+
+    with client.session_transaction() as http_session:
+        http_session['session_id'] = str(registrant.session_id)
+
+    form_payload = {
+        'addr': "707 Vermont St",
+        'unit': "Room A",
+        'city': "Lawrence",
+        'state': "KANSAS",
+        'zip': '66044'
+    }
+
+    response = client.post('/vr/address', data=form_payload, follow_redirects=False)
+    redirect_data = response.data.decode()
+    assert response.status_code == 302
+    assert ('/vr/party' in redirect_data) == True
+
+    updated_registrant = Registrant.lookup_by_session_id(registrant.session_id)
+    assert updated_registrant.county == 'Douglas'
 
 def test_vr_3_single_invalid_address(app, db_session, client):
     """

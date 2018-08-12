@@ -6,7 +6,7 @@
 
     <title>{% block title %} {% endblock %} | KSVotes.org</title>
 
-    {% if config['ENV'] == 'production' %}
+    {% if config['GA_KEY'] %}
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -46,7 +46,7 @@
     <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
   </head>
   <body>
-    {% if config['ENV'] == 'production' %}
+    {% if config['GA_KEY'] %}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ config['GA_KEY'] }}"
      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

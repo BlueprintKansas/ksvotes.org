@@ -1,8 +1,8 @@
 from app.main import main
-from flask import g, url_for, render_template, redirect, request
+from flask import g, url_for, render_template, redirect, request, current_app
 from app.main.forms import FormVR3
 from app import db
-from app.models import Registrant
+from app.models import *
 from app.decorators import InSession
 from app.services import SessionManager
 from app.services.steps import Step_VR_3
@@ -36,6 +36,14 @@ def vr3_address():
         update_data['validated_addresses'] = step.validated_addresses
         g.registrant.update(update_data)
         g.registrant.addr_lookup_complete = step.addr_lookup_complete
+
+        # guess county based on ZIP if necessary.
+        if not g.registrant.county or len(g.registrant.county) == 0:
+            zip5 = g.registrant.try_value('zip')
+            county = ZIPCode.guess_county(zip5)
+            current_app.logger.info("Lookup county %s based on ZIP5 %s" %(county, zip5))
+            g.registrant.county = county
+
         db.session.commit()
         session_manager = SessionManager(g.registrant, step)
         return redirect(session_manager.get_redirect_url())

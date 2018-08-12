@@ -49,6 +49,7 @@ class CountyMailer():
             attach=self.build_attachments(),
             to=to,
             cc=cc,
+            bcc=[current_app.config['EMAIL_BCC']],
             subject=self.subject,
         )
         r = self.send_msg(msg, current_app.config['EMAIL_FROM'])
