@@ -8,9 +8,9 @@ class FormVR4(FlaskForm):
         validators=[DataRequired(message=lazy_gettext(u'Required'))],
         choices=[
              ('', ''),
-             ('democratic', 'Democratic'),
-             ('republican', 'Republican'),
-             ('unaffiliated', 'Unaffiliated'),
-             ('libertarian', 'Libertarian'),
+             ('Democratic', 'Democratic'),
+             ('Republican', 'Republican'),
+             ('Unaffiliated', 'Unaffiliated'),
+             ('Libertarian', 'Libertarian'),
         ]
     )
