@@ -31,7 +31,7 @@ class Registrant(db.Model):
 
     #registration steps
     is_citizen = db.Column(db.Boolean, default=False)
-    is_eighteen = db.Column(db.Boolean, default=False)
+    is_eighteen = db.Column(db.Boolean, default=None)
     party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
     county = db.Column(db.String()) #may require some geo lookup.
     lang = db.Column(db.String()) #enum? (values?)
