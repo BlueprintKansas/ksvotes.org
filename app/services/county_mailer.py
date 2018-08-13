@@ -69,6 +69,10 @@ class CountyMailer():
             attachments.append(att)
         return attachments
 
+    def to_html(self, txt):
+        html = '<html><body><p>' + txt.replace("\n", '</p><p>') + '</p></body></html>'
+        return html
+
     def build_msg(self, **kwargs):
         recip_to = kwargs['to'] if 'to' in kwargs else None
         if not recip_to:
@@ -87,7 +91,12 @@ class CountyMailer():
         msg['Cc'] = ', '.join(recip_cc)
         msg['Bcc'] = ', '.join(recip_bcc)
 
-        msg.attach(MIMEText(body, 'text'))
+        # order of mime parts is important, as last is preferred in client view.
+        readable_msg = MIMEMultipart('alternative')
+        readable_msg.attach(MIMEText(body, 'plain' , 'utf-8'))
+        readable_msg.attach(MIMEText(self.to_html(body), 'html', 'utf-8'))
+        msg.attach(readable_msg)
+
         for attachment in attachments:
             file_name = attachment['name']
             mime_part = MIMEApplication(attachment['img'])
