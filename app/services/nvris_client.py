@@ -115,7 +115,7 @@ class NVRISClient():
             "00_citizen_yes": True if r.is_citizen else False,
             "00_citizen_no": False if r.is_citizen else True,
             "00_eighteenPlus_yes": True if r.is_eighteen else False,
-            "00_eighteenPlus_no": False if r.is_eighteen else True,
+            #"00_eighteenPlus_no": False if r.is_eighteen else True,
             "01_prefix_mr": True if r.try_value('prefix') == 'mr' else False,
             "01_prefix_mrs": True if r.try_value('prefix') == 'mrs' else False,
             "01_prefix_miss": True if r.try_value('prefix') == 'miss' else False,

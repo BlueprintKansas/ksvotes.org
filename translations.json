@@ -161,8 +161,8 @@
   "1VR_18_help":{
     "wiki_step":"1VR",
     "ref":"1VR_18_help",
-    "en":"If you will be under 18 on election day (in November), leave this box blank. You will not be allowed to vote in November, but your registration will be processed and held until your 18th birthday.",
-    "es":"Si será menor de 18 años el día de las elecciones (en noviembre), deje este recuadro en blanco. No se le permitirá votar en noviembre, pero su registro se procesará y retendrá hasta que cumpla 18 años."
+    "en":"If you will be under 18 on election day, select 'No'. You will not be allowed to vote, but your registration will be processed and held until your 18th birthday.",
+    "es":"Si será menor de 18 años el día de las elecciones, seleccione 'No'. No se le permitirá votar, pero su registro se procesará y retendrá hasta que cumpla 18 años."
   },
   "1AB_reg_found_title":{
     "wiki_step":"1AB",

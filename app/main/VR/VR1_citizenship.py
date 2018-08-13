@@ -10,18 +10,19 @@ from app.services.steps import Step_VR_1
 @main.route('/vr/citizenship', methods=["GET", "POST"])
 @InSession
 def vr1_citizenship():
+    reg = g.registrant
     form = FormVR1(
-        is_citizen = g.registrant.is_citizen,
-        is_eighteen = g.registrant.is_eighteen
+        is_citizen = reg.is_citizen,
+        is_eighteen = reg.is_eighteen,
     )
 
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_1(form.data)
         if step.run():
-            g.registrant.update(form.data)
-            g.registrant.last_completed_step = 1
-            g.registrant.save(db.session)
-            session_manager = SessionManager(g.registrant, step)
+            reg.update(form.data)
+            reg.last_completed_step = 1
+            reg.save(db.session)
+            session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
     return render_template('vr/citizenship.html', form=form)
