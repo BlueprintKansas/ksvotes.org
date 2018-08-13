@@ -335,7 +335,10 @@
   },
   "3_unit":{"wiki_step":"3","ref":"3_unit","en":"Apt/Lot","es":"Apt / lote"},
   "3_city":{"wiki_step":"3","ref":"3_city","en":"City/Town","es":"Ciudada/Pueblo"},
-  "3_state":{"wiki_step":"3","ref":"3_state","en":"State","es":"Estado"},
+  "3_state":{
+    "en":"KSVotes.org is limited to Kansas residents",
+    "es":"KSVotes.org está limitado a los residentes de Kansas"
+  },
   "3_state_help":{
     "wiki_step":"3",
     "ref":"3_state_help",
