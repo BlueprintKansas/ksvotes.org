@@ -45,7 +45,7 @@ def index():
     if request.method == "POST" and form.validate_on_submit():
         step = Step_0(form.data)
         if registrant:
-            g.registrant.update(form.data)
+            registrant.update(form.data)
         else:
             sid = UUID(http_session.get('session_id'), version=4)
             registrant = Registrant(
@@ -60,6 +60,7 @@ def index():
         skip_sos = request.values.get('skip-sos')
         step.run(skip_sos)
         registrant.reg_lookup_complete = step.reg_lookup_complete
+        registrant.dob_year = registrant.get_dob_year()
         sos_reg = None
         if step.reg_found:
           sos_reg = []

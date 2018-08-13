@@ -32,6 +32,7 @@ class Registrant(db.Model):
     #registration steps
     is_citizen = db.Column(db.Boolean, default=False)
     is_eighteen = db.Column(db.Boolean, default=None)
+    dob_year = db.Column(db.Integer)
     party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
     county = db.Column(db.String()) #may require some geo lookup.
     lang = db.Column(db.String()) #enum? (values?)
@@ -90,6 +91,10 @@ class Registrant(db.Model):
 
     def try_value(self, field_name, default_value=''):
         return self.registration_value.get(field_name, default_value)
+
+    def get_dob_year(self):
+        dob_dt = datetime.strptime(self.try_value('dob'), '%m/%d/%Y')
+        return int(dob_dt.year)
 
     def save(self, db_session):
         self.updated_at = datetime.utcnow()
