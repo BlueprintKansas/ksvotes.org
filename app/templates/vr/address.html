@@ -41,9 +41,10 @@
 
     {{wtf.render_field(
       form.state,
-      _('3_state'),
+      _('3_state_help'),
       {
         'required':'required',
+        'readonly':'readonly',
         'data-parsley-error-message': _('Required'),
         'autocomplete':'off',
         'data-parsley-trigger':'focusout'

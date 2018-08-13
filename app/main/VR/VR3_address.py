@@ -14,7 +14,7 @@ def vr3_address():
         addr = g.registrant.registration_value.get('addr', ''),
         unit = g.registrant.registration_value.get('unit', ''),
         city = g.registrant.registration_value.get('city', ''),
-        state = g.registrant.registration_value.get('state', ''),
+        state = g.registrant.registration_value.get('state', 'KANSAS'),
         zip = g.registrant.registration_value.get('zip', ''),
         has_prev_addr = g.registrant.registration_value.get('has_prev_addr'),
         prev_addr = g.registrant.registration_value.get('prev_addr', ''),
