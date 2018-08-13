@@ -50,6 +50,7 @@ def index():
             sid = UUID(http_session.get('session_id'), version=4)
             registrant = Registrant(
                 county = form.data.get('county'),
+                ref = form.data.get('ref'),
                 registration_value = form.data,
                 session_id = sid,
                 lang = g.lang_code,
