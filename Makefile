@@ -72,4 +72,10 @@ fixtures: load-clerks load-demo load-zipcodes
 deploy-prod:
 	git push production master
 
+deploy-stage-fixtures:
+	heroku run 'make fixtures' --app ksvotes-staging
+
+deploy-prod-fixtures:
+	heroku run 'make fixtures' --app ksvotes-production
+
 .PHONY: deps venv test dbmigrate run testcov fixtures
