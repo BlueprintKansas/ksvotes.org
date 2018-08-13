@@ -1,5 +1,6 @@
 from flask import current_app
 from app.models import Clerk
+from flask_babel import lazy_gettext
 import os
 import hashlib
 import base64
@@ -11,18 +12,26 @@ import botocore
 
 class CountyMailer():
 
-    def __init__(self, registrant, form_img_type, body):
+    def __init__(self, registrant, clerk, form_img_type):
         self.registrant = registrant
         self.form_imgs = registrant.try_value(form_img_type)
         if isinstance(self.form_imgs, str):
             self.form_imgs = [self.form_imgs]
-        self.clerk = Clerk.find_by_county(registrant.county)
+        self.clerk = clerk
         if self.clerk == None:
             raise Exception("No Clerk for County %s" %(registrant.county))
-        self.set_subject(form_img_type)
-        self.body = body
+        self.set_clerk_subject(form_img_type)
+        self.set_receipt_subject(form_img_type)
+        self.receipt_body = lazy_gettext(u'9_confirm_email').format(
+            firstname=registrant.try_value('name_first'),
+            county=self.clerk.county,
+            officer=self.clerk.officer,
+            email=self.clerk.email,
+            phone=self.clerk.phone,
+        )
+        self.clerk_body = lazy_gettext(u'county_clerk_email')
 
-    def set_subject(self, form_img_type):
+    def set_clerk_subject(self, form_img_type):
         subject = 'No Subject'
         if form_img_type == 'ab_forms':
             subject = "New Advance Ballot application(s) for {}".format(self.registrant.name())
@@ -31,7 +40,10 @@ class CountyMailer():
         else:
             raise Exception("Unknown form_img_type %s" %(form_img_type))
 
-        self.subject = subject
+        self.clerk_subject = subject
+
+    def set_receipt_subject(self, form_img_type):
+        self.receipt_subject = 'Thank you for being a voter!'
 
     def clerk_email(self):
         if self.clerk.county == 'TEST':
@@ -42,19 +54,38 @@ class CountyMailer():
             return self.clerk.email
 
     def send(self):
-        current_app.logger.info("%s SEND mail to %s" %(self.registrant.session_id, self.clerk_email()))
-        to = [self.clerk_email()]
-        cc = [self.registrant.try_value('email')]
+        # we send 2 emails, and return dict of responses
+        clerk_email = self.clerk_email()
+        reg_email = self.registrant.try_value('email')
+        attachments = self.build_attachments()
+
+        current_app.logger.info("%s SEND mail to %s" %(self.registrant.session_id, clerk_email))
+        responses = {}
+
+        # first is to clerk
         msg = self.build_msg(
-            attach=self.build_attachments(),
-            to=to,
-            cc=cc,
+            attach=attachments,
+            to=[clerk_email],
+            cc=[reg_email],
             bcc=[current_app.config['EMAIL_BCC']],
-            subject=self.subject,
+            subject=self.clerk_subject,
+            body=self.clerk_body,
         )
-        r = self.send_msg(msg, current_app.config['EMAIL_FROM'])
-        current_app.logger.info("%s SENT %s" %(self.registrant.session_id, r))
-        return r
+        responses['clerk'] = self.send_msg(msg, current_app.config['EMAIL_FROM'])
+        current_app.logger.info("%s SENT to clerk %s" %(self.registrant.session_id, responses['clerk']))
+
+        # second is receipt to voter
+        receipt = self.build_msg(
+            attach=attachments,
+            to=[reg_email],
+            bcc=[current_app.config['EMAIL_BCC']],
+            subject=self.receipt_subject,
+            body=self.receipt_body,
+        )
+        responses['receipt'] = self.send_msg(receipt, current_app.config['EMAIL_FROM'])
+        current_app.logger.info("%s SENT receipt %s" %(self.registrant.session_id, responses['receipt']))
+
+        return responses
 
     def build_attachments(self):
         attachments = []
@@ -69,14 +100,18 @@ class CountyMailer():
             attachments.append(att)
         return attachments
 
+    def to_html(self, txt):
+        html = '<html><body><p>' + txt.replace("\n", '</p><p>') + '</p></body></html>'
+        return html
+
     def build_msg(self, **kwargs):
         recip_to = kwargs['to'] if 'to' in kwargs else None
         if not recip_to:
             raise('to required')
         recip_cc = kwargs['cc'] if 'cc' in kwargs else []
         recip_bcc = kwargs['bcc'] if 'bcc' in kwargs else []
-        subject = kwargs['subject'] if 'subject' in kwargs else ''
-        body = kwargs['body'] if 'body' in kwargs else self.body
+        subject = kwargs['subject'] if 'subject' in kwargs else 'no subject'
+        body = kwargs['body'] if 'body' in kwargs else 'this space left blank'
         attachments = kwargs['attach'] if 'attach' in kwargs else None
         if not attachments:
             raise('attach required')
@@ -87,7 +122,12 @@ class CountyMailer():
         msg['Cc'] = ', '.join(recip_cc)
         msg['Bcc'] = ', '.join(recip_bcc)
 
-        msg.attach(MIMEText(body, 'text'))
+        # order of mime parts is important, as last is preferred in client view.
+        readable_msg = MIMEMultipart('alternative')
+        readable_msg.attach(MIMEText(body, 'plain' , 'utf-8'))
+        readable_msg.attach(MIMEText(self.to_html(body), 'html', 'utf-8'))
+        msg.attach(readable_msg)
+
         for attachment in attachments:
             file_name = attachment['name']
             mime_part = MIMEApplication(attachment['img'])

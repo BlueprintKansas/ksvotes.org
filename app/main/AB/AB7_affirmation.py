@@ -33,21 +33,14 @@ def ab7_affirmation():
             reg.last_completed_step = 7
             reg.save(db.session)
 
-            body = lazy_gettext(u'9_confirm_email').format(
-                firstname=reg.try_value('name_first'),
-                county=clerk.county,
-                officer=clerk.officer,
-                email=clerk.email,
-                phone=clerk.phone,
-            )
-            mailer = CountyMailer(reg, 'ab_forms', body)
+            mailer = CountyMailer(reg, clerk, 'ab_forms')
             r = mailer.send()
 
             # any error gets a special page
-            if not r['MessageId']:
+            if 'clerk' not in r or 'MessageId' not in r['clerk']:
                 return render_template('email_error.html', clerk=clerk)
 
-            reg.update({'ab_forms_message_id': r['MessageId']})
+            reg.update({'ab_forms_message_id': r['clerk']['MessageId']})
             reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
