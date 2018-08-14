@@ -604,8 +604,8 @@
     "es": "Empezar de nuevo"
   },
   "session_forgotten": {
-    "en": "We've cleaned up all your personal information to protect your privacy.",
-    "es": "Hemos limpiado toda su información personal para proteger su privacidad."
+    "en": "We've secured your personal information to protect your privacy.",
+    "es": "Hemos asegurado su información personal para proteger su privacidad."
   },
   "btn_forget_session": {
     "en": "I'm all done!",
