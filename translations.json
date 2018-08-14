@@ -578,6 +578,7 @@
   "btn_apply":{ "en": "Apply change", "es": "Aplicar cambio" },
   "btn_change_county":{ "en": "Change County", "es": "Cambiar el Condado" },
   "btn_check": { "en": "Check my registration", "es": "Verifica mi registro" },
+  "btn_close": { "en": "Cancel", "es": "Cancelar" },
   "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
