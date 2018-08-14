@@ -36,7 +36,9 @@
               <div class="form-group">
                 <label>{{_('6_sign')}}</label>
                 <i class="fa fa-info-circle postfix" data-toggle="tooltip" data-placement="left" title="{{_('6_sign_help')}}"></i>
-                <div id="signature"></div>
+                <div id="signature-wrapper">
+                  <div id="signature"></div>
+                </div>
                 <ul class="parsley-errors-list filled">
                   {% for error in form.signature_string.errors %}
                     <li>{{error}}</li>
@@ -69,39 +71,8 @@
 {% endblock %}
 
 {% block js_footer %}
-<script src="{{url_for('static', filename='js/jSignature.min.js')}}"></script>
+{% include '_signature.js' %}
 <script>
-    $(document).ready(function() {
-        $("#signature").jSignature({
-          'background-color': '#ffffff',
-          'decor-color': 'transparent',
-        });
-        // pre-fill if defined
-        $sig_string = $('#signature_string');
-        if ($sig_string.val().length > 0) {
-          $('#signature').jSignature('setData', $sig_string.val());
-        }
-        // "normal" required field validation doesn't work because signature_string is hidden
-        $('#sign-button').click(function(ev) {
-          $('.parsley-errors-list').empty();
-          if ($('#signature_string').val().length == 0) {
-            ev.preventDefault();
-            $('.parsley-errors-list').append($('<li>Signature required</li>'));
-          }
-        });
-    })
-    $("#signature").bind('change', function(e){
-      if( $('#signature').jSignature('getData', 'native').length == 0) {
-         return;
-      } else {
-        $('#signature_string').val($('#signature').jSignature('getData'));
-      }
-    });
-    var resetHiddenSignatureImg = function() {
-      $('#signature').jSignature('reset');
-      $('#signature_string').val('');
-      return false; // abort onclick handler
-    };
   $(function () {
     //initialize form with parsley validation
     var form = $('#step_6');

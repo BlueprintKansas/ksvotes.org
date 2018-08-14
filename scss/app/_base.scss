@@ -118,12 +118,13 @@ label {
   }
 }
 
-#signature {
+#signature-wrapper {
   border: 3px solid $primary-color;
   border-radius: 4px;
   display: block;
   margin: 0 auto;
   background-color: #f9f9f9;
+  min-height: 320px;
 }
 
 /* additional, misc stylez */
