@@ -168,13 +168,13 @@
     "wiki_step":"1AB",
     "ref":"1AB_reg_found_title",
     "en":"Success! We found your Kansas voter registration.",
-    "es":"SPANISH NEEDED"
+    "es":"¡Éxito! Encontramos su registro de votante en Kansas."
   },
   "1AB_whats_next":{
     "wiki_step":"1AB",
     "ref":"1AB_whats_next",
     "en":"What do you want to do next?",
-    "es":"SPANISH NEEDED"
+    "es":"¿Qué quieres hacer ahora?"
   },
   "1AB_change_reg_link":{
     "wiki_step":"1AB",
@@ -200,19 +200,19 @@
     "wiki_step":"1AB",
     "ref":"1AB_apply_perm_ab_link",
     "en":"Apply for a Permanent Advance Ballot.",
-    "es":"SPANISH NEEDED"
+    "es":"Solicite una Boleta de Avance Permanente."
   },
   "1AB_sorry_no_reg_title":{
     "wiki_step":"1AB",
     "ref":"1AB_sorry_no_reg_title",
     "en":"Sorry, we could not find your voter registration.",
-    "es":"SPANISH NEEDED"
+    "es":"Lo sentimos, no pudimos encontrar su registro de votante."
   },
   "1AB_sorry_no_reg_help":{
     "wiki_step":"1AB",
     "ref":"1AB_sorry_no_reg_help",
     "en":"If you registered recently, please know that it can take a few days to show up in the state system. Check with your county clerk if you have questions about your current registration.",
-    "es":"SPANISH NEEDED"
+    "es":"Si se registró recientemente, sepa que puede tomar algunos días en aparecer en el sistema estatal. Consulte con el secretario del condado si tiene preguntas sobre su registro actual."
   },
   "1AB_sorry_no_reg_link":{
     "wiki_step":"1AB",
@@ -476,7 +476,7 @@
   },
   "7_explain":{
     "en": "Just a few more steps:<ul><li>Review the form a final time. Please make sure that your information is correct and that your signature is as close as possible to what you regularly use.</li><li>Check the county clerk information provided. This is where we will email your completed form.</li><li>Affirm your citizenship and click \"Submit\"</li></ul>",
-    "es": "SPANISH NEEDED"
+    "es": "Solo unos pocos pasos más:<ul><li> Revise el formulario por última vez. Asegúrese de que su información sea correcta y que su firma sea lo más parecida posible a la que utiliza habitualmente.</Li><li> Consulte la información proporcionada por el empleado del condado. Aquí es donde le enviaremos por correo electrónico su formulario completo.</Li><li> Confirme su ciudadanía y haga clic en \"Enviar\"</li></ul>",
   },
   "7_county":{
     "wiki_step":"7",
