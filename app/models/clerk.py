@@ -57,8 +57,9 @@ class Clerk(db.Model):
                 clerk.officer = row[2]
                 clerk.email = row[3]
                 pm = phone_re.search(row[5])
-                clerk.phone = '({area}) {f3}-{f4}'.format(area=pm.group(1), f3=pm.group(2), f4=pm.group(3))
-                clerk.fax = row[6]
+                clerk.phone = '{area}-{f3}-{f4}'.format(area=pm.group(1), f3=pm.group(2), f4=pm.group(3))
+                fm = phone_re.search(row[6])
+                clerk.fax = '{area}-{f3}-{f4}'.format(area=fm.group(1), f3=fm.group(2), f4=fm.group(3))
                 clerk.address1 = row[7]
                 clerk.address2 = row[8]
                 clerk.city = row[9]
