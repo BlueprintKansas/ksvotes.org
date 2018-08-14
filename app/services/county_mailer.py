@@ -43,7 +43,7 @@ class CountyMailer():
         self.clerk_subject = subject
 
     def set_receipt_subject(self, form_img_type):
-        self.receipt_subject = 'Thank you for being a voter!'
+        self.receipt_subject = lazy_gettext(u'voter_receipt_email_subject')
 
     def clerk_email(self):
         if self.clerk.county == 'TEST':
