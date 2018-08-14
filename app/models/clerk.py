@@ -41,8 +41,10 @@ class Clerk(db.Model):
     def load_fixtures(cls):
         import os
         import csv
+        import re
         from flask import current_app
         csv_file = 'county-clerks.csv'
+        phone_re = re.compile('^(\d\d\d)(\d\d\d)(\d\d\d\d)$')
         with open(csv_file, newline="\n") as csvfile:
             next(csvfile)  # skip headers
             # GEOCODE_FORMAT,COUNTY,OFFICER,EMAIL,HOURS,PHONE,FAX,ADDRESS1,ADDRESS2,CITY,STATE,ZIP
@@ -54,7 +56,8 @@ class Clerk(db.Model):
                 clerk = Clerk.find_or_create_by(county=ucfirst_county)
                 clerk.officer = row[2]
                 clerk.email = row[3]
-                clerk.phone = row[5]
+                pm = phone_re.search(row[5])
+                clerk.phone = '({area}) {f3}-{f4}'.format(area=pm.group(1), f3=pm.group(2), f4=pm.group(3))
                 clerk.fax = row[6]
                 clerk.address1 = row[7]
                 clerk.address2 = row[8]
