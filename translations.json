@@ -470,6 +470,10 @@
     "en":"Note: This signature will be used to verify your identity on advance ballot envelopes and for other potential voting activities. Try to make it as much like your written signature as you can.",
     "es":"Nota: Esta firma se usará para verificar su identidad en sobres de boletas por adelantado y para otras posibles actividades de votación. Intenta que sea lo más parecido posible a tu firma escrita."
   },
+  "6AB_sign_modal": {
+    "en": "This signature must match the one on file in your county voter registration records for you to receive your ballot.",
+    "es": "Esta firma debe coincidir con la registrada en los registros de inscripción electoral de su condado para que pueda recibir su boleta."
+  },
   "7_header":{
     "en":"Your final form preview is below. If it looks good, we will email it to your county elections official:",
     "es":"La vista previa de tu forma final está debajo. Si se ve bien, lo enviaremos por correo electrónico al funcionario electoral de su condado:"
@@ -578,6 +582,7 @@
   "btn_apply":{ "en": "Apply change", "es": "Aplicar cambio" },
   "btn_change_county":{ "en": "Change County", "es": "Cambiar el Condado" },
   "btn_check": { "en": "Check my registration", "es": "Verifica mi registro" },
+  "btn_close": { "en": "Cancel", "es": "Cancelar" },
   "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
