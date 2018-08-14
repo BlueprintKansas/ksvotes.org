@@ -76,9 +76,8 @@ class CountyMailer():
 
         # second is receipt to voter
         receipt = self.build_msg(
-            attach=attachments,
             to=[reg_email],
-            bcc=[current_app.config['EMAIL_BCC']],
+            bcc=[],
             subject=self.receipt_subject,
             body=self.receipt_body,
         )
@@ -112,9 +111,7 @@ class CountyMailer():
         recip_bcc = kwargs['bcc'] if 'bcc' in kwargs else []
         subject = kwargs['subject'] if 'subject' in kwargs else 'no subject'
         body = kwargs['body'] if 'body' in kwargs else 'this space left blank'
-        attachments = kwargs['attach'] if 'attach' in kwargs else None
-        if not attachments:
-            raise('attach required')
+        attachments = kwargs['attach'] if 'attach' in kwargs else []
 
         msg = MIMEMultipart()
         msg['Subject'] = subject
