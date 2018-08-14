@@ -70,6 +70,10 @@
 </section>
 {% endblock %}
 
+{% with modal_body = _('6AB_sign_modal') %}
+{% include '_confirm_modal.html' %}
+{% endwith %}
+
 {% block js_footer %}
 {% include '_signature.js' %}
 <script>
@@ -77,6 +81,15 @@
     //initialize form with parsley validation
     var form = $('#step_6');
     form.parsley()
+
+    $('#sign-button').on('click', function(ev) {
+      ev.preventDefault();
+      $('#ksv-confirm-modal').modal('show');
+      $('#ksv-confirm-modal .submit').on('click', function(ev2) {
+        $('#ksv-confirm-modal').modal('hide');
+        form.submit();
+      });
+    });
   });
 </script>
 {% endblock %}
