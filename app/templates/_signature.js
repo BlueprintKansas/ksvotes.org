@@ -10,6 +10,8 @@
         let sig_canvas = $('#signature canvas')[0];
         sig_canvas.width = $('#signature-wrapper').width();
         sig_canvas.height = $('#signature-wrapper').height();
+        sig_canvas.style.width = '100%';
+        sig_canvas.style.height = '100%';
 
         // pre-fill if defined
         $sig_string = $('#signature_string');
