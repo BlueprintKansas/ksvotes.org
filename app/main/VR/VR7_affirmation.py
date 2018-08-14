@@ -37,8 +37,10 @@ def vr7_affirmation():
             r = mailer.send()
 
             # any error gets a special page
-            if 'clerk' not in r or 'MessageId' not in r['clerk']:
-                return render_template('email_error.html', clerk=clerk)
+            for k in ['clerk', 'receipt']:
+                if k not in r or 'MessageId' not in r[k] or not r[k]['MessageId']:
+                    # TODO log New Relic event
+                    return render_template('email_error.html', clerk=clerk)
 
             reg.update({'vr_form_message_id': r['clerk']['MessageId']})
             reg.save(db.session)
