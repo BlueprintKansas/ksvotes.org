@@ -2,6 +2,7 @@
 {% set current_step = '6' %}
 {% set previous_step_url = url_for('main.ab7_affirmation') %}
 {% set flow_flavor = 'ab' %}
+{% block title %}{{_('voter_receipt_email_subject')}}{% endblock %}
 
 {% block content %}
 <div class="container">
