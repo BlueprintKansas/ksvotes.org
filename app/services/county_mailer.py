@@ -114,7 +114,7 @@ class CountyMailer():
         attachments = kwargs['attach'] if 'attach' in kwargs else []
 
         msg = MIMEMultipart()
-        msg['Subject'] = subject
+        msg['Subject'] = str(subject)
         msg['To'] = ', '.join(recip_to)
         msg['Cc'] = ', '.join(recip_cc)
         msg['Bcc'] = ', '.join(recip_bcc)
@@ -154,6 +154,10 @@ class CountyMailer():
             return resp
 
         except botocore.exceptions.ClientError as err:
+            current_app.logger.error(str(err))
+            return {'msg': msg, 'MessageId': False, 'error': err}
+
+        except (RuntimeError, TypeError, NameError) as err:
             current_app.logger.error(str(err))
             return {'msg': msg, 'MessageId': False, 'error': err}
 
