@@ -3,6 +3,11 @@
 {% block title %}Home{% endblock %}
 
 {% block form_content %}
+
+{% if browser_ua == 'msie' %}
+{% include '_ie_warning.html' %}
+{% endif %}
+
 <form name="step_0" id="step_0" method="POST" action="{{url_for('main.index')}}">
  <fieldset>
   <legend>{{_('0_form_explain')}}</legend>

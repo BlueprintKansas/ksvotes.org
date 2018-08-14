@@ -67,7 +67,7 @@ def create_app(script_info):
 
     @app.context_processor
     def inject_dict_for_all_templates():
-        return dict(registrant=g.get('registrant'))
+        return dict(registrant=g.get('registrant'), browser_ua=request.user_agent.browser)
 
     @app.template_test('a_text_field')
     def a_text_field(obj):
