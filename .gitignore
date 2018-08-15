@@ -12,3 +12,4 @@ server.pid
 testserver.log
 app/translations
 messages.pot
+*.swp
