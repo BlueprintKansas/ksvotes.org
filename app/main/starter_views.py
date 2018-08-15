@@ -65,7 +65,10 @@ def index():
         if step.reg_found:
           sos_reg = []
           for rec in step.reg_found:
-            sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
+              if 'sample_ballots' in rec:
+                  sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
+              else:
+                  sos_reg.append({'tree': rec['tree']})
 
         registrant.update({'sos_reg': sos_reg, 'skip_sos': skip_sos})
         registrant.save(db.session)
