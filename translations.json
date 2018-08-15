@@ -471,7 +471,7 @@
     "es":"Nota: Esta firma se usará para verificar su identidad en sobres de boletas por adelantado y para otras posibles actividades de votación. Intenta que sea lo más parecido posible a tu firma escrita."
   },
   "6AB_sign_modal": {
-    "en": "This signature must match the one on file in your county voter registration records for you to receive your ballot.",
+    "en": "Please make sure that this signature is as close to your written one as possible. This signature will need to match the one on file in your county voter registration records for you to receive your ballot.",
     "es": "Esta firma debe coincidir con la registrada en los registros de inscripción electoral de su condado para que pueda recibir su boleta."
   },
   "7_header":{
@@ -609,7 +609,7 @@
     "es": "Empezar de nuevo"
   },
   "session_forgotten": {
-    "en": "We've secured your personal information to protect your privacy.",
+    "en": "We have removed your personal information from this browser to protect your privacy.",
     "es": "Hemos asegurado su información personal para proteger su privacidad."
   },
   "btn_forget_session": {
@@ -621,7 +621,7 @@
     "es": "Lo sentimos, no pudimos encontrar esa página."
   },
   "500_error": {
-    "en": "Sorry, something unexpected happen. But don't worry, your personal information is safe. Try back later.",
+    "en": "Sorry, something unexpected happened. But don't worry, your personal information is safe. Try back later.",
     "es": "Lo siento, sucede algo inesperado. Pero no se preocupe, su información personal está segura. Inténtalo más tarde."
   },
   "btn_clear": {
