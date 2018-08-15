@@ -119,16 +119,16 @@ label {
 }
 
 #signature-wrapper {
-  border: 3px solid $primary-color;
+  border: 3px solid $blue-grey-lighten-1;
   border-radius: 4px;
   display: block;
-  margin: 0 auto;
-  background-color: #f9f9f9;
+  margin: 0;
+  background-color: #fff;
   max-height: 460px;
-  min-height: 320px;
   height: 100%;
   width: 100%;
   position: relative;
+  padding-top: 50%; // keep aspect ratio (width:height) rectangular
 
   canvas {
     left: 0;
