@@ -124,9 +124,15 @@ label {
   display: block;
   margin: 0 auto;
   background-color: #f9f9f9;
+  max-height: 460px;
   min-height: 320px;
+  height: 100%;
+  width: 100%;
+  position: relative;
 
   canvas {
+    left: 0;
+    top: 0;
     height: 100%;
     width: 100%;
     position: absolute;
