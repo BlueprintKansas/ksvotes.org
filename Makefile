@@ -23,7 +23,7 @@ shell:
 	python manage.py shell
 
 run:
-	python manage.py runserver
+	python manage.py runserver -h 0.0.0.0
 
 testcov:
 	py.test --cov-report term-missing --cov --ignore=node_modules
