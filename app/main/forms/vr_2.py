@@ -28,21 +28,21 @@ class FormVR2(FlaskForm):
                              ]
                         )
     has_prev_name = BooleanField(lazy_gettext(u'2_has_prev_name'))
-    prev_prefix = SelectField(lazy_gettext(u'2a_prev_prefix'),
+    prev_prefix = SelectField(lazy_gettext(u'2_prev_prefix'),
                              choices=[
-                                 ('', lazy_gettext(u'2a_prev_prefix')),
+                                 ('', lazy_gettext(u'2_prev_prefix')),
                                  ('mr', 'Mr.'),
                                  ('mrs', 'Mrs.'),
                                  ('miss', 'Miss'),
                                  ('ms', 'Ms.')
                              ]
                         )
-    prev_name_first = StringField(lazy_gettext(u'2a_prev_first'), validators=[RequiredIfBool('has_prev_name', message=lazy_gettext(u'Required'))])
-    prev_name_middle = StringField(lazy_gettext(u'2a_prev_middle'))
-    prev_name_last = StringField(lazy_gettext(u'2a_prev_last'), validators=[RequiredIfBool('has_prev_name', message=lazy_gettext(u'Required'))])
-    prev_suffix = SelectField(lazy_gettext(u'2a_prev_suffix'),
+    prev_name_first = StringField(lazy_gettext(u'2_prev_first'), validators=[RequiredIfBool('has_prev_name', message=lazy_gettext(u'Required'))])
+    prev_name_middle = StringField(lazy_gettext(u'2_prev_middle'))
+    prev_name_last = StringField(lazy_gettext(u'2_prev_last'), validators=[RequiredIfBool('has_prev_name', message=lazy_gettext(u'Required'))])
+    prev_suffix = SelectField(lazy_gettext(u'2_prev_suffix'),
                              choices=[
-                                 ('', lazy_gettext(u'2a_prev_suffix')),
+                                 ('', lazy_gettext(u'2_prev_suffix')),
                                  ('jr', 'Jr.'),
                                  ('sr', 'Sr.'),
                                  ('ii', 'II'),
