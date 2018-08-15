@@ -1,4 +1,4 @@
-<table class="clerk-details clerk-id-{{clerk.id}}">
+<table class="clerk-details clerk-id-{{clerk.id}} table-responsive">
  <tbody>
   <tr>
    <th>County</th><td class="county">{{clerk.county}}</td>
@@ -7,7 +7,7 @@
    <th>Officer</th><td class="officer">{{clerk.officer}}</td>
   </tr>
   <tr>
-   <th>Email</th><td class="email">{{clerk.email}}</td>
+   <th>Email</th><td class="email"><a href="mailto:{{clerk.email}}">{{clerk.email}}</a></td>
   </tr>
   <tr>
    <th>Phone</th><td>{{clerk.phone}}</td>

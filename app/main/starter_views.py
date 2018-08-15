@@ -115,6 +115,15 @@ def forget_session():
     flash(lazy_gettext('session_forgotten'), 'info')
     return redirect(url_for('main.index'))
 
+@main.route('/county/<county>', methods=['GET'])
+def clerk_details(county):
+    g.locale = guess_locale()
+    clerk = Clerk.find_by_county(county)
+    if clerk:
+        return render_template('county.html', clerk=clerk)
+    else:
+        return abort(404)
+
 # easy to remember
 @main.route('/demo', methods=['GET'])
 def demo_mode():
