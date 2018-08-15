@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, g, abort, session as http_session
+from flask import Flask, request, g, abort, session as http_session, url_for
 from datetime import timedelta
 from flask_sslify import SSLify
 from flask_sqlalchemy import SQLAlchemy
@@ -67,7 +67,16 @@ def create_app(script_info):
 
     @app.context_processor
     def inject_dict_for_all_templates():
-        return dict(registrant=g.get('registrant'), browser_ua=request.user_agent.browser)
+        return dict(registrant=g.get('registrant'), browser_ua=request.user_agent.browser, url_for=dated_url_for)
+
+    def dated_url_for(endpoint, **values):
+        if endpoint == 'static':
+            filename = values.get('filename', None)
+            if filename:
+                file_path = os.path.join(app.root_path,
+                                         endpoint, filename)
+                values['_'] = int(os.stat(file_path).st_mtime)
+        return url_for(endpoint, **values)
 
     @app.template_test('a_text_field')
     def a_text_field(obj):
