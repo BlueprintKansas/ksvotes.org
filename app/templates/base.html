@@ -114,20 +114,29 @@
         <img class="mx-auto pt-1" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
       </a>
       <hr class="clearfix w-100 d-md-none mt-0">
+      {% if registrant.id is defined %}
       <ul class="list-unstyled list-inline px-2 mb-3">
         <li class="list-inline-item">
           <a href="{{url_for('main.index')}}">{{_('nav_register_vote')}}</a>
+        {% if config['ENABLE_AB'] %}
           {{nav_item_sep}}
         </li>
         <li class="list-inline-item">
           <a href="{{url_for('main.ab1_election_picker')}}">{{_('nav_advance_ballot')}}</a>
-        {% if g.locale == 'es' %}
-          {{nav_item_sep}}
         </li>
+        {% else %}
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+      <ul class="list-unstyled list-inline px-2 mb-3 locale">
+        {% if g.locale == 'es' %}
         <li class="list-inline-item">
           <a href="{{url_for('main.index', lang_code='en')}}">English</a>
         </li>
-        {% else %}
+        {% elif g.locale == 'en' %}
+        <li class="list-inline-item">
+          <a href="{{url_for('main.index', lang_code='es')}}">Español</a>
         </li>
         {% endif %}
       </ul>

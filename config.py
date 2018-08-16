@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SECRET_KEY = os.environ.get("SECRET_KEY") or "devsk"
+    SECRET_KEY = os.getenv("SECRET_KEY", "devsk")
     SQLALCHEMY_COMMIT_ON_TEARDOWN = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     GA_KEY = os.environ.get('GA_KEY')
@@ -21,6 +21,7 @@ class Config:
     SSL_DISABLE = os.getenv('SSL_DISABLE', False)
     SESSION_TTL = os.getenv('SESSION_TTL', '10')
     DEMO_UUID = os.getenv('DEMO_UUID', None)
+    ENABLE_AB = os.getenv('ENABLE_AB', False)
 
     @staticmethod
     def init_app(app):

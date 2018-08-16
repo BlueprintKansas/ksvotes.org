@@ -19,13 +19,15 @@
         {% include 'clerk-details.html' %}
       </div>
 
-      <div class="form-buttons text-center">
-        <div class="mt-4 mb-4">
+      <div class="form-buttons text-center mt-4">
+        {% if config['ENABLE_AB'] %}
+        <div class="mb-4">
           <a class="btn btn-outline-primary" href="{{url_for('main.ab1_election_picker')}}">
             <i class="fa fa-edit mr-2"></i>
             {{_('1AB_apply_ab_link')}}
           </a>
         </div>
+        {% endif %}
 
         {% include 'forget-session-button.html' %}
 
