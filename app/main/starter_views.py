@@ -115,7 +115,7 @@ def change_county():
 def forget_session():
     g.locale = guess_locale()
     http_session['session_id'] = None
-    flash(lazy_gettext('session_forgotten'), 'info')
+    #flash(lazy_gettext('session_forgotten'), 'info') # TODO wordsmith this
     return redirect(url_for('main.index'))
 
 @main.route('/county/<county>', methods=['GET'])
