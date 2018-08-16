@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import boto3
 import botocore
+import newrelic.agent
 
 class CountyMailer():
 
@@ -143,6 +144,10 @@ class CountyMailer():
 
         try:
 
+            # test our error handling
+            if msg['To'] == 'fail@ksvotes.org':
+                raise RuntimeError('Failure testing works')
+
             ses = boto3.client('ses',
                 region_name=current_app.config['AWS_DEFAULT_REGION'],
                 aws_access_key_id=current_app.config['SES_ACCESS_KEY_ID'],
@@ -156,9 +161,11 @@ class CountyMailer():
 
         except botocore.exceptions.ClientError as err:
             current_app.logger.error(str(err))
+            newrelic.agent.record_exception()
             return {'msg': msg, 'MessageId': False, 'error': err}
 
         except (RuntimeError, TypeError, NameError) as err:
             current_app.logger.error(str(err))
+            newrelic.agent.record_exception()
             return {'msg': msg, 'MessageId': False, 'error': err}
 
