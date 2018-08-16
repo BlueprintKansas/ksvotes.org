@@ -609,8 +609,8 @@
     "es": "Empezar de nuevo"
   },
   "session_forgotten": {
-    "en": "We've secured your personal information to protect your privacy.",
-    "es": "Hemos asegurado su información personal para proteger su privacidad."
+    "en": "We have removed your personal information from this browser's cache to protect your privacy.",
+    "es": "SPANISH NEEDED"
   },
   "btn_forget_session": {
     "en": "I'm all done!",
