@@ -653,6 +653,14 @@
   "voter_receipt_email_subject": {
     "en": "Thank you for being a voter!",
     "es": "¡Gracias por ser un votante!"
+  },
+  "email_error_h1": {
+    "en": "There was a problem sending email",
+    "es": "Hubo un problema al enviar un correo electrónico"
+  },
+  "email_error": {
+    "en": "We had some problem sending your form(s). We are aware of the issue and will be in touch.",
+    "es": "Tuvimos algún problema al enviar tu (s) formulario (s). Somos conscientes del problema y estaremos en contacto."
   }
 
 }
