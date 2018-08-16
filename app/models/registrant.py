@@ -30,7 +30,7 @@ class Registrant(db.Model):
     ref = db.Column(db.String())
 
     #registration steps
-    is_citizen = db.Column(db.Boolean, default=False)
+    is_citizen = db.Column(db.Boolean, default=None)
     is_eighteen = db.Column(db.Boolean, default=None)
     dob_year = db.Column(db.Integer)
     party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
