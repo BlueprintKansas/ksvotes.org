@@ -20,7 +20,6 @@ def vr1_citizenship():
         step = Step_VR_1(form.data)
         if step.run():
             reg.update(form.data)
-            reg.last_completed_step = 1
             reg.save(db.session)
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())

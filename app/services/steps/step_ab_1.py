@@ -16,8 +16,8 @@ class Step_AB_1(Step):
             return False
 
         self.is_complete = True
-        if g.registrant.completed_at:
-            self.next_step = 'Step_VR_6'
+        if g.registrant.vr_completed_at:
+            self.next_step = 'Step_AB_5' # already have address
         else:
             self.next_step = 'Step_AB_3'
 

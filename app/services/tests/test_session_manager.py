@@ -1,6 +1,7 @@
 from app.models import Registrant
 from app.services import SessionManager
 from app.services.steps import Step_0, Step_VR_1
+from datetime import datetime
 
 def create_registrant(db_session):
     registrant = Registrant(
@@ -54,7 +55,7 @@ def test_completion_logic(app, db_session, client):
     assert session_manager.vr_completed() == False
     assert session_manager.ab_completed() == False
 
-    registrant.last_completed_step = 7
+    registrant.vr_completed_at = datetime.utcnow()
     registrant.update({'vr_form':'foobar'})
     registrant.save(db_session)
     session_manager = SessionManager(registrant, step)
@@ -65,4 +66,11 @@ def test_completion_logic(app, db_session, client):
     registrant.save(db_session)
     session_manager = SessionManager(registrant, step)
     assert session_manager.vr_completed() == True
+    assert session_manager.ab_completed() == False
+
+    registrant.ab_completed_at = datetime.utcnow()
+    registrant.save(db_session)
+    session_manager = SessionManager(registrant, step)
+    assert session_manager.vr_completed() == True
     assert session_manager.ab_completed() == True
+

@@ -33,12 +33,12 @@ class SessionManager():
             self.prev_step = prev_step()
 
     def vr_completed(self):
-        if self.registrant.last_completed_step == 7 and self.registrant.try_value('vr_form', False):
+        if self.registrant.vr_completed_at and self.registrant.try_value('vr_form', False):
             return True
         return False
 
     def ab_completed(self):
-        if self.registrant.last_completed_step == 7 and self.registrant.try_value('ab_forms', False):
+        if self.registrant.ab_completed_at and self.registrant.try_value('ab_forms', False):
             return True
         return False
 

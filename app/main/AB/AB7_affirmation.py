@@ -9,6 +9,7 @@ from app.services.nvris_client import NVRISClient
 from app.services.county_mailer import CountyMailer
 from app.services.steps import Step_AB_7
 from app.main.forms import FormAB7
+from datetime import datetime
 
 @main.route('/ab/affirmation', methods=["GET", "POST"])
 @InSession
@@ -30,7 +31,7 @@ def ab7_affirmation():
             # and that must always be true on a POST, so just hardcode it.
             # if we ever expand the Form fields, we'll need to revisit.
             reg.update({'affirmation': True})
-            reg.last_completed_step = 7
+            reg.ab_completed_at = datetime.utcnow()
             reg.save(db.session)
 
             mailer = CountyMailer(reg, clerk, 'ab_forms')
