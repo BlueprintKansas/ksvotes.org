@@ -629,8 +629,8 @@
     "es": "Firma clara"
   },
   "skip_sos_check": {
-    "en": "Skip the check, I know I need to register",
-    "es": "Omita el cheque, sé que necesito registrarme"
+    "en": "Skip the check, I know what I need to do",
+    "es": "Omita el cheque, sé lo que tengo que hacer"
   },
   "nav_register_vote": {
     "en": "Register to Vote",

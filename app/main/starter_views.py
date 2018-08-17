@@ -72,6 +72,11 @@ def index():
 
         registrant.update({'sos_reg': sos_reg, 'skip_sos': skip_sos})
         registrant.save(db.session)
+
+        # small optimization for common case.
+        if skip_sos and not current_app.config['ENABLE_AB']:
+            return redirect(url_for('main.vr1_citizenship'))
+
         session_manager = SessionManager(registrant, step)
         return redirect(session_manager.get_redirect_url())
 

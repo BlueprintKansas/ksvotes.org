@@ -76,6 +76,20 @@ def test_registered_voter_input_returns_redirect_change_or_apply(app, db_session
     redirect_data = response.data.decode()
     assert ('/change-or-apply' in redirect_data) == True
 
+def test_skip_sos_check_vr_only_returns_redirect_step_1(app, db_session, client):
+    form_payload = {
+        "name_first": "foo",
+        "name_last": "bar",
+        "dob": "02/02/1999",
+        "email": "foo@example.com",
+        "county": "TEST",
+        "skip-sos": 'true',
+    }
+    app.config['ENABLE_AB'] = False
+    response = client.post('/', data=form_payload, follow_redirects=False)
+    redirect_data = response.data.decode()
+    assert ('/vr/citizenship' in redirect_data) == True
+
 def test_unregistered_voter_input_returns_redirect_step_1(app, db_session, client):
     form_payload = {
         "name_first": "foo",
