@@ -7,6 +7,7 @@ from app.services import SessionManager
 from app.services.nvris_client import NVRISClient
 from app.main.forms import FormAB6
 from app.services.steps import Step_AB_6
+from datetime import datetime
 
 @main.route('/ab/preview', methods=["GET", "POST"])
 @InSession
@@ -32,6 +33,7 @@ def ab6_preview_sign():
 
             if len(ab_forms) > 0:
                 reg.update({'ab_forms':ab_forms})
+                reg.signed_at = datetime.utcnow()
                 reg.save(db.session)
                 session_manager = SessionManager(reg, step)
                 return redirect(session_manager.get_redirect_url())

@@ -7,6 +7,7 @@ from app.services import SessionManager
 from app.services.nvris_client import NVRISClient
 from app.main.forms import FormVR6
 from app.services.steps import Step_VR_6
+from datetime import datetime
 
 @main.route('/vr/preview', methods=["GET", "POST"])
 @InSession
@@ -27,6 +28,7 @@ def vr6_preview_sign():
             signed_vr_form = nvris_client.get_vr_form()
             if signed_vr_form:
                 reg.update({'vr_form':signed_vr_form})
+                reg.signed_at = datetime.utcnow()
                 reg.save(db.session)
                 session_manager = SessionManager(reg, step)
                 return redirect(session_manager.get_redirect_url())
