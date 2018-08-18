@@ -9,11 +9,16 @@ from app.main.helpers import construct_county_choices
 import os
 import re
 
+class DOBField(StringField):
+    def process_formdata(self, valuelist):
+        mdy = re.search(r'^(\d{2})(\d{2})(\d{4})$', re.sub('\D', '', valuelist[0]))
+        self.data = '{m}/{d}/{y}'.format(m=mdy.group(1), d=mdy.group(2), y=mdy.group(3))
+
 class FormStep0(FlaskForm):
     ref = HiddenField()
     name_first = StringField(lazy_gettext(u'0_first'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
     name_last = StringField(lazy_gettext(u'0_last'), validators=[DataRequired(message=lazy_gettext(u'Required'))])
-    dob = StringField(
+    dob = DOBField(
         lazy_gettext(u'0_dob'),
         validators=[
             DataRequired(message=lazy_gettext(u'Required')),

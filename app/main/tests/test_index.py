@@ -101,3 +101,15 @@ def test_unregistered_voter_input_returns_redirect_step_1(app, db_session, clien
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
     assert ('/change-or-apply' in redirect_data) == True
+
+def test_dob_all_digits(app, db_session, client):
+    form_payload = {
+        "name_first": "foo",
+        "name_last": "bar",
+        "dob":"07071999",
+        "email":"foo@example.com",
+        "county": "TEST"
+    }
+    response = client.post('/', data=form_payload, follow_redirects=False)
+    redirect_data = response.data.decode()
+    assert ('/change-or-apply' in redirect_data) == True
