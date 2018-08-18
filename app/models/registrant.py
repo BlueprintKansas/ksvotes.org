@@ -34,10 +34,10 @@ class Registrant(db.Model):
     is_citizen = db.Column(db.Boolean, default=None)
     is_eighteen = db.Column(db.Boolean, default=None)
     dob_year = db.Column(db.Integer)
-    party = db.Column(db.String()) #enum dem, rep, lib, unaf, green, other
-    county = db.Column(db.String()) #may require some geo lookup.
-    lang = db.Column(db.String()) #enum? (values?)
-    signed_at = db.Column(db.DateTime, default=datetime.utcnow()) #converted to local time on image generated submission
+    party = db.Column(db.String())
+    county = db.Column(db.String())
+    lang = db.Column(db.String())
+    signed_at = db.Column(db.DateTime, default=datetime.utcnow)
     reg_lookup_complete = db.Column(db.Boolean, default=False)
     addr_lookup_complete = db.Column(db.Boolean, default=False)
 
