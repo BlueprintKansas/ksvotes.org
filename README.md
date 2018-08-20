@@ -36,13 +36,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
   ```
   $ virtualenv venv -p python3
-  ```
-  ```
   $ . venv/bin/activate
-  ```
-  ```
   $(venv) make deps
-  $(venv) make update
+  $(venv) make locales
   ```
 
 ### Environmental Variables
@@ -75,10 +71,8 @@ The ksvotes.org site makes Kansas online voting registration easy.
 ### Migrate Database
   Once setup is complete let's get our models imported into our development database.
 
-  Note: init command should only be run once per database and does not need to be run on the testing database.  After that if you make changes to the database models you will need to run the migrate and upgrade commands for your dev and production databases.
-
   ```
-  $(venv) python manage.py db init
+  $(venv) make dbupgrade
   ```
 
 When you modify the model classes and want to apply to the schema:

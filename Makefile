@@ -6,7 +6,7 @@ deps:
 	npm install
 
 venv:
-	virtualenv venv -p python3
+	@echo 'You must run: . venv/bin/activate'
 
 dbmigrate:
 	python manage.py db migrate
