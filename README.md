@@ -36,11 +36,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
   ```
   $ virtualenv venv -p python3
-  ```
-  ```
   $ . venv/bin/activate
-  ```
-  ```
   $(venv) make deps
   $(venv) make locales
   ```
