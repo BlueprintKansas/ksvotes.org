@@ -93,6 +93,10 @@ class Registrant(db.Model):
     def try_value(self, field_name, default_value=''):
         return self.registration_value.get(field_name, default_value)
 
+    def try_clerk(self):
+        from app.models import Clerk
+        return Clerk.find_by_county(self.county)
+
     def get_dob_year(self):
         dob_dt = datetime.strptime(self.try_value('dob'), '%m/%d/%Y')
         return int(dob_dt.year)

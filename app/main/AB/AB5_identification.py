@@ -9,10 +9,12 @@ from app.services.steps import Step_AB_5
 @main.route('/ab/identification', methods=["GET", "POST"])
 @InSession
 def ab5_identification():
-    idn = g.registrant.try_value('ab_identification')
+    ab_id = g.registrant.try_value('ab_identification')
     form = FormAB5(
-        identification = idn
+        ab_identification = ab_id
     )
+    clerk = g.registrant.try_clerk()
+
     if request.method == "POST" and form.validate_on_submit():
         step = Step_AB_5(form.data)
         if step.run():
@@ -21,4 +23,4 @@ def ab5_identification():
             session_manager = SessionManager(g.registrant, step)
             return redirect(session_manager.get_redirect_url())
 
-    return render_template('ab/identification.html', form=form)
+    return render_template('ab/identification.html', form=form, clerk=clerk)
