@@ -15,7 +15,7 @@ from datetime import datetime
 @InSession
 def vr7_affirmation():
     reg = g.registrant
-    clerk = Clerk.find_by_county(reg.county)
+    clerk = reg.try_clerk()
     form = FormVR7()
 
     # if we don't have a VR form to affirm, redirect to Step 0

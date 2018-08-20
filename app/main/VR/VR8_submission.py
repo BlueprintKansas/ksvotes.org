@@ -14,5 +14,5 @@ def vr8_submission():
     if not session_manager.vr_completed():
         return redirect(session_manager.get_redirect_url())
 
-    clerk = Clerk.find_by_county(reg.county)
+    clerk = reg.try_clerk()
     return render_template('vr/submission.html', registrant=reg, clerk=clerk)

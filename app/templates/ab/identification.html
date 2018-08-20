@@ -17,10 +17,11 @@
       form.ab_identification,
       _('5AB_id_shorthelp'),
       {
-        'required':'required',
-        'data-parsley-error-message': _('Required'),
         'autocomplete':'off',
-        'data-parsley-trigger':'focusout'
+        'data-parsley-trigger':'focusout',
+        'data-parsley-id-pattern':"true",
+        'data-parsley-id-pattern-message': _('5AB_id_pattern'),
+        'placeholder': 'Knn-nn-nnnn',
       }
       )}}
 
@@ -30,12 +31,41 @@
 </form>
 {% endblock %}
 
+{% with modal_body = _('5AB_id_help'), modal_title = _('important') %}
+{% include '_confirm_modal.html' %}
+{% endwith %}
+
 {% block js_footer %}
 <script>
 $(function () {
   //initialize form with parsley validation
   var form = $('#step_AB5');
-  form.parsley()
+  window.Parsley.addValidator('idPattern', {
+    requirementType: 'string',
+    validateString: function(value) {
+      $('.parsley-errors-list').show();
+      let parts = value.match(/^K(\d{2})[\-]?(\d{2})[\-]?(\d{4})$/);
+      if (parts) {
+        $('.parsley-errors-list').hide(); // in case we reloaded
+        $('#ab_identification').val('K'+parts[1]+'-'+parts[2]+'-'+parts[3]);
+        return true;
+      }
+      return false;
+    }
+  });
+  form.parsley();
+
+  // ID may be empty, but if so, we must warn voter they must act offline.
+  $('#btn-next').on('click', function(ev) {
+    if ($('#ab_identification').val().length == 0) {
+      ev.preventDefault();
+      $('#ksv-confirm-modal').modal('show');
+      $('#ksv-confirm-modal .submit').on('click', function(ev2) {
+        $('#ksv-confirm-modal').modal('hide');
+        form.submit();
+      });
+    }
+  });
 });
 
 </script>

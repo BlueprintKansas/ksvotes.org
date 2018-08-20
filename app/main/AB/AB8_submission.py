@@ -14,5 +14,5 @@ def ab8_submission():
     if not session_manager.ab_completed():
         return redirect(session_manager.get_redirect_url())
 
-    clerk = Clerk.find_by_county(reg.county)
+    clerk = reg.try_clerk()
     return render_template('ab/submission.html', registrant=reg, clerk=clerk)

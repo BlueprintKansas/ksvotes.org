@@ -16,7 +16,7 @@ from datetime import datetime
 def ab7_affirmation():
     reg = g.registrant
     form = FormAB7()
-    clerk = Clerk.find_by_county(reg.county)
+    clerk = reg.try_clerk()
 
     # if we don't have a AB form to affirm, redirect to Step 0
     if not reg.try_value('ab_forms', False):
