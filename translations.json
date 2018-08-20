@@ -429,8 +429,8 @@
     "es":"Número actual de licencia de conducir de Kansas o número de tarjeta de identificación de no conductor:"
   },
   "5AB_id_pattern":{
-    "en":"Your Kansas ID number should match the pattern Knn-nn-nnnn",
-    "es":"Su número de identificación de Kansas debe coincidir con el patrón Knn-nn-nnnn"
+    "en":"Your Kansas ID number does not match an expected pattern.",
+    "es":"Su número de identificación de Kansas no coincide con un patrón esperado."
   },
   "5AB_id_shorthelp":{
     "wiki_step":"5AB",

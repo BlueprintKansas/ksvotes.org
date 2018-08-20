@@ -44,10 +44,10 @@ $(function () {
     requirementType: 'string',
     validateString: function(value) {
       $('.parsley-errors-list').show();
-      let parts = value.match(/^K(\d{2})[\-]?(\d{2})[\-]?(\d{4})$/);
+      let dlid = value.replace(/\W/g, '');
+      let parts = dlid.match(/^(\w\d\w\d\w|K\d{8}|\d{9})$/);
       if (parts) {
         $('.parsley-errors-list').hide(); // in case we reloaded
-        $('#ab_identification').val('K'+parts[1]+'-'+parts[2]+'-'+parts[3]);
         return true;
       }
       return false;
