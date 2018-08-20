@@ -5,6 +5,7 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask import current_app
+import os
 
 class SESMailer():
 
