@@ -1,4 +1,4 @@
-
+# abstract base class
 class Step():
     def __init__(self, form_payload = None):
         self.form_payload = form_payload
