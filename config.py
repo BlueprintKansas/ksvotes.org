@@ -22,6 +22,7 @@ class Config:
     SESSION_TTL = os.getenv('SESSION_TTL', '10')
     DEMO_UUID = os.getenv('DEMO_UUID', None)
     ENABLE_AB = os.getenv('ENABLE_AB', False)
+    FAIL_EMAIL = os.getenv('FAIL_EMAIL', 'fail@ksvotes.org')
 
     @staticmethod
     def init_app(app):
