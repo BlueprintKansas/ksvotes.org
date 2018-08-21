@@ -1,7 +1,7 @@
 from app.services.steps import Step
 
 class Step_AB_5(Step):
-    form_requirements = ['ab_identification']
+    form_requirements = []
     step_requirements = []
     endpoint = '/ab/identification'
     prev_step = 'Step_AB_3'
