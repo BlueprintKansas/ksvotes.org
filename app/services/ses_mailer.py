@@ -53,6 +53,9 @@ class SESMailer():
 
         try:
 
+            if 'To' not in msg or not msg['To']:
+                raise RuntimeError("Missing To in %s" %(msg.as_string()))
+
             # test our error handling
             if msg['To'] == current_app.config['FAIL_EMAIL']:
                 raise RuntimeError('Failure testing works')

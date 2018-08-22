@@ -54,6 +54,10 @@ class CountyMailer():
         # we send 2 emails, and return dict of responses
         clerk_email = self.clerk_email()
         reg_email = self.registrant.try_value('email')
+
+        if not clerk_email or not reg_email:
+            raise RuntimeError("Missing clerk_email or reg_email")
+
         attachments = self.build_attachments()
 
         current_app.logger.info("%s SEND mail to %s" %(self.registrant.session_id, clerk_email))
