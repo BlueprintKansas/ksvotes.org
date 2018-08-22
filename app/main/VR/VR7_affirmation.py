@@ -31,7 +31,6 @@ def vr7_affirmation():
             # and that must always be true on a POST, so just hardcode it.
             # if we ever expand the Form fields, we'll need to revisit.
             reg.update({'affirmation': True})
-            reg.vr_completed_at = datetime.utcnow()
             reg.save(db.session)
 
             mailer = CountyMailer(reg, clerk, 'vr_form')
@@ -44,6 +43,7 @@ def vr7_affirmation():
                     return render_template('email_error.html', clerk=clerk)
 
             reg.update({'vr_form_message_id': r['clerk']['MessageId']})
+            reg.vr_completed_at = datetime.utcnow()
             reg.save(db.session)
 
             session_manager = SessionManager(reg, step)
