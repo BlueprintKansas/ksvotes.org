@@ -57,7 +57,7 @@ class CountyMailer():
 
         if not clerk_email or not reg_email:
             current_app.logger.error("Missing clerk_email or reg_email for %s" %(self.registrant.session_id))
-            return
+            return {}
 
         attachments = self.build_attachments()
 
