@@ -117,6 +117,12 @@ class Registrant(db.Model):
         db_session.add(self)
         db_session.commit()
 
+    def best_zip5(self):
+        validated_addr = self.try_value('validated_addresses')
+        if validated_addr and 'current_address' in validated_addr:
+            return validated_addr['current_address']['zip5']
+        return self.try_value('zip')
+
     @classmethod
     def lookup_by_session_id(cls, sid):
         return cls.query.filter(cls.session_id == sid).first()

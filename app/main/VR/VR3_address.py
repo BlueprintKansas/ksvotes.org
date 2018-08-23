@@ -37,12 +37,11 @@ def vr3_address():
         g.registrant.update(update_data)
         g.registrant.addr_lookup_complete = step.addr_lookup_complete
 
-        # guess county based on ZIP if necessary.
-        if not g.registrant.county or len(g.registrant.county) == 0:
-            zip5 = g.registrant.try_value('zip')
-            county = ZIPCode.guess_county(zip5)
-            current_app.logger.info("Lookup county %s based on ZIP5 %s" %(county, zip5))
-            g.registrant.county = county
+        # override initial county guess with best guess based on validated address
+        zip5 = g.registrant.best_zip5()
+        county = ZIPCode.guess_county(zip5)
+        current_app.logger.info("Lookup county %s based on ZIP5 %s" %(county, zip5))
+        g.registrant.county = county
 
         db.session.commit()
         session_manager = SessionManager(g.registrant, step)
