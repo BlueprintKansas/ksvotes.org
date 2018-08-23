@@ -419,8 +419,8 @@
   "5VR_id_shorthelp":{
     "wiki_step":"5VR",
     "ref":"5VR_id_shorthelp",
-    "en":"Your ID should be drivers license #, nondrivers id card #, last 4 of SSN, or NONE.",
-    "es":"Su ID debe ser número de licencia de conducir, número de tarjeta de identificación de no conductores, los últimos 4 dígitos del número de seguro social o NINGUNO."
+    "en":"Your ID should be your <b>drivers license #</b>, <b>nondrivers id card #</b>, or the <b>last 4 digits of your Social Security Number</b>.",
+    "es":"Su ID debe ser <b>número de licencia de conducir</b>, <b>número de tarjeta de identificación de no conductores</b>, <b>los últimos 4 dígitos del número de seguro social o NINGUNO</b>."
   },
   "5AB_id":{
     "wiki_step":"5AB",
