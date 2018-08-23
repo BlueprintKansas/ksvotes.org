@@ -124,11 +124,9 @@ label {
   display: block;
   margin: 0;
   background-color: #fff;
-  max-height: 460px;
-  height: 100%;
   width: 100%;
   position: relative;
-  padding-top: 50%; // keep aspect ratio (width:height) rectangular
+  padding-top: 30%; // keep aspect ratio (width:height) rectangular
 
   canvas {
     left: 0;
