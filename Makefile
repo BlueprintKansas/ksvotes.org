@@ -17,7 +17,7 @@ dbupgrade:
 update: dbmigrate dbupgrade
 
 db:
-	psql -h localhost ksvotes_dev
+	@psql `grep ^DATABASE_URL= .env | sed -e "s/DATABASE_URL=//"`
 
 shell:
 	python manage.py shell
