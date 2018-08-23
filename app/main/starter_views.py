@@ -3,7 +3,7 @@ from flask import g, url_for, render_template, jsonify, request, redirect, sessi
 from flask_babel import lazy_gettext
 import time
 from app.main.forms import *
-from app.models import Registrant, Clerk
+from app.models import *
 from app import db
 from uuid import UUID, uuid4
 from app.decorators import InSession
@@ -34,12 +34,12 @@ def index():
     if registrant:
         form = FormStep0(
             ref = http_session.get('ref'),
-            name_first = registrant.registration_value.get('name_first'),
-            name_last = registrant.registration_value.get('name_last'),
-            dob = registrant.registration_value.get('dob'),
-            county = registrant.county,
-            email = registrant.registration_value.get('email'),
-            phone = registrant.registration_value.get('phone')
+            name_first = registrant.try_value('name_first'),
+            name_last = registrant.try_value('name_last'),
+            dob = registrant.try_value('dob'),
+            zip = registrant.try_value('zip'),
+            email = registrant.try_value('email'),
+            phone = registrant.try_value('phone')
         )
 
     if request.method == "POST" and form.validate_on_submit():
@@ -48,13 +48,15 @@ def index():
             registrant.update(form.data)
         else:
             sid = UUID(http_session.get('session_id'), version=4)
+            zipcode = form.data.get('zip')
             registrant = Registrant(
-                county = form.data.get('county'),
+                county = ZIPCode.guess_county(zipcode),
                 ref = form.data.get('ref'),
                 registration_value = form.data,
                 session_id = sid,
                 lang = g.lang_code,
             )
+            registrant.set_value('zip', zipcode)
             db.session.add(registrant)
 
         skip_sos = request.values.get('skip-sos')
@@ -166,10 +168,10 @@ def referring_org():
         'dob': request.values.get('dob', ''),
         'email': request.values.get('email', ''),
         'phone': request.values.get('phone', ''),
+        'zip': request.values.get('zip', ''),
     }
     registrant = Registrant(
         session_id = sid,
-        county = request.values.get('county', ''),
         ref = request.values['ref'],
         registration_value = registration
     )

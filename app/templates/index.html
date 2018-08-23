@@ -53,9 +53,16 @@
       )}}
 
     {{wtf.render_field(
-      form.county,
-      _('0_county_help'),
+      form.zip,
+      _('3_zip_help'),
       {
+        'required':'required',
+        'pattern': '[0-9]*',
+        'data-parsley-error-message': _('Required'),
+        'autocomplete':'off',
+        'data-parsley-trigger':'focusout',
+        'data-parsley-pattern-message': _('0_zip_help'),
+        'data-parsley-pattern': "/^\d{5}$/",
       }
       )}}
 

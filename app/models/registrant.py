@@ -67,6 +67,7 @@ class Registrant(db.Model):
                     cls.registration
                 )
 
+    # update() is set_value() for a dict (bulk) to save encrypt/decrypt overhead
     def update(self, update_payload):
         registration_value = self.registration_value
         for k,v in update_payload.items():
@@ -76,6 +77,16 @@ class Registrant(db.Model):
                 registration_value[k] = v
         self.registration_value = registration_value
 
+    def set_value(self, name, value):
+        if name in self.__table__.columns:
+            return super().__setattr__(name, value)
+        else:
+            rval = {}
+            if self.registration:
+                rval = self.registration_value
+            rval[name] = value
+            self.registration_value = rval
+            return self
 
     def has_value_for_req(self, req):
         """

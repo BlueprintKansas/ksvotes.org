@@ -345,7 +345,7 @@
     "en":"KSVotes.org only works for registrants who live and wish to vote in Kansas. If you live in a different state, you can register using https://turbovote.org/",
     "es":"KSVotes.org solo funciona para los solicitantes de registro que viven y desean votar en Kansas. Si vive en un estado diferente, puede registrarse usando https://turbovote.org/"
   },
-  "3_zip":{"wiki_step":"3","ref":"3_zip","en":"Zip Code","es":"Codigo Postal"},
+  "3_zip":{"wiki_step":"3","ref":"3_zip","en":"ZIP Code","es":"Codigo Postal"},
   "3_zip_help":{
     "wiki_step":"3",
     "ref":"3_zip_help",

@@ -1,4 +1,5 @@
 from app.services.steps import Step
+from app.models import ZIPCode
 
 import os
 import ksmyvoteinfo
@@ -24,7 +25,7 @@ class Step_0(Step):
                 name_first=self.form_payload['name_first'],
                 name_last=self.form_payload['name_last'],
                 dob=self.form_payload['dob'],
-                county=self.form_payload['county']
+                county=ZIPCode.guess_county(self.form_payload['zip']),
             )
 
         self.is_complete = True
