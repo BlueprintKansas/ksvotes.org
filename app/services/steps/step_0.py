@@ -1,4 +1,5 @@
 from app.services.steps import Step
+from app.models import ZIPCode
 
 import os
 import ksmyvoteinfo
@@ -24,7 +25,6 @@ class Step_0(Step):
                 name_first=self.form_payload['name_first'],
                 name_last=self.form_payload['name_last'],
                 dob=self.form_payload['dob'],
-                county=self.form_payload['county']
             )
 
         self.is_complete = True
@@ -37,9 +37,7 @@ class Step_0(Step):
         self.next_step = 'Step_1'
         return True
 
-    def lookup_registration(self, name_first, name_last, dob, county):
-        if county == 'TEST':
-            return False
+    def lookup_registration(self, name_first, name_last, dob):
         # any failure (exception) means we should try registering,
         # and leave it up to the counties to sort out dupes.
         try:
@@ -52,7 +50,6 @@ class Step_0(Step):
                 first_name = name_first,
                 last_name = name_last,
                 dob = formatted_dob,
-                county = county
             )
             if request:
                 return request.parsed()

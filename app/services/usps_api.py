@@ -12,8 +12,6 @@ class USPS_API():
         """
         Convert a single address from pyusps into a dictionary with the correct k,vs or an en error
         """
-
-
         marshalled_address = {}
         if isinstance(address, OrderedDict):
             for k,v in address.items():
@@ -67,7 +65,6 @@ class USPS_API():
                 ('zip_code', self.address_payload.get('prev_zip', '')),
                 ('address_extended', self.address_payload.get('prev_unit', ''))
             ]))
-
 
         if self.address_payload.get('has_mail_addr', None) == True:
             self.address_order.append('mail_addr')

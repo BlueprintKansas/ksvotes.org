@@ -9,7 +9,7 @@ def test_create_new_session_step_0(app, db_session, client):
         "name_last": "bar",
         "dob":"01/01/2000",
         "email":"foo@example.com",
-        "county": "TEST"
+        "zip": "12345",
     }
     with client.session_transaction() as http_session:
         assert http_session.get('session_id') == None
@@ -48,7 +48,7 @@ def test_update_name_step_0_session_exists_already(app, db_session, client):
 
         name_update = {
             "name_first": "baz",
-            "county": "TEST"
+            "zip": "12345",
         }
         current_registrant.update(name_update)
         db_session.commit()
@@ -67,7 +67,7 @@ def test_registered_voter_input_returns_redirect_change_or_apply(app, db_session
         "name_last": "Kobach",
         "dob":"03/26/1966",
         "email":"foo@example.com",
-        "county": "Douglas"
+        "zip": "66044",
     }
     with client.session_transaction() as http_session:
         assert http_session.get('session_id') == None
@@ -82,7 +82,7 @@ def test_skip_sos_check_vr_only_returns_redirect_step_1(app, db_session, client)
         "name_last": "bar",
         "dob": "02/02/1999",
         "email": "foo@example.com",
-        "county": "TEST",
+        "zip": "12345",
         "skip-sos": 'true',
     }
     app.config['ENABLE_AB'] = False
@@ -96,7 +96,7 @@ def test_unregistered_voter_input_returns_redirect_step_1(app, db_session, clien
         "name_last": "bar",
         "dob":"02/02/1999",
         "email":"foo@example.com",
-        "county": "TEST"
+        "zip": "12345",
     }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
@@ -108,7 +108,7 @@ def test_dob_all_digits(app, db_session, client):
         "name_last": "bar",
         "dob":"07071999",
         "email":"foo@example.com",
-        "county": "TEST"
+        "zip": "12345",
     }
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()

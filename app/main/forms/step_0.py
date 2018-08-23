@@ -5,7 +5,6 @@ from wtforms.fields.html5 import EmailField, TelField
 from flask_babel import lazy_gettext
 from dateutil.relativedelta import relativedelta
 import datetime
-from app.main.helpers import construct_county_choices
 import os
 import re
 
@@ -25,10 +24,14 @@ class FormStep0(FlaskForm):
             Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext(u'0_dob_flag'))
         ]
     )
-    county = SelectField(lazy_gettext(u'0_county'),
-        validators=[Optional()],
-        choices=construct_county_choices(lazy_gettext(u'0_county'))
+
+    zip = StringField(lazy_gettext(u'3_zip'),
+        validators=[
+            DataRequired(message=lazy_gettext(u'Required')),
+            Regexp('^\d{5}$', message=lazy_gettext(u'3_zip_help'))
+        ]
     )
+
     email = EmailField(lazy_gettext(u'0_email'),
         validators=[DataRequired(message=lazy_gettext(u'Required')),
         Email(message=lazy_gettext(u'0_email_flag'))]

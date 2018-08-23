@@ -177,8 +177,6 @@
     "es":"¿Qué quieres hacer ahora?"
   },
   "1AB_change_reg_link":{
-    "wiki_step":"1AB",
-    "ref":"1AB_change_reg_link",
     "en":"Register to vote",
     "es":"Registrarse para votar"
   },
@@ -203,10 +201,8 @@
     "es":"Solicite una Boleta de Avance Permanente."
   },
   "1AB_sorry_no_reg_title":{
-    "wiki_step":"1AB",
-    "ref":"1AB_sorry_no_reg_title",
-    "en":"Sorry, we could not find your voter registration.",
-    "es":"Lo sentimos, no pudimos encontrar su registro de votante."
+    "en":"You are not registered to vote.",
+    "es":"Usted no está registrado para votar."
   },
   "1AB_sorry_no_reg_help":{
     "wiki_step":"1AB",
@@ -217,8 +213,8 @@
   "1AB_sorry_no_reg_link":{
     "wiki_step":"1AB",
     "ref":"1AB_sorry_no_reg_link",
-    "en":"Register to Vote",
-    "es":"Registrarse para Votar"
+    "en":"Register now!",
+    "es":"¡Regístrate ahora!"
   },
   "1AB_select_election":{
     "wiki_step":"1AB",
@@ -345,7 +341,7 @@
     "en":"KSVotes.org only works for registrants who live and wish to vote in Kansas. If you live in a different state, you can register using https://turbovote.org/",
     "es":"KSVotes.org solo funciona para los solicitantes de registro que viven y desean votar en Kansas. Si vive en un estado diferente, puede registrarse usando https://turbovote.org/"
   },
-  "3_zip":{"wiki_step":"3","ref":"3_zip","en":"Zip Code","es":"Codigo Postal"},
+  "3_zip":{"wiki_step":"3","ref":"3_zip","en":"ZIP Code","es":"Codigo Postal"},
   "3_zip_help":{
     "wiki_step":"3",
     "ref":"3_zip_help",
