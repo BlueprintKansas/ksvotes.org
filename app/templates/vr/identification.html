@@ -10,7 +10,9 @@
   <legend>{{_('5_legend')}}</legend>
 
   {{form.hidden_tag()}}
-  <div class="small"> {{_('5VR_id_help')}} </div>
+
+  <div class=""> {{_('5VR_id_shorthelp')}} </div>
+
   {{wtf.render_field(
       form.identification,
       _('5VR_id_shorthelp'),
@@ -21,6 +23,8 @@
         'data-parsley-trigger':'focusout'
       }
       )}}
+
+  <div class="small"> {{_('5VR_id_help')}} </div>
 
   {% include 'form-buttons.html' %}
 
