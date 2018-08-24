@@ -12,8 +12,6 @@
 
   {{form.hidden_tag()}}
 
-  <div class="mb-4">{{_('5AB_id_shorthelp')}}</div>
-
   {{wtf.render_field(
       form.ab_identification,
       _('5AB_id_shorthelp'),
@@ -25,6 +23,8 @@
         'placeholder': 'Knn-nn-nnnn',
       }
       )}}
+
+  <div class="small">{{_('5AB_id_shorthelp')}}</div>
 
   {% include 'form-buttons.html' %}
 
