@@ -586,8 +586,10 @@
   "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
+  "btn_ok":{ "en": "Ok", "es": "Bien" },
   "btn_sign":{ "en": "Sign", "es": "Firmar" },
   "btn_submit":{ "en": "Submit", "es": "Enviar" },
+  "btn_try_again":{ "en": "Try again", "es": "Inténtalo de nuevo" },
   "session_interrupted_error": {
     "en": "To protect your privacy, your KSVotes session was restarted after a period of inactivity.",
     "es": "Para proteger su privacidad, su sesión de KSVotes se reinició después de un período de inactividad."
