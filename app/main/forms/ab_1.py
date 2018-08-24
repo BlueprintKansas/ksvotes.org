@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, SelectMultipleField, widgets
+from wtforms import SelectField, SelectMultipleField, widgets, StringField
 from wtforms.validators import DataRequired, Regexp, Optional
 from flask_babel import lazy_gettext
 
@@ -35,13 +35,20 @@ class OptionalUnlessFieldContains(Optional):
 
 
 class FormAB1(FlaskForm):
-    elections = MultiCheckboxField(lazy_gettext(u'1AB_select_election'),
+    elections = MultiCheckboxField(
+        lazy_gettext(u'1AB_select_election'),
         choices=[], # defer till runtime
         validators=[DataRequired(message=lazy_gettext(u'Required'))]
-        )
+    )
 
-    party = SelectField(lazy_gettext(u'1AB_select_party'),
+    perm_reason = StringField(
+        lazy_gettext(u'1AB_perm_reason'),
+        validators=[OptionalUnlessFieldContains('elections', 'permanent')]
+    )
+
+    party = SelectField(
+        lazy_gettext(u'1AB_select_party'),
         choices=[('', lazy_gettext(u'1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
         validators=[OptionalUnlessFieldContains('elections', 'Primary')]
-        )
+    )
 

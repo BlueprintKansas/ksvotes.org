@@ -127,6 +127,10 @@ class Registrant(db.Model):
     def lookup_by_session_id(cls, sid):
         return cls.query.filter(cls.session_id == sid).first()
 
+    @classmethod
+    def find_by_session(cls, sid):
+        return cls.lookup_by_session_id(sid)
+
     def is_demo(self):
         return True if str(self.session_id) == os.getenv('DEMO_UUID') else False
 
