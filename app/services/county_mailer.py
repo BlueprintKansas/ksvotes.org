@@ -28,6 +28,12 @@ class CountyMailer():
         )
         self.clerk_body = lazy_gettext(u'county_clerk_email')
 
+    def subject_prefix(self):
+      if os.getenv('EMAIL_PREFIX'):
+          return os.getenv('EMAIL_PREFIX')
+      else:
+          return ''
+
     def set_clerk_subject(self, form_img_type):
         subject = 'No Subject'
         if form_img_type == 'ab_forms':
@@ -37,10 +43,10 @@ class CountyMailer():
         else:
             raise Exception("Unknown form_img_type %s" %(form_img_type))
 
-        self.clerk_subject = subject
+        self.clerk_subject = self.subject_prefix() + subject
 
     def set_receipt_subject(self, form_img_type):
-        self.receipt_subject = lazy_gettext(u'voter_receipt_email_subject')
+        self.receipt_subject = self.subject_prefix() + lazy_gettext(u'voter_receipt_email_subject')
 
     def clerk_email(self):
         if self.clerk.county == 'TEST':
