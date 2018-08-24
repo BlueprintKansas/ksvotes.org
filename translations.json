@@ -431,8 +431,8 @@
   "5AB_id_shorthelp":{
     "wiki_step":"5AB",
     "ref":"5AB_id_shorthelp",
-    "en":"Your ID is used to match your signature",
-    "es":"Su identificación se usa para que coincida con su firma."
+    "en":"If you do not have a Kansas driver's license or nondriver's ID card, you can leave this blank and click Next for more instructions.",
+    "es":"Si no tiene una licencia de conducir de Kansas o una tarjeta de identificación de no conductor, puede dejar esto en blanco y hacer clic en Siguiente para obtener más instrucciones."
   },
   "5AB_id_help":{
     "wiki_step":"5AB",
@@ -586,8 +586,10 @@
   "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
   "btn_back":{ "en": "Back", "es": "Espalda" },
+  "btn_ok":{ "en": "Ok", "es": "Bien" },
   "btn_sign":{ "en": "Sign", "es": "Firmar" },
   "btn_submit":{ "en": "Submit", "es": "Enviar" },
+  "btn_try_again":{ "en": "Try again", "es": "Inténtalo de nuevo" },
   "session_interrupted_error": {
     "en": "To protect your privacy, your KSVotes session was restarted after a period of inactivity.",
     "es": "Para proteger su privacidad, su sesión de KSVotes se reinició después de un período de inactividad."

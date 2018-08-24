@@ -1,7 +1,7 @@
 <div class="modal fade" id="ksv-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header alert alert-info">
+      <div class="modal-header alert alert-warning">
         <h5 class="modal-title" id="">{{modal_title}}</h5>
       </div>
       <div class="modal-body">
@@ -13,11 +13,11 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-blue-grey" data-dismiss="modal">
           <i class="fa fa-times mr-2"></i>
-          {{_('btn_close')}}
+          {{cancel_btn or _('btn_close')}}
         </button>
         <button type="button" class="btn btn-outline-default submit">
           <i class="fa checkmark fa-check mr-2"></i>
-          {{_('btn_submit')}}
+          {{submit_btn or _('btn_submit')}}
         </button>
       </div>
     </div>

@@ -9,9 +9,8 @@
 <form name="step_AB5" id="step_AB5" method="POST" action="{{url_for('main.ab5_identification')}}">
  <fieldset>
   <legend>{{_('5_legend')}}</legend>
-  {{form.hidden_tag()}}
 
-  <div class="mb-4">{{_('5AB_id_help')}}</div>
+  {{form.hidden_tag()}}
 
   {{wtf.render_field(
       form.ab_identification,
@@ -25,13 +24,15 @@
       }
       )}}
 
+  <div class="small">{{_('5AB_id_shorthelp')}}</div>
+
   {% include 'form-buttons.html' %}
 
  </fieldset>
 </form>
 {% endblock %}
 
-{% with modal_body = _('5AB_id_help'), modal_title = _('important') %}
+{% with modal_body=_('5AB_id_help'), modal_title=_('important'), submit_btn=_('btn_ok'), cancel_btn=_('btn_try_again') %}
 {% include '_confirm_modal.html' %}
 {% endwith %}
 
