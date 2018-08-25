@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SelectMultipleField, widgets, StringField
-from wtforms.validators import DataRequired, Regexp, Optional
+from wtforms.validators import DataRequired, Regexp
 from flask_babel import lazy_gettext
 
 class MultiCheckboxField(SelectMultipleField):
@@ -19,12 +19,12 @@ class MultiCheckboxField(SelectMultipleField):
 
 # based on
 # https://stackoverflow.com/questions/8463209/how-to-make-a-field-conditionally-optional-in-wtforms
-class OptionalUnlessFieldContains(Optional):
+class RequiredIfFieldContains(DataRequired):
 
     def __init__(self, other_field_name, value, *args, **kwargs):
         self.other_field_name = other_field_name
         self.value = value
-        super(OptionalUnlessFieldContains, self).__init__(*args, **kwargs)
+        super(RequiredIfFieldContains, self).__init__(*args, **kwargs)
 
     def __call__(self, form, field):
         other_field = form._fields.get(self.other_field_name)
@@ -35,8 +35,7 @@ class OptionalUnlessFieldContains(Optional):
             if string in other_field.data:
                 other_field_contains = True
         if other_field_contains:
-            super(OptionalUnlessFieldContains, self).__call__(form, field)
-
+            super(RequiredIfFieldContains, self).__call__(form, field)
 
 class FormAB1(FlaskForm):
     elections = MultiCheckboxField(
@@ -47,12 +46,12 @@ class FormAB1(FlaskForm):
 
     perm_reason = StringField(
         lazy_gettext(u'1AB_perm_reason'),
-        validators=[OptionalUnlessFieldContains('elections', 'permanent')]
+        validators=[RequiredIfFieldContains('elections', ['permanent'])]
     )
 
     party = SelectField(
         lazy_gettext(u'1AB_select_party'),
         choices=[('', lazy_gettext(u'1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
-        validators=[OptionalUnlessFieldContains('elections', ['Prim', 'permanent'])]
+        validators=[RequiredIfFieldContains('elections', ['Prim', 'permanent'])]
     )
 
