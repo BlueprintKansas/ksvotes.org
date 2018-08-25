@@ -70,12 +70,12 @@ $(function () {
   $form.parsley();
 
   function requireParty() {
-    $('#party').attr("required", true);
-    $party_picker.show();
+    $('#party').prop('required', true);
+    $party_picker.show(400);
   }
   function unrequireParty() {
-    $('#party').removeAttr("required");
-    $party_picker.hide();
+    $('#party').prop('required', false);
+    $party_picker.hide(400);
   }
   function disableElectionBoxes() {
     $election_boxes.prop('disabled', true);
@@ -89,12 +89,12 @@ $(function () {
   function enablePermanentBox() {
     $permanent_box.prop('disabled', false);
   }
-  function enablePermReason() {
-    $perm_reason_div.show();
+  function requirePermReason() {
+    $perm_reason_div.show(400);
     $('#perm_reason').prop('required', true);
   } 
-  function disablePermReason() {
-    $perm_reason_div.hide();
+  function unrequirePermReason() {
+    $perm_reason_div.hide(400);
     $('#perm_reason').prop('required', false);
   }
   function anyElectionChecked() {
@@ -134,7 +134,7 @@ $(function () {
           disablePermanentBox();
         }
         else {
-          $perm_reason.hide();
+          unrequirePermReason();
         }
       }
       else {
@@ -148,11 +148,11 @@ $(function () {
         if (!is_radio) {
           disableElectionBoxes();
         }
-        enablePermReason();
+        requirePermReason();
       }
       else {
         enableElectionBoxes();
-        disablePermReason();
+        unrequirePermReason();
       }
     }
   });
@@ -180,7 +180,7 @@ $(function () {
       disablePermanentBox();
     }
     if (election == 'permanent') {
-      enablePermReason();
+      requirePermReason();
       disableElectionBoxes();
     }
   });
