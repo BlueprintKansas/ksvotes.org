@@ -179,11 +179,15 @@ $(function () {
       disablePermanentBox();
     }
     if (election.match(/General/)) {
-      disablePermanentBox();
+      if (!is_radio) {
+        disablePermanentBox();
+      }
     }
     if (election == 'permanent') {
       requirePermReason();
-      disableElectionBoxes();
+      if (!is_radio) {
+        disableElectionBoxes();
+      }
     }
   });
 
