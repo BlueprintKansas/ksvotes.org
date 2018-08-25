@@ -28,7 +28,7 @@ class NVRISClient():
         if self.nvris_url == 'TESTING': # magic URL for testing mode
             return signature_img_string
 
-        if self.registrant.try_value('ab_permanent'):
+        if election == 'permanent':
             flavor = 'ksav2'
         else:
             flavor = 'ksav1'
@@ -75,7 +75,7 @@ class NVRISClient():
 
     def parse_election_date(self, election):
         import re
-        pattern = '(Primary|General) \((.+)\)'
+        pattern = '(Prim\w+|General) \((.+)\)'
         m = re.match(pattern, election)
         return m.group(2)
 
@@ -101,6 +101,33 @@ class NVRISClient():
             'mailing_state': r.try_value('mail_state'),
             'mailing_zip': r.try_value('mail_zip'),
             'election_date': self.parse_election_date(election),
+            'signature': sig,
+            'signature_date': r.signed_at.strftime('%m/%d/%Y') if sig else False,
+            'phone_number': r.try_value('phone'),
+            'democratic': True if r.party.lower() == 'democratic' else False,
+            'republican': True if r.party.lower() == 'republican' else False,
+        }
+
+    def marshall_ksav2_payload(self, **kwargs):
+        r = self.registrant
+        sig = r.try_value('signature_string', None)
+        return {
+            'state': 'Kansas', # TODO r.try_value('state'),
+            'county_2': r.county, # TODO corresponds with 'state'
+            'county_1': r.county, # TODO different?
+            'id_number': r.try_value('ab_identification'),
+            'last_name': r.try_value('name_last'),
+            'first_name': r.try_value('name_first'),
+            'middle_initial': r.middle_initial(),
+            'dob': r.try_value('dob'),
+            'residential_address': "{street} {unit}".format(street=r.try_value('addr'), unit=r.try_value('unit')),
+            'residential_city': r.try_value('city'),
+            'residential_state': r.try_value('state'),
+            'residential_zip': r.try_value('zip'),
+            'mailing_address': "{street} {unit}".format(street=r.try_value('mail_addr'), unit=r.try_value('mail_unit')),            'mailing_city': r.try_value('mail_city'),
+            'mailing_state': r.try_value('mail_state'),
+            'mailing_zip': r.try_value('mail_zip'),
+            'reason_for_perm': r.try_value('perm_reason'),
             'signature': sig,
             'signature_date': r.signed_at.strftime('%m/%d/%Y') if sig else False,
             'phone_number': r.try_value('phone'),

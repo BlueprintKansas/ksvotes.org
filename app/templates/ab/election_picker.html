@@ -25,12 +25,24 @@
     {{_('Required')}}
   </div>
   <div id="party-picker" style="display:none">
-  {{wtf.render_field(
+    {{wtf.render_field(
         form.party,
         _('1AB_party_help'),
         {
           'data-parsley-trigger':'focusout',
           'data-parsley-required-message': _('Required')
+        }
+        )}}
+  </div>
+  <div id="permanent-reason" style="display:none">
+    <div class="small">{{_('1AB_perm_help')}}</div>
+    {{wtf.render_field(
+        form.perm_reason,
+        _('1AB_perm_help'),
+        {
+          'data-parsley-error-message': _('Required'),
+          'autocomplete':'off',
+          'data-parsley-trigger':'focusout',
         }
         )}}
   </div>
@@ -47,51 +59,150 @@ $(function () {
   // toggle party select visibility/requirement if elections contains a primary
   let $party_picker = $('#party-picker');
   $party_picker.hide();
+  let $perm_reason_div = $('#permanent-reason');
+  $perm_reason_div.hide();
+  let $election_boxes = $("#elections input[value!='permanent']");
+  let $permanent_box = $("#elections input[value='permanent']");
+  let elections_error_msg = $('#elections-required-error');
 
   //initialize form with parsley validation
   let $form = $('#step_ab1');
   $form.parsley();
 
   function requireParty() {
-    $('#party').attr("required", true);
-    $party_picker.show();
+    $('#party').prop('required', true);
+    $party_picker.show(400);
   }
   function unrequireParty() {
-    $('#party').removeAttr("required");
-    $party_picker.hide();
+    $('#party').prop('required', false);
+    $party_picker.hide(400);
+  }
+  function disableElectionBoxes() {
+    $election_boxes.prop('disabled', true);
+  }
+  function enableElectionBoxes() {
+    $election_boxes.prop('disabled', false);
+  }
+  function disablePermanentBox() {
+    $permanent_box.prop('disabled', true);
+  }
+  function enablePermanentBox() {
+    $permanent_box.prop('disabled', false);
+  }
+  function requirePermReason() {
+    $perm_reason_div.show(400);
+    $('#perm_reason').prop('required', true);
+    requireParty();
+  } 
+  function unrequirePermReason() {
+    $perm_reason_div.hide(400);
+    $('#perm_reason').prop('required', false);
+    unrequireParty();
+  }
+  function anyElectionChecked() {
+    let checked = false;
+    $election_boxes.each(function(idx, el) {
+      let c = $(el).is(':checked');
+      if (c) {
+        checked = true;
+      }
+    });
+    return checked;
   }
 
+  // manage state of the checkboxes
   $('#elections input').change(function(e) {
     let checked = $(this).is(':checked');
     let election = $(this).val();
-    if (election.match(/Primary/)) {
+    let is_radio = $(this).attr('type') == 'radio';
+    if (checked) {
+      elections_error_msg.hide();
+    }
+    if (election.match(/Prim/)) {
       if (checked) {
         requireParty();
+        disablePermanentBox();
       }
       else {
         unrequireParty();
+        if (!anyElectionChecked()) {
+          enablePermanentBox();
+        }
+      }
+    }
+    else if (election.match(/General/)) {
+      if (checked) {
+        if (!is_radio) {
+          disablePermanentBox();
+        }
+        else {
+          unrequirePermReason();
+        }
+      }
+      else {
+        if (!anyElectionChecked()) {
+          enablePermanentBox();
+        }
+      }
+    }
+    else if (election == 'permanent') {
+      if (checked) {
+        if (!is_radio) {
+          disableElectionBoxes();
+        }
+        requirePermReason();
+      }
+      else {
+        enableElectionBoxes();
+        unrequirePermReason();
       }
     }
   });
 
-  // if we only have one election, check it.
-  if ($('#elections input').length == 1) {
-    $('#elections input').prop('checked', true);
+  // if we only have one election, make them radio buttons.
+  if ($election_boxes.length == 1) {
+    $election_boxes.prop('checked', true);
+    $('#elections input').attr('type', 'radio');
   }
+
+  // initial state if re-visiting page
+  $('#elections input').each(function(idx, el) {
+    let $el = $(el);
+    let checked = $el.is(':checked');
+    let election = $el.val();
+    let is_radio = $el.attr('type') == 'radio';
+    if (!checked) {
+      return;
+    }
+    if (election.match(/Prim/)) {
+      requireParty();
+      disablePermanentBox();
+    }
+    if (election.match(/General/)) {
+      disablePermanentBox();
+    }
+    if (election == 'permanent') {
+      requirePermReason();
+      disableElectionBoxes();
+    }
+  });
 
   // handle the Required logic ourselves (too complex for Parsley)
   $('#btn-next').click(function(ev) {
     let hasPrimary = false;
     let oneChecked = false;
+    let hasPermanent = false;
     let elections = $('#elections');
-    let error_msg = $('#elections-required-error');
-    error_msg.hide(); // always clear to start with.
+    elections_error_msg.hide(); // always clear to start with.
     $('#elections input').each(function(idx, el) {
       let checkbox = $(el);
       if (checkbox.is(':checked')) {
         oneChecked = true;
-        if (checkbox.val().match(/Primary/)) {
+        if (checkbox.val().match(/Prim/)) {
           hasPrimary = true;
+        }
+        if (checkbox.val() == 'permanent') {
+          hasPermanent = true;
         }
       }
     });
@@ -100,12 +211,19 @@ $(function () {
     if (!oneChecked) {
       // handle field invalidation manually because parsley does not catch it.
       //console.log('no elections checked');
-      error_msg.show();
+      elections_error_msg.show();
       ev.preventDefault();
       return false;
     }
     if (hasPrimary) {
       if ($('#party').val() == "") {
+        $form.parsley().validate();
+        ev.preventDefault();
+        return false;
+      }
+    }
+    if (hasPermanent) {
+      if ($('#perm_reason').val() == "" || $('#party').val() == "") {
         $form.parsley().validate();
         ev.preventDefault();
         return false;

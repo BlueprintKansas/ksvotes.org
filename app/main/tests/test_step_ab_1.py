@@ -71,3 +71,45 @@ def test_ab_1_general_and_primary_with_party(app, db_session, client):
     assert response.status_code == 302
     assert ('/ab/address' in redirect_data) == True
 
+def test_ab_1_permanent_no_party(app, db_session, client):
+    registrant = create_registrant(db_session)
+    with client.session_transaction() as http_session:
+        http_session['session_id'] = str(registrant.session_id)
+
+    form_payload = {
+      "elections": ['permanent']
+    }
+
+    response = client.post('/ab/election_picker', data=form_payload, follow_redirects=False)
+    assert response.status_code != 302
+
+def test_ab_1_permanent_no_reason(app, db_session, client):
+    registrant = create_registrant(db_session)
+    with client.session_transaction() as http_session:
+        http_session['session_id'] = str(registrant.session_id)
+
+    form_payload = {
+      "elections": ['permanent'],
+      "party": 'Republican',
+    }
+
+    response = client.post('/ab/election_picker', data=form_payload, follow_redirects=False)
+    assert response.status_code != 302
+
+
+def test_ab_1_permanent_with_party_and_reason(app, db_session, client):
+    registrant = create_registrant(db_session)
+    with client.session_transaction() as http_session:
+        http_session['session_id'] = str(registrant.session_id)
+
+    form_payload = {
+      "elections": ['permanent'],
+      "party": 'Republican',
+      "perm_reason": 'some reason',
+    }
+
+    response = client.post('/ab/election_picker', data=form_payload, follow_redirects=False)
+    redirect_data = response.data.decode()
+    assert response.status_code == 302
+    assert ('/ab/address' in redirect_data) == True
+

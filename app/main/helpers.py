@@ -32,13 +32,13 @@ def construct_county_choices(default):
 
 def parse_election_date(election):
     import re
-    import dateutil.parser
-    pattern = '(Primary|General) \((.+)\)'
+    import dateparser
+    pattern = '(Primary|Primaria|General) \((.+)\)'
     m = re.match(pattern, str(election))
     if not m:
         return None
     date = m.group(2)
-    return dateutil.parser.parse(date)
+    return dateparser.parse(date)
 
 def list_of_elections():
     from datetime import datetime, timedelta
@@ -55,6 +55,7 @@ def list_of_elections():
         elect_list.append((lazy_gettext(u'1AB_select_election_primary'), lazy_gettext(u'1AB_select_election_primary')))
 
     elect_list.append((lazy_gettext(u'1AB_select_election_general'), lazy_gettext(u'1AB_select_election_general')))
+    elect_list.append(('permanent', lazy_gettext(u'1AB_select_perm')))
     return elect_list
 
 class RequiredIfBool(DataRequired):
