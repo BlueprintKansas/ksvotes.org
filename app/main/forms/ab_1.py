@@ -30,7 +30,11 @@ class OptionalUnlessFieldContains(Optional):
         other_field = form._fields.get(self.other_field_name)
         if other_field is None:
             raise Exception('no field named "%s" in form' % self.other_field_name)
-        if self.value not in other_field.data:
+        other_field_contains = False
+        for string in self.value:
+            if string in other_field.data:
+                other_field_contains = True
+        if other_field_contains:
             super(OptionalUnlessFieldContains, self).__call__(form, field)
 
 
@@ -49,6 +53,6 @@ class FormAB1(FlaskForm):
     party = SelectField(
         lazy_gettext(u'1AB_select_party'),
         choices=[('', lazy_gettext(u'1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
-        validators=[OptionalUnlessFieldContains('elections', 'Primary')]
+        validators=[OptionalUnlessFieldContains('elections', ['Prim', 'permanent'])]
     )
 
