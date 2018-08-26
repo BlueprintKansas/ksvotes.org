@@ -77,11 +77,14 @@ def test_ab_1_permanent_no_party(app, db_session, client):
         http_session['session_id'] = str(registrant.session_id)
 
     form_payload = {
-      "elections": ['permanent']
+      "elections": ['permanent'],
+      "perm_reason": 'some reason',
     }
 
     response = client.post('/ab/election_picker', data=form_payload, follow_redirects=False)
-    assert response.status_code != 302
+    assert response.status_code == 302
+    redirect_data = response.data.decode()
+    assert ('/ab/address' in redirect_data) == True
 
 def test_ab_1_permanent_no_reason(app, db_session, client):
     registrant = create_registrant(db_session)

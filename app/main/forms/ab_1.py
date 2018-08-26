@@ -50,8 +50,8 @@ class FormAB1(FlaskForm):
     )
 
     party = SelectField(
-        lazy_gettext(u'1AB_select_party'),
+        lazy_gettext(u'1AB_party_help'),
         choices=[('', lazy_gettext(u'1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
-        validators=[RequiredIfFieldContains('elections', ['Prim', 'permanent'])]
+        validators=[RequiredIfFieldContains('elections', ['Prim'])]
     )
 
