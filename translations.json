@@ -253,14 +253,14 @@
     "es":"La naturaleza de mi discapacidad o enfermedad permanente es:"
   },
   "1AB_select_party":{
-    "wiki_step":"1AB",
-    "ref":"1AB_select_party",
     "en":"Select a Political Party...",
     "es":"Partido Politico"
   },
+  "1AB_title":{
+    "en":"Election",
+    "es":"Elección"
+  },
   "1AB_party_help":{
-    "wiki_step":"1AB",
-    "ref":"1AB_party_help",
     "en":"Political party is required only when requesting a primary election ballot; to vote in a party's primary election, you must be a registered member of that party.",
     "es":"El partido político es requerido solo cuando solicita una boleta electoral primaria; para votar en las elecciones primarias de un partido, debe ser un miembro registrado de ese partido."
   },
