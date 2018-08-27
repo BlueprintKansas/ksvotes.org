@@ -34,11 +34,11 @@ class RadioBooleanField(RadioField):
 class FormVR1(FlaskForm):
     is_citizen = RadioBooleanField(
         lazy_gettext(u'1VR_citizen'),
-        choices=[(False, lazy_gettext(u'choice_no')), (True, lazy_gettext(u'choice_yes'))],
+        choices=[(True, lazy_gettext(u'choice_yes')), (False, lazy_gettext(u'choice_no'))],
         default='False', # always require user action, string not boolean.
         validators=[DataRequired(message=lazy_gettext(u'Required'))]
     )
     is_eighteen = RadioBooleanField(
         lazy_gettext(u'1VR_18'),
-        choices=[(False, lazy_gettext(u'choice_no')), (True, lazy_gettext(u'choice_yes'))],
+        choices=[(True, lazy_gettext(u'choice_yes')), (False, lazy_gettext(u'choice_no'))],
     )
