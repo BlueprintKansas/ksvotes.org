@@ -168,13 +168,13 @@
     "wiki_step":"1AB",
     "ref":"1AB_reg_found_title",
     "en":"Success! We found your Kansas voter registration.",
-    "es":"¡Éxito! Encontramos su registro de votante en Kansas."
+    "es":"¡Lo Logramos! Encontramos su registro de votante en Kansas."
   },
   "1AB_whats_next":{
     "wiki_step":"1AB",
     "ref":"1AB_whats_next",
     "en":"What do you want to do next?",
-    "es":"¿Qué quieres hacer ahora?"
+    "es":"¿Qué desea hacer ahora?"
   },
   "1AB_change_reg_link":{
     "en":"Register to vote",
@@ -198,7 +198,7 @@
     "wiki_step":"1AB",
     "ref":"1AB_apply_perm_ab_link",
     "en":"Apply for a Permanent Advance Ballot.",
-    "es":"Solicite una Boleta de Avance Permanente."
+    "es":"Solicitar una Boleta Permanente de voto anticipado."
   },
   "1AB_sorry_no_reg_title":{
     "en":"You are not registered to vote.",
@@ -523,8 +523,8 @@
   "AB7_affirm":{
     "wiki_step":"AB7",
     "ref":"AB7_affirm",
-    "en":"I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated.",
-    "es":"Declaro solemnemente, bajo pena de perjurio, que soy un elector calificado que reside en la dirección mencionada anteriormente. Tengo derecho a votar una boleta de votación anticipada y no he votado y no votaré en las elecciones que se celebrarán en la (s) fecha (s) indicada (s)."
+    "en":"I do solemnly affirm under penalty of perjury that I am a qualified elector residing at the address listed above, or I am authorized to sign for the above named voter who has a disability preventing the voter from signing an application. I am entitled to vote an advance voting ballot and I have not voted and will not otherwise vote at the election(s) to be held on the date(s) indicated. If applying for a permanent advance ballot, I affirm that I will not vote more than once in any election.",
+    "es":"Afirmo solemnemente que soy un elector calificado del distrito electoral declarado mas arriba en esta misma forma, residente en la dirección declarada mas arriba en esta misma forma. Estoy autorizado para participar en la votación previa y afirmo que no he votado con anterioridad ni votaré posteriormente en la elección a llevarse a cabo la(s) fecha(s) indicada(s)."
   },
   "8VR_confirm_1":{
     "en": "Success! We have submitted your application.",
