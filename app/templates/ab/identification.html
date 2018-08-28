@@ -46,8 +46,13 @@ $(function () {
     validateString: function(value) {
       $('.parsley-errors-list').show();
       let dlid = value.replace(/\W/g, '');
-      let parts = dlid.match(/^(\w\d\w\d\w|K\d{8}|\d{9})$/);
+      let parts = dlid.match(/^(\w\d\w\d\w|K\d{8}|\d{9})$/i);
       if (parts) {
+        if (dlid.length == 9) {
+          let segs = dlid.match(/^(\w\w\w)(\w\w)(\w\w\w\w)$/);
+          segs.shift();
+          $('#ab_identification').val(segs.join('-').toUpperCase()); // normalize
+        }
         $('.parsley-errors-list').hide(); // in case we reloaded
         return true;
       }

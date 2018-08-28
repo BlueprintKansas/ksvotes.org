@@ -11,7 +11,7 @@ def test_step_ab5_is_complete_when_null(app, db_session, client):
 
 def test_step_ab5_is_complete_when_valid_pattern(app, db_session, client):
     form_payload = {
-        "ab_identification": "K00000000"
+        "ab_identification": "K00-00-0000"
     }
     step = Step_AB_5(form_payload)
     assert step.run() == True
