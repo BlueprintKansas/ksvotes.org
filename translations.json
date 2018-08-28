@@ -643,8 +643,8 @@
     "es":"Seleccione el condado en el que reside actualmente."
   },
   "county_clerk_email": {
-    "en":"Dear County Elections Official,\nPlease see attached for a completed voter registration form, completed using KSVotes.org. If you have any questions about this particular registration, please call the voter using the information on the form; for general questions about KSVotes.org and this registration process, please call Kate Davis of Blueprint Kansas at 785-414-9678.",
-    "es":"Dear County Elections Official,\nPlease see attached for a completed voter registration form, completed using KSVotes.org. If you have any questions about this particular registration, please call the voter using the information on the form; for general questions about KSVotes.org and this registration process, please call Kate Davis of Blueprint Kansas at 785-414-9678."
+    "en":"Dear County Elections Official,\nPlease see attached for a voter form, completed using KSVotes.org. If you have any questions about this particular submission, please call the voter using the information on the form; for general questions about KSVotes.org and this registration process, please call Kate Davis of Blueprint Kansas at 785-414-9678.",
+    "es":"Dear County Elections Official,\nPlease see attached for a voter form, completed using KSVotes.org. If you have any questions about this particular submission, please call the voter using the information on the form; for general questions about KSVotes.org and this registration process, please call Kate Davis of Blueprint Kansas at 785-414-9678."
   },
   "voter_receipt_email_subject": {
     "en": "Thank you for being a voter!",
