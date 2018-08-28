@@ -49,9 +49,12 @@ def test_valid_ab_5_redirects_to_preview(app,db_session,client):
     with client.session_transaction() as http_session:
         http_session['session_id'] = str(registrant.session_id)
 
-    form_payload = {"ab_identification": "K00-00-0000"}
+    form_payload = {"ab_identification": "K00000000"}
 
     response = client.post('/ab/identification', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
     assert response.status_code == 302
     assert ('/ab/preview' in redirect_data) == True
+
+    reg = Registrant.find_by_session(registrant.session_id)
+    assert reg.try_value('ab_identification') == 'K00-00-0000'

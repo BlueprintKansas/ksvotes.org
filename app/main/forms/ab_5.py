@@ -6,7 +6,10 @@ from app.main.helpers import KS_DL_PATTERN
 
 class KSIDField(StringField):
     def process_formdata(self, valuelist):
-        self.data = valuelist[0].replace('-', '').replace('/', '')
+        dl = valuelist[0].replace('-', '').replace('/', '')
+        if len(dl) == 9:
+            dl = '-'.join((dl[:3], dl[3:5], dl[5:]))
+        self.data = dl
 
 class FormAB5(FlaskForm):
     ab_identification = KSIDField(
