@@ -19,7 +19,7 @@ class CountyMailer():
             raise Exception("No Clerk for County %s" %(registrant.county))
         self.set_clerk_subject(form_img_type)
         self.set_receipt_subject(form_img_type)
-        self.receipt_body = lazy_gettext(u'9_confirm_email').format(
+        self.receipt_body = self.get_body(form_img_type).format(
             firstname=registrant.try_value('name_first'),
             county=self.clerk.county,
             officer=self.clerk.officer,
@@ -44,6 +44,16 @@ class CountyMailer():
             raise Exception("Unknown form_img_type %s" %(form_img_type))
 
         self.clerk_subject = self.subject_prefix() + subject
+
+    def get_body(self, form_img_type):
+        body = 'No Body'
+        if form_img_type == 'ab_forms':
+            body = lazy_gettext(u'9AB_confirm_email')
+        elif form_img_type == 'vr_form':
+            body = lazy_gettext(u'9_confirm_email')
+        else:
+            raise Exception("Unknown form_img_type %s" %(form_img_type))
+        return body
 
     def set_receipt_subject(self, form_img_type):
         self.receipt_subject = self.subject_prefix() + lazy_gettext(u'voter_receipt_email_subject')
