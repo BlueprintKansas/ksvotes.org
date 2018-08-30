@@ -202,13 +202,13 @@
     </script>
 
     <script>
-    // hide flash messages after 3 secs
+    // hide flash messages after N secs
       $(function() {
         window.setTimeout(function() {
           $(".flashes").fadeTo(500, 0).slideUp(500, function(){
             $(this).remove();
           });
-        }, 3000);
+        }, 5000);
       });
     </script>
     <script>

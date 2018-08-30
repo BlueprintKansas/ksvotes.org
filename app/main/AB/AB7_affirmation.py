@@ -18,9 +18,12 @@ def ab7_affirmation():
     form = FormAB7()
     clerk = reg.try_clerk()
 
-    # if we don't have a AB form to affirm, redirect to Step 0
+    # if we don't have a signed AB form to affirm, redirect
     if not reg.try_value('ab_forms', False):
-        return redirect(url_for('main.index'))
+        if not reg.try_value('signature_string', False):
+            return redirect(url_for('main.index'))
+        else:
+            return redirect(url_for('main.ab6_preview_sign'))
 
     ab_forms = reg.try_value('ab_forms')
 
