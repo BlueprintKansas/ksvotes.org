@@ -662,6 +662,10 @@
     "en": "We had some problem sending your form(s). We are aware of the issue and will be in touch.",
     "es": "Tuvimos algún problema al enviar tu (s) formulario (s). Somos conscientes del problema y estaremos en contacto."
   },
-  "important": {"en": "Important!", "es": "¡Importante!" }
+  "important": {"en": "Important!", "es": "¡Importante!" },
+  "ab_forms_county_changed": {
+    "en": "Your change of county has been applied to the form(s).",
+    "es": "Su cambio de condado se ha aplicado a la(s) forma(s)."
+  }
 
 }

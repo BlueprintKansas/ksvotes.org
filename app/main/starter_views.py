@@ -114,6 +114,12 @@ def change_county():
 
     current_app.logger.info('new county %s return to %s' %(new_county, redirect_url))
     reg.county = new_county
+
+    # must invalidate any cached images since county is on the forms
+    if reg.try_value('ab_forms'):
+        reg.sign_ab_forms()
+        flash(lazy_gettext('ab_forms_county_changed'), 'info')
+
     reg.save(db.session)
 
     return redirect(redirect_url)

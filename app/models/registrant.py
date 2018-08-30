@@ -9,7 +9,6 @@ from sqlalchemy.dialects.postgresql import UUID
 import uuid
 import ksmyvoteinfo
 
-
 def encryptem(data):
     f = Fernet(os.environ.get("CRYPT_KEY").encode())
     encrypted = f.encrypt(json.dumps(data).encode())
@@ -190,4 +189,26 @@ class Registrant(db.Model):
             return False
         else:
             return True
+
+    def elections(self):
+        return self.try_value('elections').split('|')
+
+    def sign_ab_forms(self):
+        sig_string = self.try_value('signature_string', None)
+        if not sig_string:
+            return False
+
+        from app.services.nvris_client import NVRISClient
+        nvris_client = NVRISClient(self)
+        ab_forms = []
+        for election in self.elections():
+            signed_ab_form = nvris_client.get_ab_form(election)
+            if signed_ab_form:
+                ab_forms.append(signed_ab_form)
+
+        if len(ab_forms) > 0:
+            self.update({'ab_forms':ab_forms})
+            self.signed_at = datetime.utcnow()
+
+        return ab_forms
 

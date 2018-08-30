@@ -19,7 +19,7 @@ def ab1_election_picker():
     if request.method == 'GET':
         # must assign at run time for date math.
         form.elections.choices = list_of_elections()
-        form.elections.data = reg.try_value('elections').split('|')
+        form.elections.data = reg.elections()
 
     if request.method == "POST" and form.validate_on_submit():
         step = Step_AB_1(form.data)
