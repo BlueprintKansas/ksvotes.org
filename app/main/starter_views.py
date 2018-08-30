@@ -137,7 +137,11 @@ def clerk_details(county):
 # easy to remember
 @main.route('/demo', methods=['GET'])
 def demo_mode():
-    return redirect('/ref?ref=demo')
+    return redirect(url_for('main.referring_org', ref='demo'))
+
+@main.route('/r/<refcode>', methods=['GET'])
+def make_davis_happy_redirect(refcode):
+    return redirect(url_for('main.referring_org', ref=refcode))
 
 @main.route('/ref', methods=['GET', 'POST'])
 def referring_org():
