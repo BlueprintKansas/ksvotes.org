@@ -47,6 +47,10 @@
     "en":"KSVotes.org was built in partnership with Loud Light and GPS Impact",
     "es":"KSVotes.org fue construido en asociación con Loud Light y GPS Impact, traducido por El Centro Inc."
   },
+  "0_footer_about_us":{
+    "en": "About this site",
+    "es": "Sobre este sitio"
+  },
   "0_name_help":{
     "wiki_step":"0",
     "ref":"0_name_help",
