@@ -9,13 +9,13 @@
     "wiki_step":"0",
     "ref":"0_lead",
     "en":"Your Online Voter Registration and Information Service",
-    "es":"Su registro de votantes en línea y servicio de información"
+    "es":"Su registro de votante en línea y servicio de información"
   },
   "0_intro":{
     "wiki_step":"0",
     "ref":"0_intro",
     "en":"We can help you register to vote, check your registration, or apply to vote by mail. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
-    "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o postularse para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
+    "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o solicite para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
   "0_form_explain":{
     "wiki_step":"0",
@@ -84,7 +84,7 @@
     "wiki_step":"0",
     "ref":"0_email",
     "en":"Email Address",
-    "es":"direccion de correo electronico"
+    "es":"Correo Electrónico"
   },
   "0_email_help":{
     "wiki_step":"0",
@@ -316,7 +316,7 @@
     "en":"What is your home address?",
     "es":"¿Cual es la dirección de tu casa?"
   },
-  "3_addr":{"wiki_step":"3","ref":"3_addr","en":"Home Address","es":"Direccion de casa"},
+  "3_addr":{"wiki_step":"3","ref":"3_addr","en":"Home Address","es":"Domicilio"},
   "3_addr_help":{
     "wiki_step":"3",
     "ref":"3_addr_help",
@@ -324,7 +324,7 @@
     "es":"Su dirección de residencia determina el precinto en el que usted vota. \"Residencia\" se define en la ley de Kansas como \"el lugar adoptado por una persona como lugar de habitación de esa persona, y al cual, cuando esa persona está ausente, dicha persona tiene la intención de regresar\"."
   },
   "3_unit":{"wiki_step":"3","ref":"3_unit","en":"Apt/Lot","es":"Apt / lote"},
-  "3_city":{"wiki_step":"3","ref":"3_city","en":"City/Town","es":"Ciudada/Pueblo"},
+  "3_city":{"wiki_step":"3","ref":"3_city","en":"City/Town","es":"Ciudad/Pueblo"},
   "3_state":{
     "en":"KSVotes.org is limited to Kansas residents",
     "es":"KSVotes.org está limitado a los residentes de Kansas"
@@ -410,7 +410,7 @@
     "wiki_step":"5VR",
     "ref":"5VR_id_shorthelp",
     "en":"Your ID should be your <b>drivers license #</b>, <b>nondrivers id card #</b>, or the <b>last 4 digits of your Social Security Number</b>.",
-    "es":"Su ID debe ser <b>número de licencia de conducir</b>, <b>número de tarjeta de identificación de no conductores</b>, <b>los últimos 4 dígitos del número de seguro social o NINGUNO</b>."
+    "es":"Su ID debe de ser <b>número de licencia de conducir</b>, <b>número de tarjeta de identificación que no es para conducir</b>, <b>los últimos 4 dígitos del número de seguro social o NINGUNO</b>."
   },
   "5AB_id":{
     "wiki_step":"5AB",
@@ -518,7 +518,7 @@
     "wiki_step":"7",
     "ref":"7_affirm",
     "en":"I agree under penalty of perjury that I am a United States citizen and Kansas resident, I will be 18 years old before the next election, and if convicted of a felony, my rights have been restored. I have told the truth on this application, and, if applicable, I have abandoned my former residence and/or other name.",
-    "es":"Acepto bajo pena de perjurio que soy ciudadano de los Estados Unidos y residente de Kansas, tendré 18 años antes de las próximas elecciones y, si soy condenado por un delito grave, mis derechos han sido restablecidos. He dicho la verdad en esta solicitud y, en su caso, he abandonado mi residencia anterior y / u otro nombre."
+    "es":"Acepto bajo pena de perjurio que soy ciudadano de los Estados Unidos y residente de Kansas, tendré 18 años antes de las próximas elecciones y, si soy condenado por un delito grave, mis derechos han sido restablecidos. He dicho la verdad en esta solicitud y, si es aplicable, he abandonado mi residencia anterior y / u otro nombre."
   },
   "AB7_affirm":{
     "wiki_step":"AB7",
@@ -564,9 +564,9 @@
   },
   "AB1_legend": {"en": "Election(s)", "es": "Elección(s)" },
   "2_legend":{"wiki_step":"2","ref":"2_legend","en":"Name","es":"Nombre"},
-  "3_legend":{"wiki_step":"3","ref":"3_legend","en":"Address","es":"Direccion"},
+  "3_legend":{"wiki_step":"3","ref":"3_legend","en":"Address","es":"Dirección"},
   "4_legend":{"wiki_step":"4","ref":"4_legend","en":"Party","es":"Partido Politico"},
-  "5_legend":{"wiki_step":"5","ref":"5_legend","en":"Identification","es":"Identificacion"},
+  "5_legend":{"wiki_step":"5","ref":"5_legend","en":"Identification","es":"Identificación"},
   "6_legend":{"wiki_step":"6","ref":"6_legend","en":"Signature","es":"Firma"},
   "7_legend":{"wiki_step":"7","ref":"7_legend","en":"Affirmation","es":"Afirmacion"},
   "7_clerk_send_to":{
@@ -583,7 +583,7 @@
   "btn_close": { "en": "Cancel", "es": "Cancelar" },
   "btn_disabled":{ "en": "You have unsaved changes", "es": "Tiene cambios sin guardar" },
   "btn_next":{ "en": "Next", "es": "Siguiente" },
-  "btn_back":{ "en": "Back", "es": "Espalda" },
+  "btn_back":{ "en": "Back", "es": "Regresar" },
   "btn_ok":{ "en": "Ok", "es": "Bien" },
   "btn_sign":{ "en": "Sign", "es": "Firmar" },
   "btn_submit":{ "en": "Submit", "es": "Enviar" },
@@ -630,7 +630,7 @@
   },
   "skip_sos_check": {
     "en": "Skip the check, I know what I need to do",
-    "es": "Omita el cheque, sé lo que tengo que hacer"
+    "es": "Omitir verificación, sé lo que tengo que hacer"
   },
   "nav_register_vote": {
     "en": "Register to Vote",
