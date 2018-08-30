@@ -21,6 +21,11 @@ def privacy():
     g.locale = guess_locale()
     return render_template('privacy-policy.html')
 
+@main.route('/about', methods=['GET'])
+def about_us():
+    g.locale = guess_locale()
+    return render_template('about.html')
+
 #step 0 / 0x
 @main.route('/', methods=["GET", "POST"])
 @InSession
