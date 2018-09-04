@@ -77,7 +77,12 @@ class NVRISClient():
         import re
         pattern = '(Prim\w+|General) \((.+)\)'
         m = re.match(pattern, election)
-        return m.group(2)
+        if m:
+            return m.group(2)
+        else:
+            current_app.logger.error("%s No match for election '%s'" %(self.registrant.session_id, election))
+            return '(none)'
+
 
     def marshall_ksav1_payload(self, **kwargs):
         election = kwargs['election']
