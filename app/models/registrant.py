@@ -118,7 +118,7 @@ class Registrant(db.Model):
 
     def best_zip5(self):
         validated_addr = self.try_value('validated_addresses')
-        if validated_addr and 'current_address' in validated_addr:
+        if validated_addr and 'current_address' in validated_addr and 'zip5' in validated_addr['current_address']:
             return validated_addr['current_address']['zip5']
         return self.try_value('zip')
 
