@@ -55,8 +55,8 @@ def load_zipcodes():
 @manager.command
 def redact_pii():
     from datetime import datetime, timedelta
-    two_days_ago = timedelta(days=2)
-    Registrant.redact_pii(datetime.utcnow() - two_days_ago)
+    days_ago = timedelta(days=int(os.getenv('REDACT_OLDER_THAN_DAYS', 2)))
+    Registrant.redact_pii(datetime.utcnow() - days_ago)
 
 
 if __name__ == "__main__":
