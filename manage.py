@@ -58,6 +58,13 @@ def redact_pii():
     days_ago = timedelta(days=int(os.getenv('REDACT_OLDER_THAN_DAYS', 2)))
     Registrant.redact_pii(datetime.utcnow() - days_ago)
 
+@manager.command
+def export_registrants():
+    from app.services.registrant_exporter import RegistrantExporter
+    regs = Registrant.query.all()
+    exporter = RegistrantExporter(regs)
+    exporter.export()
+
 
 if __name__ == "__main__":
     write_pid_file()

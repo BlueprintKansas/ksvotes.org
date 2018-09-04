@@ -81,4 +81,7 @@ deploy-prod-fixtures:
 redact:
 	python manage.py redact_pii
 
-.PHONY: deps venv test dbmigrate run testcov fixtures
+export:
+	python manage.py export_registrants
+
+.PHONY: deps venv test dbmigrate run testcov fixtures redact export
