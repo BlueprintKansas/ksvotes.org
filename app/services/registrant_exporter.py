@@ -13,11 +13,19 @@ class RegistrantExporter():
 
         unique_field_names = {}
         reg_dicts = []
+        skip_fields = [
+            'csrf_token',
+            'identification',
+            'ab_identification',
+            'vr_form',
+            'ab_forms',
+            'signature_string'
+        ]
         for r in self.list_of_regs:
             r_dict = dict(r.__dict__)
             reg_dicts.append(r_dict)
             for k, v in r.registration_value.items():
-                if k == 'csrf_token':
+                if k in skip_fields:
                     continue
                 unique_field_names['r_'+k] = True
                 r_dict['r_'+k] = v
