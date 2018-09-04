@@ -171,6 +171,23 @@ class Registrant(db.Model):
             r.save(db.session)
             return r
 
+    @classmethod
+    def for_each(cls, func, *where):
+        res = cls.query.filter(*where)
+        for r in res:
+            func(r)
+
+    @classmethod
+    def redact(cls, reg):
+        fields = ['identification', 'ab_identification', 'vr_form', 'ab_forms', 'signature_string']
+        for f in fields:
+            reg.set_value(f, None)
+        reg.save(db.session)
+
+    @classmethod
+    def redact_pii(cls, before_when):
+        cls.for_each(cls.redact, cls.updated_at <= before_when)
+
     def middle_initial(self):
         middle_name = self.try_value('name_middle')
         if middle_name and len(middle_name) > 0:

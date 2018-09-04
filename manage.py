@@ -52,6 +52,13 @@ def load_demo():
 def load_zipcodes():
     ZIPCode.load_fixtures()
 
+@manager.command
+def redact_pii():
+    from datetime import datetime, timedelta
+    two_days_ago = timedelta(days=2)
+    Registrant.redact_pii(datetime.utcnow() - two_days_ago)
+
+
 if __name__ == "__main__":
     write_pid_file()
     manager.run()

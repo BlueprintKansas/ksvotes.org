@@ -78,4 +78,7 @@ deploy-stage-fixtures:
 deploy-prod-fixtures:
 	heroku run 'make fixtures' --app ksvotes-production
 
+redact:
+	python manage.py redact_pii
+
 .PHONY: deps venv test dbmigrate run testcov fixtures
