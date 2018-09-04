@@ -12,9 +12,9 @@ class InlineListWidget(widgets.ListWidget):
         html = ["<%s %s>" % (self.html_tag, html_params(**kwargs))]
         for subfield in field:
             if self.prefix_label:
-                html.append("<div class='form-check form-check-inline'>%s %s</div>" % (subfield.label, subfield()))
+                html.append("<div class='form-check form-check-inline'>%s %s</div>" % (subfield.label, subfield(aria_labelledby=field.id)))
             else:
-                html.append("<div class='form-check form-check-inline'>%s %s</div>" % (subfield(), subfield.label))
+                html.append("<div class='form-check form-check-inline'>%s %s</div>" % (subfield(aria_labelledby=field.id), subfield.label))
         html.append("</%s>" % self.html_tag)
         return Markup("".join(html))
 
