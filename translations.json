@@ -85,10 +85,20 @@
     "es":"Ingrese el condado en el que reside actualmente."
   },
   "0_email":{
-    "wiki_step":"0",
-    "ref":"0_email",
     "en":"Email Address",
     "es":"Correo Electrónico"
+  },
+  "0_email_confirm":{
+    "en":"Confirm Email Address",
+    "es":"Confirmar Correo Electrónico"
+  },
+  "0_email_confirm_error_msg":{
+    "en":"The email address does not match.",
+    "es":"La dirección de correo electrónico no coincide."
+  },
+  "0_email_confirm_help":{
+    "en":"Enter your email address twice to verify you have done it correctly.",
+    "es":"Ingrese su dirección de correo electrónico dos veces para verificar que lo haya hecho correctamente."
   },
   "0_email_help":{
     "wiki_step":"0",

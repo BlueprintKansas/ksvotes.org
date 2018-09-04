@@ -78,6 +78,22 @@
       }
       )}}
 
+    <!-- client-side only -->
+    <div class="form-group">
+      <label for="email-confirm">{{_('0_email_confirm')}}</label>
+      <input id="email-confirm" name="email-confirm" type="email" required="required" class="form-control"
+           placeholder="{{_('0_email_confirm')}}"
+           data-parsley-required-message="{{_('Required')}}"
+           data-parsley-trigger="focusout"
+           data-parsley-type="email"
+           data-parsley-type-message="{{_('0_email_flag')}}"
+           data-parsley-email-confirm="true"
+           data-parsley-email-confirm-message="{{_('0_email_confirm_error_msg')}}"
+      >
+      <i class="fa fa-info-circle postfix" data-html="true" data-toggle="tooltip"
+         data-placement="left" title="{{_('0_email_confirm_help')}}"></i>
+    </div>
+
     {{wtf.render_field(
       form.phone,
       _('0_phone_help'),
@@ -137,6 +153,13 @@ $(function () {
       phone_parts.shift();
       $('#phone').val(phone_parts.join('-')); // normalize
       return true; // no actual check, just normalize
+    }
+  });
+  window.Parsley.addValidator('emailConfirm', {
+    requirementType: 'string',
+    validateString: function(value) {
+      let emailOne = $('#email').val();
+      return emailOne == value;
     }
   });
   form.parsley();
