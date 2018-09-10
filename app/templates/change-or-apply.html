@@ -18,6 +18,10 @@
         {% elif skip_sos: %}
           <h4 class='mb-4'>{{_('1AB_whats_next')}}</h4>
           {% include 'reg-choices.html' %}
+        {% elif sos_failure: %}
+          <h4 class='mb-4'>{{_('1_sos_failure')}}</h4>
+          <p>{{_('1_sos_failure_explain').format(link=sos_failure)}}</p>
+          {% include 'reg-choices.html' %}
         {% else %}
           <h3>{{_('1AB_sorry_no_reg_title')}}</h3>
           <div>
