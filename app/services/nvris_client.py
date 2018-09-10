@@ -84,6 +84,17 @@ class NVRISClient():
             return '(none)'
 
 
+    def format_street_address(self, addr, unit):
+        import re
+        r = self.registrant
+        street = r.try_value(addr)
+        aptlot = re.sub(r"^#", '', r.try_value(unit))
+        if not aptlot or len(aptlot) == 0:
+            return street
+        else:
+            return "{street} #{aptlot}".format(street=street, aptlot=aptlot)
+
+
     def marshall_ksav1_payload(self, **kwargs):
         election = kwargs['election']
         r = self.registrant
@@ -97,11 +108,11 @@ class NVRISClient():
             'first_name': r.try_value('name_first'),
             'middle_initial': r.middle_initial(),
             'dob': r.try_value('dob'),
-            'residential_address': "{street} {unit}".format(street=r.try_value('addr'), unit=r.try_value('unit')),
+            'residential_address': self.format_street_address('addr', 'unit'),
             'residential_city': r.try_value('city'),
             'residential_state': r.try_value('state'),
             'residential_zip': r.try_value('zip'),
-            'mailing_address': "{street} {unit}".format(street=r.try_value('mail_addr'), unit=r.try_value('mail_unit')),
+            'mailing_address': self.format_street_address('mail_addr', 'mail_unit'),
             'mailing_city': r.try_value('mail_city'),
             'mailing_state': r.try_value('mail_state'),
             'mailing_zip': r.try_value('mail_zip'),
@@ -125,11 +136,11 @@ class NVRISClient():
             'first_name': r.try_value('name_first'),
             'middle_initial': r.middle_initial(),
             'dob': r.try_value('dob'),
-            'residential_address': "{street} {unit}".format(street=r.try_value('addr'), unit=r.try_value('unit')),
+            'residential_address': self.format_street_address('addr', 'unit'),
             'residential_city': r.try_value('city'),
             'residential_state': r.try_value('state'),
             'residential_zip': r.try_value('zip'),
-            'mailing_address': "{street} {unit}".format(street=r.try_value('mail_addr'), unit=r.try_value('mail_unit')),            'mailing_city': r.try_value('mail_city'),
+            'mailing_address': self.format_street_address('mail_addr', 'mail_unit'),
             'mailing_state': r.try_value('mail_state'),
             'mailing_zip': r.try_value('mail_zip'),
             'reason_for_perm': r.try_value('perm_reason'),
@@ -165,7 +176,7 @@ class NVRISClient():
             "02_cityTown": r.try_value('city'),
             "02_state": r.try_value('state'),
             "02_zipCode": r.try_value('zip'),
-            "03_mailAddress": "{street} {unit}".format(street=r.try_value('mail_addr'), unit=r.try_value('mail_unit')),
+            "03_mailAddress": self.format_street_address('mail_addr', 'mail_unit'),
             "03_cityTown": r.try_value('mail_city'),
             "03_state": r.try_value('mail_state'),
             "03_zipCode": r.try_value('mail_zip'),
