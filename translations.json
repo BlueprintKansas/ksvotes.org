@@ -8,7 +8,7 @@
   "0_lead":{
     "wiki_step":"0",
     "ref":"0_lead",
-    "en":"Your Online Voter Registration and Information Service",
+    "en":"Your Online Voter Registration and Advance Ballot Service",
     "es":"Su registro de votante en línea y servicio de información"
   },
   "0_intro":{
@@ -20,7 +20,7 @@
   "0_form_explain":{
     "wiki_step":"0",
     "ref":"0_form_explain",
-    "en":"Enter your information below, and we'll check to see if you're already registered to vote in Kansas.",
+    "en":"Enter your information below, and we'll get you ready to vote in Kansas.",
     "es":"Ingrese su información a continuación, y verificaremos si ya está registrado para votar en Kansas."
   },
   "0_footer_priv":{
