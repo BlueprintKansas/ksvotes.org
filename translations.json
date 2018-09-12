@@ -284,6 +284,14 @@
     "en":"Unaffiliated voters must register to vote as a member of a party in order to vote in that party's primary. To submit this application, we will also need to submit a new registration making you a member of that political party.",
     "es":"Los votantes no afiliados deben registrarse para votar como miembros de un partido a fin de votar en las primarias de ese partido. Para enviar esta solicitud, también deberemos presentar un nuevo registro que lo haga miembro de ese partido político."
   },
+  "1_sos_failure": {
+    "en":"The Kansas Secretary of State site is not available",
+    "es":"El sitio de la Secretaría de Estado de Kansas no está disponible"
+  },
+  "1_sos_failure_explain": {
+    "en":"We were unable to check for your voter registration because the <a href='{link}'>Secretary of State website</a> is not responding.",
+    "es":"No pudimos verificar su registro de votante porque el <a href='{link}'>sitio web de la Secretaría de Estado</a> no responde."
+  },
   "2_header":{
     "wiki_step":"2",
     "ref":"2_header",
