@@ -42,14 +42,17 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
 ### Environmental Variables
   Create a .env file in the root directory and add the following variables.
+  Note that the commented-out (`#`-prefixed) variables are optional.
+
   ```
   DATABASE_URL=postgres://localhost/ksvotes_dev
   TESTING_DATABASE_URL=postgres://localhost/ksvotes_test
   SECRET_KEY={{generate a secret key}}
   APP_CONFIG=development
-  LOG_LEVEL=INFO
+  # LOG_LEVEL=INFO
   CRYPT_KEY={{generate a secret key | base64}}
-  GA_KEY={{google analytics key}}
+
+  # GA_KEY={{google analytics key}}
   # RECAPTCHA_KEY={{public key}}
   # RECAPTCHA_SECRET={{private key}}
   # USPS_USER_ID={{key from https://registration.shippingapis.com/}}
@@ -58,13 +61,38 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
   # SES_ACCESS_KEY_ID={{from role with ses access}}
   # SES_SECRET_ACCESS_KEY={{from role with ses access}}
+
+  # If running a local NVRIS instance, e.g. http://localhost:4500
   # NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
+
   # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
   # EMAIL_FROM={{override the From email header in all email}}
+  # EMAIL_PREFIX={{prefix all Subject lines with a string}}
+
   # Default is not to send actual email unless SEND_EMAIL is set
   # SEND_EMAIL=true
+
   # Number of minutes before idle session expires. Default is 10.
-  SESSION_TTL=10
+  # SESSION_TTL=10
+
+  # You want the default VV URL unless you are testing error checking.
+  # VOTER_VIEW_URL=https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do
+
+  # Set this to enable the /demo endpoint
+  # DEMO_UUID={{generate a UUID and run "make load-demo"}}
+
+  # The number of days prior to the Primary election when the Advance Ballot
+  # option for the Primary disappears.
+  # AB_DAYS_BEFORE_PRIMARY=7
+
+  # Turn the AB flow on. Default is off.
+  # ENABLE_AB=true
+
+  # Turn off HTTPS requirement. Probably set this to true in your local dev.
+  # SSL_DISABLE=true
+
+  # Turn on lots of SQL debugging.
+  # SQL_DEBUG=true
   ```
 
 ### Migrate Database
