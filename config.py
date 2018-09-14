@@ -23,6 +23,7 @@ class Config:
     DEMO_UUID = os.getenv('DEMO_UUID', None)
     ENABLE_AB = os.getenv('ENABLE_AB', False)
     FAIL_EMAIL = os.getenv('FAIL_EMAIL', 'fail@ksvotes.org')
+    STAGE_BANNER = os.getenv('STAGE_BANNER', False)
 
     @staticmethod
     def init_app(app):
