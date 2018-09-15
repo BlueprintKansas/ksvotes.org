@@ -106,6 +106,14 @@ The ksvotes.org site makes Kansas online voting registration easy.
   $(venv) make crypt-key
   ```
 
+### Demo uuid
+
+  We need `DEMO_UUID` set to a UUID, use this to generate one for your quickly:
+
+  ```
+  $(venv) make demo-uuid
+  ```
+  
 ### Validate your configuration
 
   You can check that your local env has all of the requried environment variables set by running:
@@ -113,7 +121,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
   ```
   ($venv) make check
   ```
-  
+
 ### Migrate Database
   Once setup is complete let's get our models imported into our development database.
 

@@ -12,6 +12,9 @@ venv:
 crypt-key:
 	python manage.py generate_crypt_key
 
+demo-uuid:
+	python manage.py generate_demo_uuid
+
 dbmigrate:
 	python manage.py db migrate
 

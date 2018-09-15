@@ -84,6 +84,15 @@ def generate_crypt_key():
 
 
 @manager.command
+def generate_demo_uuid():
+    import uuid
+    this_uuid = uuid.uuid4().hex
+
+    print("\nAdd this to your .env file:")
+    print('DEMO_UUID="{}"'.format(this_uuid))
+
+
+@manager.command
 def check_configuration():
     """ Ensure our configuration looks plausible """
     required_env_settings = [
@@ -93,6 +102,7 @@ def check_configuration():
         'APP_CONFIG',
         'CRYPT_KEY',
         'NVRIS_URL',
+        'DEMO_UUID',
     ]
     missing = []
 
