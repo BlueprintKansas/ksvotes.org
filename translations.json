@@ -688,6 +688,10 @@
   "ab_forms_county_changed": {
     "en": "Your change of county has been applied to the form(s).",
     "es": "Su cambio de condado se ha aplicado a la(s) forma(s)."
+  },
+  "stage_banner": {
+    "en": "This site is for testing only. You might want <a href='https://www.ksvotes.org/'>the live site</a> instead.",
+    "es": "Este sitio es solo para pruebas. En su lugar, puede querer <a href='https://www.ksvotes.org/'>el sitio en vivo</a>."
   }
 
 }

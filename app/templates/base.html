@@ -87,6 +87,12 @@
       {% endif %}
     {% endwith %}
 
+    {% if config['STAGE_BANNER'] %}
+      <div class="alert alert-danger text-center">
+       <h3 class="h3-responsive">{{_('stage_banner')}}</h3>
+     </div>
+    {% endif %}
+
     {% if use_hero %}
       <section id="hero">
        <div class="jumbotron mb-4 p-sm-4">
