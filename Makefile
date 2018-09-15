@@ -1,5 +1,6 @@
 check:
 	@[ -f ".env" ] || (echo "Missing .env file" && false)
+	@python manage.py check_configuration
 
 deps:
 	pip install -r requirements.txt
@@ -7,6 +8,12 @@ deps:
 
 venv:
 	@echo 'You must run: . venv/bin/activate'
+
+crypt-key:
+	python manage.py generate_crypt_key
+
+demo-uuid:
+	python manage.py generate_demo_uuid
 
 dbmigrate:
 	python manage.py db migrate

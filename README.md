@@ -49,21 +49,30 @@ The ksvotes.org site makes Kansas online voting registration easy.
   TESTING_DATABASE_URL=postgres://localhost/ksvotes_test
   SECRET_KEY={{generate a secret key}}
   APP_CONFIG=development
-  # LOG_LEVEL=INFO
   CRYPT_KEY={{generate a secret key | base64}}
 
+  # If running a local NVRIS instance, e.g. http://localhost:4500
+  NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
+
+  # Set this to enable the /demo endpoint
+  DEMO_UUID={{generate a UUID and run "make load-demo"}}
+
+  # You can grab one from the URL below or take the one from the staging configuration
+  USPS_USER_ID={{key from https://registration.shippingapis.com/}}
+
+  #########################
+  # OPTIONAL ENV VARS
+  #########################
+
+  # LOG_LEVEL=INFO
   # GA_KEY={{google analytics key}}
   # RECAPTCHA_KEY={{public key}}
   # RECAPTCHA_SECRET={{private key}}
-  # USPS_USER_ID={{key from https://registration.shippingapis.com/}}
   # AWS_ACCESS_KEY_ID={{from role with at least rds access}}
   # AWS_SECRET_ACCESS_KEY={{from role with at least rds access}}
   # AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
   # SES_ACCESS_KEY_ID={{from role with ses access}}
   # SES_SECRET_ACCESS_KEY={{from role with ses access}}
-
-  # If running a local NVRIS instance, e.g. http://localhost:4500
-  # NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
 
   # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
   # EMAIL_FROM={{override the From email header in all email}}
@@ -78,8 +87,6 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # You want the default VV URL unless you are testing error checking.
   # VOTER_VIEW_URL=https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do
 
-  # Set this to enable the /demo endpoint
-  # DEMO_UUID={{generate a UUID and run "make load-demo"}}
 
   # The number of days prior to the Primary election when the Advance Ballot
   # option for the Primary disappears.
@@ -96,6 +103,30 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
   # Include the top banner on every page that this is not the live production site.
   # STAGE_BANNER=true
+  ```
+
+### Crypt Key
+
+  The encryption key is kind of particular, it needs to be 32 bytes long and URl-safe base64 encoded.  Use this command to generate one for you using the cryptography library: 
+
+  ```
+  $(venv) make crypt-key
+  ```
+
+### Demo uuid
+
+  We need `DEMO_UUID` set to a UUID, use this to generate one for you quickly:
+
+  ```
+  $(venv) make demo-uuid
+  ```
+
+### Validate your configuration
+
+  You can check that your local env has all of the requried environment variables set by running:
+
+  ```
+  ($venv) make check
   ```
 
 ### Migrate Database
@@ -122,6 +153,8 @@ Navigate to [localhost:5000](http://localhost:5000)
 
 
 ## Tests
+
+**NOTE**: You need a local instance [NVRIS](https://github.com/BlueprintKansas/NVRIS) or use the NVRIS URL from staging for the tests to pass
 
 To run all tests:
 ```
