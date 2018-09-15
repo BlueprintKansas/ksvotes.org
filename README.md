@@ -115,7 +115,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
 ### Demo uuid
 
-  We need `DEMO_UUID` set to a UUID, use this to generate one for your quickly:
+  We need `DEMO_UUID` set to a UUID, use this to generate one for you quickly:
 
   ```
   $(venv) make demo-uuid
@@ -154,7 +154,7 @@ Navigate to [localhost:5000](http://localhost:5000)
 
 ## Tests
 
-**NOTE**: You need a local instance [NVRIS](https://github.com/BlueprintKansas/NVRIS) setup for the tests to pass. 
+**NOTE**: You need a local instance [NVRIS](https://github.com/BlueprintKansas/NVRIS) or use the NVRIS URL from staging for the tests to pass
 
 To run all tests:
 ```
