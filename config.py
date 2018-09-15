@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "devsk")
     SQLALCHEMY_COMMIT_ON_TEARDOWN = False
@@ -35,6 +36,7 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     SQLALCHEMY_ECHO = True
 
+
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("TESTING_DATABASE_URL")
@@ -42,9 +44,11 @@ class TestingConfig(Config):
     SQLALCHEMY_ECHO = True if os.getenv('SQL_DEBUG') else False
     SEND_EMAIL = False
 
+
 class ProductionConfig(Config):
     JSONIFY_PRETTYPRINT_REGULAR = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
 
 config = {
     "development": DevelopmentConfig,
