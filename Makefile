@@ -1,5 +1,6 @@
 check:
 	@[ -f ".env" ] || (echo "Missing .env file" && false)
+	@python manage.py check_configuration
 
 deps:
 	pip install -r requirements.txt

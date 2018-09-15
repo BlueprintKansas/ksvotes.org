@@ -83,6 +83,29 @@ def generate_crypt_key():
     print('CRYPT_KEY="{}"'.format(key.decode('ascii')))
 
 
+@manager.command
+def check_configuration():
+    """ Ensure our configuration looks plausible """
+    required_env_settings = [
+        'DATABASE_URL',
+        'TESTING_DATABASE_URL',
+        'SECRET_KEY',
+        'APP_CONFIG',
+        'CRYPT_KEY',
+        'NVRIS_URL',
+    ]
+    missing = []
+
+    for key in required_env_settings:
+        value = os.getenv(key, None)
+        if value is None:
+            missing.append(key)
+
+    if missing:
+        print("Configuration Errors Detected, these are missing:")
+        [print(k) for k in missing]
+
+
 if __name__ == "__main__":
     write_pid_file()
     manager.run()

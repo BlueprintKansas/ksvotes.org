@@ -52,6 +52,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # LOG_LEVEL=INFO
   CRYPT_KEY={{generate a secret key | base64}}
 
+  # If running a local NVRIS instance, e.g. http://localhost:4500
+  NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
+
   # GA_KEY={{google analytics key}}
   # RECAPTCHA_KEY={{public key}}
   # RECAPTCHA_SECRET={{private key}}
@@ -61,9 +64,6 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
   # SES_ACCESS_KEY_ID={{from role with ses access}}
   # SES_SECRET_ACCESS_KEY={{from role with ses access}}
-
-  # If running a local NVRIS instance, e.g. http://localhost:4500
-  # NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
 
   # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
   # EMAIL_FROM={{override the From email header in all email}}
@@ -105,6 +105,14 @@ The ksvotes.org site makes Kansas online voting registration easy.
   ```
   $(venv) make crypt-key
   ```
+
+### Validate your configuration
+
+  You can check that your local env has all of the requried environment variables set by running:
+
+  ```
+  ($venv) make check
+  ```
   
 ### Migrate Database
   Once setup is complete let's get our models imported into our development database.
@@ -130,6 +138,8 @@ Navigate to [localhost:5000](http://localhost:5000)
 
 
 ## Tests
+
+**NOTE**: You need a local instance [NVRIS](https://github.com/BlueprintKansas/NVRIS) setup for the tests to pass. 
 
 To run all tests:
 ```
