@@ -1,7 +1,6 @@
 from app.main import main
-from flask import g, url_for, render_template, jsonify, request, redirect, session as http_session, abort, current_app, flash
+from flask import g, url_for, render_template, request, redirect, session as http_session, abort, current_app, flash
 from flask_babel import lazy_gettext
-import time
 from app.main.forms import *
 from app.models import *
 from app import db
@@ -11,40 +10,44 @@ from app.services import SessionManager
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
 
+
 @main.route('/terms', methods=['GET'])
 def terms():
     g.locale = guess_locale()
     return render_template('terms.html')
+
 
 @main.route('/privacy-policy', methods=['GET'])
 def privacy():
     g.locale = guess_locale()
     return render_template('privacy-policy.html')
 
+
 @main.route('/about', methods=['GET'])
 def about_us():
     g.locale = guess_locale()
     return render_template('about.html')
 
-#step 0 / 0x
+
+# step 0 / 0x
 @main.route('/', methods=["GET", "POST"])
 @InSession
 def index():
     registrant = g.get("registrant")
     form = FormStep0()
     if http_session.get('ref'):
-        form = FormStep0(ref = http_session.get('ref'))
+        form = FormStep0(ref=http_session.get('ref'))
     elif request.cookies.get('ref'):
-        form = FormStep0(ref = request.cookies.get('ref'))
+        form = FormStep0(ref=request.cookies.get('ref'))
     if registrant:
         form = FormStep0(
-            ref = http_session.get('ref'),
-            name_first = registrant.try_value('name_first'),
-            name_last = registrant.try_value('name_last'),
-            dob = registrant.try_value('dob'),
-            zip = registrant.try_value('zip'),
-            email = registrant.try_value('email'),
-            phone = registrant.try_value('phone')
+            ref=http_session.get('ref'),
+            name_first=registrant.try_value('name_first'),
+            name_last=registrant.try_value('name_last'),
+            dob=registrant.try_value('dob'),
+            zip=registrant.try_value('zip'),
+            email=registrant.try_value('email'),
+            phone=registrant.try_value('phone')
         )
 
     if request.method == "POST" and form.validate_on_submit():
@@ -55,11 +58,11 @@ def index():
             sid = UUID(http_session.get('session_id'), version=4)
             zipcode = form.data.get('zip')
             registrant = Registrant(
-                county = ZIPCode.guess_county(zipcode),
-                ref = form.data.get('ref'),
-                registration_value = form.data,
-                session_id = sid,
-                lang = g.lang_code,
+                county=ZIPCode.guess_county(zipcode),
+                ref=form.data.get('ref'),
+                registration_value=form.data,
+                session_id=sid,
+                lang=g.lang_code,
             )
             registrant.set_value('zip', zipcode)
             db.session.add(registrant)
@@ -71,14 +74,14 @@ def index():
         sos_reg = None
         sos_failure = None
         if step.reg_found:
-          sos_reg = []
-          for rec in step.reg_found:
-              if 'sample_ballots' in rec:
-                  sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
-              else:
-                  sos_reg.append({'tree': rec['tree']})
-        else:
-            sos_failure = step.voter_view_fail
+            sos_reg = []
+            for rec in step.reg_found:
+                if 'sample_ballots' in rec:
+                    sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
+                else:
+                    sos_reg.append({'tree': rec['tree']})
+            else:
+                sos_failure = step.voter_view_fail
 
         registrant.update({'sos_reg': sos_reg, 'skip_sos': skip_sos, 'sos_failure': sos_failure})
         registrant.save(db.session)
@@ -93,6 +96,7 @@ def index():
     else:
         return render_template('index.html', form=form)
 
+
 @main.route('/change-or-apply/', methods=["GET"])
 @InSession
 def change_or_apply():
@@ -105,9 +109,14 @@ def change_or_apply():
     if county:
         clerk = Clerk.find_by_county(county)
 
-    return render_template('change-or-apply.html',
-        skip_sos=skip_sos, sos_reg=sos_reg, sos_failure=sos_failure, clerk=clerk
+    return render_template(
+        'change-or-apply.html',
+        skip_sos=skip_sos,
+        sos_reg=sos_reg,
+        sos_failure=sos_failure,
+        clerk=clerk
     )
+
 
 @main.route('/change-county', methods=['POST'])
 @InSession
@@ -124,7 +133,7 @@ def change_county():
         current_app.logger.info('unable to change county')
         redirect(redirect_url)
 
-    current_app.logger.info('new county %s return to %s' %(new_county, redirect_url))
+    current_app.logger.info('new county %s return to %s' % (new_county, redirect_url))
     reg.county = new_county
 
     # must invalidate any cached images since county is on the forms
@@ -136,12 +145,14 @@ def change_county():
 
     return redirect(redirect_url)
 
+
 @main.route('/forget', methods=['GET', 'POST'])
 def forget_session():
     g.locale = guess_locale()
     http_session['session_id'] = None
-    #flash(lazy_gettext('session_forgotten'), 'info') # TODO wordsmith this
+    # flash(lazy_gettext('session_forgotten'), 'info') # TODO wordsmith this
     return redirect(url_for('main.index'))
+
 
 @main.route('/county/<county>', methods=['GET'])
 def clerk_details(county):
@@ -152,14 +163,17 @@ def clerk_details(county):
     else:
         return abort(404)
 
+
 # easy to remember
 @main.route('/demo', methods=['GET'])
 def demo_mode():
     return redirect(url_for('main.referring_org', ref='demo'))
 
+
 @main.route('/r/<refcode>', methods=['GET'])
 def make_davis_happy_redirect(refcode):
     return redirect(url_for('main.referring_org', ref=refcode))
+
 
 @main.route('/ref', methods=['GET', 'POST'])
 def referring_org():
@@ -193,11 +207,10 @@ def referring_org():
         'zip': request.values.get('zip', ''),
     }
     registrant = Registrant(
-        session_id = sid,
-        ref = request.values['ref'],
-        registration_value = registration
+        session_id=sid,
+        ref=request.values['ref'],
+        registration_value=registration
     )
     db.session.add(registrant)
     db.session.commit()
     return redirect(url_for('main.index'))
-
