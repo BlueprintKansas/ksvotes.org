@@ -49,7 +49,7 @@ def list_of_elections():
     # if we are at least 7 days before the primary, include it.
     today = datetime.utcnow()
     primary_date = parse_election_date(lazy_gettext(u'1AB_select_election_primary'))
-    window = timedelta(days=int(os.getenv('AB_DAYS_BEFORE_PRIMARY', 7)))
+    window = timedelta(days=int(os.getenv('AB_DAYS_BEFORE_PRIMARY', default=7)))
 
     if primary_date and (primary_date - today) > window:
         elect_list.append((lazy_gettext(u'1AB_select_election_primary'), lazy_gettext(u'1AB_select_election_primary')))

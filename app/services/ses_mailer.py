@@ -28,7 +28,7 @@ class SESMailer():
         msg['To'] = ', '.join(recip_to)
         msg['Cc'] = ', '.join(recip_cc)
         msg['Bcc'] = ', '.join(recip_bcc)
-        msg['X-KSV-Sent-From'] = os.getenv('NEW_RELIC_APP_NAME', 'ksvotes-dev')
+        msg['X-KSV-Sent-From'] = os.getenv('NEW_RELIC_APP_NAME', default='ksvotes-dev')
 
         # order of mime parts is important, as last is preferred in client view.
         readable_msg = MIMEMultipart('alternative')

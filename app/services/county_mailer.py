@@ -60,7 +60,7 @@ class CountyMailer():
 
     def clerk_email(self):
         if self.clerk.county == 'TEST':
-            return os.getenv('TEST_CLERK_EMAIL', self.clerk.email)
+            return os.getenv('TEST_CLERK_EMAIL', default=self.clerk.email)
         elif os.getenv('TEST_CLERK_EMAIL'):
             return os.getenv('TEST_CLERK_EMAIL')
         else:
