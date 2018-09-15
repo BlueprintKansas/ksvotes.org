@@ -93,6 +93,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
   # Turn on lots of SQL debugging.
   # SQL_DEBUG=true
+
+  # Include the top banner on every page that this is not the live production site.
+  # STAGE_BANNER=true
   ```
 
 ### Migrate Database
@@ -109,16 +112,22 @@ When you modify the model classes and want to apply to the schema:
   ```
 
 ### Run the Application
-  Let's get up and running.
-  ```
-  $(venv) make run
-  ```
 
-  Navigate to [127.0.0.1:5000](127.0.0.1:5000)
+Let's get up and running.
+```
+$(venv) make run
+```
 
+Navigate to [localhost:5000](http://localhost:5000)
 
 
 ## Tests
+
+To run all tests:
+```
+$(venv) make test
+```
+
 To run all tests with coverage:
 ```
 $(venv) make testcov
