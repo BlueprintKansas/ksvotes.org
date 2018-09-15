@@ -8,6 +8,9 @@ deps:
 venv:
 	@echo 'You must run: . venv/bin/activate'
 
+crypt-key:
+	python manage.py generate_crypt_key
+
 dbmigrate:
 	python manage.py db migrate
 

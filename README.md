@@ -98,6 +98,14 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # STAGE_BANNER=true
   ```
 
+### Crypt Key
+
+  The encryption key is kind of particular, it needs to be 32 bytes long and URl-safe base64 encoded.  Use this command to generate one for you using the cryptography library: 
+
+  ```
+  $(venv) make crypt-key
+  ```
+  
 ### Migrate Database
   Once setup is complete let's get our models imported into our development database.
 
