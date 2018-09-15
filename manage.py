@@ -103,12 +103,13 @@ def check_configuration():
         'CRYPT_KEY',
         'NVRIS_URL',
         'DEMO_UUID',
+        'USPS_USER_ID',
     ]
     missing = []
 
     for key in required_env_settings:
         value = os.getenv(key, None)
-        if value is None:
+        if value is None or value.startswith('{'):
             missing.append(key)
 
     if missing:
