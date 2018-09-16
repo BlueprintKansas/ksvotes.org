@@ -165,6 +165,12 @@ footer {
     background-size: cover;
     color: #ffffff;
   }
+
+  .hero-actions {
+    .btn-outline-default {
+      background-color: #fff !important;
+    }
+  }
 }
 
 img {
