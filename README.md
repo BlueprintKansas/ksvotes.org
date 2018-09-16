@@ -156,6 +156,7 @@ Navigate to [localhost:5000](http://localhost:5000)
 
 **NOTE**: You need a local instance [NVRIS](https://github.com/BlueprintKansas/NVRIS) or use the NVRIS URL from staging for the tests to pass
 
+
 To run all tests:
 ```
 $(venv) make test

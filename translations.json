@@ -189,8 +189,8 @@
     "es":"¿Qué desea hacer ahora?"
   },
   "1AB_change_reg_link":{
-    "en":"Register to vote",
-    "es":"Registrarse para votar"
+    "en":"Change my registration",
+    "es":"Cambiar mi registro"
   },
   "1AB_apply_ab_link":{
     "wiki_step":"1AB",
@@ -567,7 +567,7 @@
     "es": "¡Gracias!<br/>El equipo de KSVotes.org"
   },
   "AB8_confirm":{
-    "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder.", 
+    "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder.",
     "es":"Gracias. Su(s) solicitud(es) de boleta anticipada(s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
   },
   "9_confirm_email":{

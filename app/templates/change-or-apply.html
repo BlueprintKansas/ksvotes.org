@@ -12,7 +12,9 @@
           {% include 'voter-view-details.html' %}
           <hr class='my-4 border-thick border-light-gray' />
           <h4 class="mb-3">{{_('1AB_whats_next')}}</h4>
-          {% include 'reg-choices.html' %}
+          {% with register_link=_('1AB_change_reg_link') %}
+            {% include 'reg-choices.html' %}
+          {% endwith %}
           <div class="clearfix"></div>
           {% include 'forget-session-button.html' %}
         {% elif skip_sos: %}
