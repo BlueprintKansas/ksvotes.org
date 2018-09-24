@@ -164,30 +164,13 @@ $(function () {
   });
   form.parsley();
 
-  // toggle the button text/color to match the hero button click
-  function change_form_actions(tag) {
-    let formBtn = $('#btn-next');
-    formBtn.html(tag.html());
-    if (tag.hasClass('btn-primary')) {
-      formBtn.toggleClass('btn-outline-default');
-      formBtn.toggleClass('btn-outline-primary');
-    }
-    else if (formBtn.hasClass('btn-outline-primary')) {
-      formBtn.toggleClass('btn-outline-default');
-      formBtn.toggleClass('btn-outline-primary');
-    }
-
-    // TODO optionally hide the skip-sos-link?
-  }
-
   // smooth scroll effect
-  $('.hero-actions a.btn').click(function() {
+  $('#arrow-down').click(function() {
     let tag = $(this);
     let scrollTarget = tag.attr('href');
     $([document.documentElement, document.body]).animate({
       scrollTop: $(scrollTarget).offset().top
     }, 1000);
-    change_form_actions(tag);
   });
 
   $('#skip-sos-link').click(function() {
