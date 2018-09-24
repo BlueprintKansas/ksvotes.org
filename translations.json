@@ -18,10 +18,8 @@
     "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o solicite para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
   "0_form_explain":{
-    "wiki_step":"0",
-    "ref":"0_form_explain",
-    "en":"Enter your information below, and we'll get you ready to vote in Kansas.",
-    "es":"Ingrese su información a continuación, y verificaremos si ya está registrado para votar en Kansas."
+    "en":"To request an advance ballot or to register to vote, we need to verify your current voter registration status.",
+    "es":"Para solicitar una boleta por adelantado o para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
   "0_footer_priv":{
     "wiki_step":"0",
