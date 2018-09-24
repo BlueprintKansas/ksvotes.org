@@ -66,15 +66,15 @@
 
     <main>
      {% block header %}
-
      {% if not use_hero %}
      <header>
-       {% if current_step %}
-       {% include 'step-progress.html' %}
-       {% endif %}
-     </header>
+
+     {% if current_step %}
+     {% include 'step-progress.html' %}
      {% endif %}
 
+     </header>
+     {% endif %}
      {% endblock %}
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -94,7 +94,24 @@
     {% endif %}
 
     {% if use_hero %}
-      {% include '_hero.html' %}
+      <section id="hero">
+       <div class="jumbotron mb-4 p-sm-4">
+        <div class="container text-center">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="splash">
+            <h1 class="h1-responsive mt-sm-3 bold">{{_('0_title')}}</h1>
+            <p class="lead">{{_('0_lead')}}</p>
+            <hr class="my-3 w-50 border-thick">
+            <p class="measure mx-auto">{{_('0_intro')}}</p>
+            <a class="icon h1 align-bottom line-height-1" id="arrow-down" href="#step_0" aria-label="Start">
+              <i class="fa fa-angle-down fa-lg" aria-label="Start" role="presentation"></i>
+            </a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
     {% endif %}
 
     {% import 'macros/_render_field2.html' as wtf %}

@@ -1,41 +1,43 @@
 {
   "0_title":{
+    "wiki_step":"0",
+    "ref":"0_title",
     "en":"Welcome to KSVotes.org!",
     "es":"¡Bienvenido a KSVotes.org!"
   },
   "0_lead":{
+    "wiki_step":"0",
+    "ref":"0_lead",
     "en":"Your Online Voter Registration and Advance Ballot Service",
     "es":"Su registro de votante en línea y servicio de información"
   },
   "0_intro":{
+    "wiki_step":"0",
+    "ref":"0_intro",
     "en":"We can help you register to vote, check your registration, or apply to vote by mail. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
     "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o solicite para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
   "0_form_explain":{
+    "wiki_step":"0",
+    "ref":"0_form_explain",
     "en":"Enter your information below, and we'll get you ready to vote in Kansas.",
-    "es":"Ingrese su información a continuación, y lo prepararemos para votar en Kansas."
-  },
-  "home_check_registration": {
-    "en": "Check my registration",
-    "es": "Verifica mi registro"
-  },
-  "home_register_or_change_registration": {
-    "en": "Register to vote",
-    "es": "Registrarse para votar"
-  },
-  "home_apply_ab": {
-    "en": "Apply for Advance Ballot",
-    "es": "Solicitar Boleta por Adelantado"
+    "es":"Ingrese su información a continuación, y verificaremos si ya está registrado para votar en Kansas."
   },
   "0_footer_priv":{
+    "wiki_step":"0",
+    "ref":"0_footer_priv",
     "en":"Privacy Policy",
     "es":"Poliza de Privacidad"
   },
   "0_footer_tos":{
+    "wiki_step":"0",
+    "ref":"0_footer_tos",
     "en":"Terms of Use",
     "es":"Terminos de Uso"
   },
   "0_footer_contact":{
+    "wiki_step":"0",
+    "ref":"0_footer_contact",
     "en":"Contact Us",
     "es":"Contactenos"
   },
@@ -213,8 +215,8 @@
     "es":"Solicitar una Boleta Permanente de voto anticipado."
   },
   "1AB_sorry_no_reg_title":{
-    "en":"We could not find your voter registration.",
-    "es":"No pudimos encontrar su registro de votante."
+    "en":"You are not registered to vote.",
+    "es":"Usted no está registrado para votar."
   },
   "1AB_sorry_no_reg_help":{
     "wiki_step":"1AB",
