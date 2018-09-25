@@ -175,6 +175,11 @@ def make_davis_happy_redirect(refcode):
     return redirect(url_for('main.referring_org', ref=refcode))
 
 
+@main.route('/registration', methods=['GET'])
+def old_reg_link():
+    return redirect(url_for('main.referring_org', ref='old-reg'))
+
+
 @main.route('/ref', methods=['GET', 'POST'])
 def referring_org():
     # we will accept whatever subset of step0 fields are provided.
