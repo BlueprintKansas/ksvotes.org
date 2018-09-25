@@ -165,22 +165,22 @@ def clerk_details(county):
 
 
 # easy to remember
-@main.route('/demo', methods=['GET'])
+@main.route('/demo', methods=['GET'], strict_slashes=False)
 def demo_mode():
     return redirect(url_for('main.referring_org', ref='demo'))
 
 
-@main.route('/r/<refcode>', methods=['GET'])
+@main.route('/r/<refcode>', methods=['GET'], strict_slashes=False)
 def make_davis_happy_redirect(refcode):
     return redirect(url_for('main.referring_org', ref=refcode))
 
 
-@main.route('/registration', methods=['GET'])
+@main.route('/registration', methods=['GET'], strict_slashes=False)
 def old_reg_link():
     return redirect(url_for('main.referring_org', ref='old-reg'))
 
 
-@main.route('/ref', methods=['GET', 'POST'])
+@main.route('/ref', methods=['GET', 'POST'], strict_slashes=False)
 def referring_org():
     # we will accept whatever subset of step0 fields are provided.
     # we always start a new session, but we require a 'ref' code.
