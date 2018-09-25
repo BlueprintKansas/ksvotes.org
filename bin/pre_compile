@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# things run *before* buildpack is compiled
+
+# just to quiet warnings on heroku where env is set via alternate means.
+touch .env
