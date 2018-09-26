@@ -8,11 +8,6 @@ class RegistrantExporter():
         self.list_of_regs = list_of_regs
 
     def export(self):
-        # must iterate over all rows to create the header,
-        # because not every row has all the same encrypted fields.
-
-        unique_field_names = {}
-        reg_dicts = []
         skip_fields = [
             'csrf_token',
             'identification',
@@ -21,21 +16,79 @@ class RegistrantExporter():
             'ab_forms',
             'signature_string'
         ]
-        for r in self.list_of_regs:
-            r_dict = dict(r.__dict__)
-            reg_dicts.append(r_dict)
-            for k, v in r.registration_value.items():
-                if k in skip_fields:
-                    continue
-                unique_field_names['r_'+k] = True
-                r_dict['r_'+k] = v
-
-        fieldnames = list(Registrant.__table__.columns.keys()) + list(unique_field_names.keys())
-        fieldnames.remove('registration') # no need for encrypted blob
+        fieldnames = [
+            "id",
+            "created_at",
+            "updated_at",
+            "vr_completed_at",
+            "ab_completed_at",
+            "ab_permanent",
+            "session_id",
+            "ref",
+            "is_citizen",
+            "is_eighteen",
+            "dob_year",
+            "party",
+            "county",
+            "lang",
+            "signed_at",
+            "reg_lookup_complete",
+            "addr_lookup_complete",
+            "r_ref",
+            "r_name_first",
+            "r_name_last",
+            "r_dob",
+            "r_county",
+            "r_email",
+            "r_phone",
+            "r_sos_reg",
+            "r_skip_sos",
+            "r_prefix",
+            "r_name_middle",
+            "r_suffix",
+            "r_has_prev_name",
+            "r_prev_prefix",
+            "r_prev_name_first",
+            "r_prev_name_middle",
+            "r_prev_name_last",
+            "r_prev_suffix",
+            "r_addr",
+            "r_unit",
+            "r_city",
+            "r_state",
+            "r_zip",
+            "r_has_prev_addr",
+            "r_prev_addr",
+            "r_prev_unit",
+            "r_prev_city",
+            "r_prev_state",
+            "r_prev_zip",
+            "r_has_mail_addr",
+            "r_mail_addr",
+            "r_mail_unit",
+            "r_mail_city",
+            "r_mail_state",
+            "r_mail_zip",
+            "r_validated_addresses",
+            "r_affirmation",
+            "r_vr_form_message_id",
+            "r_recaptcha",
+            "r_elections",
+            "r_sos_failure",
+            "r_perm_reason",
+            "r_ab_forms_message_id",
+        ]
 
         writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
         writer.writeheader()
-        for r_dict in reg_dicts:
+        for r in self.list_of_regs:
+            r_dict = dict(r.__dict__)
+            for k, v in r.registration_value.items():
+                if k in skip_fields:
+                    continue
+                r_dict['r_'+k] = v
+
             r_dict.pop('registration', None)
             r_dict.pop('_sa_instance_state', None)
             writer.writerow(r_dict)
+

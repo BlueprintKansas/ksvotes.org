@@ -69,7 +69,7 @@ def redact_pii():
 @manager.command
 def export_registrants():
     from app.services.registrant_exporter import RegistrantExporter
-    regs = Registrant.query.all()
+    regs = Registrant.query.yield_per(200).enable_eagerloads(False)
     exporter = RegistrantExporter(regs)
     exporter.export()
 
