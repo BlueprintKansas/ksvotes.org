@@ -25,15 +25,9 @@
           <p>{{_('1_sos_failure_explain').format(link=sos_failure)}}</p>
           {% include 'reg-choices.html' %}
         {% else %}
-          <h3>{{_('1AB_sorry_no_reg_title')}}</h3>
-          <div>
-            <a class="btn btn-outline-default d-block my-3" href="{{url_for('main.vr1_citizenship')}}">
-              {{_('1AB_sorry_no_reg_link')}}
-            </a>
-          </div>
-          <div>
-            {{_('1AB_sorry_no_reg_help')}}
-          </div>
+          <h4>{{_('1AB_sorry_no_reg_title')}}</h4>
+          <p>{{_('1AB_sorry_no_reg_help')}}</p>
+          {% include 'reg-choices.html' %}
 
           {% if clerk %}
             <div class="clerk-details mt-4">{% include 'clerk-details.html' %}</div>
