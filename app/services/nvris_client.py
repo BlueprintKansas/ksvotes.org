@@ -83,12 +83,14 @@ class NVRISClient():
             current_app.logger.error("%s No match for election '%s'" %(self.registrant.session_id, election))
             return '(none)'
 
+    def normalize_unit(self, unit):
+        import re
+        return re.sub(r"^(#|apt.? |apartment )", '', unit, flags=re.IGNORECASE)
 
     def format_street_address(self, addr, unit):
-        import re
         r = self.registrant
         street = r.try_value(addr)
-        aptlot = re.sub(r"^#", '', r.try_value(unit))
+        aptlot = self.normalize_unit(r.try_value(unit))
         if not aptlot or len(aptlot) == 0:
             return street
         else:
@@ -172,7 +174,7 @@ class NVRISClient():
             "01_lastName": r.try_value('name_last'),
             "01_middleName": r.try_value('name_middle'),
             "02_homeAddress": r.try_value('addr'),
-            "02_aptLot": r.try_value('unit'),
+            "02_aptLot": self.normalize_unit(r.try_value('unit')),
             "02_cityTown": r.try_value('city'),
             "02_state": r.try_value('state'),
             "02_zipCode": r.try_value('zip'),
