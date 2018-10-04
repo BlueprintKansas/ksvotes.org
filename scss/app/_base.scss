@@ -286,6 +286,16 @@ table.clerk-details,
   th {
     text-align: right;
   }
+  td {
+    table {
+      th, td {
+        font-size: 70%;
+      }
+      .nowrap {
+        white-space: nowrap;
+      }
+    }
+  }
 }
 
 .error {

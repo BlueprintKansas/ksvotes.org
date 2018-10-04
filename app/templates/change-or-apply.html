@@ -9,14 +9,23 @@
         <div class="card-body">
         {% if sos_reg: %}
           <h3>{{_('1AB_reg_found_title')}}</h3>
-          {% include 'voter-view-details.html' %}
-          <hr class='my-4 border-thick border-light-gray' />
-          <h4 class="mb-3">{{_('1AB_whats_next')}}</h4>
+          <h5 class="mb-3">{{_('1AB_whats_next')}}</h5>
           {% with register_link=_('1AB_change_reg_link') %}
             {% include 'reg-choices.html' %}
           {% endwith %}
           <div class="clearfix"></div>
           {% include 'forget-session-button.html' %}
+
+          <hr class='my-4 border-thick border-light-gray' />
+          {% include 'voter-view-details.html' %}
+          <hr class='my-4 border-thick border-light-gray' />
+
+          {% with register_link=_('1AB_change_reg_link') %}
+            {% include 'reg-choices.html' %}
+          {% endwith %}
+          <div class="clearfix"></div>
+          {% include 'forget-session-button.html' %}
+
         {% elif skip_sos: %}
           <h4 class='mb-4'>{{_('1AB_whats_next')}}</h4>
           {% include 'reg-choices.html' %}
@@ -30,6 +39,7 @@
           {% include 'reg-choices.html' %}
 
           {% if clerk %}
+            <div class="clearfix"></div>
             <div class="clerk-details mt-4">{% include 'clerk-details.html' %}</div>
           {% endif %}
 

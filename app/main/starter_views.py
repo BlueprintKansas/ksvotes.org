@@ -76,10 +76,14 @@ def index():
         if step.reg_found:
             sos_reg = []
             for rec in step.reg_found:
+                rec2save = {'tree': rec['tree']}
                 if 'sample_ballots' in rec:
-                    sos_reg.append({'tree': rec['tree'], 'sample_ballot': rec['sample_ballots']})
-                else:
-                    sos_reg.append({'tree': rec['tree']})
+                    rec2save['sample_ballot'] = rec['sample_ballots']
+                if 'districts' in rec:
+                    rec2save['districts'] = rec['districts']
+                if 'elections' in rec:
+                    rec2save['elections'] = rec['elections']
+                sos_reg.append(rec2save)
             else:
                 sos_failure = step.voter_view_fail
 
