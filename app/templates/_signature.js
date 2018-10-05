@@ -7,6 +7,7 @@
       $signature.append('<canvas></canvas>');
       let canvas = $signature.find('canvas')[0];
       let sig_pad = new SignaturePad(canvas, {
+        penColor: "blue",
         onEnd: function() {
           let sig_png = sig_pad.toDataURL();
           if (sig_png.length == 0) {      
