@@ -188,7 +188,7 @@ class Registrant(db.Model):
 
     @classmethod
     def redact_pii(cls, before_when):
-        cls.for_each(cls.redact, cls.updated_at <= before_when)
+        cls.for_each(cls.redact, cls.updated_at <= before_when, cls.redacted_at == None)
         db.session.commit()
 
     def middle_initial(self):
