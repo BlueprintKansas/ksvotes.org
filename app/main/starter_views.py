@@ -83,6 +83,10 @@ def index():
                     rec2save['districts'] = rec['districts']
                 if 'elections' in rec:
                     rec2save['elections'] = rec['elections']
+
+                # prepopulate address and party
+                registrant.populate_address_and_party(rec2save['tree'])
+
                 sos_reg.append(rec2save)
             else:
                 sos_failure = step.voter_view_fail
