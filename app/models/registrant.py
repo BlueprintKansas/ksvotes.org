@@ -23,6 +23,7 @@ class Registrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    redacted_at = db.Column(db.DateTime, default=datetime.utcnow)
     vr_completed_at = db.Column(db.DateTime, default=None)
     ab_completed_at = db.Column(db.DateTime, default=None)
     ab_permanent = db.Column(db.Boolean, default=None)
@@ -182,11 +183,13 @@ class Registrant(db.Model):
         fields = ['identification', 'ab_identification', 'vr_form', 'ab_forms', 'signature_string']
         for f in fields:
             reg.set_value(f, None)
-        reg.save(db.session)
+        reg.redacted_at = datetime.utcnow()
+        db.session.add(reg)
 
     @classmethod
     def redact_pii(cls, before_when):
-        cls.for_each(cls.redact, cls.updated_at <= before_when)
+        cls.for_each(cls.redact, cls.updated_at <= before_when, cls.redacted_at == None)
+        db.session.commit()
 
     def middle_initial(self):
         middle_name = self.try_value('name_middle')
