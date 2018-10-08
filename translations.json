@@ -337,6 +337,10 @@
     "es":"¿Cual es la dirección de tu casa?"
   },
   "3_addr":{"wiki_step":"3","ref":"3_addr","en":"Home Address","es":"Domicilio"},
+  "3AB_addr":{
+    "en":"Residential Address (where you are registered)",
+    "es":"Dirección residencial (donde está registrado)"
+  },
   "3_addr_help":{
     "wiki_step":"3",
     "ref":"3_addr_help",
@@ -396,6 +400,10 @@
     "ref":"3_mail_addr",
     "en":"Mailing Address",
     "es":"Dirección de envio"
+  },
+  "3AB_mail_addr":{
+    "en":"Mailing Address (where you want your ballot sent)",
+    "es":"Dirección de envio (donde desea que se envíe su boleta)"
   },
   "3_mail_unit":{"wiki_step":"3","ref":"3_mail_unit","en":"Apt/Lot","es":"Apt/Lote"},
   "3_mail_city":{"wiki_step":"3","ref":"3_mail_city","en":"City/Town","es":"Ciudada/Pueblo"},
