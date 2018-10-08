@@ -8,6 +8,7 @@ from sqlalchemy.ext.hybrid import hybrid_property,Comparator
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 import ksmyvoteinfo
+import usaddress
 
 def encryptem(data):
     f = Fernet(os.environ.get("CRYPT_KEY").encode())
@@ -16,6 +17,8 @@ def encryptem(data):
 
 def decryptem(data):
     f = Fernet(os.environ.get("CRYPT_KEY").encode())
+    if not data:
+        return {}
     return f.decrypt(data.encode())
 
 class Registrant(db.Model):
@@ -69,13 +72,15 @@ class Registrant(db.Model):
 
     # update() is set_value() for a dict (bulk) to save encrypt/decrypt overhead
     def update(self, update_payload):
-        registration_value = self.registration_value
+        rval = {}
+        if self.registration:
+          rval = self.registration_value
         for k,v in update_payload.items():
             if k in self.__table__.columns:
                 setattr(self, k, v)
             else:
-                registration_value[k] = v
-        self.registration_value = registration_value
+                rval[k] = v
+        self.registration_value = rval
 
     def set_value(self, name, value):
         if name in self.__table__.columns:
@@ -142,19 +147,19 @@ class Registrant(db.Model):
         r = cls.find_or_create_by(session_id=os.getenv('DEMO_UUID'))
         r.registration_value = {}
         r.update({
-            'name_first':   'No',
-            'name_middle':  'Such',
-            'name_last':        'Person',
-            'dob':                    '01/01/2000',
-            'addr':         '123 Main St',
-            'city':         'Nowhere',
-            'state':        'KS',
-            'zip':          '12345',
-            'email':        'nosuchperson@example.com',
-            'phone':        '555-555-1234',
+            'name_first': 'No',
+            'name_middle': 'Such',
+            'name_last': 'Person',
+            'dob': '01/01/2000',
+            'addr': '123 Main St',
+            'city': 'Nowhere',
+            'state': 'KS',
+            'zip': '12345',
+            'email': 'nosuchperson@example.com',
+            'phone': '555-555-1234',
             'identification': 'NONE',
         })
-        r.party = 'unaffliated'
+        r.party = 'Unaffiliated'
         r.reg_lookup_complete = True
         r.addr_lookup_complete = True
         r.is_citizen = True
@@ -231,4 +236,32 @@ class Registrant(db.Model):
             self.signed_at = datetime.utcnow()
 
         return ab_forms
+
+    def populate_address_and_party(self, sosrec):
+        address = sosrec['Address'].replace('<br/>', ' ')
+        addr_parts = usaddress.tag(address)
+        payload = {
+          'addr': "",
+          'unit': "",
+          'city': "",
+          'state': "",
+          'zip': ""
+        }
+        for key, val in addr_parts[0].items():
+            if key == 'OccupancyIdentifier':
+                payload['unit'] = val
+            elif key == 'PlaceName':
+                payload['city'] = val
+            elif key == 'StateName':
+                payload['state'] = val
+            elif key == 'ZipCode':
+                payload['zip'] = val
+            else:
+                if len(payload['addr']) > 0:
+                    payload['addr'] = ' '.join([payload['addr'], val])
+                else:
+                    payload['addr'] = val
+
+        self.update(payload)
+        self.party = sosrec['Party']
 

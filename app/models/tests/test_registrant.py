@@ -56,3 +56,16 @@ def test_insert_get_registrant_start(app, db_session, client):
     #query by uuid
     registrant_uuid = db_session.query(Registrant).filter_by(session_id=registrant.session_id).first()
     assert registrant_uuid.registration_value.get('name_first') == "foo"
+
+def test_prepopulate_address_party(app, db_session, client):
+    sosrec = { 'Address': '123 Main St #456 Wichita, KS, 12345', 'Party': 'Republican' }
+    r = Registrant()
+    r.populate_address_and_party(sosrec)
+
+    assert r.party == 'Republican'
+    assert r.try_value('addr') == '123 Main St'
+    assert r.try_value('unit') == '# 456'
+    assert r.try_value('city') == 'Wichita'
+    assert r.try_value('state') == 'KS'
+    assert r.try_value('zip') == '12345'
+
