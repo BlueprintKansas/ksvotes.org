@@ -22,6 +22,7 @@ class RegistrantExporter():
             "updated_at",
             "vr_completed_at",
             "ab_completed_at",
+            "redacted_at",
             "ab_permanent",
             "session_id",
             "ref",
