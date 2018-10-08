@@ -9,12 +9,12 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "5.2.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.3",
     "nodemon": "^1.11.0",
     "zombie": "6.1.2"
   },
   "dependencies": {
     "moment": "^2.22.1",
-    "npm": "^6.1.0"
+    "npm": "^6.4.1"
   }
 }
