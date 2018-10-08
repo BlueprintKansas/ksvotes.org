@@ -23,6 +23,8 @@ dbupgrade:
 
 update: dbmigrate dbupgrade
 
+migrate: dbupgrade
+
 db:
 	@psql `grep ^DATABASE_URL= .env | sed -e "s/DATABASE_URL=//"`
 
