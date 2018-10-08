@@ -88,8 +88,8 @@ def index():
                 registrant.populate_address_and_party(rec2save['tree'])
 
                 sos_reg.append(rec2save)
-            else:
-                sos_failure = step.voter_view_fail
+        else:
+            sos_failure = step.voter_view_fail
 
         registrant.update({'sos_reg': sos_reg, 'skip_sos': skip_sos, 'sos_failure': sos_failure})
         registrant.save(db.session)
