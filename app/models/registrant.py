@@ -26,7 +26,7 @@ class Registrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-    redacted_at = db.Column(db.DateTime, default=datetime.utcnow)
+    redacted_at = db.Column(db.DateTime, default=None)
     vr_completed_at = db.Column(db.DateTime, default=None)
     ab_completed_at = db.Column(db.DateTime, default=None)
     ab_permanent = db.Column(db.Boolean, default=None)
