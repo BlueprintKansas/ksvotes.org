@@ -179,7 +179,7 @@ class Registrant(db.Model):
 
     @classmethod
     def for_each(cls, func, *where):
-        res = cls.query.filter(*where)
+        res = cls.query.filter(*where).yield_per(200).enable_eagerloads(False)
         for r in res:
             func(r)
 
