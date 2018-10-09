@@ -26,7 +26,7 @@ class Registrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-    redacted_at = db.Column(db.DateTime, default=datetime.utcnow)
+    redacted_at = db.Column(db.DateTime, default=None)
     vr_completed_at = db.Column(db.DateTime, default=None)
     ab_completed_at = db.Column(db.DateTime, default=None)
     ab_permanent = db.Column(db.Boolean, default=None)
@@ -179,7 +179,7 @@ class Registrant(db.Model):
 
     @classmethod
     def for_each(cls, func, *where):
-        res = cls.query.filter(*where)
+        res = cls.query.filter(*where).yield_per(200).enable_eagerloads(False)
         for r in res:
             func(r)
 
@@ -190,6 +190,7 @@ class Registrant(db.Model):
             reg.set_value(f, None)
         reg.redacted_at = datetime.utcnow()
         db.session.add(reg)
+        db.session.flush()
 
     @classmethod
     def redact_pii(cls, before_when):
