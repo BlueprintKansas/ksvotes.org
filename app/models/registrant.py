@@ -190,11 +190,11 @@ class Registrant(db.Model):
             reg.set_value(f, None)
         reg.redacted_at = datetime.utcnow()
         db.session.add(reg)
+        db.session.commit()
 
     @classmethod
     def redact_pii(cls, before_when):
         cls.for_each(cls.redact, cls.updated_at <= before_when, cls.redacted_at == None)
-        db.session.commit()
 
     def middle_initial(self):
         middle_name = self.try_value('name_middle')
