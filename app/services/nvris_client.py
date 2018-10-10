@@ -12,6 +12,8 @@ class NVRISClient():
         if self.lang == None:
             self.lang = registrant.lang or 'en' 
         self.nvris_url = os.getenv('NVRIS_URL')
+        self.attempts = 0
+        self.MAX_ATTEMPTS = 2
 
     def get_vr_form(self):
         if self.nvris_url == 'TESTING': # magic URL for testing mode
@@ -42,18 +44,27 @@ class NVRISClient():
         return self.fetch_nvris_img(url, payload)
 
     def fetch_nvris_img(self, url, payload):
+        if self.attempts > self.MAX_ATTEMPTS:
+            return None
+
         try:
             resp = requests.post(url, json=payload)
             resp_payload = resp.json()
         except requests.exceptions.ConnectionError as e:
             current_app.logger.error("NVRIS did not respond: %s" %(e))
+            newrelic.agent.record_exception()
             return None
         except json.JSONDecodeError as e:
             current_app.logger.error("NVRIS responded with bad JSON: %s" %(e))
+            newrelic.agent.record_exception()
             return None
 
         if 'img' not in resp_payload:
             current_app.logger.error("NVRIS did not respond with img: %s" %(resp_payload))
+            newrelic.agent.record_custom_event('NVRIS', {'error':str(resp_payload)})
+
+            self.attempts += 1
+            return self.fetch_nvris_img(url, payload)
 
         return resp_payload['img']
 
