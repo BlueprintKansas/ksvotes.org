@@ -59,9 +59,7 @@ class CountyMailer():
         self.receipt_subject = self.subject_prefix() + lazy_gettext(u'voter_receipt_email_subject')
 
     def clerk_email(self):
-        if self.clerk.county == 'TEST':
-            return os.getenv('TEST_CLERK_EMAIL', default=self.clerk.email)
-        elif os.getenv('TEST_CLERK_EMAIL'):
+        if os.getenv('TEST_CLERK_EMAIL'):
             return os.getenv('TEST_CLERK_EMAIL')
         else:
             return self.clerk.email
