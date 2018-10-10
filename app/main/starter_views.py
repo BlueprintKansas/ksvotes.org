@@ -9,7 +9,7 @@ from app.decorators import InSession
 from app.services import SessionManager
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
-
+import sys
 
 @main.route('/terms', methods=['GET'])
 def terms():
@@ -84,8 +84,13 @@ def index():
                 if 'elections' in rec:
                     rec2save['elections'] = rec['elections']
 
-                # prepopulate address and party
-                registrant.populate_address_and_party(rec2save['tree'])
+                # prepopulate address and party, if possible
+                try:
+                    registrant.populate_address_and_party(rec2save['tree'])
+                except:
+                    # just swallow errors for now
+                    err = sys.exc_info()[0]
+                    current_app.logger.error(str(err))
 
                 sos_reg.append(rec2save)
         else:
