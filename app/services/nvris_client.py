@@ -3,6 +3,7 @@ from app.main.VR.example_form import signature_img_string
 import os
 import requests
 import json
+import newrelic.agent
 
 class NVRISClient():
 
