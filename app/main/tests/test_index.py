@@ -113,3 +113,14 @@ def test_dob_all_digits(app, db_session, client):
     response = client.post('/', data=form_payload, follow_redirects=False)
     redirect_data = response.data.decode()
     assert ('/change-or-apply' in redirect_data) == True
+
+def test_dob_invalid_digits(app, db_session, client):
+    form_payload = {
+        "name_first": "foo",
+        "name_last": "bar",
+        "dob":"0707199",
+        "email":"foo@example.com",
+        "zip": "12345",
+    }
+    response = client.post('/', data=form_payload, follow_redirects=False)
+    assert response.status_code != 302
