@@ -5,7 +5,7 @@ from app.models import Registrant
 from app.decorators import InSession
 from app.services import SessionManager
 from app.services.nvris_client import NVRISClient
-from app.main.forms import FormAB6
+from app.main.forms import FormAB6, CountyPicker
 from app.services.steps import Step_AB_6
 from datetime import datetime
 
@@ -17,6 +17,8 @@ def ab6_preview_sign():
         signature_string = reg.try_value('signature_string')
     )
     nvris_client = NVRISClient(reg)
+    county_picker = CountyPicker()
+    clerk = reg.try_clerk()
 
     if request.method == "POST" and form.validate_on_submit():
         step = Step_AB_6(form.data)
@@ -39,5 +41,6 @@ def ab6_preview_sign():
         if preview_img:
             preview_imgs.append(preview_img)
 
-    return render_template('ab/preview-sign.html', preview_imgs=preview_imgs, registrant=reg, form=form)
+    return render_template('ab/preview-sign.html',
+        preview_imgs=preview_imgs, registrant=reg, form=form, county_picker=county_picker, clerk=clerk)
 

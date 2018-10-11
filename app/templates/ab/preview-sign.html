@@ -57,7 +57,7 @@
                   </a>
                 </div>
                 <div class="float-right">
-                  <button id="sign-button" class="btn btn-outline-default" type="submit">
+                  <button id="sign-button" class="btn btn-outline-default" type="submit" data-disabled="{{disabled_btn or _('btn_disabled')}}">
                    <i class="fa checkmark fa-check mr-2"></i>{{_('btn_sign')}}
                   </button>
                 </div>
@@ -93,5 +93,9 @@
       });
     });
   });
+
+  {% with next_btn_selector="#sign-button" %}
+    {% include 'change-county.js' %}
+  {% endwith %}
 </script>
 {% endblock %}
