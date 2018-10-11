@@ -8,7 +8,7 @@ from app.services import SessionManager
 from app.services.nvris_client import NVRISClient
 from app.services.county_mailer import CountyMailer
 from app.services.steps import Step_VR_7
-from app.main.forms import FormVR7
+from app.main.forms import FormVR7, CountyPicker
 from datetime import datetime
 
 @main.route('/vr/affirmation', methods=["GET", "POST"])
@@ -17,6 +17,7 @@ def vr7_affirmation():
     reg = g.registrant
     clerk = reg.try_clerk()
     form = FormVR7()
+    county_picker = CountyPicker()
 
     # if we don't have a VR form to affirm, redirect to Step 0
     if not reg.try_value('vr_form', False):
@@ -27,10 +28,7 @@ def vr7_affirmation():
     if request.method == "POST" and form.validate_on_submit():
         step = Step_VR_7(form.data)
         if step.run():
-            # TODO we don't want County, just Affirmation
-            # and that must always be true on a POST, so just hardcode it.
-            # if we ever expand the Form fields, we'll need to revisit.
-            reg.update({'affirmation': True})
+            reg.update(form.data)
             reg.save(db.session)
 
             mailer = CountyMailer(reg, clerk, 'vr_form')
@@ -49,4 +47,4 @@ def vr7_affirmation():
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
-    return render_template('vr/affirmation.html', clerk=clerk, preview_img=vr_form, form=form)
+    return render_template('vr/affirmation.html', clerk=clerk, preview_img=vr_form, form=form, county_picker=county_picker)

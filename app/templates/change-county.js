@@ -1,5 +1,5 @@
 function disableSubmitBtn() {
-  let btn = $('#btn-next');
+  let btn = $('{{next_btn_selector or '#btn-next'}}');
   if (!btn.data('enabled')) {
     btn.data('enabled', btn.text());
   }
@@ -7,7 +7,7 @@ function disableSubmitBtn() {
   btn.prop('disabled', true);
 }
 function enableSubmitBtn() {
-  let btn = $('#btn-next');
+  let btn = $('{{next_btn_selector or '#btn-next'}}');
   btn.text(btn.data('enabled'));
   btn.prop('disabled', false);
 }
@@ -34,7 +34,7 @@ $('#change-county-btn').click(function(ev) {
 
 // MUST have a county selected to proceed
 // In theory we should never get here, but belt-and-suspenders ftw.
-$('#btn-next').click(function(ev) {
+$('{{next_btn_selector or '#btn-next'}}').click(function(ev) {
   let county = $('.clerk-details .county').text();
   let error_msg = $('#county-error');
   error_msg.hide(); // always clear to start with.

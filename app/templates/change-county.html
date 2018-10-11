@@ -8,8 +8,8 @@
     <form name="change-county-form" id="change-county-form" method="POST"  action="{{url_for('main.change_county')}}">
      <fieldset>
       <input type="hidden" name="return" value="{{url_for(this_url)}}" />
-      {{form.hidden_tag()}}
-      {{wtf.render_field( form.county, _('0_county_help'), {} )}}
+      {{county_picker.hidden_tag()}}
+      {{wtf.render_field( county_picker.county, _('0_county_help'), {} )}}
 
       <div class="float-right mt-2">
         <button id="btn-apply" class="btn btn-outline-default" type="submit">

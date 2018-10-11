@@ -19,13 +19,14 @@
       </div>
       <div class="col-md-12">
        {% for preview_img in preview_imgs %}
-       <div class="card">
-        <div class="card-body">
-          <img src="{{preview_img}}"/>
-        </div>
-       </div>
+         {% include 'preview-img.html' %}
        {% endfor %}
       </div>
+
+      {% with redirect_url='main.ab6_preview_sign' %}
+        {% include '_county-selector-card.html' %}
+      {% endwith %}
+
       <div class="mt-4 col-md-12">
         <div class=''>
           <div class=''>
@@ -56,7 +57,7 @@
                   </a>
                 </div>
                 <div class="float-right">
-                  <button id="sign-button" class="btn btn-outline-default" type="submit">
+                  <button id="sign-button" class="btn btn-outline-default" type="submit" data-disabled="{{disabled_btn or _('btn_disabled')}}">
                    <i class="fa checkmark fa-check mr-2"></i>{{_('btn_sign')}}
                   </button>
                 </div>
@@ -92,5 +93,9 @@
       });
     });
   });
+
+  {% with next_btn_selector="#sign-button" %}
+    {% include 'change-county.js' %}
+  {% endwith %}
 </script>
 {% endblock %}
