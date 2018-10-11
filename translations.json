@@ -49,6 +49,10 @@
     "en": "About this site",
     "es": "Sobre este sitio"
   },
+    "0_footer_SOS":{
+    "en": "KSVotes.org is a 501(c)3 non-partisan non-profit organization and not a service of the Kansas Secretary of State",
+    "es": "KSVotes.org es una organización sin fines de lucro no partidista 501(c)3 y no es un servicio del Secretario de Estado de Kansas"
+  },
   "0_name_help":{
     "wiki_step":"0",
     "ref":"0_name_help",
