@@ -31,10 +31,7 @@ def ab7_affirmation():
     if request.method == "POST" and form.validate_on_submit():
         step = Step_AB_7(form.data)
         if step.run():
-            # TODO we don't want County, just Affirmation
-            # and that must always be true on a POST, so just hardcode it.
-            # if we ever expand the Form fields, we'll need to revisit.
-            reg.update({'affirmation': True})
+            reg.update(form.data)
             reg.save(db.session)
 
             mailer = CountyMailer(reg, clerk, 'ab_forms')
