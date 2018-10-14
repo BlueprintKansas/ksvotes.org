@@ -8,7 +8,7 @@
   "0_lead":{
     "wiki_step":"0",
     "ref":"0_lead",
-    "en":"Your Online Voter Registration and Advance Ballot Service",
+    "en":"Your Kansas Online Voter Registration and Advance Ballot Service",
     "es":"Su registro de votante en línea y servicio de información"
   },
   "0_intro":{
@@ -18,7 +18,7 @@
     "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o solicite para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
   "0_form_explain":{
-    "en":"To request an advance ballot or to register to vote, we need to verify your current voter registration status.",
+    "en":"To request an advance ballot or to register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para solicitar una boleta por adelantado o para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
   "0_footer_priv":{
