@@ -48,6 +48,8 @@ class NVRISClient():
         if self.attempts > self.MAX_ATTEMPTS:
             return None
 
+        payload['uuid'] = str(self.registrant.session_id)
+
         try:
             resp = requests.post(url, json=payload)
             resp_payload = resp.json()
@@ -61,7 +63,7 @@ class NVRISClient():
             return None
 
         if 'img' not in resp_payload:
-            current_app.logger.error("NVRIS did not respond with img: %s" %(resp_payload))
+            current_app.logger.error("NVRIS attempt %s did not respond with img: %s" %(self.attempts, resp_payload))
             newrelic.agent.record_custom_event('NVRIS', {'error':str(resp_payload)})
 
             self.attempts += 1
