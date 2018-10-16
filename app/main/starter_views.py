@@ -107,7 +107,10 @@ def index():
         return redirect(session_manager.get_redirect_url())
 
     else:
-        return render_template('index.html', form=form)
+        has_announcements = False
+        if lazy_gettext('announce') != "announce":
+            has_announcements = True
+        return render_template('index.html', form=form, has_announcements=has_announcements)
 
 
 @main.route('/change-or-apply/', methods=["GET"])

@@ -12,6 +12,10 @@
  <fieldset>
   <legend>{{_('0_form_explain')}}</legend>
 
+  {% if has_announcements %}
+   <div class="alert alert-info">{{_('announce')}}</div>
+  {% endif %}
+
   {{form.hidden_tag()}}
 
   {{wtf.render_field(
