@@ -238,7 +238,7 @@ class Registrant(db.Model):
 
         return ab_forms
 
-    def populate_address_and_party(self, sosrec):
+    def populate_address(self, sosrec):
         address = sosrec['Address'].replace('<br/>', ' ')
         addr_parts = usaddress.tag(address)
         payload = {
@@ -264,5 +264,4 @@ class Registrant(db.Model):
                     payload['addr'] = val
 
         self.update(payload)
-        self.party = sosrec['Party']
 
