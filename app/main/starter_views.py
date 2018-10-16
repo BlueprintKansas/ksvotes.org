@@ -86,7 +86,7 @@ def index():
 
                 # prepopulate address and party, if possible
                 try:
-                    registrant.populate_address_and_party(rec2save['tree'])
+                    registrant.populate_address(rec2save['tree'])
                 except:
                     # just swallow errors for now
                     err = sys.exc_info()[0]
