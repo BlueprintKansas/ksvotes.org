@@ -1,6 +1,7 @@
 import os
 from app import db
 from datetime import datetime, timedelta
+import pytz
 import json
 from sqlalchemy.dialects.postgresql import JSON
 from cryptography.fernet import Fernet
@@ -237,6 +238,12 @@ class Registrant(db.Model):
             self.signed_at = datetime.utcnow()
 
         return ab_forms
+
+    def signed_at_central_tz(self):
+        utc_tz = pytz.timezone('UTC')
+        central_tz = pytz.timezone('US/Central')
+        signed_at_utc = utc_tz.localize(self.signed_at)
+        return signed_at_utc.astimezone(central_tz)
 
     def populate_address(self, sosrec):
         address = sosrec['Address'].replace('<br/>', ' ')
