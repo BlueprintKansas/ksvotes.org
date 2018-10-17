@@ -1,5 +1,6 @@
 from app.models import *
 import json
+
 def test_db_connection(app, db_session, client):
     genq = db_session.query(Registrant).first()
     assert genq == None
@@ -68,3 +69,10 @@ def test_prepopulate_address(app, db_session, client):
     assert r.try_value('state') == 'KS'
     assert r.try_value('zip') == '12345'
 
+def test_signed_at_timezone(app, db_session, client):
+    from datetime import datetime
+
+    registrant = Registrant()
+    registrant.signed_at = datetime(2018, 10, 18, 3, 0)
+
+    assert registrant.signed_at_central_tz().strftime('%m/%d/%Y') == "10/17/2018"
