@@ -33,7 +33,7 @@ def about_us():
 @main.route('/', methods=["GET", "POST"])
 @InSession
 def index():
-    registrant = g.get("registrant")
+    registrant = g.registrant
     form = FormStep0()
     if http_session.get('ref'):
         form = FormStep0(ref=http_session.get('ref'))
