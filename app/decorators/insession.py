@@ -35,7 +35,7 @@ def InSession(f):
                 return redirect(url_for('main.index'))
         else:
             current_app.logger.info("found session uuid %s" %(session_id))
-            g.registrant = Registrant.lookup_by_session_id(session_id)
+            g.registrant = Registrant.find_by_session(session_id)
             # Security belt-and-suspenders. Disallow session continuation if the Registrant
             # has not been updated within the SESSION_TTL window.
             r = g.registrant
