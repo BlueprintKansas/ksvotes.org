@@ -21,6 +21,10 @@
     "en":"To request an advance ballot or to register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para solicitar una boleta por adelantado o para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
+   "aounce":{
+    "en":"IMPORTANT: Registration for the November 2018 elections closed on October 16, 2018. You can still submit a voter registration through this website, but it will not be in effect until after the November 6, 2018 elections.",
+    "es":"IMPORTANTE: la inscripción para las elecciones de noviembre de 2018 se cerró el 16 de octubre de 2018. Aún puede enviar una inscripción de votantes a través de este sitio web, pero no estará vigente hasta después de las elecciones del 6 de noviembre de 2018."
+  },
   "0_footer_priv":{
     "wiki_step":"0",
     "ref":"0_footer_priv",
@@ -583,6 +587,10 @@
     "es":"Gracias. Su(s) solicitud(es) de boleta anticipada(s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
   },
   "9_confirm_email":{
+    "en":"Dear {firstname},\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nPLEASE NOTE: Registration for the November 2018 elections closed on October 16, 2018. This registration will not be in effect until after the November 6, 2018 elections.\n\nIf you have any questions, please call Kate Davis of KSVotes.org at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team\n\nYour local elections official: {county} County, {officer}, {email}, {phone}\n",
+    "es":"Estimado {firstname},\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario electoral local, y usted debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, verifique su carpeta de spam.\n\nTENGA EN CUENTA: La inscripción para las elecciones de noviembre de 2018 se cerró el 16 de octubre de 2018. Esta inscripción no estará vigente hasta después de las elecciones del 6 de noviembre de 2018.\n\nSi tiene alguna pregunta, llame a Kate Davis de KSVotes.org al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org\n\nSu funcionario de elecciones locales: {county} County, {officer}, {email}, {phone}\n"
+  },
+  "9_confirm_email_old":{
     "en":"Dear {firstname},\nThank you for registering to vote online through KSVotes.org. Your registration has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYou should receive a card in the mail confirming your registration within 2-4 weeks. If you don't, contact your local elections office to check on your status. You can find their contact information below, or check your status at https://ksvotes.org/\n\nIf you have any questions, please call Kate Davis of KSVotes.org at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team\n\nYour local elections official: {county} County, {officer}, {email}, {phone}\n",
     "es":"Estimado {firstname},\nGracias por registrarse para votar en línea a través de KSVotes.org. Su registro ha sido enviado a su funcionario electoral local, y usted debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, verifique su carpeta de spam.\n\nDebería recibir una tarjeta por correo confirmando su registro dentro de 2 a 4 semanas. Si no lo hace, comuníquese con la oficina local de elecciones para verificar su estado. Encontrarás su información de contacto a continuación, o verifique su estado en línea https://ksvotes.org/\n\nSi tiene alguna pregunta, llame a Kate Davis de KSVotes.org al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org\n\nSu funcionario de elecciones locales: {county} County, {officer}, {email}, {phone}\n"
   },
