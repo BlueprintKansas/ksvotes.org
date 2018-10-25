@@ -129,6 +129,14 @@ class Registrant(db.Model):
             return validated_addr['current_address']['zip5']
         return self.try_value('zip')
 
+    def precinct_address(self):
+        parts = []
+        parts.append(self.try_value('addr'))
+        parts.append(self.try_value('city'))
+        parts.append(self.try_value('state'))
+        parts.append(self.try_value('zip'))
+        return ' '.join(parts)
+
     @classmethod
     def lookup_by_session_id(cls, sid):
         return cls.query.filter(cls.session_id == sid).first()
