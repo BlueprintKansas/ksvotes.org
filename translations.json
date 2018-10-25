@@ -672,6 +672,8 @@
     "en": "Clear signature",
     "es": "Firma clara"
   },
+  "btn_voting_info_lookup": { "en": "View your voting location", "es": "Ver su ubicación de votación" },
+  "map_your_voting_location": { "en": "Map your voting location", "es": "Mapea tu lugar de votación" },
   "skip_sos_check": {
     "en": "Skip the check, I know what I need to do",
     "es": "Omitir verificación, sé lo que tengo que hacer"
