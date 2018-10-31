@@ -196,7 +196,7 @@ class Registrant(db.Model):
     def redact(cls, reg):
         fields = ['identification', 'ab_identification', 'vr_form', 'ab_forms', 'signature_string']
         for f in fields:
-            reg.set_value(f, None)
+            reg.set_value(f, '[REDACTED]')
         reg.redacted_at = datetime.utcnow()
         db.session.add(reg)
         db.session.flush()
