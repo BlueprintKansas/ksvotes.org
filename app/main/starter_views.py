@@ -146,10 +146,10 @@ def change_county():
         redirect_url = url_for('main.index')
 
     if not new_county or new_county == existing_county:
-        current_app.logger.info('unable to change county')
+        current_app.logger.error('unable to change county')
         redirect(redirect_url)
 
-    current_app.logger.info('new county %s return to %s' % (new_county, redirect_url))
+    current_app.logger.debug('new county %s return to %s' % (new_county, redirect_url))
     reg.county = new_county
 
     # must invalidate any cached images since county is on the forms

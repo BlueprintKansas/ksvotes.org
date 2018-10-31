@@ -13,7 +13,7 @@ def guess_locale():
     def_locale = g.get('lang_code', current_app.config['BABEL_DEFAULT_LOCALE'])
     if def_locale not in LANGUAGES.keys():
         def_locale = current_app.config['BABEL_DEFAULT_LOCALE'] # fix recursive 404 error
-    current_app.logger.info("req_locale %s - expl_locale %s - def_locale %s" %(req_locale, expl_locale, def_locale))
+    current_app.logger.debug("req_locale %s - expl_locale %s - def_locale %s" %(req_locale, expl_locale, def_locale))
     # if they differ prefer the explicit
     if expl_locale and expl_locale in LANGUAGES.keys() and req_locale != expl_locale:
         locale = expl_locale
@@ -21,7 +21,7 @@ def guess_locale():
         locale = req_locale
     else:
         locale = def_locale
-    current_app.logger.info("using locale %s" %(locale))
+    current_app.logger.debug("using locale %s" %(locale))
     return locale
 
 def construct_county_choices(default):
