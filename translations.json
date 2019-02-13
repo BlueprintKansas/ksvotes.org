@@ -41,6 +41,10 @@
     "en":"To register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
+    "announce":{
+    "en":"Advance ballot applications are available at this time ONLY for special elections. Please check to make sure that you are applying for a ballot for the correct election in your area.",
+    "es":"Las solicitudes de boletas anticipadas están disponibles en este momento SOLAMENTE para elecciones especiales. Verifique para asegurarse de que está solicitando una boleta para la elección correcta en su área."
+  },
   "0_footer_priv":{
     "wiki_step":"0",
     "ref":"0_footer_priv",
@@ -269,8 +273,8 @@
     "es":"Primaria (Agosto 7, 2018)"
   },
   "1AB_select_election_general":{
-    "en":"General (November 6, 2018)",
-    "es":"General (Noviembre 6, 2018)"
+    "en":"Leavenworth Special (March 26, 2019)",
+    "es":"Especial de Leavenworth (Marzo 26, 2019)"
   },
   "1AB_select_perm":{
     "en":"Permanent vote by mail",
