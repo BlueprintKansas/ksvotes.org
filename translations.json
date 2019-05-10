@@ -269,12 +269,12 @@
     "es":"Puede inscribirse para las boletas por adelantado para las elecciones en el año calendario actual."
   },
   "1AB_select_election_primary":{
-    "en":"Primary (August 7, 2018)",
-    "es":"Primaria (Agosto 7, 2018)"
+    "en":"Primary (August 6, 2019)",
+    "es":"Primaria (Agosto 6, 2019)"
   },
   "1AB_select_election_general":{
-    "en":"General (March 26, 2019) - Leavenworth",
-    "es":"General (Marzo 26, 2019) - Leavenworth"
+    "en":"General (November 5, 2019) - Leavenworth",
+    "es":"General (November 5, 2019) - Leavenworth"
   },
   "1AB_select_perm":{
     "en":"Permanent vote by mail",
