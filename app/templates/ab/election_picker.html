@@ -37,6 +37,7 @@
         )}}
   </div>
   <div id="party-picker" style="display:none">
+    {% if is_even_year %}
     {{wtf.render_field(
         form.party,
         _('1AB_party_help'),
@@ -45,6 +46,7 @@
           'data-parsley-required-message': _('Required')
         }
         )}}
+    {% endif %}
   </div>
 
   {% include 'form-buttons.html' %}
