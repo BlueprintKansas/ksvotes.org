@@ -1,3 +1,5 @@
+import datetime
+
 from wtforms.validators import DataRequired
 from flask_babel import lazy_gettext
 from flask import request, g, current_app
@@ -57,6 +59,17 @@ def list_of_elections():
     elect_list.append((lazy_gettext(u'1AB_select_election_general'), lazy_gettext(u'1AB_select_election_general')))
     elect_list.append(('permanent', lazy_gettext(u'1AB_select_perm')))
     return elect_list
+
+def is_even_year(year=None):
+    """ Determine if it's an even year """
+    if year is None:
+        today = datetime.date.today()
+        year = today.year
+
+    if year % 2 == 0:
+        return True
+    else:
+        return False
 
 class RequiredIfBool(DataRequired):
     def __init__(self, check, *args, **kwargs):

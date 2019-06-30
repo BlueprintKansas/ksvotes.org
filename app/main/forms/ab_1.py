@@ -1,7 +1,11 @@
+import datetime
+
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SelectMultipleField, widgets, StringField
-from wtforms.validators import DataRequired, Regexp
+from wtforms.validators import DataRequired
 from flask_babel import lazy_gettext
+
+from app.main.helpers import is_even_year
 
 class MultiCheckboxField(SelectMultipleField):
     widget = widgets.ListWidget(prefix_label=False)
@@ -37,6 +41,7 @@ class RequiredIfFieldContains(DataRequired):
         if other_field_contains:
             super(RequiredIfFieldContains, self).__call__(form, field)
 
+
 class FormAB1(FlaskForm):
     elections = MultiCheckboxField(
         lazy_gettext(u'1AB_select_election'),
@@ -52,6 +57,10 @@ class FormAB1(FlaskForm):
     party = SelectField(
         lazy_gettext(u'1AB_party_help'),
         choices=[('', lazy_gettext(u'1AB_select_party')), ('Democratic', 'Democratic'), ('Republican', 'Republican')],
-        validators=[RequiredIfFieldContains('elections', ['Prim'])]
     )
 
+    def validate_party(form, field):
+        """ Party is only required on primaries in even numbered years """
+        if is_even_year():
+            validator = RequiredIfFieldContains('elections', ['Prim'])
+            validator(form, field)

@@ -1,7 +1,8 @@
 from app.main import main
-from flask import g, url_for, render_template, request, redirect, session as http_session
+from flask import g, render_template, request, redirect
 from app.decorators import InSession
 from app.main.forms import FormAB1
+from app.main.helpers import is_even_year
 from app.services.steps import Step_AB_1
 from app import db
 from app.services import SessionManager
@@ -29,5 +30,9 @@ def ab1_election_picker():
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
 
-    return render_template('ab/election_picker.html', form=form)
+    return render_template(
+        'ab/election_picker.html',
+        form=form,
+        is_even_year=is_even_year()
+    )
 
