@@ -1,4 +1,5 @@
 from app.models import *
+from app.main.helpers import is_even_year
 from datetime import datetime
 
 def create_registrant(db_session):
@@ -54,7 +55,10 @@ def test_ab_1_general_and_primary_no_party(app, db_session, client):
     }
 
     response = client.post('/ab/election_picker', data=form_payload, follow_redirects=False)
-    assert response.status_code != 302
+    if is_even_year():
+        assert response.status_code != 302
+    else:
+        assert response.status_code == 302
 
 def test_ab_1_general_and_primary_with_party(app, db_session, client):
     registrant = create_registrant(db_session)
