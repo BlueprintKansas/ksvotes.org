@@ -69,6 +69,17 @@ def test_prepopulate_address(app, db_session, client):
     assert r.try_value('state') == 'KS'
     assert r.try_value('zip') == '12345'
 
+def test_prepopulate_secure_voter(app, db_session, client):
+    sosrec = { 'Address': 'no information', 'Party': 'Republican' }
+    r = Registrant()
+    r.populate_address(sosrec)
+
+    assert r.try_value('addr') == ''
+    assert r.try_value('unit') == ''
+    assert r.try_value('city') == ''
+    assert r.try_value('state') == 'KANSAS'
+    assert r.try_value('zip') == ''
+
 def test_signed_at_timezone(app, db_session, client):
     from datetime import datetime
 

@@ -260,7 +260,7 @@ class Registrant(db.Model):
           'addr': "",
           'unit': "",
           'city': "",
-          'state': "",
+          'state': "KANSAS",
           'zip': ""
         }
         for key, val in addr_parts[0].items():
@@ -268,13 +268,15 @@ class Registrant(db.Model):
                 payload['unit'] = val
             elif key == 'PlaceName':
                 payload['city'] = val
-            elif key == 'StateName':
+            elif key == 'StateName' and len(val) > 0:
                 payload['state'] = val
             elif key == 'ZipCode':
                 payload['zip'] = val
             else:
                 if len(payload['addr']) > 0:
                     payload['addr'] = ' '.join([payload['addr'], val])
+                elif val == "no information":
+                    payload['addr'] = ""
                 else:
                     payload['addr'] = val
 
