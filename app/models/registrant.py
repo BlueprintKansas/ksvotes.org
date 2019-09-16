@@ -275,7 +275,7 @@ class Registrant(db.Model):
             else:
                 if len(payload['addr']) > 0:
                     payload['addr'] = ' '.join([payload['addr'], val])
-                elif val == "no information":
+                elif val == "No information available":
                     payload['addr'] = ""
                 else:
                     payload['addr'] = val
