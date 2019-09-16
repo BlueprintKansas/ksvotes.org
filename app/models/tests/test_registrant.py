@@ -70,7 +70,7 @@ def test_prepopulate_address(app, db_session, client):
     assert r.try_value('zip') == '12345'
 
 def test_prepopulate_secure_voter(app, db_session, client):
-    sosrec = { 'Address': 'no information', 'Party': 'Republican' }
+    sosrec = { 'Address': 'No information available', 'Party': 'Republican' }
     r = Registrant()
     r.populate_address(sosrec)
 
