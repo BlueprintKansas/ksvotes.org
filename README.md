@@ -95,6 +95,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # Turn the AB flow on. Default is off.
   # ENABLE_AB=true
 
+  # Turn VIT voting location JS widget on. Default is off.
+  # ENABLE_VOTING_LOCATION=true
+
   # Turn off HTTPS requirement. Probably set this to true in your local dev.
   # SSL_DISABLE=true
 
