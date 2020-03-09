@@ -55,6 +55,7 @@
 {% endblock %}
 
 {% block js_footer %}
+{% if config['ENABLE_VOTING_LOCATION'] %}
 <script type="text/javascript" src="https://tool.votinginfoproject.org/app.js"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/arrive.min.js')}}"></script>
 <script type="text/javascript">
@@ -68,5 +69,6 @@
     $('#address-input').val("{{registrant.precinct_address()}}");
   });
 </script>
+{% endif %}
 {% endblock %}
 

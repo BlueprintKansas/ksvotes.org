@@ -1,3 +1,4 @@
+{% if config['ENABLE_VOTING_LOCATION'] %}
 <div class="mt-3 mb-3">
   <div id="_vit"></div>
 </div>
@@ -6,3 +7,4 @@
     <i class="fa fa-search mr-2"></i>{{_('btn_voting_info_lookup')}}
   </button>
 </div>
+{% endif %}
