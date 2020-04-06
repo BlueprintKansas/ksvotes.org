@@ -1,4 +1,8 @@
 {
+   "announce":{
+    "en":"IMPORTANT: Advance ballot requests are now available for the August primary and November general election. Please note: KSVotes.org is not processing advance ballot requests for the upcoming May presidential primary.",
+    "es":"IMPORTANTE: Las solicitudes anticipadas de votación ahora están disponibles para las elecciones primarias de agosto y las elecciones generales de noviembre. Tenga en cuenta: KSVotes.org no está procesando las solicitudes de boletas anticipadas para las próximas elecciones primarias presidenciales de Mayo."
+ },
   "0_title":{
     "wiki_step":"0",
     "ref":"0_title",
@@ -8,7 +12,7 @@
   "0_lead":{
     "wiki_step":"0",
     "ref":"0_lead",
-    "en":"Your Kansas Online Voter Registration Service",
+    "en":"Your Kansas Online Voter Registration and Advance Ballot Service",
     "es":"Su registro de votante en línea y servicio de información"
   },
   "0_intro_deadline":{
@@ -17,13 +21,13 @@
     "en":"We can help you check your registration and find information on voting. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
     "es":"Podemos ayudarlo a verificar su registro y encontrar información sobre la votación. Para iniciar el proceso, necesitamos información para poder ver si está registrado para votar en Kansas."
   },
-  "0_intro":{
+  "0_intro_vr":{
     "wiki_step":"0",
     "ref":"0_intro",
     "en":"We can help you register to vote or check your registration. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
     "es":"Podemos ayudarlo a registrarse para votar o verificar su registro. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
-  "0_intro_ab":{
+  "0_intro":{
     "wiki_step":"0",
     "ref":"0_intro",
     "en":"We can help you register to vote, check your registration, or apply to vote by mail. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
@@ -33,11 +37,11 @@
     "en":"Enter your information to look up your polling place, see early voting options, and view a sample ballot.",
     "es":"Ingrese su información para buscar su lugar de votación, vea las opciones de votación anticipada y vea una boleta de muestra."
   },
-   "0_form_explain_ab":{
+   "0_form_explain":{
     "en":"To request an advance ballot or to register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para solicitar una boleta por adelantado o para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
-  "0_form_explain":{
+  "0_form_explain_vr":{
     "en":"To register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
