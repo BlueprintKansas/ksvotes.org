@@ -259,7 +259,7 @@
   "1AB_select_election":{
     "wiki_step":"1AB",
     "ref":"1AB_select_election",
-    "en":"Which election would you like to vote by mail in?",
+    "en":"Which election would you like to vote by mail in? NOTE: KSVotes.org is not able to process a request for a mail ballot for the May presidential primary.",
     "es":"¿Qué elección le gustaría votar por correo?"
   },
   "1AB_election_help":{
