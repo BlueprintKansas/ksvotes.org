@@ -1,6 +1,6 @@
 GEOCODE_FORMAT,COUNTY,OFFICER,EMAIL,HOURS,PHONE,FAX,ADDRESS1,ADDRESS2,CITY,STATE,ZIP
 Allen County,ALLEN,Sherrie L. Riebel,coclerk@allencounty.org,8:00-5:00,6203651407,6203651441,1 N. Washington,,Iola,KS,66749
-Anderson County,ANDERSON,Julie Heck,jheck@andersoncountyks.org,8:00-5:00,7854486841,7854483205,100 E 4th Ave,,Garnett,KS,66032
+Anderson County,ANDERSON,Julie Wettstein,jwettstein@andersoncountyks.org,8:00-5:00,7854486841,7854483205,100 E 4th Ave,,Garnett,KS,66032
 Atchison County,ATCHISON,Michelle Phillips,mphillips@atcoks.org,8:30-5:00,9138046030,9133670227,423 N 5th St.,,Atchison,KS,66002
 Barber County,BARBER,Debbie Wesley,dwesley@barber.ks.gov,8:30-5:00,6208863961,6208865425,120 E Washington,,Medicine Lodge,KS,67104
 Barton County,BARTON,Donna Zimmerman,voterreg@bartoncounty.org,8:00-5:00,6207931835,6207931990,1400 Main Street,Ste 202,Great Bend,KS,67530
@@ -63,7 +63,7 @@ Miami County,MIAMI,Janet White,countyclerk@miamicountyks.org,8:00-4:30,913294397
 Mitchell County,MITCHELL,Chris Treaster,mitchell_co@nckcn.com,8:30-5:00,7857383652,7857385524,111 S Hersey,PO Box 190,Beloit,KS,67420
 Montgomery County,MONTGOMERY,Charlotte Scott-Schmidt,cassschmidt@mgcountyks.org,8:30-12:00 1:00-5:00,6203301200,6203301202,217 E Myrtle,PO Box 446,Independence,KS,67301
 Morris County,MORRIS,Michelle Garrett,morris@tctelco.net,8:00-5:00,6207675518,6207676789,501 West Main St.,Ste 9,Council Grove,KS,66846
-Morton County,MORTON,Gina Castillo,mortoncountyclerk@elkhart.com,9:00-5:00,6206972157,6206974105,1025 Morton St,PO Box 1116,Elkhart,KS,67950
+Morton County,MORTON,Gina Shores,mortoncountyclerk@elkhart.com,9:00-5:00,6206972157,6206974105,1025 Morton St,PO Box 1116,Elkhart,KS,67950
 Nemaha County,NEMAHA,Mary Kay Schultejans,nmclerk@carsoncomm.com,8:00-4:30,7853362170,7853363373,607 Nemaha,PO Box 186,Seneca,KS,66538
 Neosho County,NEOSHO,Randal E. Neely,elections@neoshocounty.kscoxmail.com,8:00-4:30,6202443811,6202443810,100 S. Main,PO Box 138,Erie,KS,66733
 Ness County,NESS,Renee S. Kerr,nscoclerk@gbta.net,8:00-12:00 1:00-5:00,7857982401,7857983180,202 W. Sycamore,Suite 10,Ness City,KS,67560
@@ -93,7 +93,7 @@ Sherman County,SHERMAN,Ashley N. Mannis,amannis@shermancounty.org,8:00-12:00 1:0
 Smith County,SMITH,Sharon Wolters,smcoclerk@ruraltel.net,8:00-12:00 1:00-5:00,7852825110,7852825114,218 S Grant,Ste. 5,Smith Center,KS,66967
 Stafford County,STAFFORD,Nita J. Keenan,coclerk@gbta.net,8:00-12:00 1:00-5:00,6205493509,6205493481,209 N Broadway,,St. John,KS,67576
 Stanton County,STANTON,Sandy Barton,stclerk@pld.com,9:00-12:00 1:00-5:00,6204922140,6204921745,PO Box 190,201 N Main,Johnson,KS,67855
-Stevens County,STEVENS,Pam Bensel,stevenscoclerk@hotmail.com,9:00-5:00,6205442541,6205444094,200 E 6th,,Hugoton,KS,67951
+Stevens County,STEVENS,Amy Jo Tharp,atharp@stevenscoks.org,9:00-5:00,6205442541,6205444094,200 E 6th,,Hugoton,KS,67951
 Sumner County,SUMNER,Debra A. Norris,sucoclk@co.sumner.ks.us,8:00-5:00,6203263395,6203262116,501 N Washington,,Wellington,KS,67152
 Thomas County,THOMAS,Shelly Harms,sharms@thomascountyks.gov,8:00-5:00,7854604500,7854604503,300 N Court Ave,,Colby,KS,67701
 Trego County,TREGO,Lori Augustine,lori.augustine@tregocountyks.com,8:30-5:00,7857435773,7857435594,216 N. Main St.,,WaKeeney,KS,67672
