@@ -254,7 +254,7 @@ class Registrant(db.Model):
         return signed_at_utc.astimezone(central_tz)
 
     def populate_address(self, sosrec):
-        address = sosrec['Address'].replace('<br/>', ' ')
+        address = sosrec['address'].replace('<br/>', ' ')
         addr_parts = usaddress.tag(address)
         payload = {
           'addr': "",
