@@ -1,4 +1,9 @@
 {
+   "announce":{
+    "en":"IMPORTANT: Our Check Your Registration feature is currently experiencing technical difficulties. You can still register to vote or request an advance ballot using the form below. If you want to confirm your voter registration, please visit <a href="https://myvoteinfo.voteks.org/voterview">VoterView</a>",
+    "es":""
+ },
+
 
   "0_title":{
     "wiki_step":"0",
