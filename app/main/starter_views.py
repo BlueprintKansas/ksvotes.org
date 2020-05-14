@@ -75,24 +75,18 @@ def index():
         sos_failure = None
         if step.reg_found:
             sos_reg = []
-            if not isinstance(step.reg_found, list):
-              sos_found = [step.reg_found]
-            else:
-              sos_found = step.reg_found
-
-            for rec in sos_found:
-                elements = rec['elements'][0]
-                rec2save = {'tree': elements['tree'], 'registrant': rec['registrant']}
-                if 'sample_ballots' in elements:
-                    rec2save['sample_ballot'] = elements['sample_ballots']
-                if 'districts' in elements:
-                    rec2save['districts'] = elements['districts']
-                if 'elections' in elements:
-                    rec2save['elections'] = elements['elections']
+            for rec in step.reg_found:
+                rec2save = {'tree': rec['tree']}
+                if 'sample_ballots' in rec:
+                    rec2save['sample_ballot'] = rec['sample_ballots']
+                if 'districts' in rec:
+                    rec2save['districts'] = rec['districts']
+                if 'elections' in rec:
+                    rec2save['elections'] = rec['elections']
 
                 # prepopulate address and party, if possible
                 try:
-                    registrant.populate_address(rec2save['registrant'])
+                    registrant.populate_address(rec2save['tree'])
                 except:
                     # just swallow errors for now
                     err = sys.exc_info()[0]
