@@ -1,7 +1,7 @@
 {
    "announce":{
-    "en":"IMPORTANT: Advance ballot requests are now available for the August primary and November general election. Please note: KSVotes.org is not processing advance ballot requests for the upcoming May presidential primary.",
-    "es":"IMPORTANTE: Las solicitudes anticipadas de votación ahora están disponibles para las elecciones primarias de agosto y las elecciones generales de noviembre. Tenga en cuenta: KSVotes.org no está procesando las solicitudes de boletas anticipadas para las próximas elecciones primarias presidenciales de Mayo."
+    "en":"IMPORTANT: Our Check Your Registration feature is currently experiencing technical difficulties. You can still register to vote or request an advance ballot using the form below. If you want to confirm your voter registration, please visit the Secretary of State's website at https://myvoteinfo.voteks.org/.",
+    "es":""
  },
   "0_title":{
     "wiki_step":"0",
@@ -215,6 +215,12 @@
     "ref":"1AB_whats_next",
     "en":"Your voter information is below. What do you want to do next?",
     "es":"Su información de votante está abajo. ¿Qué desea hacer ahora?"
+  },
+  "1AB_whats_next_skip_sos":{
+    "wiki_step":"1AB",
+    "ref":"1AB_whats_next_skip_sos",
+    "en":"What do you want to do next?",
+    "es":"¿Qué desea hacer ahora?"
   },
   "1AB_change_reg_link":{
     "en":"Change my registration",
