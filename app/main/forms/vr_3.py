@@ -14,7 +14,7 @@ class FormVR3(FlaskForm):
         validators=[DataRequired(message=lazy_gettext(u'Required'))],
         default='KANSAS'
     )
-    zip = StringField(lazy_gettext(u'3_zip'), validators=[DataRequired(message=lazy_gettext(u'Required')), Regexp('^\d{5}$', message=lazy_gettext(u'3_zip_help'))])
+    zip = StringField(lazy_gettext(u'3_zip'), validators=[DataRequired(message=lazy_gettext(u'Required')), Regexp('^\d{5}(-\d{4})?$', message=lazy_gettext(u'3_zip_help'))])
 
     has_prev_addr = BooleanField(lazy_gettext(u'3_has_prev_addr'))
     prev_addr = StringField(lazy_gettext(u'3_prev_addr'), validators=[RequiredIfBool('has_prev_addr', message=lazy_gettext(u'Required'))])
