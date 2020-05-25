@@ -88,9 +88,10 @@ The ksvotes.org site makes Kansas online voting registration easy.
   # VOTER_VIEW_URL=https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do
 
 
-  # The number of days prior to the Primary election when the Advance Ballot
-  # option for the Primary disappears.
-  # AB_DAYS_BEFORE_PRIMARY=7
+  # The date and time prior to the Primary election when the Advance Ballot
+  # option for the Primary disappears. Format is 'YYYY-MM-DD HH:MM:SS' and assumes
+  # a Central US time zone
+  # AB_PRIMARY_DEADLINE="2020-05-01 17:00:00"
 
   # Turn the AB flow on. Default is off.
   # ENABLE_AB=true
@@ -110,7 +111,7 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
 ### Crypt Key
 
-  The encryption key is kind of particular, it needs to be 32 bytes long and URl-safe base64 encoded.  Use this command to generate one for you using the cryptography library: 
+  The encryption key is kind of particular, it needs to be 32 bytes long and URl-safe base64 encoded.  Use this command to generate one for you using the cryptography library:
 
   ```
   $(venv) make crypt-key
