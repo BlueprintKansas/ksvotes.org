@@ -22,7 +22,7 @@ gunicorn==19.8.1
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.10.1
-ksmyvoteinfo==1.1
+ksmyvoteinfo==1.2
 lxml==4.2.1
 Mako==1.0.7
 MarkupSafe==1.0
