@@ -144,6 +144,9 @@
         {% endif %}
       </ul>
       {% endif %}
+
+      <div class="px-2 mb-3" id="totals"></div>
+
       <ul class="list-unstyled list-inline px-2 mb-3 locale">
         {% if g.locale == 'es' %}
         <li class="list-inline-item">
@@ -200,6 +203,15 @@
           } else {
             ev.preventDefault();
           }
+        });
+
+
+        // Get current total processed
+        $.getJSON("/api/total-processed/", function(data) {
+          var registrations = data.registrations.toLocaleString();
+          var advanced_ballots = data.registrations.toLocaleString();
+          var text = "<p>KSVotes has processed " + registrations + " voter registrations and " + advanced_ballots + " advanced ballots.</p>";
+          $("#totals").html(text);
         });
       });
       {% if previous_step_url is defined %}
