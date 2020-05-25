@@ -209,7 +209,7 @@
         // Get current total processed
         $.getJSON("/api/total-processed/", function(data) {
           var registrations = data.registrations.toLocaleString();
-          var advanced_ballots = data.registrations.toLocaleString();
+          var advanced_ballots = data.advanced_ballots.toLocaleString();
           var text = "<p>KSVotes has processed " + registrations + " voter registrations and " + advanced_ballots + " advanced ballots.</p>";
           $("#totals").html(text);
         });
