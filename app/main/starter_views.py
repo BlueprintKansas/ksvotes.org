@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, request, redirect, session as http_session, abort, current_app, flash
+from flask import g, url_for, render_template, request, redirect, session as http_session, abort, current_app, flash, jsonify
 from flask_babel import lazy_gettext
 from app.main.forms import *
 from app.models import *
@@ -9,6 +9,7 @@ from app.decorators import InSession
 from app.services import SessionManager
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
+from sqlalchemy import func
 import sys
 
 @main.route('/terms', methods=['GET'])
@@ -235,3 +236,10 @@ def referring_org():
     db.session.add(registrant)
     db.session.commit()
     return redirect(url_for('main.index'))
+
+
+@main.route('/api/total-processed/', methods=['GET'])
+def api_total_processed():
+    reg_count = db.session.query(func.count(Registrant.id)).filter(Registrant.vr_completed_at.isnot(None)).first()
+    ab_count = db.session.query(func.count(Registrant.id)).filter(Registrant.ab_completed_at.isnot(None)).first()
+    return jsonify(registrations=reg_count[0], advanced_ballots=ab_count[0])
