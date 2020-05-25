@@ -1,5 +1,5 @@
 {
-   "announce":{
+   "announce_checkdown":{
     "en":"IMPORTANT: Our Check Your Registration feature is currently experiencing technical difficulties. You can still register to vote or request an advance ballot using the form below. If you want to confirm your voter registration, please visit the Secretary of State's website at https://myvoteinfo.voteks.org/.",
     "es":""
  },
@@ -259,7 +259,7 @@
   "1AB_select_election":{
     "wiki_step":"1AB",
     "ref":"1AB_select_election",
-    "en":"Which election would you like to vote by mail in? NOTE: KSVotes.org is not able to process a request for a mail ballot for the May presidential primary.",
+    "en":"Which election would you like to vote by mail in?",
     "es":"¿Qué elección le gustaría votar por correo?"
   },
   "1AB_election_help":{
