@@ -3,6 +3,11 @@
     "en":"IMPORTANT: Our Check Your Registration feature is currently experiencing technical difficulties. You can still register to vote or request an advance ballot using the form below. If you want to confirm your voter registration, please visit the Secretary of State's website at https://myvoteinfo.voteks.org/.",
     "es":""
  },
+   "announce":{
+    "ref":"announce",
+    "en":"IMPORTANT: The deadline to change party affiliation before the August primary election was noon on June 1, 2020. Pursuant to Kansas law, requests to change party affiliation will not be processed by county elections offices between June 1st and September 1st.",
+    "es":"IMPORTANTE: La fecha límite para cambiar la afiliación a un partido antes de las elecciones primarias de agosto era el mediodía del 1 de junio de 2020. De conformidad con la ley de Kansas, las oficinas de elecciones del condado no procesarán las solicitudes de cambio de afiliación entre el 1 de junio y el 1 de septiembre."
+  },
   "0_title":{
     "wiki_step":"0",
     "ref":"0_title",
