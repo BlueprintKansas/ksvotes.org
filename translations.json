@@ -1,4 +1,10 @@
 {
+   "announce":{
+      "en":"IMPORTANT: Requests to change party affiliation will not be processed by KSVotes.org between June 1st and September 1st, pursuant to Kansas law."
+      "es":"IMPORTANTE: KSVotes.org no procesara las solicitudes de cambio de afiliacion entre el 1 de junio y el 1 de septiembre, de conformidad con la ley de Kansas."
+ }, 
+
+{
    "announce_checkdown":{
     "en":"IMPORTANT: Our Check Your Registration feature is currently experiencing technical difficulties. You can still register to vote or request an advance ballot using the form below. If you want to confirm your voter registration, please visit the Secretary of State's website at https://myvoteinfo.voteks.org/.",
     "es":""
