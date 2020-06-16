@@ -1,251 +1,263 @@
 <!doctype html>
 <html lang="{{g.locale}}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% block title %} {% endblock %} | KSVotes.org</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% if config['GA_KEY'] %}
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','{{ config['GA_KEY'] }}');</script>
-    <!-- End Google Tag Manager -->
+  <title>{% block title %} {% endblock %} | KSVotes.org</title>
+
+  {% if config['GA_KEY'] %}
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', '{{ config['GA_KEY'] }}');</script>
+  <!-- End Google Tag Manager -->
+  {% endif %}
+
+  {% block facebook %}
+  <meta property="og:url" content="{{url_for('main.index', _external=True)}}" />
+  <meta property="og:site_name" content="KSVotes.org" />
+  <meta property="og:title" content="KSVotes.org" />
+  <meta property="og:description"
+    content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
+  <meta property="og:image:width" content="738" />
+  <meta property="og:image:height" content="469" />
+  {% endblock %}
+
+  {% block twitter %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="KSVotesorg" />
+  <meta name="twitter:creator" content="">
+  <meta name="twitter:title" content="KSVotes.org" />
+  <meta name="twitter:image"
+    content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
+  <meta name="twitter:description"
+    content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
+  {% endblock %}
+
+  {% include 'helpers/favicons.html' %}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
+</head>
+
+<body>
+  {% if config['GA_KEY'] %}
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ config['GA_KEY'] }}" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% endif %}
+
+  <noscript>
+    <div class="alert alert-warning text-center">
+      This site requires JavaScript be enabled in your browser.
+    </div>
+  </noscript>
+
+  <div id="mask"></div>
+  {% if registrant %}
+  {% include 'session-timeout-modal.html' %}
+  {% endif %}
+
+  <main>
+    {% block header %}
+    {% if not use_hero %}
+    <header>
+
+      {% if current_step %}
+      {% include 'step-progress.html' %}
+      {% endif %}
+
+    </header>
     {% endif %}
-
-    {% block facebook %}
-      <meta property="og:url" content="{{url_for('main.index', _external=True)}}"/>
-      <meta property="og:site_name" content="KSVotes.org" />
-      <meta property="og:title" content="KSVotes.org" />
-      <meta property="og:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
-      <meta property="og:image:width" content="738" />
-      <meta property="og:image:height" content="469" />
     {% endblock %}
-
-    {% block twitter %}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="KSVotesorg" />
-      <meta name="twitter:creator" content="">
-      <meta name="twitter:title" content="KSVotes.org" />
-      <meta name="twitter:image" content="{{url_for('static', filename='img/KSVotes-square-social.png', _external=True)}}" />
-      <meta name="twitter:description" content="KSVotes.org is the fastest, simplest way to register to vote in Kansas using just your touchscreen device." />
-    {% endblock %}
-
-    {% include 'helpers/favicons.html' %}
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/p-loading.min.css')}}" rel="stylesheet">
-  </head>
-  <body>
-    {% if config['GA_KEY'] %}
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ config['GA_KEY'] }}"
-     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    {% endif %}
-
-    <noscript>
-     <div class="alert alert-warning text-center">
-       This site requires JavaScript be enabled in your browser.
-     </div>
-    </noscript>
-
-    <div id="mask"></div>
-    {% if registrant %}
-    {% include 'session-timeout-modal.html' %}
-    {% endif %}
-
-    <main>
-     {% block header %}
-     {% if not use_hero %}
-     <header>
-
-     {% if current_step %}
-     {% include 'step-progress.html' %}
-     {% endif %}
-
-     </header>
-     {% endif %}
-     {% endblock %}
 
     {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="container-fluid text-center col-md-6 flashes">
-        {% for category, message in messages %}
-         <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
-        {% endfor %}
-        </div>
-      {% endif %}
+    {% if messages %}
+    <div class="container-fluid text-center col-md-6 flashes">
+      {% for category, message in messages %}
+      <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
     {% endwith %}
 
     {% if config['STAGE_BANNER'] %}
-      <div class="alert alert-danger text-center">
-       <h3 class="h3-responsive">{{_('stage_banner')}}</h3>
-     </div>
+    <div class="alert alert-danger text-center">
+      <h3 class="h3-responsive">{{_('stage_banner')}}</h3>
+    </div>
     {% endif %}
 
     {% if use_hero %}
-      <section id="hero">
-       <div class="jumbotron mb-4 p-sm-4">
+    <section id="hero">
+      <div class="jumbotron mb-4 p-sm-4">
         <div class="container text-center">
-         <div class="row">
-          <div class="col-md-12">
-           <div class="splash">
-            <h1 class="h1-responsive mt-sm-3 bold">{{_('0_title')}}</h1>
-            <p class="lead">{{_('0_lead')}}</p>
-            <hr class="my-3 w-50 border-thick">
-            <p class="measure mx-auto">{{_('0_intro')}}</p>
-            <a class="icon h1 align-bottom line-height-1" id="arrow-down" href="#step_0" aria-label="Start">
-              <i class="fa fa-angle-down fa-lg" aria-label="Start" role="presentation"></i>
-            </a>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="splash">
+                <h1 class="h1-responsive mt-sm-3 bold">{{_('0_title')}}</h1>
+                <p class="lead">{{_('0_lead')}}</p>
+                <hr class="my-3 w-50 border-thick">
+                <p class="measure mx-auto">{{_('0_intro')}}</p>
+                <a class="icon h1 align-bottom line-height-1" id="arrow-down" href="#step_0" aria-label="Start">
+                  <i class="fa fa-angle-down fa-lg" aria-label="Start" role="presentation"></i>
+                </a>
+              </div>
+            </div>
           </div>
-         </div>
         </div>
-       </div>
-      </section>
+    </section>
     {% endif %}
 
     {% import 'macros/_render_field2.html' as wtf %}
     {% block content %}{% endblock %}
 
-    </main>
+  </main>
 
-    {% block footer %}
-    {% set nav_item_sep = '&nbsp;&nbsp;|'|safe %}
-    <footer class="page-footer accent-4 mt-4 fs-14 text-center ksv-flow-{{flow_flavor or 'vr'}}">
-      <a href="{{url_for('main.index')}}">
-        <img class="mx-auto pt-1" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
-      </a>
-      <hr class="clearfix w-100 d-md-none mt-0">
-       <ul class="list-unstyled list-inline px-2 mb-3">
-       <li class="list-inline-item">{{_('0_footer_SOS')}}</li>
-      </ul>
-      {% if registrant.id is defined %}
-      <ul class="list-unstyled list-inline px-2 mb-3">
-        <li class="list-inline-item">
-          <a href="{{url_for('main.index')}}">{{_('nav_register_vote')}}</a>
+  {% block footer %}
+  {% set nav_item_sep = '&nbsp;&nbsp;|'|safe %}
+  <footer class="page-footer accent-4 mt-4 fs-14 text-center ksv-flow-{{flow_flavor or 'vr'}}">
+    <a href="{{url_for('main.index')}}">
+      <img class="mx-auto pt-1" src="{{url_for('static', filename='img/KSVotes_Logo_Primary_White.png')}}" alt="Home" />
+    </a>
+    <hr class="clearfix w-100 d-md-none mt-0">
+    <ul class="list-unstyled list-inline px-2 mb-3">
+      <li class="list-inline-item">{{_('0_footer_SOS')}}</li>
+    </ul>
+    {% if registrant.id is defined %}
+    <ul class="list-unstyled list-inline px-2 mb-3">
+      <li class="list-inline-item">
+        <a href="{{url_for('main.index')}}">{{_('nav_register_vote')}}</a>
         {% if config['ENABLE_AB'] %}
-          {{nav_item_sep}}
-        </li>
-        <li class="list-inline-item">
-          <a href="{{url_for('main.ab1_election_picker')}}">{{_('nav_advance_ballot')}}</a>
-        </li>
-        {% else %}
-        </li>
-        {% endif %}
-      </ul>
+        {{nav_item_sep}}
+      </li>
+      <li class="list-inline-item">
+        <a href="{{url_for('main.ab1_election_picker')}}">{{_('nav_advance_ballot')}}</a>
+      </li>
+      {% else %}
+      </li>
       {% endif %}
+    </ul>
+    {% endif %}
 
-      <div class="px-2 mb-3" id="totals"></div>
+    <div class="px-2 mb-3" id="totals"></div>
 
-      <ul class="list-unstyled list-inline px-2 mb-3 locale">
-        {% if g.locale == 'es' %}
-        <li class="list-inline-item">
-          <a href="{{url_for('main.index', lang_code='en')}}">English</a>
-        </li>
-        {% elif g.locale == 'en' %}
-        <li class="list-inline-item">
-          <a href="{{url_for('main.index', lang_code='es')}}">Español</a>
-        </li>
-        {% endif %}
-      </ul>
-      <ul class="list-unstyled list-inline px-2 mb-3">
-       <li class="list-inline-item"><a href="/terms">{{_('0_footer_tos')}}</a> {{nav_item_sep}}</li>
-       <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> {{nav_item_sep}}</li>
-       <li class="list-inline-item"><a href="https://www.facebook.com/KSVotes.org/">{{_('0_footer_contact')}}</a></li>
-      </ul>
-      <div class="px-2 mb-3"><a href="/about">{{_('0_footer_about_us')}}</a></div>
-      <div class="footer-copyright py-2 fs-12">
-        <a href="https://blueprintkansas.org/">© 2020 Blueprint Kansas</a>
-      </div>
-    </footer>
-    {% endblock %}
-
-
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{url_for('static', filename='js/mdb-4.5.5.js')}}"></script>
-    <!-- Parsley -->
-    <script type="text/javascript" src="{{url_for('static', filename='js/parsley.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='js/moment.min.js')}}"></script>
-
-    <script type="text/javascript" src="{{url_for('static', filename='js/p-loading.min.js')}}"></script>
-
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
-
-    <script type="text/javascript">
-      var showMask = function() {
-        var $mask = $('#mask');
-        $mask.show();
-        $mask.ploading({ action: 'show' });
-      };
-      $(document).ready(function() {
-        $('form').submit(function(ev) {
-          var $form = $(this);
-          $form.parsley().validate();
-          if ($form.parsley().isValid()) {
-            showMask();
-          } else {
-            ev.preventDefault();
-          }
-        });
-
-
-        // Get current total processed
-        $.getJSON("/api/total-processed/", function(data) {
-          var registrations = data.registrations.toLocaleString();
-          var advanced_ballots = data.advanced_ballots.toLocaleString();
-          var text = "<p>KSVotes has processed " + registrations + " voter registrations and " + advanced_ballots + " advanced ballots.</p>";
-          $("#totals").html(text);
-        });
-      });
-      {% if previous_step_url is defined %}
-      $('#btn-back').attr('href', '{{previous_step_url}}');
-      $('#btn-back').click(function(ev) {
-        showMask();
-      });
+    <ul class="list-unstyled list-inline px-2 mb-3 locale">
+      {% if g.locale == 'es' %}
+      <li class="list-inline-item">
+        <a href="{{url_for('main.index', lang_code='en')}}">English</a>
+      </li>
+      {% elif g.locale == 'en' %}
+      <li class="list-inline-item">
+        <a href="{{url_for('main.index', lang_code='es')}}">Español</a>
+      </li>
       {% endif %}
-    </script>
+    </ul>
+    <ul class="list-unstyled list-inline px-2 mb-3">
+      <li class="list-inline-item"><a href="/terms">{{_('0_footer_tos')}}</a> {{nav_item_sep}}</li>
+      <li class="list-inline-item"><a href="/privacy-policy">{{_('0_footer_priv')}}</a> {{nav_item_sep}}</li>
+      <li class="list-inline-item"><a href="https://www.facebook.com/KSVotes.org/">{{_('0_footer_contact')}}</a></li>
+    </ul>
+    <div class="px-2 mb-3"><a href="/about">{{_('0_footer_about_us')}}</a></div>
+    <div class="footer-copyright py-2 fs-12">
+      <a href="http://blueprintkansas.org/">© 2020 Blueprint Kansas</a>
+    </div>
+  </footer>
+  {% endblock %}
 
-    <script>
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/mdb-4.5.5.js')}}"></script>
+  <!-- Parsley -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/parsley.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/moment.min.js')}}"></script>
+
+  <script type="text/javascript" src="{{url_for('static', filename='js/p-loading.min.js')}}"></script>
+
+  <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+  <script type="text/javascript">
+    var showMask = function () {
+      var $mask = $('#mask');
+      $mask.show();
+      $mask.ploading({ action: 'show' });
+    };
+    $(document).ready(function () {
+      $('form').submit(function (ev) {
+        var $form = $(this);
+        $form.parsley().validate();
+        if ($form.parsley().isValid()) {
+          showMask();
+        } else {
+          ev.preventDefault();
+        }
+      });
+
+
+      // Get current total processed
+      $.getJSON("/api/total-processed/", function (data) {
+        var registrations = data.registrations.toLocaleString();
+        var advanced_ballots = data.advanced_ballots.toLocaleString();
+        var text = "<p>KSVotes has processed " + registrations + " voter registrations and " + advanced_ballots + " advanced ballots.</p>";
+        $("#totals").html(text);
+      });
+    });
+    {% if previous_step_url is defined %}
+    $('#btn-back').attr('href', '{{previous_step_url}}');
+    $('#btn-back').click(function (ev) {
+      showMask();
+    });
+    {% endif %}
+  </script>
+
+  <script>
     // hide flash messages after N secs
-      $(function() {
-        window.setTimeout(function() {
-          $(".flashes").fadeTo(500, 0).slideUp(500, function(){
-            $(this).remove();
-          });
-        }, 5000);
-      });
-    </script>
-    <script>
-      $('#modal-session-expired').on('hidden.bs.modal', function() {
-        console.log('you may not simply dismiss the modal');
-        window.location = '{{url_for('main.index')}}';
-      });
-      window.setTimeout(function() {
-        $('#modal-session-expired').modal('show');
-        //console.log('session ttl check fired');
-      }, 60000 * {{config['SESSION_TTL']}}); // TTL is minutes
+    $(function () {
+      window.setTimeout(function () {
+        $(".flashes").fadeTo(500, 0).slideUp(500, function () {
+          $(this).remove();
+        });
+      }, 5000);
+    });
+  </script>
+  <script>
+    $('#modal-session-expired').on('hidden.bs.modal', function () {
+      console.log('you may not simply dismiss the modal');
+      window.location = '{{url_for('main.index')}}';
+    });
+    window.setTimeout(function () {
+      $('#modal-session-expired').modal('show');
+      //console.log('session ttl check fired');
+    }, 60000 * {{ config['SESSION_TTL']}}); // TTL is minutes
       // this does not actually expire the session, just improves UX.
       // the browser cookie will expire and so will the server-side session.
-    </script>
-    {% block js_footer %}
+  </script>
+  {% block js_footer %}
 
-    {% endblock %}
-  </body>
+  {% endblock %}
+</body>
+
 </html>
