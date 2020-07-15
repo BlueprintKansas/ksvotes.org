@@ -304,7 +304,7 @@ del newdf
 print(kdf.shape)
 print(kdf['match_status'].value_counts())
 
-tempDF = kdf[['id','first','middle','last','dob','party','first_lowN','last_lowN','zip5','address_nbr','address_nbr_isnumeric','match_status','saved_tr_id','home_addr','saved_reg_date','ab_completed_at']]
+tempDF = kdf[['id','first','middle','last','dob','party','first_lowN','last_lowN','zip5','address_nbr','address_nbr_isnumeric','match_status','saved_tr_id','home_addr','saved_reg_date','ab_completed_at','r_elections']]
 tempDF.to_csv('kdf_processed.csv',sep=',')
 
 # Kate specified output files

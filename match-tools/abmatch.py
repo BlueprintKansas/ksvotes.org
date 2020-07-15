@@ -2,6 +2,7 @@
 # abmatch.py
 # - Takes in two filenames as cmdline args: the kdf_processed csv file (kdf) 
 # -- and the SoS ab_processed CSV file
+# - it takes a 3rd argument, which is the text-based date of the election to check for as stored in ksvotes-production (eg/default: "August 4, 2020")
 # - finds as many of the kdf text registrants as it can in the kdf, and tags with ABM_MATCH
 # - saves output kdf as ab_kdf_processed.  
 
@@ -14,6 +15,8 @@ import numpy as np
 kdf_fn = sys.argv[1] if len(sys.argv) > 1 else 'kdf_processed.csv'
 
 ab_fn = sys.argv[2] if len(sys.argv) > 2 else 'ab_sent_sample.csv'
+
+ab_electiondate = sys.argv[2] if len(sys.argv) > 3 else 'August 4, 2020'
 
 # load ab complted file
 # Load dataset, tab-separated, create DataFrame
@@ -36,7 +39,7 @@ kdf['ab_sent_status'] = 'AB_UNKNOWN'
 # first 'remove' incomplete registrations and the "test" county.  Note, example data file had none of these(?)
 # vr_completed_at is a number/time so you must use .notnull().  Argh!
 
-kdf.loc[(kdf['ab_sent_status'] == 'AB_UNKNOWN') & pd.notnull(kdf['ab_completed_at']),'ab_sent_status'] = 'AB_ABREQCOMPLETED'
+kdf.loc[(kdf['ab_sent_status'] == 'AB_UNKNOWN') & pd.notnull(kdf['ab_completed_at']) & kdf['r_elections'].str.contains(ab_electiondate),'ab_sent_status'] = 'AB_ABREQCOMPLETED'
 
 print(kdf.shape)
 print(adf.shape)
