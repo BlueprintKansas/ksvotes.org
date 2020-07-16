@@ -91,6 +91,8 @@ kdf['address_nbr_isnumeric'] = (kdf['address_nbr'] != '') & kdf['address_nbr'].s
 
 kdf['zip5'] = kdf['home_zip'].str[:5].astype(float).fillna(0).astype(int)
 
+# XXX
+kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & kdf['r_county'].notnull() & (kdf['r_county'] != kdf['county']),'match_status'] = 'M_COUNTYMISMATCH'
 
 newdf=kdf[['id','match_status','vr_completed_at','ab_completed_at','county','home_addr','address_nbr','address_nbr_isnumeric']]
 newdf.to_csv("newdf.csv",sep=',')
@@ -281,6 +283,8 @@ kdf.loc[(kdf['match_status'] == 'M_PREVIOUS_NOWNOT'),'saved_tr_id'] = kdf['text_
 
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & (kdf['address_nbr_isnumeric'] == False),'match_status'] = 'M_BADADDRESS'
 
+#kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & kdf['r_county'].notnull() & (kdf['r_county'] != kdf['county']),'match_status'] = 'M_COUNTYMISMATCH'
+
 # is the zipcode inside Kansas? (float needed to handle NaN case)
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & ((kdf['zip5'] > 67954) | (kdf['zip5'] < 66002)),'match_status'] = 'M_BADZIPCODE'
 
@@ -304,7 +308,7 @@ del newdf
 print(kdf.shape)
 print(kdf['match_status'].value_counts())
 
-tempDF = kdf[['id','first','middle','last','dob','party','first_lowN','last_lowN','zip5','address_nbr','address_nbr_isnumeric','match_status','saved_tr_id','home_addr','saved_reg_date','ab_completed_at','r_elections']]
+tempDF = kdf[['id','first','middle','last','dob','party','first_lowN','last_lowN','zip5','address_nbr','address_nbr_isnumeric','county','r_county','match_status','saved_tr_id','home_addr','saved_reg_date','ab_completed_at','r_elections']]
 tempDF.to_csv('kdf_processed.csv',sep=',')
 
 # Kate specified output files
