@@ -71,6 +71,7 @@ def index():
         skip_sos = request.values.get('skip-sos')
         step.run(skip_sos)
         registrant.reg_lookup_complete = step.reg_lookup_complete
+        registrant.reg_found = True if step.reg_found else False
         registrant.dob_year = registrant.get_dob_year()
         sos_reg = None
         sos_failure = None
