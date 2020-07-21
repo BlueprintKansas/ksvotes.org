@@ -12,24 +12,58 @@
 # - finds as many of the KSV registrants as it can in the vdf, and tags each with the method used to
 #   match or disqualify each one ('match_status'). For matches, save vdf's text_registrant_id for the match.
 
-import sys 
+import sys, getopt
 import pandas as pd
 import numpy as np
 
 
 # default is short voter file
-voter_fn = sys.argv[1] if len(sys.argv) > 1 else 'F1K.txt'
+voter_fn = 'F1K.txt'
+ksv_fn = 'ksvotes-production_20200714.csv'
+ksv_completed_fn = 'ksv_complete_2018.csv'
+dob18cutoff = '2002/08/04'
 
-ksv_fn = sys.argv[2] if len(sys.argv) > 2 else 'ksvotes-production_copy.csv'
-ksv_completed_fn = sys.argv[3] if len(sys.argv) > 3 else 'ksv_complete_2018.csv'
-dob18cutoff = sys.argv[4] if len(sys.argv) > 4 else '2002/04/04'
+try:
+	opts, args = getopt.getopt(sys.argv[1:],"hv:k:c:d:",["vfile=","kdfile=","cfile=","DOBcutoff="])
+except getopt.GetoptError:
+	print ('ERROR, bad arguments. Try -h')
+	sys.exit(2)
+for opt, arg in opts:
+	if opt == '-h':
+		print ('match.py -v <SOS voter file> -k <kdfile.csv> -c <KSVcompleted.csv> -d <DOBcuttoff>')
+		print ('  --vfile=')
+		print ('  --kdfile=')
+		print ('  --cfile=')
+		print ('  --DOBcutoff= (eg: "August 4, 2020)"')
+		sys.exit
+	elif opt in ("-k", "--kdfile"):
+		ksv_fn = arg
+		print(f'kdfile={ksv_fn}')
+	elif opt in ("-v", "--vfile"):
+		voter_fn = arg
+		print(f'voter_file={voter_fn}')
+	elif opt in ("-c", "--cfile"):
+		ksv_completed_fn = arg
+		print(f'completed_file={ksv_completed_fn}')
+	elif opt in ("-d", "--DOBcutoff"):
+		dob18cutoff = arg
+		print(f'DOBcutoff={dob18cutoff}')
+
+
+
 
 # load current Kansas Voter File 
 # Load dataset, tab-separated, create DataFrame
 vdf=pd.read_csv(voter_fn,index_col=False,sep='\t',error_bad_lines=False,warn_bad_lines=True,encoding='latin-1',low_memory=False)
 
-# Load KSVotes data file comma-separated, create DataFrame
-kdf=pd.read_csv(ksv_fn,index_col=False,sep=',',error_bad_lines=True,encoding='latin-1',low_memory=False)
+# Load KSVotes data file, skip first line, comma-separated, create DataFrame
+kdf=pd.read_csv(ksv_fn,index_col=False,sep=',',error_bad_lines=True,encoding='latin-1',low_memory=False,header=1)
+
+#kdf=pd.read_csv(ksv_fn,index_col=False,sep=',',error_bad_lines=True,encoding='latin-1',low_memory=False)
+
+# times are already in pandas format='%Y-%m-%d %H:%M:%S.%f')
+
+print(kdf[['ab_completed_at']])
 
 # Load KSVotes already completed file. ['text_registrant_id','(kdf)id'] comma-separated, create DataFrame
 kdfc=pd.read_csv(ksv_completed_fn,index_col=False,sep=',',error_bad_lines=True,encoding='latin-1',low_memory=False)
@@ -59,7 +93,10 @@ kdf['new_id'] = 'v2-' + kdf['id'].fillna(0).astype(int).astype(str)
 # initialize match_status for every record in ksv input to UNKNOWN
 # create and initialize the saved voter-database logid for when a match is discovered
 kdf['match_status'] = 'M_UNKNOWN'
+kdf['county_match_status'] = 'C_UNKNOWN'
+kdf['ab_completed'] = 'A_UNKNOWN'
 kdf['saved_tr_id'] = '-1'
+kdf['saved_db_logid'] = 'xxx'
 kdf['saved_reg_date'] = '-1'
 
 # rename columns of KSV data to match more closely the voter file's
@@ -74,13 +111,13 @@ kdf.rename(columns = {
 	'r_state':'home_state',
 	'r_zip':'home_zip',
 		},
-					 inplace = True)
+		inplace = True)
 
 # first 'remove' incomplete registrations and the "test" county.  Note, example data file had none of these(?)
 # vr_completed_at is a number/time so you must use .notnull().  Argh!
 
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & pd.isna(kdf['vr_completed_at']) & pd.isna(kdf['ab_completed_at']),'match_status'] = 'M_NOTCOMPLETED'
-kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & pd.isna(kdf['vr_completed_at']) & pd.notnull(kdf['ab_completed_at']),'match_status'] = 'M_ONLYABCOMPLETED'
+kdf.loc[pd.notnull(kdf['ab_completed_at']),'ab_completed_status'] = 'A_COMPLETED'
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & (kdf['county'] == 'TEST'),'match_status'] = 'M_TESTCOUNTY'
 
 # create KSV house number, get first segment split on space, strip alpha characters in case 493B or 2600. or "2600 
@@ -91,13 +128,10 @@ kdf['address_nbr_isnumeric'] = (kdf['address_nbr'] != '') & kdf['address_nbr'].s
 
 kdf['zip5'] = kdf['home_zip'].str[:5].astype(float).fillna(0).astype(int)
 
-# XXX
-kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & kdf['r_county'].notnull() & (kdf['r_county'] != kdf['county']),'match_status'] = 'M_COUNTYMISMATCH'
+#newdf=kdf[['id','match_status','vr_completed_at','ab_completed_at','county','home_addr','address_nbr','address_nbr_isnumeric']]
+#newdf.to_csv("newdf.csv",sep=',')
 
-newdf=kdf[['id','match_status','vr_completed_at','ab_completed_at','county','home_addr','address_nbr','address_nbr_isnumeric']]
-newdf.to_csv("newdf.csv",sep=',')
-
-kdf.to_csv("kdf_postaddrcheck.csv",sep=',')
+#kdf.to_csv("kdf_postaddrcheck.csv",sep=',')
 
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & (kdf['dob'] > dob18cutoff),'match_status'] = 'M_UNDER18DOB'
 
@@ -174,11 +208,12 @@ def match_kdf_vdf(round,kdf_match_on,vdf_match_on,match_party,assigned_match):
 	# print(f'post-dropdup newdf {newdf.shape}')
 	print(f"ROUND {round} found {(newdf_length - newdf.shape[0])} duplicate vdb entries")
 
-	# Nuke all columns except these two
+	# Nuke all columns except these
 
-	newdf = newdf[['text_registrant_id','temp_match_status','reg_date']]
+	newdf = newdf[['text_registrant_id','temp_match_status','reg_date','db_logid']]
 
-	# print(f'post-nuke newdf {newdf.shape}')
+	print(f'post-nuke newdf {newdf.shape}')
+
 
 	# re-apply the merged data back to kdb with the vdb logid and the _merge status
 
@@ -187,15 +222,21 @@ def match_kdf_vdf(round,kdf_match_on,vdf_match_on,match_party,assigned_match):
 	# using the appended data to apply what we know to permanent rows
 	kdf.loc[(kdf['temp_match_status'] == assigned_match),'match_status'] = assigned_match
 	kdf.loc[(kdf['match_status'] == assigned_match),'saved_tr_id'] = kdf['text_registrant_id'].fillna(0).astype(int).astype(str)
+	kdf.loc[(kdf['match_status'] == assigned_match),'saved_db_logid'] = kdf['db_logid']
 	kdf.loc[(kdf['match_status'] == assigned_match),'saved_reg_date'] = kdf['reg_date']
+	kdf.loc[(kdf['match_status'] == assigned_match),'county_match_status'] = 'C_NOMATCH'
+	kdf.loc[(kdf['match_status'] == assigned_match) & (kdf['county'].str.lower() == kdf['db_logid'].str.lower()),'county_match_status'] = 'C_MATCH'
+
 
 	# then delete the temporary columns and temp df
 	del kdf['temp_match_status']
 	del kdf['text_registrant_id']
+	del kdf['db_logid']
 	del kdf['reg_date']
 	del newdf
 
 	print(kdf['match_status'].value_counts())
+	print(kdf['county_match_status'].value_counts())
 
 	print(f'end ROUND {round} kdf {kdf.shape}')
 
@@ -271,7 +312,7 @@ kdf = pd.concat([kdf, newdf], axis=1)
 
 print(kdf.shape)
 
-# use concat-ed data to tag M_ type and store db_logid
+# use concat-ed data to tag M_ type and store db_logidk
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & (kdf['_merge'] == 'both'),'match_status'] = 'M_PREVIOUS_NOWNOT'
 kdf.loc[(kdf['match_status'] == 'M_PREVIOUS_NOWNOT'),'saved_tr_id'] = kdf['text_registrant_id'].fillna(0).astype(int).astype(str)
 
@@ -289,8 +330,13 @@ kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & (kdf['address_nbr_isnumeric'] == 
 kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & ((kdf['zip5'] > 67954) | (kdf['zip5'] < 66002)),'match_status'] = 'M_BADZIPCODE'
 
 # this is simplified output with just IDs and match status
-newdf = kdf[['id','new_id','_merge','match_status','ab_completed_at','vr_completed_at','saved_tr_id','text_registrant_id']]
+newdf = kdf[['id','new_id','_merge','match_status','ab_completed_at','vr_completed_at','saved_tr_id','text_registrant_id','saved_db_logid','county_match_status','ab_completed']]
 newdf.to_csv('merged-status.csv',sep=',')
+
+# delete the temporary columns
+del kdf['_merge']
+del kdf['text_registrant_id']
+del newdf
 
 # this is the output of the whole thing
 kdf.to_csv('kdf_finaloutput.csv',sep=',')
@@ -300,15 +346,11 @@ match_status_outputfile = open('match_status.txt','w')
 print(kdf['match_status'].value_counts(),file=match_status_outputfile)
 match_status_outputfile.close()
 
-# delete the temporary columns
-del kdf['_merge']
-del kdf['text_registrant_id']
-del newdf
-
 print(kdf.shape)
 print(kdf['match_status'].value_counts())
+print(kdf['county_match_status'].value_counts())
 
-tempDF = kdf[['id','first','middle','last','dob','party','first_lowN','last_lowN','zip5','address_nbr','address_nbr_isnumeric','county','r_county','match_status','saved_tr_id','home_addr','saved_reg_date','ab_completed_at','r_elections']]
+tempDF = kdf[['id','first','middle','last','dob','party','first_lowN','last_lowN','zip5','address_nbr','address_nbr_isnumeric','county','saved_db_logid','match_status','county_match_status','ab_completed','saved_tr_id','home_addr','saved_reg_date','ab_completed_at','ab_completed_status','r_elections']]
 tempDF.to_csv('kdf_processed.csv',sep=',')
 
 # Kate specified output files
@@ -337,7 +379,7 @@ print(tempDF.shape)
 tempDF.to_csv('kdf_withoutpartymatchfile.csv',sep=',',index=False)
 
 
-tempDF = kdf[['id','first','saved_tr_id','match_status','saved_reg_date']]
+tempDF = kdf[['id','first','saved_tr_id','saved_db_logid','match_status','saved_reg_date']]
 tempDF = tempDF.astype({"id": int})
 tempDF.to_csv('kdf_processed_noPII.csv',sep=',',index=False)
 
