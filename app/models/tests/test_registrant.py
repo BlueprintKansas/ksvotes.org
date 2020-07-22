@@ -87,3 +87,29 @@ def test_signed_at_timezone(app, db_session, client):
     registrant.signed_at = datetime(2018, 10, 18, 3, 0)
 
     assert registrant.signed_at_central_tz().strftime('%m/%d/%Y') == "10/17/2018"
+
+def test_redaction(app, db_session, client):
+    from datetime import datetime
+
+    r = Registrant()
+    r.update({ 'ab_identification': 'abc123', 'identification': 'def456', 'signature_string': 'i am me' })
+    r.save(db_session);
+
+    assert r.try_value('ab_identification') == 'abc123'
+    assert r.try_value('identification') == 'def456'
+    assert r.try_value('signature_string') == 'i am me'
+    assert r.ab_identification_found == None
+    assert r.identification_found == None
+    assert r.redacted_at == None
+
+    Registrant.redact_pii(datetime.utcnow())
+
+    reg = Registrant.find_by_session(r.session_id)
+
+    assert r.ab_identification_found == True
+    assert r.identification_found == True
+    assert r.redacted_at != None
+    assert r.try_value('ab_identification') == '[REDACTED]'
+    assert r.try_value('identification') == '[REDACTED]'
+    assert r.try_value('signature_string') == '[REDACTED]'
+
