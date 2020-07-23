@@ -38,7 +38,7 @@ testcov:
 	py.test --cov-report term-missing --cov --ignore=node_modules
 
 test: check
-	py.test -s app/
+	py.test -s -vv app/
 
 jstest:
 	npm run test
