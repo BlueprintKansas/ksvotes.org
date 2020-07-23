@@ -60,7 +60,7 @@ class FormFillerService():
     defs = self.__get_or_load_definitions()
     img = self.__get_or_load_image()
     base_image = Image(blob=img['bytes'], format=img['format'])
-    self.filler = FormFiller(payload=self.payload, image=base_image, form=defs)
+    self.filler = FormFiller(payload=self.payload, image=base_image, form=defs, font='Helvetica', font_color='blue')
 
   def as_image(self):
     return 'data:image/png;base64,' + self.filler.as_base64().decode()
