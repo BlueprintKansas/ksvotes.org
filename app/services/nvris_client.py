@@ -21,7 +21,7 @@ class NVRISClient():
             return signature_img_string
 
         url = '/vr/' + self.lang
-        current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
+        current_app.logger.info("%s FormFiller request to %s" %(self.registrant.session_id, url))
         payload = self.marshall_payload('vr')
 
         #print("payload: %s" %(payload)) # debug only -- no PII in logs
@@ -38,7 +38,7 @@ class NVRISClient():
     
         url = '/av/' + flavor
 
-        current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
+        current_app.logger.info("%s FormFiller request to %s" %(self.registrant.session_id, url))
         payload = self.marshall_payload(flavor, election=election)
 
         #print("payload: %s" %(payload)) # debug only -- no PII in logs
