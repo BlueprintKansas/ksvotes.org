@@ -15,7 +15,7 @@ class FormFillerService():
       'base': 'https://s3.amazonaws.com/ksvotes-v2/FEDVRENNVRIS.png',
     },
     '/vr/es': {
-      'definitions': 'form-defs/VREN.json',
+      'definitions': 'form-defs/VRES.json',
       'base': 'https://s3.amazonaws.com/ksvotes-v2/FEDVRENNVRIS_SP.png',
     },
     '/av/ksav1': {
