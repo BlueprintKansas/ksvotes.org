@@ -5,6 +5,7 @@ import sys
 import os
 import base64
 import requests
+import pprint
 sys.path.append('.')
 from app.services import FormFillerService
 from formfiller import FormFiller
@@ -34,9 +35,21 @@ for field in defs:
   name = field['name']
   if field['type'] == 'overlay':
     field_val = signature
+  elif field['type'] == 'draw':
+    field_val = ' '.join([name, name])
+
+    # show field border
+    def_copy = field.copy()
+    def_copy['type'] = 'enclose'
+    def_copy['name'] = name + '_border'
+    payload[def_copy['name']] = True
+    defs.append(def_copy)
   else:
     field_val = ' '.join([name, name])
+
   payload[name] = field_val
+
+#print(pprint.pformat(defs))
 
 base = Image(blob=base_img.content, format=base_img.headers['content-type'])
 ff = FormFiller(font='Helvetica', font_color='blue', font_size=24, image=base, payload=payload, form=defs)
