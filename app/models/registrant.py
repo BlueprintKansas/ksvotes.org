@@ -44,6 +44,9 @@ class Registrant(db.Model):
     signed_at = db.Column(db.DateTime, default=datetime.utcnow)
     reg_lookup_complete = db.Column(db.Boolean, default=False)
     addr_lookup_complete = db.Column(db.Boolean, default=False)
+    reg_found = db.Column(db.Boolean, default=None)
+    identification_found = db.Column(db.Boolean, default=None)
+    ab_identification_found = db.Column(db.Boolean, default=None)
 
     registration = db.Column(db.String())
     #create key from environmental key
@@ -195,6 +198,10 @@ class Registrant(db.Model):
     @classmethod
     def redact(cls, reg):
         fields = ['identification', 'ab_identification', 'vr_form', 'ab_forms', 'signature_string']
+        if reg.try_value('identification'):
+            reg.identification_found = True
+        if reg.try_value('ab_identification'):
+            reg.ab_identification_found = True
         for f in fields:
             reg.set_value(f, '[REDACTED]')
         reg.redacted_at = datetime.utcnow()
