@@ -1,4 +1,7 @@
 import datetime
+import pytz
+
+from dateutil.parser import parse
 
 from wtforms.validators import DataRequired
 from flask_babel import lazy_gettext
@@ -42,18 +45,40 @@ def parse_election_date(election):
     date = m.group(2)
     return dateparser.parse(date)
 
+def primary_election_active(deadline=None, current_time=None):
+    """
+    Determine if the primary election is active or not
+
+    AB_PRIMARY_DEADLINE env var format is `YYYY-MM-DD HH:MM::SS` assuming a
+    Central US time zone.
+    """
+    # Determine deadline from the environment
+    if deadline is None:
+        return False
+
+    # Parse our deadline
+    local = pytz.timezone("America/Chicago")
+    naive = parse(deadline)
+    local_dt = local.localize(naive, is_dst=None)
+    deadline_utc = local_dt.astimezone(pytz.utc)
+
+    # Determine if we're past deadline
+    if current_time is None:
+        current_time = datetime.datetime.utcnow()
+
+    if current_time > deadline_utc:
+        return False
+    else:
+        return True
+
 def list_of_elections():
     from datetime import datetime, timedelta
     import os
 
     elect_list = []
 
-    # if we are at least 7 days before the primary, include it.
-    today = datetime.utcnow()
-    primary_date = parse_election_date(lazy_gettext(u'1AB_select_election_primary'))
-    window = timedelta(days=int(os.getenv('AB_DAYS_BEFORE_PRIMARY', default=7)))
-
-    if primary_date and (primary_date - today) > window:
+    # if we are before AB_PRIMARY_DEADLINE
+    if primary_election_active(os.getenv('AB_PRIMARY_DEADLINE', None)):
         elect_list.append((lazy_gettext(u'1AB_select_election_primary'), lazy_gettext(u'1AB_select_election_primary')))
 
     elect_list.append((lazy_gettext(u'1AB_select_election_general'), lazy_gettext(u'1AB_select_election_general')))
