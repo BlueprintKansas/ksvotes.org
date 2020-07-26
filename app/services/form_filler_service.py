@@ -12,19 +12,27 @@ class FormFillerService():
   FORMS = {
     '/vr/en': {
       'definitions': 'form-defs/VREN.json',
-      'base': 'https://s3.amazonaws.com/ksvotes-v2/FEDVRENNVRIS.png',
+      'base': 'https://s3.amazonaws.com/ksvotes-v2/FEDVRENNVRIS-v2.png',
     },
     '/vr/es': {
       'definitions': 'form-defs/VRES.json',
-      'base': 'https://s3.amazonaws.com/ksvotes-v2/FEDVRENNVRIS_SP.png',
+      'base': 'https://s3.amazonaws.com/ksvotes-v2/FEDVRENNVRIS_SP-v2.png',
     },
-    '/av/ksav1': {
+    '/av/ksav1/en': {
       'definitions': 'form-defs/KSAV1.json',
-      'base': 'https://s3.amazonaws.com/ksvotes-v2/AV1NVRIS.png',
+      'base': 'https://s3.amazonaws.com/ksvotes-v2/AV1M.png',
     },
-    '/av/ksav2': {
+    '/av/ksav2/en': {
       'definitions': 'form-defs/KSAV2.json',
-      'base': 'https://s3.amazonaws.com/ksvotes-v2/PERMVOTINGSTATUS.png',
+      'base': 'https://s3.amazonaws.com/ksvotes-v2/AV2.png',
+    },
+    '/av/ksav1/es': {
+      'definitions': 'form-defs/AV1M_SP.json',
+      'base': 'https://s3.amazonaws.com/ksvotes-v2/AV1M_SP.png',
+    },
+    '/av/ksav2/es': {
+      'definitions': 'form-defs/AV2_SP.json',
+      'base': 'https://s3.amazonaws.com/ksvotes-v2/AV2_SP.png',
     },
   }
 
@@ -34,11 +42,12 @@ class FormFillerService():
   def __init__(self, payload, form_name):
     self.payload = payload
     self.form_name = form_name
+    self.debug = os.getenv('FORM_DEBUG')
 
     self.__set_filler()
 
   def __get_or_load_definitions(self):
-    if self.form_name not in self.DEFINITIONS:
+    if self.form_name not in self.DEFINITIONS or self.debug:
       def_file = os.path.join(current_app.root_path, self.FORMS[self.form_name]['definitions'])
       current_app.logger.info("{} loading {} form defs from {}".format(self.payload['uuid'], self.form_name, def_file))
 
@@ -48,7 +57,7 @@ class FormFillerService():
     return self.DEFINITIONS[self.form_name]
 
   def __get_or_load_image(self):
-    if self.form_name not in self.IMAGES:
+    if self.form_name not in self.IMAGES or self.debug:
       url = self.FORMS[self.form_name]['base']
       current_app.logger.info("{} loading {} image from {}".format(self.payload['uuid'], self.form_name, url))
       img = requests.get(url)
@@ -63,5 +72,7 @@ class FormFillerService():
     self.filler = FormFiller(payload=self.payload, image=base_image, form=defs, font='Helvetica', font_color='blue')
 
   def as_image(self):
-    return 'data:image/png;base64,' + self.filler.as_base64().decode()
+    return 'data:image/png;base64,' + self.as_base64()
 
+  def as_base64(self):
+    return self.filler.as_base64().decode()

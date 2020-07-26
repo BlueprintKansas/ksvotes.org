@@ -33,14 +33,14 @@
    },
    {
       "x1" : 138,
-      "type" : "draw",
+      "type" : "enclose",
       "name" : "01_prefix_mr",
       "x2" : 181,
       "y2" : 417,
       "y1" : 373
    },
    {
-      "type" : "draw",
+      "type" : "enclose",
       "x1" : 191,
       "name" : "01_prefix_mrs",
       "x2" : 237,
@@ -52,11 +52,11 @@
       "y2" : 418,
       "x2" : 295,
       "name" : "01_prefix_miss",
-      "type" : "draw",
+      "type" : "enclose",
       "x1" : 247
    },
    {
-      "type" : "draw",
+      "type" : "enclose",
       "x1" : 310,
       "name" : "01_prefix_ms",
       "y2" : 417,
@@ -93,7 +93,7 @@
       "x2" : 1390,
       "name" : "01_suffix_jr",
       "x1" : 1363,
-      "type" : "circle"
+      "type" : "enclose"
    },
    {
       "y1" : 378,
@@ -101,11 +101,11 @@
       "y2" : 414,
       "name" : "01_suffix_sr",
       "x1" : 1411,
-      "type" : "circle"
+      "type" : "enclose"
    },
    {
       "x1" : 1463,
-      "type" : "circle",
+      "type" : "enclose",
       "name" : "01_suffix_ii",
       "y2" : 414,
       "x2" : 1493,
@@ -117,13 +117,13 @@
       "y2" : 414,
       "name" : "01_suffix_iii",
       "x1" : 1508,
-      "type" : "circle"
+      "type" : "enclose"
    },
    {
       "y2" : 414,
       "x2" : 1593,
       "y1" : 378,
-      "type" : "circle",
+      "type" : "enclose",
       "x1" : 1556,
       "name" : "01_suffix_iv"
    },
@@ -276,7 +276,7 @@
       "x2" : 193,
       "y2" : 1294,
       "name" : "A_prefix_mr",
-      "type" : "circle",
+      "type" : "enclose",
       "x1" : 141
    },
    {
@@ -285,20 +285,20 @@
       "x2" : 207,
       "name" : "A_prefix_mrs",
       "x1" : 142,
-      "type" : "circle"
+      "type" : "enclose"
    },
    {
       "x2" : 207,
       "y2" : 1335,
       "y1" : 1314,
       "x1" : 143,
-      "type" : "circle",
+      "type" : "enclose",
       "name" : "A_prefix_miss"
    },
    {
       "name" : "A_prefix_ms",
       "x1" : 143,
-      "type" : "circle",
+      "type" : "enclose",
       "y1" : 1333,
       "y2" : 1352,
       "x2" : 208
@@ -330,7 +330,7 @@
    {
       "name" : "A_suffix_jr",
       "x1" : 1410,
-      "type" : "circle",
+      "type" : "enclose",
       "y1" : 1332,
       "y2" : 1357,
       "x2" : 1432
@@ -341,18 +341,18 @@
       "y2" : 1358,
       "name" : "A_suffix_sr",
       "x1" : 1449,
-      "type" : "circle"
+      "type" : "enclose"
    },
    {
       "y1" : 1332,
       "y2" : 1357,
       "x2" : 1513,
       "name" : "A_suffix_ii",
-      "type" : "circle",
+      "type" : "enclose",
       "x1" : 1489
    },
    {
-      "type" : "circle",
+      "type" : "enclose",
       "x1" : 1525,
       "name" : "A_suffix_iii",
       "y2" : 1357,
@@ -364,7 +364,7 @@
       "y2" : 1358,
       "x2" : 1591,
       "name" : "A_suffix_iv",
-      "type" : "circle",
+      "type" : "enclose",
       "x1" : 1563
    },
    {
@@ -408,9 +408,9 @@
       "y1" : 1474
    },
    {
-      "y2" : 2048,
+      "y2" : 2028,
       "x2" : 1593,
-      "y1" : 1983,
+      "y1" : 1963,
       "x1" : 134,
       "type" : "draw",
       "name" : "D_helper"

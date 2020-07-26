@@ -36,7 +36,7 @@ class NVRISClient():
         else:
             flavor = 'ksav1'
     
-        url = '/av/' + flavor
+        url = '/av/' + flavor + '/' + self.lang
 
         current_app.logger.info("%s FormFiller request to %s" %(self.registrant.session_id, url))
         payload = self.marshall_payload(flavor, election=election)
