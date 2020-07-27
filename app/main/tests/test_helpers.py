@@ -27,3 +27,6 @@ def test_primary_election_active():
     # One day after deadline
     current_time = datetime.datetime(year=2020, month=5, day=27, hour=21, minute=59, tzinfo=pytz.utc)
     assert primary_election_active(deadline, current_time) is False
+
+    # do not pass explicit current time, let it default to "now" (which is after the deadline)
+    assert primary_election_active(deadline) is False
