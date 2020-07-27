@@ -29,7 +29,7 @@
       "y1" : 1028,
       "y2" : 1074,
       "type" : "draw",
-      "x1" : 103
+      "x1" : 100
    },
    {
       "name" : "first_name",
@@ -60,7 +60,7 @@
       "x2" : 748,
       "y1" : 1104,
       "name" : "residential_address",
-      "x1" : 99,
+      "x1" : 100,
       "type" : "draw"
    },
    {
@@ -100,7 +100,7 @@
       "x2" : 746,
       "y1" : 1292,
       "name" : "mailing_address",
-      "x1" : 101,
+      "x1" : 100,
       "type" : "draw"
    },
    {
@@ -132,7 +132,7 @@
       "x2" : 408,
       "y1" : 1702,
       "name" : "election_date",
-      "x1" : 95,
+      "x1" : 100,
       "type" : "draw"
    },
    {
