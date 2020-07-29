@@ -1,9 +1,9 @@
 from flask import g, current_app
 from app.main.VR.example_form import signature_img_string
 import os
-import requests
 import json
 import newrelic.agent
+from app.services.form_filler_service import FormFillerService
 
 class NVRISClient():
 
@@ -20,8 +20,8 @@ class NVRISClient():
         if self.nvris_url == 'TESTING': # magic URL for testing mode
             return signature_img_string
 
-        url = self.nvris_url + '/vr/' + self.lang
-        current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
+        url = '/vr/' + self.lang
+        current_app.logger.info("%s FormFiller request to %s" %(self.registrant.session_id, url))
         payload = self.marshall_payload('vr')
 
         #print("payload: %s" %(payload)) # debug only -- no PII in logs
@@ -36,9 +36,9 @@ class NVRISClient():
         else:
             flavor = 'ksav1'
     
-        url = self.nvris_url + '/av/' + flavor
+        url = '/av/' + flavor + '/' + self.lang
 
-        current_app.logger.info("%s NVRIS request to %s" %(self.registrant.session_id, url))
+        current_app.logger.info("%s FormFiller request to %s" %(self.registrant.session_id, url))
         payload = self.marshall_payload(flavor, election=election)
 
         #print("payload: %s" %(payload)) # debug only -- no PII in logs
@@ -50,26 +50,9 @@ class NVRISClient():
 
         payload['uuid'] = str(self.registrant.session_id)
 
-        try:
-            resp = requests.post(url, json=payload)
-            resp_payload = resp.json()
-        except requests.exceptions.ConnectionError as e:
-            current_app.logger.error("NVRIS did not respond: %s" %(e))
-            newrelic.agent.record_exception()
-            return None
-        except json.JSONDecodeError as e:
-            current_app.logger.error("NVRIS responded with bad JSON: %s" %(e))
-            newrelic.agent.record_exception()
-            return None
+        filler_service = FormFillerService(payload=payload, form_name=url)
 
-        if 'img' not in resp_payload:
-            current_app.logger.error("NVRIS attempt %s did not respond with img: %s" %(self.attempts, resp_payload))
-            newrelic.agent.record_custom_event('NVRIS', {'error':str(resp_payload)})
-
-            self.attempts += 1
-            return self.fetch_nvris_img(url, payload)
-
-        return resp_payload['img']
+        return filler_service.as_image()
 
     def marshall_payload(self, flavor, **kwargs):
         if flavor == 'vr':

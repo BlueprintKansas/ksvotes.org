@@ -1,0 +1,170 @@
+[
+   {
+      "x2" : 1050,
+      "name" : "county_1",
+      "y1" : 306,
+      "x1" : 790,
+      "type" : "draw",
+      "y2" : 341
+   },
+   {
+      "x1" : 250,
+      "y1" : 395,
+      "type" : "draw",
+      "y2" : 430,
+      "x2" : 500,
+      "name" : "state"
+   },
+   {
+      "x2" : 935,
+      "name" : "county_2",
+      "y2" : 430,
+      "type" : "draw",
+      "y1" : 395,
+      "x1" : 685
+   },
+   {
+      "x1" : 100,
+      "y1" : 685,
+      "type" : "draw",
+      "y2" : 720,
+      "x2" : 1600,
+      "name" : "reason_for_perm"
+   },
+   {
+      "name" : "last_name",
+      "x2" : 550,
+      "y1" : 835,
+      "x1" : 100,
+      "type" : "draw",
+      "y2" : 870
+   },
+   {
+      "y1" : 835,
+      "x1" : 600,
+      "y2" : 870,
+      "type" : "draw",
+      "x2" : 1050,
+      "name" : "first_name"
+   },
+   {
+      "y1" : 835,
+      "x1" : 1100,
+      "type" : "draw",
+      "y2" : 870,
+      "x2" : 1600,
+      "name" : "middle_initial"
+   },
+   {
+      "y2" : 965,
+      "type" : "draw",
+      "y1" : 930,
+      "x1" : 100,
+      "x2" : 1600,
+      "name" : "residential_address"
+   },
+   {
+      "x2" : 900,
+      "name" : "residential_city",
+      "y2" : 1055,
+      "type" : "draw",
+      "y1" : 1020,
+      "x1" : 100
+   },
+   {
+      "x2" : 1180,
+      "name" : "residential_state",
+      "y1" : 1020,
+      "x1" : 1000,
+      "y2" : 1055,
+      "type" : "draw"
+   },
+   {
+      "name" : "residential_zip",
+      "x2" : 1600,
+      "x1" : 1200,
+      "y1" : 1020,
+      "type" : "draw",
+      "y2" : 1055
+   },
+   {
+      "x2" : 349,
+      "name" : "democratic",
+      "y1" : 1140,
+      "x1" : 325,
+      "y2" : 1168,
+      "type" : "fill"
+   },
+   {
+      "name" : "republican",
+      "x2" : 570,
+      "type" : "fill",
+      "y2" : 1168,
+      "y1" : 1140,
+      "x1" : 547
+   },
+   {
+      "y1" : 1130,
+      "x1" : 1300,
+      "y2" : 1165,
+      "type" : "draw",
+      "x2" : 1600,
+      "name" : "dob"
+   },
+   {
+      "name" : "mailing_address",
+      "x2" : 1600,
+      "x1" : 100,
+      "y1" : 1275,
+      "y2" : 1310,
+      "type" : "draw"
+   },
+   {
+      "name" : "mailing_city",
+      "x2" : 950,
+      "x1" : 100,
+      "y1" : 1378,
+      "y2" : 1413,
+      "type" : "draw"
+   },
+   {
+      "x2" : 1150,
+      "name" : "mailing_state",
+      "type" : "draw",
+      "y2" : 1413,
+      "x1" : 1000,
+      "y1" : 1378
+   },
+   {
+      "y1" : 1378,
+      "x1" : 1200,
+      "y2" : 1413,
+      "type" : "draw",
+      "x2" : 1600,
+      "name" : "mailing_zip"
+   },
+   {
+      "x1" : 270,
+      "y1" : 1820,
+      "type" : "overlay",
+      "y2" : 1890,
+      "x2" : 800,
+      "name" : "signature"
+   },
+   {
+      "name" : "signature_date",
+      "x2" : 1150,
+      "x1" : 900,
+      "y1" : 1850,
+      "y2" : 1885,
+      "type" : "draw"
+   },
+   {
+      "x2" : 1600,
+      "name" : "phone_number",
+      "y1" : 1850,
+      "x1" : 1200,
+      "type" : "draw",
+      "y2" : 1885
+   }
+]

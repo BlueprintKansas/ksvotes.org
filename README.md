@@ -51,9 +51,6 @@ The ksvotes.org site makes Kansas online voting registration easy.
   APP_CONFIG=development
   CRYPT_KEY={{generate a secret key | base64}}
 
-  # If running a local NVRIS instance, e.g. http://localhost:4500
-  NVRIS_URL={{https://full-url-to-nvris-instance-no-trailing-slash.com}}
-
   # Set this to enable the /demo endpoint
   DEMO_UUID={{generate a UUID and run "make load-demo"}}
 
@@ -157,9 +154,6 @@ Navigate to [localhost:5000](http://localhost:5000)
 
 
 ## Tests
-
-**NOTE**: You need a local instance [NVRIS](https://github.com/BlueprintKansas/NVRIS) or use the NVRIS URL from staging for the tests to pass
-
 
 To run all tests:
 ```

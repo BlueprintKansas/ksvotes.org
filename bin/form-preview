@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+
+import json
+import sys
+import os
+import base64
+import requests
+import pprint
+sys.path.append('.')
+from app.services import FormFillerService
+from formfiller import FormFiller
+from wand.image import Image
+
+if len(sys.argv) < 2:
+  print("usage: {} :formname:".format(sys.argv[0]))
+  exit(1)
+
+form_name = sys.argv[1]
+
+print("form:{}".format(form_name))
+
+signature = None
+with open('app/services/tests/sig-blue-box.txt') as sig_f:
+  signature = sig_f.read().rstrip()
+
+# generate payload using the form defs and values of 2x the def name
+defs_file = os.path.join('app', FormFillerService.FORMS[form_name]['definitions'])
+base_img = requests.get(FormFillerService.FORMS[form_name]['base'])
+payload = {}
+defs = None
+with open(defs_file) as f:
+  defs = json.load(f)
+
+for field in defs:
+  name = field['name']
+  if field['type'] == 'overlay':
+    field_val = signature
+  elif field['type'] == 'draw':
+    field_val = ' '.join([name, name])
+
+    # show field border
+    def_copy = field.copy()
+    def_copy['type'] = 'enclose'
+    def_copy['name'] = name + '_border'
+    payload[def_copy['name']] = True
+    defs.append(def_copy)
+  else:
+    field_val = ' '.join([name, name])
+
+  payload[name] = field_val
+
+#print(pprint.pformat(defs))
+
+base = Image(blob=base_img.content, format=base_img.headers['content-type'])
+ff = FormFiller(font='Helvetica', font_color='blue', font_size=24, image=base, payload=payload, form=defs)
+img_path = 'form-' + form_name.replace('/', '-') + '-preview.png'
+ff.to_file(img_path)
+print("saved {}".format(img_path))

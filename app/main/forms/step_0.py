@@ -30,7 +30,7 @@ class FormStep0(FlaskForm):
     zip = StringField(lazy_gettext(u'3_zip'),
         validators=[
             DataRequired(message=lazy_gettext(u'Required')),
-            Regexp('^\d{5}$', message=lazy_gettext(u'3_zip_help'))
+            Regexp('^\d{5}(-\d{4})?$', message=lazy_gettext(u'3_zip_help'))
         ]
     )
 

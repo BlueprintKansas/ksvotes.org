@@ -1,0 +1,178 @@
+[
+   {
+      "type" : "draw",
+      "x1" : 240,
+      "name" : "state",
+      "x2" : 547,
+      "y1" : 375,
+      "y2" : 407
+   },
+   {
+      "name" : "county_2",
+      "y2" : 407,
+      "x2" : 1000,
+      "y1" : 375,
+      "type" : "draw",
+      "x1" : 720
+   },
+   {
+      "type" : "draw",
+      "x1" : 100,
+      "name" : "id_number",
+      "y2" : 642,
+      "y1" : 595,
+      "x2" : 1616
+   },
+   {
+      "name" : "last_name",
+      "x2" : 680,
+      "y1" : 1070,
+      "y2" : 1120,
+      "type" : "draw",
+      "x1" : 100
+   },
+   {
+      "name" : "first_name",
+      "y2" : 1120,
+      "x2" : 880,
+      "y1" : 1070,
+      "type" : "draw",
+      "x1" : 500
+   },
+   {
+      "y2" : 1120,
+      "y1" : 1070,
+      "x2" : 1280,
+      "name" : "middle_initial",
+      "x1" : 900,
+      "type" : "draw"
+   },
+   {
+      "y1" : 1070,
+      "x2" : 1680,
+      "y2" : 1120,
+      "name" : "dob",
+      "x1" : 1300,
+      "type" : "draw"
+   },
+   {
+      "y2" : 1187,
+      "x2" : 680,
+      "y1" : 1137,
+      "name" : "residential_address",
+      "x1" : 100,
+      "type" : "draw"
+   },
+   {
+      "name" : "residential_state",
+      "x2" : 1354,
+      "y1" : 1137,
+      "y2" : 1187,
+      "type" : "draw",
+      "x1" : 1200
+   },
+   {
+      "type" : "draw",
+      "x1" : 1397,
+      "name" : "residential_zip",
+      "y1" : 1137,
+      "x2" : 1601,
+      "y2" : 1187
+   },
+   {
+      "type" : "fill",
+      "x1" : 966,
+      "name" : "democratic",
+      "x2" : 985,
+      "y1" : 1245,
+      "y2" : 1263
+   },
+   {
+      "x2" : 1148,
+      "y1" : 1245,
+      "y2" : 1263,
+      "name" : "republican",
+      "x1" : 1129,
+      "type" : "fill"
+   },
+   {
+      "y2" : 1395,
+      "x2" : 746,
+      "y1" : 1345,
+      "name" : "mailing_address",
+      "x1" : 100,
+      "type" : "draw"
+   },
+   {
+      "name" : "mailing_city",
+      "y2" : 1395,
+      "x2" : 1155,
+      "y1" : 1345,
+      "type" : "draw",
+      "x1" : 799
+   },
+   {
+      "type" : "draw",
+      "x1" : 1198,
+      "name" : "mailing_state",
+      "y2" : 1395,
+      "y1" : 1345,
+      "x2" : 1352
+   },
+   {
+      "x1" : 1398,
+      "type" : "draw",
+      "y1" : 1345,
+      "x2" : 1600,
+      "y2" : 1395,
+      "name" : "mailing_zip"
+   },
+   {
+      "y2" : 1798,
+      "x2" : 408,
+      "y1" : 1759,
+      "name" : "election_date",
+      "x1" : 100,
+      "type" : "draw"
+   },
+   {
+      "y2" : 1920,
+      "y1" : 1820,
+      "x2" : 764,
+      "name" : "signature",
+      "x1" : 310,
+      "type" : "overlay"
+   },
+   {
+      "x2" : 1187,
+      "y1" : 1859,
+      "y2" : 1913,
+      "name" : "signature_date",
+      "x1" : 799,
+      "type" : "draw"
+   },
+   {
+      "name" : "phone_number",
+      "x2" : 1680,
+      "y1" : 1859,
+      "y2" : 1913,
+      "type" : "draw",
+      "x1" : 1300
+   },
+   {
+      "y2" : 1187,
+      "x2" : 1156,
+      "y1" : 1137,
+      "name" : "residential_city",
+      "x1" : 799,
+      "type" : "draw"
+   },
+   {
+      "name" : "county_1",
+      "y2" : 328,
+      "x2" : 995,
+      "y1" : 295,
+      "type" : "draw",
+      "x1" : 725
+   }
+]

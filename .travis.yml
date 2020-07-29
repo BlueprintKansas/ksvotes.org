@@ -15,4 +15,7 @@ before_script:
   - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
   - export $(cat .env | grep -v ^# | xargs)
 
+before_install:
+  - sudo apt-get -y install ghostscript
+
 script: make locales test
