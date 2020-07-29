@@ -46,19 +46,6 @@ jstest:
 css:
 	npm run css
 
-start-testserver:
-ifeq ($(DEBUG), zombie)
-	python manage.py runserver &
-else
-	python manage.py runserver &> testserver.log &
-endif
-
-stop-testserver:
-	kill -9 `cat server.pid` && rm server.pid
-
-livetest:
-	bin/live-test.sh
-
 locales:
 	bin/build-locales
 
