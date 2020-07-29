@@ -69,7 +69,11 @@ def redact_pii():
 @manager.command
 def export_registrants():
     from app.services.registrant_exporter import RegistrantExporter
-    regs = Registrant.query.yield_per(200).enable_eagerloads(False)
+    if os.getenv('SINCE'):
+      regs = Registrant.query.filter(Registrant.updated_at > os.getenv('SINCE')).yield_per(200).enable_eagerloads(False)
+    else:
+      regs = Registrant.query.yield_per(200).enable_eagerloads(False)
+
     exporter = RegistrantExporter(regs)
     exporter.export()
 
