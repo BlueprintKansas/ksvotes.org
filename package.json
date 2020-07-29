@@ -1,5 +1,5 @@
 {
-  "name": "sassem",
+  "name": "ksvotes",
   "version": "1.0.0",
   "scripts": {
     "css": "node-sass --output-style compressed --include-path scss scss/source.scss app/static/css/compiled.css",
@@ -9,7 +9,7 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "5.2.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.14.1",
     "nodemon": "^1.11.0",
     "zombie": "6.1.2"
   },
