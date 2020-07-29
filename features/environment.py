@@ -14,17 +14,17 @@ chrome_options.add_argument("--proxy-bypass-list=*")
 
 
 def before_all(context):
-    context.server = simple_server.WSGIServer(("", 5000), WSGIRequestHandler)
-    app = create_app(os.getenv('APP_CONFIG') or 'default')
-    context.server.set_app(app)
-    context.pa_app = threading.Thread(target=context.server.serve_forever)
-    context.pa_app.start()
+  context.server = simple_server.WSGIServer(("", 5000), WSGIRequestHandler)
+  app = create_app(os.getenv('APP_CONFIG') or 'default')
+  context.server.set_app(app)
+  context.pa_app = threading.Thread(target=context.server.serve_forever)
+  context.pa_app.start()
 
-    context.browser = webdriver.Chrome(options=chrome_options)
-    context.browser.set_page_load_timeout(time_to_wait=200)
+  context.browser = webdriver.Chrome(options=chrome_options)
+  context.browser.set_page_load_timeout(time_to_wait=200)
 
 
 def after_all(context):
-    context.browser.quit()
-    context.server.shutdown()
-    context.pa_app.join()
+  context.browser.quit()
+  context.server.shutdown()
+  context.pa_app.join()

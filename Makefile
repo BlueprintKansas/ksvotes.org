@@ -41,7 +41,7 @@ test: check
 	py.test -s -vv app/
 
 jstest:
-	npm run test
+	behave
 
 css:
 	npm run css
