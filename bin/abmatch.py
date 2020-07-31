@@ -43,22 +43,22 @@ ab_sent_fn = 'sent_20200715.csv'
 ab_returned_fn = ''
 ab_eip_fn = ''
 ab_electiondate = 'August 4, 2020'
-ab_prev_complete_fn = ''
+ab_handled_fn = ''
 
 try:
-	opts, args = getopt.getopt(sys.argv[1:],"hk:s:r:e:d:p:",["kdfile=","sentfile=","returnedfile=","eipfile=","electiondate=","prevcompletefile="])
+	opts, args = getopt.getopt(sys.argv[1:],"hk:s:r:e:d:c:",["kdfile=","sentfile=","returnedfile=","eipfile=","electiondate=","handledfile="])
 except getopt.GetoptError:
 	print ('ERROR, bad arguments. Try -h')
 	sys.exit(2)
 for opt, arg in opts:
 	if opt == '-h':
-		print ('abmatch.py -k <kdfile.csv> -s <SoSsentfile.csv> -r <SoSreturnedfile.csv> -d <electiondate>')
+		print ('abmatch.py -k <kdfile.csv> -s <SoSsentfile.csv> -r <SoSreturnedfile.csv> -e <SoSeipfile.csv> -c <ABhandled.csv> -d <electiondate>')
 		print ('  --kdfile=')
 		print ('  --sentfile=')
 		print ('  --returnedfile=')
 		print ('  --eipfile=')
 		print ('  --electiondate= (eg: "August 4, 2020)"')
-		print ('  --completefile=')
+		print ('  --handledfile=')
 		sys.exit
 	elif opt in ("-k", "--kdfile"):
 		kdf_fn = arg
@@ -72,9 +72,9 @@ for opt, arg in opts:
 	elif opt in ("-e", "--eipfile"):
 		ab_eip_fn = arg
 		print(f'ab_eipfile={ab_eip_fn}')
-	elif opt in ("-p", "--prevcompletefile"):
-		ab_prev_complete_fn = arg
-		print(f'ab_prev_completefile={ab_prev_complete_fn}')
+	elif opt in ("-c", "--handledfile"):
+		ab_handled_fn = arg
+		print(f'ab_handledfile={ab_handled_fn}')
 	elif opt in ("-d", "--electiondate"):
 		ab_electiondate = arg
 		print(f'ab_electiondate={ab_electiondate}')
@@ -97,10 +97,10 @@ if ab_eip_fn:
 	aedf=pd.read_csv(ab_eip_fn,index_col=False,sep=',',error_bad_lines=False,warn_bad_lines=True,encoding='latin-1',low_memory=False)
 	print(f'aedf: {aedf.shape}')
 
-# load ab previously completed file (if it exists)
-if ab_prev_complete_fn:
-	apdf=pd.read_csv(ab_prev_complete_fn,index_col=False,sep=',',error_bad_lines=False,warn_bad_lines=True,encoding='latin-1',low_memory=False)
-	print(f'apdf: {apdf.shape}')
+# load ab handled file (if it exists)
+if ab_handled_fn:
+	ahdf=pd.read_csv(ab_handled_fn,index_col=False,sep=',',error_bad_lines=False,warn_bad_lines=True,encoding='latin_1',low_memory=False)
+	print(f'ahdf: {ahdf.shape}')
 
 # for clarity in the rest of data, sort kdf by id
 kdf = kdf.sort_values(by='id')
@@ -198,20 +198,20 @@ if ab_eip_fn:
 
 # now process the already "completed" file that contains entries that have been
 # hand evaluated and processed
-if(ab_prev_complete_fn):
+if(ab_handled_fn):
 
-	print('Processing Previous Complete file')
+	print('Processing Handled file')
 
 		# remove null entries from _completed_ list also
-	apdf = apdf[apdf['text_registrant_id'].notnull()]
-	apdf.reset_index(drop=True, inplace=True)
+	ahdf = ahdf[ahdf['text_registrant_id'].notnull()]
+	ahdf.reset_index(drop=True, inplace=True)
 
 	# the 'id' field from acdf will get renamed id_r during the merge because of collision
 	# so dedup can still operate on id
-	newdf = pd.merge(kdf, apdf, how='left',
+	newdf = pd.merge(kdf, ahdf, how='left',
 			 left_on=['new_id'],
 			right_on=['id'],
-				indicator=True,suffixes=('','_r'))
+				indicator='h_merge_match',suffixes=('','_r'))
 
 	newdf_length = newdf.shape[0]
 	print(newdf.shape)
@@ -219,18 +219,11 @@ if(ab_prev_complete_fn):
 	# after merge, using kdf 'id', drop duplicate matches... 
 	newdf = newdf.drop_duplicates(subset='id',keep='first')
 	newdf.reset_index(drop=True, inplace=True)
-	print(f"Previous Complete file, found {(newdf_length - newdf.shape[0])} duplicate kdf entries")
+	print(f"Handled file, found {(newdf_length - newdf.shape[0])} duplicate kdf entries")
 
-	#NUKE all but thiscolumn
-	newdf = newdf[['_merge']]
+	# use loc from newdf and kdf because they are exactly aligned. data to tag AB_ type
+	kdf.loc[(kdf['ab_status'] == 'AB_REQUESTED') & (newdf['h_merge_match'] == 'both'),'ab_status'] = 'AB_HANDLED_NOTYET_SENT'
 
-	# re-apply the merged data back to kdb with the vdb logid and the _merge status
-	kdf = pd.concat([kdf, newdf], axis=1)
-
-	# use concat-ed data to tag M_ type and store db_logidk
-	kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & (kdf['_merge'] == 'both'),'match_status'] = 'AB_PREVIOUS_COMPLETE'
-
-	kdf.drop(['_merge'],axis=1)
 	del newdf
 
 
@@ -248,6 +241,7 @@ sent_status_outputfile.close()
 tempdf = kdf[kdf.ab_status.isin(['AB_NOTREQUESTED',
 								'AB_NOTREQUESTED_VIA_KSVOTES_BUT_SENT',
 								'AB_NOTREQUESTED_VIA_KSVOTES_BUT_SENT_AND_RETURNED',
+								'AB_RETURNED_BUT_NOT_SENT',
 								'AB_REQUESTED_FOR_ANOTHER_2020_ELECTION',
 								'AB_EIP',
 								'AB_SENT_EIP',
@@ -260,7 +254,9 @@ tempdf = kdf[kdf.ab_status.isin(['ABMATCH_SENT',
 								'ABMATCH_RETURNED',
 								'ABMATCH_SENT_EIP',
 								'ABMATCH_RECEIVED_EIP',
-								'ABMATCH_SENT_KSV_PERMANENT'])]
+								'ABMATCH_SENT_KSV_PERMANENT',
+								'ABMATCH_RETURNED_KSV_PERMANENT',
+								'AB_HANDLED_NOTYET_SENT'])]
 print(f'Shape of Complete File: {tempdf.shape}')
 tempdf.to_csv('ab_completefile.csv',sep=',',index=False)
 
@@ -279,4 +275,6 @@ if ab_returned_fn:
 	del ardf
 if ab_eip_fn:
 	del aedf
+if ab_handled_fn:
+	del ahdf
 del tempdf

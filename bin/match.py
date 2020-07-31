@@ -336,8 +336,11 @@ kdf.loc[(kdf['match_status'] == 'M_UNKNOWN') & ((kdf['zip5'] > 67954) | (kdf['zi
 kdf['tmp_updated_at'] = pd.to_datetime(kdf['updated_at'])
 kdf['saved_reg_date'] = pd.to_datetime(kdf['saved_reg_date'])
 
-kdf.loc[kdf.match_status.isin(['M_BADADDRESS','M_BADZIPCODE','M_UNKNOWN','M_DOB_WITHOUTADDR','M_DOB_WITHOUTPARTY','M_FIRSTNAMEONLY']) & (kdf['saved_reg_date'] > kdf['tmp_updated_at']) ,'match_status'] = 'M_NEWER_REG'
-kdf.drop(['tmp_updated_at'],axis=1)
+kdf.loc[kdf.match_status.isin(['M_BADADDRESS','M_BADZIPCODE','M_UNKNOWN',
+							'M_DOB_WITHOUTADDR','M_DOB_WITHOUTPARTY','M_FIRSTNAMEONLY']) & 
+							(kdf['saved_reg_date'] > kdf['tmp_updated_at']),
+							'match_status'] = 'M_NEWER_REG'
+kdf.drop(['tmp_updated_at'],axis=1,inplace=True)
 
 # hack check to get ab_completed_at count
 #kdf.loc[(kdf['match_status'] != 'M_NOTCOMPLETED') & kdf['ab_completed_at'].str.contains('2020'),'match_status'] = 'M_ABCOMPLETEDAT'
