@@ -8,6 +8,10 @@
 {% include '_ie_warning.html' %}
 {% endif %}
 
+<div class="voter-view-link alert alert-info text-center">
+ <a href="https://myvoteinfo.voteks.org/voterview">Find my polling location</a>
+</div>
+
 <form name="step_0" id="step_0" method="POST" action="{{url_for('main.index')}}">
  <fieldset>
   <legend>{{_('0_form_explain')}}</legend>
