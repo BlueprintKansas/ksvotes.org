@@ -85,6 +85,8 @@ def index():
                     rec2save['districts'] = rec['districts']
                 if 'elections' in rec:
                     rec2save['elections'] = rec['elections']
+                if 'polling' in rec:
+                    rec2save['polling'] = rec['polling']
 
                 # prepopulate address and party, if possible
                 try:
