@@ -8,7 +8,13 @@ python:
 services:
   - postgresql
 install: make deps
+addons:
+  chrome: stable
 before_script:
+  - CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
+  - CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
+  - curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
+  - unzip chromedriver_linux64.zip -d ~/bin
   - export FLASK_DEBUG=1
   - cp .env-travis .env
   - psql -c 'create database ksvotes_test;' -U postgres
@@ -18,4 +24,4 @@ before_script:
 before_install:
   - sudo apt-get -y install ghostscript
 
-script: make locales test
+script: make locales test jstest
