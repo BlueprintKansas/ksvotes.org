@@ -633,6 +633,7 @@
   },
   "AB1_legend": {"en": "Election(s)", "es": "Elección(s)" },
   "2_legend":{"wiki_step":"2","ref":"2_legend","en":"Name","es":"Nombre"},
+  "2_legend_previous":{"wiki_step":"2","ref":"2_legend_previous","en":"Previous Name","es":"Nombre Anterior"},
   "3_legend":{"wiki_step":"3","ref":"3_legend","en":"Address","es":"Dirección"},
   "4_legend":{"wiki_step":"4","ref":"4_legend","en":"Party","es":"Partido Politico"},
   "5_legend":{"wiki_step":"5","ref":"5_legend","en":"Identification","es":"Identificación"},
