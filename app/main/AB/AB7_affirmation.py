@@ -7,6 +7,7 @@ from app.decorators import InSession
 from app.services import SessionManager
 from app.services.nvris_client import NVRISClient
 from app.services.county_mailer import CountyMailer
+from app.services.id_action_mailer import IdActionMailer
 from app.services.steps import Step_AB_7
 from app.main.forms import FormAB7, CountyPicker
 from datetime import datetime
@@ -36,6 +37,11 @@ def ab7_affirmation():
 
             mailer = CountyMailer(reg, clerk, 'ab_forms')
             r = mailer.send()
+
+            # if there was no ID string defined, send the action-needed email
+            if not reg.try_value('ab_identification'):
+                id_action_mailer = IdActionMailer(reg, clerk)
+                id_action_mailer.send()
 
             # any error gets a special page
             for k in ['clerk', 'receipt']:

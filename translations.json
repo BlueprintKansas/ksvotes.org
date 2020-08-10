@@ -627,6 +627,18 @@
     "en":"Dear {firstname},\nThank you for submitting your advance ballot application(s) online through KSVotes.org. Your application has been forwarded to your local elections official, and you should have received a copy of that email. If you haven't received the email, please check your spam folder.\n\nYour county elections office will begin mailing advance ballots 3 weeks before the election. You can find their contact information below.\n\nIf you have any questions, please call KSVotes.org at 785-414-9678.\n\nThank you!\nThe KSVotes.org Team\n\nYour local elections official: {county} County, {officer}, {email}, {phone}\n",
     "es":"Estimado {firstname},\nGracias por enviar sus solicitudes de boleta en línea a través de KSVotes.org. Su solicitud ha sido enviada a sus elecciones locales, y debería haber recibido una copia de ese correo electrónico. Si no ha recibido el correo electrónico, revise su carpeta de correo no deseado.\n\nLa oficina de elecciones de su condado comenzará a enviar por correo bots de avanzada 3 semanas antes de la elección. Puede encontrar su información de contacto a continuación.\n\nSi tiene alguna pregunta, llame a KSVotes.org al 785-414-9678.\n\n¡Gracias!\nEl equipo de KSVotes.org\n\nSu funcionario de elecciones locales: {county} County, {officer}, {email}, {phone}\n"
   },
+  "voter_id_action_email_intro": {
+    "en": "Dear {firstname},\nThank you for using KSVotes.org to complete an application for an advance ballot.",
+    "es": "Estimado {firstname},\nGracias por usar KSVotes.org para completar una solicitud de boleta de votación anticipada."
+  },
+  "voter_id_action_email_intro2": {
+    "en": "You did not enter a Kansas driver's license or nondriver's identification card number.",
+    "es": "No ingresó una licencia de conducir de Kansas ni un número de tarjeta de identificación de no conductor."
+  },
+  "voter_id_action_email_instruction": {
+    "en": "Please send a copy of one of the above forms of ID to your county elections office at your earliest convenience. Their contact information is below:",
+    "es": "Envíe una copia de una de las formas de identificación anteriores a la oficina de elecciones de su condado lo antes posible. Su información de contacto está a continuación:"
+  },
   "1_legend":{
     "en":"Citizenship and Age",
     "es":"Ciudadania y Edad"
@@ -725,6 +737,10 @@
   "voter_receipt_email_subject": {
     "en": "Thank you for being a voter!",
     "es": "¡Gracias por ser un votante!"
+  },
+  "voter_id_action_email_subject": {
+    "en": "Action needed to complete your advance ballot application",
+    "es": "Acción necesaria para completar su solicitud de boleta por adelantado"
   },
   "email_error_h1": {
     "en": "There was a problem sending email",
