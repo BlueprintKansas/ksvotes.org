@@ -32,9 +32,11 @@
 </form>
 {% endblock %}
 
+{% block hidden_modal %}
 {% with modal_body=_('5AB_id_help'), modal_title=_('important') %}
 {% include '_confirm_modal.html' %}
 {% endwith %}
+{% endblock %}
 
 {% block js_footer %}
 <script>
