@@ -6,6 +6,12 @@
      {% for th, td in r['tree'].items() %}
       <tr><th>{{th}}</th><td>{{td|safe}}</td></tr>
      {% endfor %}
+     {% if r['polling'] %}
+      <tr>
+       <th>Polling Location</th>
+       <td><a target="_blank" href="{{r['polling'][0]['href']}}">{{r['polling'][0]['name']}}</a></td>
+      </tr>
+     {% endif %}
      {% for sample_ballot in r['sample_ballot'] %}
       <tr>
        <th>Sample Ballot</th>
