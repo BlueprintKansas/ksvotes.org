@@ -11,7 +11,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='img/favicon/favicon-32x32.png', _external=True)}}">
 <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='img/favicon/favicon-96x96.png', _external=True)}}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='img/favicon/favicon-16x16.png', _external=True)}}">
-<link rel="manifest" href="/manifest.json">
+<!-- For IE 9 and below. ICO should be 32x32 pixels in size -->
+<!--[if IE]><link rel="shortcut icon" href="{{url_for('static', filename='img/favicon/favicon-32x32.png', _external=True)}}"><![endif]-->
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="{{url_for('static', filename='img/favicon/ms-icon-144x144.png', _external=True)}}">
 <meta name="theme-color" content="#ffffff">
