@@ -155,16 +155,20 @@ Navigate to [localhost:5000](http://localhost:5000)
 
 ## Tests
 
-To run all tests:
+To run all unit tests:
 ```
 $(venv) make test
 ```
 
-To run all tests with coverage:
+To run all unit tests with coverage:
 ```
 $(venv) make testcov
 ```
 
+To run all browsers tests (requires [Chromedriver](https://chromedriver.chromium.org/getting-started)):
+```
+$(venv) make jstest
+```
 
 ## Styling
 Code is currently setup to SCSS with node scripts to compile.
