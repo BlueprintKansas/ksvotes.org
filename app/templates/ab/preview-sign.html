@@ -72,9 +72,11 @@
 </section>
 {% endblock %}
 
+{% block hidden_modal %}
 {% with modal_body = _('6AB_sign_modal') %}
 {% include '_confirm_modal.html' %}
 {% endwith %}
+{% endblock %}
 
 {% block js_footer %}
 {% include '_signature.js' %}
