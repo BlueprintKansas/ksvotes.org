@@ -56,7 +56,10 @@
     _('2_has_prev_name'),
     )}}
 
-  <div class="previous-name-fields">
+ </fieldset>
+ <fieldset class="previous-name-fields">
+  <legend>{{_('2_legend_previous')}}</legend>
+
     {{wtf.render_field(
       form.prev_prefix,
       None,
@@ -95,11 +98,10 @@
       None,
       )}}
 
+ </fieldset>
 
-  </div><!--previous-name-fields-->
-
+ <fieldset class="name-buttons">
   {% include 'form-buttons.html' %}
-
  </fieldset>
 </form>
 {% endblock %}
@@ -108,22 +110,29 @@
 <script>
 $(function () {
   //initialize form with parsley validation
-  var form = $('#step_2');
-  $('input[name=has_prev_name]').change(
-      function(){
-          if (this.checked) {
-              $('.previous-name-fields').show();
-              $('#prev_name_first').attr("required", true);
-              $('#prev_name_last').attr("required", true);
-          } else {
-              $('.previous-name-fields').hide();
-              $('#prev_name_first').removeAttr("required").val('').blur();
-              $('#prev_name_last').removeAttr("required").val('').blur();
-          }
-      });
+  let form = $('#step_2');
+  let checkbox = $('input[name=has_prev_name]');
+  let checkHandler = function() {
+    if (checkbox.is(':checked')) {
+      $('.previous-name-fields').show();
+      $('#prev_name_first').attr("required", true);
+      $('#prev_name_last').attr("required", true);
+    } else {
+      $('.previous-name-fields').hide();
+      $('#prev_name_first').removeAttr("required").val('').blur();
+      $('#prev_name_last').removeAttr("required").val('').blur();
+      $('#prev_prefix').val([]);
+      $('#prev_suffix').val([]);
+      $('#prev_name_middle').val('').blur();
+    }
+  };
 
+  if (checkbox.is(':checked')) {
+    checkHandler();
+  }
+
+  $('input[name=has_prev_name]').change(checkHandler);
   form.parsley()
-
 });
 
 </script>
