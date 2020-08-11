@@ -43,7 +43,6 @@ class IdActionMailer():
     self.body = buf.format(firstname=self.registrant.try_value('name_first'))
 
   def send(self):
-    responses = {}
     reg_email = self.registrant.try_value('email')
 
     message = self.ses.build_msg(
@@ -53,7 +52,7 @@ class IdActionMailer():
       body=self.body
     )
 
-    responses['receipt'] = self.ses.send_msg(message, current_app.config['EMAIL_FROM'])
-    current_app.logger.info("%s SENT receipt %s" %(self.registrant.session_id, responses['receipt']))
+    response = self.ses.send_msg(message, current_app.config['EMAIL_FROM'])
+    current_app.logger.info("%s SENT ID Action needed %s" %(self.registrant.session_id, response))
 
-    return responses
+    return response

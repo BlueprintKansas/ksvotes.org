@@ -41,7 +41,8 @@ def ab7_affirmation():
             # if there was no ID string defined, send the action-needed email
             if not reg.try_value('ab_identification'):
                 id_action_mailer = IdActionMailer(reg, clerk)
-                id_action_mailer.send()
+                resp = id_action_mailer.send()
+                reg.update({'ab_id_action_email_sent': resp['MessageId']})
 
             # any error gets a special page
             for k in ['clerk', 'receipt']:
