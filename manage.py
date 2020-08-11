@@ -4,7 +4,7 @@ from app import create_app, db
 from app.models import *
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
-from flask import url_for
+from flask import url_for, g
 
 app = create_app(os.getenv('APP_CONFIG') or 'default')
 manager = Manager(app)
@@ -12,6 +12,7 @@ migrate = Migrate(app, db)
 
 
 def make_shell_context():
+    g.locale = 'en'
     return dict(app=app, db=db)
 
 
