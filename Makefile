@@ -4,7 +4,7 @@ check:
 
 deps:
 	pip install -r requirements.txt
-	npm install
+	rm -f package-lock.json && yarn install
 
 venv:
 	@echo 'You must run: . venv/bin/activate'
