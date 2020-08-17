@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, redirect, request
+from flask import g, url_for, render_template, redirect, request, current_app
 from app import db
 from app.models import Registrant
 from app.decorators import InSession
@@ -21,12 +21,14 @@ def ab6_preview_sign():
     clerk = reg.try_clerk()
 
     if request.method == "POST" and form.validate_on_submit():
+        current_app.logger.info("{} starting POST on AB_6 signature preview".format(reg.session_id))
         step = Step_AB_6(form.data)
         if step.run():
             # add signature img but do not save till we have signed form too.
             reg.update(form.data)
 
             # sign the form and cache the image for next step
+            current_app.logger.info("{} signing AB forms".format(reg.session_id))
             ab_forms = reg.sign_ab_forms()
 
             if ab_forms and len(ab_forms) > 0:
@@ -37,6 +39,7 @@ def ab6_preview_sign():
     # always generate a new unsigned form for preview
     preview_imgs = []
     for election in reg.elections():
+        current_app.logger.info("{} Generating unsigned preview for election {}".format(reg.session_id, election))
         preview_img = nvris_client.get_ab_form(election)
         if preview_img:
             preview_imgs.append(preview_img)

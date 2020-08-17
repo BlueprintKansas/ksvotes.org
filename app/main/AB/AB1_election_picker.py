@@ -26,6 +26,12 @@ def ab1_election_picker():
         step = Step_AB_1(form.data)
         if step.run():
             reg.update(form.data)
+
+            if 'permanent' in reg.elections():
+                reg.ab_permanent = True
+            else:
+                reg.ab_permanent = False
+
             reg.save(db.session)
             session_manager = SessionManager(reg, step)
             return redirect(session_manager.get_redirect_url())
