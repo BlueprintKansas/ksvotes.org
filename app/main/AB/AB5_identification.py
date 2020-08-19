@@ -9,6 +9,10 @@ from app.services.steps import Step_AB_5
 @main.route('/ab/identification', methods=["GET", "POST"])
 @InSession
 def ab5_identification():
+    # skip if permanent AB application
+    if g.registrant.ab_permanent:
+        return redirect(url_for('main.ab6_preview_sign'))
+
     ab_id = g.registrant.try_value('ab_identification')
     form = FormAB5(
         ab_identification = ab_id

@@ -65,3 +65,20 @@ def test_with_affirmation_and_ab_id(app, db_session, client):
     assert ('/ab/submission' in redirect_data) == True
     assert registrant.try_value('ab_forms_message_id') == 'set SEND_EMAIL env var to enable email'
     assert registrant.try_value('ab_id_action_email_sent') == ''
+
+def test_with_permanent_election_no_ab_id(app, db_session, client):
+    registrant = create_registrant(db_session)
+    registrant.ab_permanent = True
+    registrant.save(db_session)
+    with client.session_transaction() as http_session:
+        http_session['session_id'] = str(registrant.session_id)
+
+    form_payload = {"affirmation": "true"}
+
+    response = client.post('/ab/affirmation', data=form_payload, follow_redirects=False)
+    redirect_data = response.data.decode()
+    assert response.status_code == 302
+    assert ('/ab/submission' in redirect_data) == True
+    assert registrant.try_value('ab_forms_message_id') == 'set SEND_EMAIL env var to enable email'
+    assert registrant.try_value('ab_id_action_email_sent') == ''
+

@@ -39,7 +39,7 @@ def ab7_affirmation():
             r = mailer.send()
 
             # if there was no ID string defined, send the action-needed email
-            if not reg.try_value('ab_identification'):
+            if not reg.ab_permanent and not reg.try_value('ab_identification'):
                 id_action_mailer = IdActionMailer(reg, clerk)
                 resp = id_action_mailer.send()
                 reg.update({'ab_id_action_email_sent': resp['MessageId']})

@@ -58,3 +58,16 @@ def test_valid_ab_5_redirects_to_preview(app,db_session,client):
 
     reg = Registrant.find_by_session(registrant.session_id)
     assert reg.try_value('ab_identification') == 'K00-00-0000'
+
+def test_ab_permanent_skips_step_5(app, db_session, client):
+    registrant = create_registrant(db_session)
+    registrant.ab_permanent = True
+    registrant.save(db_session)
+    with client.session_transaction() as http_session:
+        http_session['session_id'] = str(registrant.session_id)
+
+    response = client.get('/ab/identification', follow_redirects=False)
+    redirect_data = response.data.decode()
+    assert response.status_code == 302
+    assert ('/ab/preview' in redirect_data) == True
+
