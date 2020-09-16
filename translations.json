@@ -620,7 +620,7 @@
     "es": "¡Gracias!<br/>El equipo de KSVotes.org"
   },
   "AB8_confirm":{
-    "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder. If you would like to confirm the status of your ballot request, you can visit https://myvoteinfo.voteks.org/voterview. Please Note: Now that your county elections office has received your form they will process it. Once it is processed, you will be able to check your ballot status. Advance ballots will be sent out to voters who requested them starting on October 14th.",
+    "en":"Thank you. Your advance ballot application(s) have been submitted. You should receive a copy of the email soon. If you don't receive the email, please check your spam folder.",
     "es":"Gracias. Su(s) solicitud(es) de boleta anticipada(s) han sido enviadas. Debería recibir una copia del correo electrónico pronto."
   },
   "9_confirm_email_deadline":{
