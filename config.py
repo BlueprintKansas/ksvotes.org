@@ -23,6 +23,7 @@ class Config:
     SESSION_TTL = os.getenv('SESSION_TTL', '10')
     DEMO_UUID = os.getenv('DEMO_UUID', None)
     ENABLE_AB = os.getenv('ENABLE_AB', False)
+    ENABLE_AB_TRACKER = os.getenv('ENABLE_AB_TRACKER', False)
     ENABLE_VOTING_LOCATION = os.getenv('ENABLE_VOTING_LOCATION', False)
     FAIL_EMAIL = os.getenv('FAIL_EMAIL', 'fail@ksvotes.org')
     STAGE_BANNER = os.getenv('STAGE_BANNER', False)

@@ -12,7 +12,16 @@
     <i class="fa fa-edit"></i>
     {{_('1AB_apply_ab_link')}}
   </a>
-  <p class="fs-14 font-italic mb-0">{{_('apply_ab_help')}}</p>
+  <p class="fs-14 font-italic">{{_('apply_ab_help')}}</p>
+ </div>
+ {% endif %}
+ {% if config['ENABLE_AB_TRACKER'] %}
+ <div class="">
+  <a class="btn btn-outline-primary d-block mb-3" target="_blank" href="https://myvoteinfo.voteks.org/voterview">
+    <i class="fa fa-external-link"></i>
+    {{_('1AB_ab_tracker_link')}}
+  </a>
+  <p class="fs-14 font-italic mb-0">{{_('track_ab_help')}}</p>
  </div>
  {% endif %}
 </div>

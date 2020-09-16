@@ -225,6 +225,10 @@
     "en":"Change my registration",
     "es":"Cambiar mi registro"
   },
+  "1AB_ab_tracker_link":{
+    "en": "Check advance ballot status",
+    "es": "Verifique el estado de la boleta por adelantado"
+  },
   "1AB_apply_ab_link":{
     "wiki_step":"1AB",
     "ref":"1AB_apply_ab_link",
@@ -238,6 +242,10 @@
   "apply_ab_help":{
     "en": "Advance Ballots allow you to vote early and by mail.",
     "es": "Las boletas anticipadas le permiten votar anticipadamente y por correo."
+  },
+  "track_ab_help":{
+    "en": "Use the KS Secretary of State Ballot Tracker tool.",
+    "es": "Utilice la herramienta de seguimiento de boletas de la Secretaría de Estado de KS."
   },
   "1AB_apply_perm_ab_link":{
     "wiki_step":"1AB",
