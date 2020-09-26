@@ -21,7 +21,7 @@
   let vrs = [];
   let abs = [];
   stats['vr'].forEach(function(val, idx, arr) {
-    days.push(new Date(val[0]));
+    days.push(new Date(val[0].replace(' GMT', '')));
     vrs.push(val[1]);
   });
   stats['ab'].forEach(function(val, idx, arr) {
