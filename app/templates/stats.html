@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <canvas id="stats"></canvas>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js_footer %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+  let dateFormat = 'MM/DD/YYYY';
+  let stats = {{stats|tojson}};
+  let color = Chart.helpers.color;
+  let days = [];
+  let vrs = [];
+  let abs = [];
+  stats['vr'].forEach(function(val, idx, arr) {
+    days.push(new Date(val[0].replace(' GMT', '')));
+    vrs.push(val[1]);
+  });
+  stats['ab'].forEach(function(val, idx, arr) {
+    abs.push(val[1]);
+  });
+  const colors = {
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+  };
+  let config = {
+    type: 'line',
+    data: {
+      labels: days,
+      datasets: [{
+        label: 'Voter Registrations',
+        backgroundColor: color(colors.green).alpha(0.5).rgbString(),
+        borderColor: colors.green,
+        fill: false,
+        data: vrs,
+      }, {
+        label: 'Advanced Ballots',
+        backgroundColor: color(colors.blue).alpha(0.5).rgbString(),
+        borderColor: colors.blue,
+        fill: false,
+        data: abs,
+      }],
+    },
+    options: {
+      responsive: true,
+      title: {
+        display: true,
+        text: 'ksvotes.org stats'
+      },
+      scales: {
+        xAxes: [{
+          type: 'time',
+          time: {
+            parser: dateFormat,
+            tooltipFormat: 'll'
+          },
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Date'
+          },
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Voters'
+          }
+        }]
+      }
+    }
+  };
+
+  $(document).ready(function() {
+    let ctx = document.getElementById('stats').getContext('2d');
+    window.stats = new Chart(ctx, config);
+  });
+
+</script>
+{% endblock %}
