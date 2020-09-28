@@ -7,10 +7,13 @@ from app import db
 from uuid import UUID, uuid4
 from app.decorators import InSession
 from app.services import SessionManager
+from app.services.registrant_stats import RegistrantStats
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
 from sqlalchemy import func
 import sys
+import datetime
+import json
 
 @main.route('/terms', methods=['GET'])
 def terms():
@@ -246,3 +249,22 @@ def api_total_processed():
     reg_count = db.session.query(func.count(Registrant.id)).filter(Registrant.vr_completed_at.isnot(None)).first()
     ab_count = db.session.query(func.count(Registrant.id)).filter(Registrant.ab_completed_at.isnot(None)).first()
     return jsonify(registrations=reg_count[0], advanced_ballots=ab_count[0])
+
+
+@main.route('/stats/', methods=['GET'])
+def stats():
+    g.locale = guess_locale()
+    ninety_days = datetime.timedelta(days=90)
+    today = datetime.date.today()
+    s = RegistrantStats()
+    vr_stats = s.vr_through_today(today - ninety_days)
+    ab_stats = s.ab_through_today(today - ninety_days)
+
+    stats = {'vr': [], 'ab': []}
+    for r in vr_stats:
+      stats['vr'].append(r.values())
+    for r in ab_stats:
+      stats['ab'].append(r.values())
+
+    return render_template('stats.html', stats=stats)
+
