@@ -222,8 +222,8 @@
     "es":"Su información de votante está abajo. ¿Qué desea hacer ahora?"
   },
   "1AB_change_reg_link":{
-    "en":"Change my registration",
-    "es":"Cambiar mi registro"
+    "en":"Update my registration",
+    "es":"Actualizar mi registro"
   },
   "1AB_ab_tracker_link":{
     "en": "Check advance ballot status",
