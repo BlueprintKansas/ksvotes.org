@@ -35,8 +35,8 @@
   "0_intro":{
     "wiki_step":"0",
     "ref":"0_intro",
-    "en":"We can help you register to vote, check your registration, or apply to vote by mail. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
-    "es":"Podemos ayudarlo a registrarse para votar, verificar su registro o solicite para votar por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
+    "en":"We can help you register to vote, check your registration, apply to vote by mail, or track your advance ballot status. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
+    "es":"Podemos ayudarlo a registrarse para votar, verificar su registro, solicite para votar por correo, o verifique el estado de su boleta por correo. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
   "0_form_explain_deadline":{
     "en":"Enter your information to look up your polling place, see early voting options, and view a sample ballot.",
