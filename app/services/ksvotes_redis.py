@@ -17,7 +17,7 @@ class KSVotesRedis():
   def clear(self, key):
     return self.redis_client.delete(self.namespace + ":" + key)
 
-  def get_or_set(self, key, setter):
+  def get_or_set(self, key, setter, ttl):
     ns_key = self.namespace + ":" + key
     with self.redis_client.pipeline() as pipe:
       try:
@@ -29,7 +29,7 @@ class KSVotesRedis():
           return pipe.get(ns_key)
         # now we can put the pipeline back into buffered mode with MULTI
         pipe.multi()
-        pipe.set(ns_key, setter())
+        pipe.set(ns_key, setter(), ex=ttl)
         pipe.get(ns_key)
         # and finally, execute the pipeline (the set and get commands)
         return pipe.execute()[-1]

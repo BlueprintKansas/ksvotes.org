@@ -255,8 +255,10 @@ def api_total_processed():
     def get_ab_total():
         return s.ab_total_processed()
 
-    reg_count = int(r.get_or_set('vr-total-processed', get_vr_total))
-    ab_count = int(r.get_or_set('ab-total-processed', get_ab_total))
+    # cache for 1 hour
+    ttl = 60 * 60
+    reg_count = int(r.get_or_set('vr-total-processed', get_vr_total, ttl))
+    ab_count = int(r.get_or_set('ab-total-processed', get_ab_total, ttl))
 
     return jsonify(registrations=reg_count, advanced_ballots=ab_count)
 
