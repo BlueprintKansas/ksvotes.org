@@ -1,8 +1,17 @@
 from app.models import Registrant
 from app import db
 import datetime
+from sqlalchemy import func
 
 class RegistrantStats():
+  def vr_total_processed(self):
+    r = db.session.query(func.count(Registrant.id)).filter(Registrant.vr_completed_at.isnot(None)).first()
+    return r[0]
+
+  def ab_total_processed(self):
+    r = db.session.query(func.count(Registrant.id)).filter(Registrant.ab_completed_at.isnot(None)).first()
+    return r[0]
+
   def vr_through_today(self, start_date):
     today = datetime.date.today()
     sql = """
