@@ -3,10 +3,10 @@
     "en":"IMPORTANT: Our Check Your Registration feature is currently experiencing technical difficulties. You can still register to vote or request an advance ballot using the form below. If you want to confirm your voter registration, please visit the Secretary of State's website at https://myvoteinfo.voteks.org/.",
     "es":""
  },
-   "DISABLEDannounce":{
+   "announce":{
     "ref":"announce",
-    "en":"PLEASE NOTE: Voter registration for the August 4th primary elections closed on July 15th, 2020. This registration will not be in effect until after the August 4th primary elections. Advance ballots may be requested until 5pm on July 28,2020.",
-    "es":""
+    "en":"PLEASE NOTE: Voter registration for the November 3rd general election closed on October 13th, 2020. Voter registrations submitted after the 13th will not be in effect until after the 2020 election. Advance ballots may be requested until midnight on October 27th, 2020.",
+    "es":"TENGA EN CUENTA: El registro de votantes para las elecciones generales del 3 de Noviembre se cerró el 13 de Octubre de 2020. Los registros de votantes presentados después del 13 no estarán en vigencia hasta después de las elecciones de 2020. Se pueden solicitar boletas anticipadas hasta la medianoche del 27 de Octubre de 2020."
   },
   "0_title":{
     "wiki_step":"0",
