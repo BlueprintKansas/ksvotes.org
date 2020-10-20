@@ -130,6 +130,8 @@ def change_or_apply():
     skip_sos = reg.try_value('skip_sos')
     sos_failure = reg.try_value('sos_failure')
     county = reg.county
+    if not county and sos_reg:
+      county = sos_reg[0]['tree']['County']
     clerk = None
     evl = None
     if county:
