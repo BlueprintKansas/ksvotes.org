@@ -1,15 +1,20 @@
 import datetime
 import uuid
 from app.models import Registrant
-
+from app.services.ksvotes_redis import KSVotesRedis
 
 def test_api_total_processed(app, db_session, client):
+    redis = KSVotesRedis(app)
+
     # We should be empty at first
     response = client.get('/api/total-processed/')
     assert response.status_code == 200
     data = response.get_json()
     assert data["registrations"] == 0
     assert data["advanced_ballots"] == 0
+
+    redis.clear('vr-total-processed')
+    redis.clear('ab-total-processed')
 
     now = datetime.datetime.utcnow()
 
@@ -28,6 +33,9 @@ def test_api_total_processed(app, db_session, client):
     assert data["registrations"] == 1
     assert data["advanced_ballots"] == 0
 
+    redis.clear('vr-total-processed')
+    redis.clear('ab-total-processed')
+
     second_registrant = Registrant(
         lang='en',
         county="Johnson",
@@ -43,3 +51,6 @@ def test_api_total_processed(app, db_session, client):
     data = response.get_json()
     assert data["registrations"] == 1
     assert data["advanced_ballots"] == 1
+
+    redis.clear('vr-total-processed')
+    redis.clear('ab-total-processed')

@@ -8,6 +8,7 @@ from uuid import UUID, uuid4
 from app.decorators import InSession
 from app.services import SessionManager
 from app.services.registrant_stats import RegistrantStats
+from app.services.ksvotes_redis import KSVotesRedis
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
 from sqlalchemy import func
@@ -246,9 +247,20 @@ def referring_org():
 
 @main.route('/api/total-processed/', methods=['GET'])
 def api_total_processed():
-    reg_count = db.session.query(func.count(Registrant.id)).filter(Registrant.vr_completed_at.isnot(None)).first()
-    ab_count = db.session.query(func.count(Registrant.id)).filter(Registrant.ab_completed_at.isnot(None)).first()
-    return jsonify(registrations=reg_count[0], advanced_ballots=ab_count[0])
+    s = RegistrantStats()
+    r = KSVotesRedis()
+    def get_vr_total():
+        return s.vr_total_processed()
+
+    def get_ab_total():
+        return s.ab_total_processed()
+
+    # cache for 1 hour
+    ttl = 60 * 60
+    reg_count = int(r.get_or_set('vr-total-processed', get_vr_total, ttl))
+    ab_count = int(r.get_or_set('ab-total-processed', get_ab_total, ttl))
+
+    return jsonify(registrations=reg_count, advanced_ballots=ab_count)
 
 
 @main.route('/stats/', methods=['GET'])
