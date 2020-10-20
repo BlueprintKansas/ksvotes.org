@@ -1,0 +1,13 @@
+<h4>{{_('early_voting_locations')}}</h4>
+{% for location in early_voting_locations %}
+  <table class="deflist table-responsive border-bottom border-dark mt-4 pb-4">
+    {% for field, value in location['fields'].items() %}
+      {% if field not in ['Site Name', 'COUNTY'] %}
+      <tr class="{{ loop.cycle('odd', 'even') }}">
+        <th>{{ field }}</th>
+        <td>{{ value }}</td>
+      </tr>
+      {% endif %}
+    {% endfor %}
+  </table>
+{% endfor %}

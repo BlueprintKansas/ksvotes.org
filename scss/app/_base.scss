@@ -277,6 +277,7 @@ div.clerk-details {
 }
 
 table.clerk-details,
+table.deflist,
 #voter-view table {
   th,
   td {
@@ -295,6 +296,9 @@ table.clerk-details,
         white-space: nowrap;
       }
     }
+  }
+  .even {
+    background-color: #eee;
   }
 }
 
