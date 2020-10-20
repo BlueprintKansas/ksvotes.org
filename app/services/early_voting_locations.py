@@ -6,6 +6,8 @@ from flask import current_app
 
 class EarlyVotingLocations():
   def __init__(self, county):
+    self.locations = None
+
     # disabled w/o this env var set
     if not os.getenv('AIRTABLE_EV_TABLE'):
       return
