@@ -36,6 +36,6 @@ class EarlyVotingLocations():
     redis = KSVotesRedis()
     airtable = Airtable(os.getenv('AIRTABLE_EV_BASE_ID'), os.getenv('AIRTABLE_EV_TABLE'), os.getenv('AIRTABLE_EV_KEY'))
     response = airtable.get_all(formula="AND( COUNTY = '{}' )".format(self.county.upper()))
-    redis.set(self.cache_key(), json.dumps(response).encode())
+    redis.set(self.cache_key(), json.dumps(response).encode(), os.getenv('EVL_TTL', '3600'))
     return response
 

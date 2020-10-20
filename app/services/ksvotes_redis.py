@@ -11,8 +11,8 @@ class KSVotesRedis():
   def get(self, key):
     return self.redis_client.get(self.namespace + ":" + key)
 
-  def set(self, key, value):
-    return self.redis_client.set(self.namespace + ":" + key, value)
+  def set(self, key, value, ttl=60):
+    return self.redis_client.set(self.namespace + ":" + key, value, ex=ttl)
 
   def clear(self, key):
     return self.redis_client.delete(self.namespace + ":" + key)
