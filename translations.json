@@ -766,6 +766,10 @@
   "stage_banner": {
     "en": "This site is for testing only. You might want <a href='https://www.ksvotes.org/'>the live site</a> instead.",
     "es": "Este sitio es solo para pruebas. En su lugar, puede querer <a href='https://www.ksvotes.org/'>el sitio en vivo</a>."
+  },
+  "early_voting_locations": {
+    "en": "Early Voting Locations",
+    "es": "Ubicaciones de votación anticipada"
   }
 
 }
