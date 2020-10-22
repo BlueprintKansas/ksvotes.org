@@ -1,13 +1,29 @@
 <h4>{{_('early_voting_locations')}}</h4>
+<div class="accordion" id="early-voting-locations">
 {% for location in early_voting_locations %}
-  <table class="deflist table-responsive border-bottom border-dark mt-4 pb-4">
-    {% for field, value in location['fields'].items() %}
-      {% if field not in ['Site Name', 'COUNTY'] %}
-      <tr class="{{ loop.cycle('odd', 'even') }}">
-        <th>{{ field }}</th>
-        <td>{{ value }}</td>
-      </tr>
-      {% endif %}
-    {% endfor %}
-  </table>
+  <div class="card z-depth-0 bordered">
+    <div class="card-header" id="evl-{{loop.index}}">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#evl-{{loop.index}}-collapse"
+          aria-expanded="true" aria-controls="evl-{{loop.index}}-collapse">
+          {{location['location']}}
+        </button>
+      </h5>
+    </div>
+    <div id="evl-{{loop.index}}-collapse" class="collapse" aria-labelledby="evl-{{loop.index}}" data-parent="#early-voting-locations">
+      <div class="card-body text-center">
+        <h5><a href="https://google.com/maps/dir/current+location/{{location['location']|urlencode}}" target="_blank">{{_('map')}}</a></h5>
+        <h5>{{_('hours')}}</h5>
+        {% set location_loop = loop %}
+        {% for hours in location['hours'] %}
+        <div class="border-bottom text-center mb-1 p-2">
+          <div>{{ hours['day'] }}</div>
+          <div>{{ hours['time'] }}</div>
+        </div> 
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endfor %}
+</div>
+
