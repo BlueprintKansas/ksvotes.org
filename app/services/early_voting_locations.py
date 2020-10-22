@@ -24,7 +24,7 @@ class EarlyVotingLocations():
 
 
   def cache_key(self):
-    return "ev-{}".format(self.county)
+    return "ev2-{}".format(self.county)
 
   def get_cached_locations(self):
     redis = KSVotesRedis()
@@ -43,6 +43,15 @@ class EarlyVotingLocations():
     if 'LOCATION' not in response[0]['fields']:
       return
 
-    redis.set(self.cache_key(), json.dumps(response).encode(), os.getenv('EVL_TTL', '3600'))
-    return response
+    locations = []
+    for loc in response:
+      evl = { 'location': loc['fields']['LOCATION'], 'hours': [] }
+      for field, value in loc['fields'].items():
+        if 'DAY' in field:
+          evl['hours'].append({'day': field, 'time': value})
+
+      locations.append(evl)
+
+    redis.set(self.cache_key(), json.dumps(locations).encode(), os.getenv('EVL_TTL', '3600'))
+    return locations
 

@@ -770,6 +770,14 @@
   "early_voting_locations": {
     "en": "Early Voting Locations",
     "es": "Ubicaciones de votación anticipada"
+  },
+  "hours": {
+    "en": "Hours",
+    "es": "Horas"
+  },
+  "map": {
+    "en": "Map",
+    "es": "Mapa"
   }
 
 }
