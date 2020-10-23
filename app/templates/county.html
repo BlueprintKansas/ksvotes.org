@@ -9,9 +9,11 @@
           <div class="clerk-details mt-4">
             {% include 'clerk-details.html' %}
           </div>
+          {% if early_voting_locations %}
           <div class="early-voting-locations mt-4">
             {% include '_early-voting-locations.html' %}
           </div>
+          {% endif %}
         </div>
       </div>
     </div>
