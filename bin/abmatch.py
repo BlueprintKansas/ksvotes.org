@@ -39,10 +39,10 @@ import pandas as pd
 import numpy as np
 
 kdf_fn = 'kdf_finaloutput.csv'
-ab_sent_fn = 'sent_20200715.csv'
+ab_sent_fn = ''
 ab_returned_fn = ''
 ab_eip_fn = ''
-ab_electiondate = 'August 4, 2020'
+ab_electiondate = 'November 3, 2020'
 ab_handled_fn = ''
 
 try:
@@ -83,9 +83,10 @@ for opt, arg in opts:
 kdf=pd.read_csv(kdf_fn,index_col=False,sep=',',error_bad_lines=True,encoding='latin-1',low_memory=False)
 print(f'kdf: {kdf.shape}')
 
-# load ab sent file
-asdf=pd.read_csv(ab_sent_fn,index_col=False,sep=',',error_bad_lines=False,warn_bad_lines=True,encoding='latin-1',low_memory=False)
-print(f'asdf: {asdf.shape}')
+# load ab sent file if it exists
+if ab_sent_fn:
+	asdf=pd.read_csv(ab_sent_fn,index_col=False,sep=',',error_bad_lines=False,warn_bad_lines=True,encoding='latin-1',low_memory=False)
+	print(f'asdf: {asdf.shape}')
 
 # load ab returned file (if it exists)
 if ab_returned_fn:
@@ -132,21 +133,22 @@ kdf.loc[(kdf['ab_status'] == 'AB_NOTREQUESTED') & ~kdf['match_status'].str.conta
 # Check for other elections just to help understand counts better
 kdf.loc[(kdf['ab_status'] == 'AB_NOTREQUESTED') & pd.notnull(kdf['ab_completed_at']) & kdf['r_elections'].str.contains(", 2020"),'ab_status'] = 'AB_REQUESTED_FOR_ANOTHER_2020_ELECTION'
 
-print('Processing sent')
-newdf = pd.merge(kdf, asdf, how='left',
-		 left_on=['saved_tr_id'],
-		right_on=['text_registrant_id'],
-			indicator='s_merge_match')
+if ab_sent_fn:
+	print('Processing sent')
+	newdf = pd.merge(kdf, asdf, how='left',
+			 left_on=['saved_tr_id'],
+			right_on=['text_registrant_id'],
+				indicator='s_merge_match')
 
-# If there was a match on text_registrant_id and an AB requested and there was a match("both"), then mark as such
-kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_REQUESTED'),'ab_status'] = 'ABMATCH_SENT'
-kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_KSV_PERMANENT_REQ'),'ab_status'] = 'ABMATCH_SENT_KSV_PERMANENT'
-kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_KSV_PERMANENT_NONREQ'),'ab_status'] = 'ABMATCH_SENT_KSV_PERMANENT'
+	# If there was a match on text_registrant_id and an AB requested and there was a match("both"), then mark as such
+	kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_REQUESTED'),'ab_status'] = 'ABMATCH_SENT'
+	kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_KSV_PERMANENT_REQ'),'ab_status'] = 'ABMATCH_SENT_KSV_PERMANENT'
+	kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_KSV_PERMANENT_NONREQ'),'ab_status'] = 'ABMATCH_SENT_KSV_PERMANENT'
 
-# check if a KSVotes voter requested a ballot via another mechanism
-kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_NOTREQUESTED'),'ab_status'] = 'AB_NOTREQUESTED_VIA_KSVOTES_BUT_SENT'
+	# check if a KSVotes voter requested a ballot via another mechanism
+	kdf.loc[(newdf['s_merge_match'] == 'both') & (newdf['ab_status'] == 'AB_NOTREQUESTED'),'ab_status'] = 'AB_NOTREQUESTED_VIA_KSVOTES_BUT_SENT'
 
-del newdf
+	del newdf
 
 if ab_returned_fn:
 	print('Processing returned')
@@ -270,7 +272,8 @@ print(f'Shape of Work File: {tempdf.shape}')
 tempdf.to_csv('ab_workfile.csv',sep=',',index=False)
 
 del kdf
-del asdf
+if ab_sent_fn:
+	del asdf
 if ab_returned_fn:
 	del ardf
 if ab_eip_fn:
