@@ -56,7 +56,7 @@
       _('3_zip_help'),
       {
         'required':'required',
-        'pattern': '\d{5}',
+        'pattern': '\d{5}(-\d{4})?',
         'data-parsley-required-message': _('Required'),
         'autocomplete':'off',
         'data-parsley-trigger':'focusout',
@@ -112,12 +112,12 @@
         form.prev_zip,
         _('3_zip_help'),
         {
-          'pattern': '[0-9]*',
+          'pattern': '\d{5}(-\d{4})?',
           'data-parsley-required-message': _('Required'),
           'autocomplete':'off',
           'data-parsley-trigger':'focusout',
           'data-parsley-pattern-message': _('3_zip_help'),
-          'data-parsley-pattern': "/^\d{5}$/",
+          'data-parsley-pattern': "/^\d{5}(-\d{4})?$/",
         }
         )}}
   </div><!--/previous-address-fields-->
