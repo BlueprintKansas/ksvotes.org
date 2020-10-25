@@ -10,6 +10,7 @@ from app.services import SessionManager
 from app.services.registrant_stats import RegistrantStats
 from app.services.ksvotes_redis import KSVotesRedis
 from app.services.early_voting_locations import EarlyVotingLocations
+from app.services.dropboxes import Dropboxes
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
 from sqlalchemy import func
@@ -134,9 +135,11 @@ def change_or_apply():
       county = sos_reg[0]['tree']['County']
     clerk = None
     evl = None
+    dropboxes = None
     if county:
         clerk = Clerk.find_by_county(county)
         evl = EarlyVotingLocations(county).locations
+        dropboxes = Dropboxes(county).dropboxes
 
     return render_template(
         'change-or-apply.html',
@@ -144,7 +147,8 @@ def change_or_apply():
         sos_reg=sos_reg,
         sos_failure=sos_failure,
         clerk=clerk,
-        early_voting_locations=evl
+        early_voting_locations=evl,
+        dropboxes=dropboxes
     )
 
 
@@ -190,7 +194,8 @@ def clerk_details(county):
     clerk = Clerk.find_by_county(county)
     if clerk:
         evl = EarlyVotingLocations(county)
-        return render_template('county.html', clerk=clerk, early_voting_locations=evl.locations)
+        d = Dropboxes(county)
+        return render_template('county.html', clerk=clerk, early_voting_locations=evl.locations, dropboxes=d.dropboxes)
     else:
         return abort(404)
 
