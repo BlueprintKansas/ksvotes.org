@@ -1,0 +1,8 @@
+<h4>{{_('ballot_dropboxes')}}</h4>
+{% for dropbox in dropboxes %}
+  <div class="dropbox mb-2 mt-2 pb-2 border-bottom">
+    <a href="https://google.com/maps/dir/current+location/{{dropbox['location']|urlencode}}" target="_blank">{{dropbox['location']}}</a>
+    <div class="text-muted"><small>Hours: {{dropbox['hours']}}</small></div>
+  </div>
+{% endfor %}
+
