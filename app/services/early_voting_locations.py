@@ -39,6 +39,9 @@ class EarlyVotingLocations():
     airtable = Airtable(os.getenv('AIRTABLE_EV_BASE_ID'), os.getenv('AIRTABLE_EV_TABLE'), os.getenv('AIRTABLE_EV_KEY'))
     response = airtable.get_all(formula="AND( COUNTY = '{}' )".format(self.county.upper()))
 
+    if response is None or len(response) == 0:
+      return
+
     # some counties do not have actual locations
     if 'LOCATION' not in response[0]['fields']:
       return
