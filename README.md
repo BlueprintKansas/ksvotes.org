@@ -14,134 +14,156 @@ The ksvotes.org site makes Kansas online voting registration easy.
 * [Styling](styling)
 * [Internationalization & Localization](#internationalization-&-localization)
 
-### Database Setup
-  For Mac installations I like [PostgresApp](https://postgresapp.com/)
+### Database services
 
-  [DB setup reference](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
+You can run PostgreSQL and Redis locally, or via Docker.
 
-  Create databases for development and testing. In the [Environmental Variables](#environmental-variables) section below we assume the names you picked were `ksvotes_dev` and `ksvotes_test`.
+For native Mac installations consider [PostgresApp](https://postgresapp.com/).
+
+For Docker, there is a `docker-compose.yml` file in the repo you can use with:
+
+```
+# start
+$ make start-services
+# stop
+$ make stop-services
+```
+
+Redis is used for caching stats and external API calls.
+
+Once you have PostgreSQL available, you must create database instances for local use.
+[DB setup reference](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
+
+Create databases for development and testing. In the [Environmental Variables](#environmental-variables)
+section below we assume the names you picked were `ksvotes_dev` and `ksvotes_test`.
 
 
 ## Setup & Installation
-  Recommendations for running after cloning:
+Recommendations for running after cloning:
 
-  Install [Python 3.6+](https://www.python.org/downloads/)
+Install [Python 3.6+](https://www.python.org/downloads/)
 
-  Install [pip](https://pypi.org/project/pip/#description)
+Install [pip](https://pypi.org/project/pip/#description)
 
-  Install [virtualenv](https://virtualenv.pypa.io/en/stable/)
+Install [virtualenv](https://virtualenv.pypa.io/en/stable/)
 
-  In app root directory setup your virtualenv and install dependencies to your virtualenv python.
+In app root directory setup your virtualenv and install dependencies to your virtualenv python.
 
-  ```
-  $ virtualenv venv -p python3
-  $ . venv/bin/activate
-  $(venv) make deps
-  $(venv) make locales
-  ```
+```
+$ virtualenv venv -p python3
+$ . venv/bin/activate
+$(venv) make deps
+$(venv) make locales
+```
 
 ### Environmental Variables
-  Create a .env file in the root directory and add the following variables.
-  Note that the commented-out (`#`-prefixed) variables are optional.
+Create a .env file in the root directory and add the following variables.
+Note that the commented-out (`#`-prefixed) variables are optional.
 
-  ```
-  DATABASE_URL=postgres://localhost/ksvotes_dev
-  TESTING_DATABASE_URL=postgres://localhost/ksvotes_test
-  SECRET_KEY={{generate a secret key}}
-  APP_CONFIG=development
-  CRYPT_KEY={{generate a secret key | base64}}
+```
+DATABASE_URL=postgres://localhost/ksvotes_dev
+TESTING_DATABASE_URL=postgres://localhost/ksvotes_test
+SECRET_KEY={{generate a secret key}}
+APP_CONFIG=development
+CRYPT_KEY={{generate a secret key | base64}}
 
-  # Set this to enable the /demo endpoint
-  DEMO_UUID={{generate a UUID and run "make load-demo"}}
+# Set this to enable the /demo endpoint
+DEMO_UUID={{generate a UUID and run "make load-demo"}}
 
-  # You can grab one from the URL below or take the one from the staging configuration
-  USPS_USER_ID={{key from https://registration.shippingapis.com/}}
+# You can grab one from the URL below or take the one from the staging configuration
+USPS_USER_ID={{key from https://registration.shippingapis.com/}}
 
-  #########################
-  # OPTIONAL ENV VARS
-  #########################
+#########################
+# OPTIONAL ENV VARS
+#########################
 
-  # LOG_LEVEL=INFO
-  # GA_KEY={{google analytics key}}
-  # RECAPTCHA_KEY={{public key}}
-  # RECAPTCHA_SECRET={{private key}}
-  # AWS_ACCESS_KEY_ID={{from role with at least rds access}}
-  # AWS_SECRET_ACCESS_KEY={{from role with at least rds access}}
-  # AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
-  # SES_ACCESS_KEY_ID={{from role with ses access}}
-  # SES_SECRET_ACCESS_KEY={{from role with ses access}}
+# LOG_LEVEL=INFO
+# GA_KEY={{google analytics key}}
+# RECAPTCHA_KEY={{public key}}
+# RECAPTCHA_SECRET={{private key}}
+# AWS_ACCESS_KEY_ID={{from role with at least rds access}}
+# AWS_SECRET_ACCESS_KEY={{from role with at least rds access}}
+# AWS_DEFAULT_REGION={{us-east-1 || or your region where RDS is hosted}}
+# SES_ACCESS_KEY_ID={{from role with ses access}}
+# SES_SECRET_ACCESS_KEY={{from role with ses access}}
 
-  # TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
-  # EMAIL_FROM={{override the From email header in all email}}
-  # EMAIL_PREFIX={{prefix all Subject lines with a string}}
+# TEST_CLERK_EMAIL={{override the Clerk.email value for the TEST County}}
+# EMAIL_FROM={{override the From email header in all email}}
+# EMAIL_PREFIX={{prefix all Subject lines with a string}}
 
-  # Default is not to send actual email unless SEND_EMAIL is set
-  # SEND_EMAIL=true
+# Default is not to send actual email unless SEND_EMAIL is set
+# SEND_EMAIL=true
 
-  # Number of minutes before idle session expires. Default is 10.
-  # SESSION_TTL=10
+# Number of minutes before idle session expires. Default is 10.
+# SESSION_TTL=10
 
-  # You want the default VV URL unless you are testing error checking.
-  # VOTER_VIEW_URL=https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do
+# You want the default VV URL unless you are testing error checking.
+# VOTER_VIEW_URL=https://myvoteinfo.voteks.org/VoterView/RegistrantSearch.do
 
 
-  # The date and time prior to the Primary election when the Advance Ballot
-  # option for the Primary disappears. Format is 'YYYY-MM-DD HH:MM:SS' and assumes
-  # a Central US time zone
-  # AB_PRIMARY_DEADLINE="2020-05-01 17:00:00"
+# The date and time prior to the Primary election when the Advance Ballot
+# option for the Primary disappears. Format is 'YYYY-MM-DD HH:MM:SS' and assumes
+# a Central US time zone
+# AB_PRIMARY_DEADLINE="2020-05-01 17:00:00"
 
-  # Turn the AB flow on. Default is off.
-  # ENABLE_AB=true
+# Turn the AB flow on. Default is off.
+# ENABLE_AB=true
 
-  # Turn VIT voting location JS widget on. Default is off.
-  # ENABLE_VOTING_LOCATION=true
+# Turn VIT voting location JS widget on. Default is off.
+# ENABLE_VOTING_LOCATION=true
 
-  # Turn off HTTPS requirement. Probably set this to true in your local dev.
-  # SSL_DISABLE=true
+# Turn off HTTPS requirement. Probably set this to true in your local dev.
+# SSL_DISABLE=true
 
-  # Turn on lots of SQL debugging.
-  # SQL_DEBUG=true
+# Turn on lots of SQL debugging.
+# SQL_DEBUG=true
 
-  # Include the top banner on every page that this is not the live production site.
-  # STAGE_BANNER=true
-  ```
+# Include the top banner on every page that this is not the live production site.
+# STAGE_BANNER=true
+
+# Airtable is managed by ksvoterguide.org folks for early voting and ballot dropbox locations.
+# AIRTABLE_EV_KEY=sekrit
+# AIRTABLE_EV_BASE_ID=sekrit
+# AIRTABLE_EV_TABLE='SoS 10-19-2020'
+# AIRTABLE_DROPBOX_TABLE='dropbox 2020'
+```
 
 ### Crypt Key
 
-  The encryption key is kind of particular, it needs to be 32 bytes long and URl-safe base64 encoded.  Use this command to generate one for you using the cryptography library:
+The encryption key is kind of particular, it needs to be 32 bytes long and URl-safe base64 encoded.  Use this command to generate one for you using the cryptography library:
 
-  ```
-  $(venv) make crypt-key
-  ```
+```
+$(venv) make crypt-key
+```
 
 ### Demo uuid
 
-  We need `DEMO_UUID` set to a UUID, use this to generate one for you quickly:
+We need `DEMO_UUID` set to a UUID, use this to generate one for you quickly:
 
-  ```
-  $(venv) make demo-uuid
-  ```
+```
+$(venv) make demo-uuid
+```
 
 ### Validate your configuration
 
-  You can check that your local env has all of the requried environment variables set by running:
+You can check that your local env has all of the requried environment variables set by running:
 
-  ```
-  ($venv) make check
-  ```
+```
+($venv) make check
+```
 
 ### Migrate Database
-  Once setup is complete let's get our models imported into our development database.
+Once setup is complete let's get our models imported into our development database.
 
-  ```
-  $(venv) make dbupgrade
-  ```
+```
+$(venv) make dbupgrade
+```
 
 When you modify the model classes and want to apply to the schema:
 
-  ```
-  $(venv) make update
-  ```
+```
+$(venv) make update
+```
 
 ### Run the Application
 
