@@ -80,4 +80,10 @@ redact:
 export:
 	python manage.py export_registrants
 
-.PHONY: deps venv test dbmigrate run testcov fixtures redact export
+start-services:
+	docker-compose up -d
+
+stop-services:
+	docker-compose down
+
+.PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services
