@@ -216,7 +216,7 @@
         }
       });
 
-
+      /* disable stats till we can cache it better on the server
       // Get current total processed
       $.getJSON("/api/total-processed/", function (data) {
         var registrations = data.registrations.toLocaleString();
@@ -224,6 +224,7 @@
         var text = "<p>KSVotes has processed " + registrations + " voter registrations and " + advanced_ballots + " advanced ballots.</p>";
         $("#totals").html(text);
       });
+      */
     });
     {% if previous_step_url is defined %}
     $('#btn-back').attr('href', '{{previous_step_url}}');

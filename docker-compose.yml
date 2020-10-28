@@ -1,0 +1,19 @@
+version: '3'
+services:
+  redis:
+    image: redis:2.8.23
+    ports:
+      - "6379:6379"
+
+  ksvotes-postgres:
+    image: postgres:11.7
+    container_name: ksvotes-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - "postgresdata:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  postgresdata:

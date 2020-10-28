@@ -7,10 +7,16 @@ from app import db
 from uuid import UUID, uuid4
 from app.decorators import InSession
 from app.services import SessionManager
+from app.services.registrant_stats import RegistrantStats
+from app.services.ksvotes_redis import KSVotesRedis
+from app.services.early_voting_locations import EarlyVotingLocations
+from app.services.dropboxes import Dropboxes
 from app.services.steps import Step_0
 from app.main.helpers import guess_locale
 from sqlalchemy import func
 import sys
+import datetime
+import json
 
 @main.route('/terms', methods=['GET'])
 def terms():
@@ -125,16 +131,24 @@ def change_or_apply():
     skip_sos = reg.try_value('skip_sos')
     sos_failure = reg.try_value('sos_failure')
     county = reg.county
+    if not county and sos_reg:
+      county = sos_reg[0]['tree']['County']
     clerk = None
+    evl = None
+    dropboxes = None
     if county:
         clerk = Clerk.find_by_county(county)
+        evl = EarlyVotingLocations(county).locations
+        dropboxes = Dropboxes(county).dropboxes
 
     return render_template(
         'change-or-apply.html',
         skip_sos=skip_sos,
         sos_reg=sos_reg,
         sos_failure=sos_failure,
-        clerk=clerk
+        clerk=clerk,
+        early_voting_locations=evl,
+        dropboxes=dropboxes
     )
 
 
@@ -179,7 +193,9 @@ def clerk_details(county):
     g.locale = guess_locale()
     clerk = Clerk.find_by_county(county)
     if clerk:
-        return render_template('county.html', clerk=clerk)
+        evl = EarlyVotingLocations(county)
+        d = Dropboxes(county)
+        return render_template('county.html', clerk=clerk, early_voting_locations=evl.locations, dropboxes=d.dropboxes)
     else:
         return abort(404)
 
@@ -243,6 +259,36 @@ def referring_org():
 
 @main.route('/api/total-processed/', methods=['GET'])
 def api_total_processed():
-    reg_count = db.session.query(func.count(Registrant.id)).filter(Registrant.vr_completed_at.isnot(None)).first()
-    ab_count = db.session.query(func.count(Registrant.id)).filter(Registrant.ab_completed_at.isnot(None)).first()
-    return jsonify(registrations=reg_count[0], advanced_ballots=ab_count[0])
+    s = RegistrantStats()
+    r = KSVotesRedis()
+    def get_vr_total():
+        return s.vr_total_processed()
+
+    def get_ab_total():
+        return s.ab_total_processed()
+
+    # cache for 1 hour
+    ttl = 60 * 60
+    reg_count = int(r.get_or_set('vr-total-processed', get_vr_total, ttl))
+    ab_count = int(r.get_or_set('ab-total-processed', get_ab_total, ttl))
+
+    return jsonify(registrations=reg_count, advanced_ballots=ab_count)
+
+
+@main.route('/stats/', methods=['GET'])
+def stats():
+    g.locale = guess_locale()
+    ninety_days = datetime.timedelta(days=90)
+    today = datetime.date.today()
+    s = RegistrantStats()
+    vr_stats = s.vr_through_today(today - ninety_days)
+    ab_stats = s.ab_through_today(today - ninety_days)
+
+    stats = {'vr': [], 'ab': []}
+    for r in vr_stats:
+      stats['vr'].append(r.values())
+    for r in ab_stats:
+      stats['ab'].append(r.values())
+
+    return render_template('stats.html', stats=stats)
+

@@ -32,7 +32,7 @@ for opt, arg in opts:
 		print ('  --vfile=')
 		print ('  --kdfile=')
 		print ('  --hfile=')
-		print ('  --DOBcutoff= (eg: "August 4, 2020)"')
+		print ('  --DOBcutoff= (eg: "August 4, 2020")')
 		sys.exit
 	elif opt in ("-k", "--kdfile"):
 		ksv_fn = arg
@@ -62,7 +62,7 @@ print(f'kdf shape: {kdf.shape}')
 # Load KSVotes already completed file. ['text_registrant_id','(kdf)id'] comma-separated, create DataFrame
 if(ksv_handled_fn):
 	print(f'handled_file={ksv_handled_fn}')
-	kdfh=pd.read_csv(ksv_handled_fn,index_col=False,sep=',',error_bad_lines=True,encoding='latin-1',low_memory=False)
+	kdfh=pd.read_csv(ksv_handled_fn,index_col=False,sep=',',error_bad_lines=True,encoding='windows-1252',low_memory=False)
 	print(f'handled_file shape: {kdfh.shape}')
 
 # Delete null entries
@@ -253,7 +253,7 @@ match_kdf_vdf(round='M_SHORT4NAME_NODOB', kdf_match_on= ['address_nbr','first_lo
 				match_party = True, assigned_match = 'M_SHORT4NAME_NODOB')
 
 print('Round M_HANDLED')
-# ROUND3 - create a temp merged db that finds entries that were matched in prior work ("handled")
+# ROUND4 - create a temp merged db that finds entries that were matched in prior work ("handled")
 
 if(ksv_handled_fn):
 	# remove null entries from handled list also
@@ -377,6 +377,16 @@ tempDF.to_csv('kdf_dumpfile.csv',sep=',',index=False)
 
 # create complete file
 tempDF = kdf[kdf.match_status.isin(['M_PERFECT5','M_HANDLED','M_SHORT4NAME_NODOB','M_SHORT3NAME_DOB'])]
+print(f'Shape of Complete File (all fields): {tempDF.shape}')
+tempDF.to_csv('kdf_completefile_all_fields.csv',sep=',',index=False)
+
+# create kdf_completefile with only fields necessary to input back into match.py as the "complete file"
+tempDF = tempDF[['saved_tr_id','new_id']]
+tempDF.rename(columns = {
+	'saved_tr_id':'text_registrant_id',
+	'new_id':'id'
+		},
+		inplace = True)
 print(f'Shape of Complete File: {tempDF.shape}')
 tempDF.to_csv('kdf_completefile.csv',sep=',',index=False)
 

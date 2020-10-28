@@ -7,6 +7,7 @@ python:
   - 3.6
 services:
   - postgresql
+  - redis-server
 install: make deps
 addons:
   chrome: stable
@@ -25,3 +26,10 @@ before_install:
   - sudo apt-get -y install ghostscript
 
 script: make locales test jstest
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log

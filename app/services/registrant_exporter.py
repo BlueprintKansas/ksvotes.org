@@ -81,6 +81,7 @@ class RegistrantExporter():
             "r_sos_failure",
             "r_perm_reason",
             "r_ab_forms_message_id",
+            "r_ab_id_action_email_sent",
         ]
 
         writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
