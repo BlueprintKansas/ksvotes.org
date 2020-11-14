@@ -11,6 +11,17 @@ services:
 install: make deps
 addons:
   chrome: stable
+  postgresql: "11"
+  apt:
+    packages:
+    - postgresql-11
+    - postgresql-client-11
+# postgresql 11.8 is production RDS version
+
+env:
+  global:
+    - POSTGRES_PASSWORD=postgres
+
 before_script:
   - CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
   - CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
@@ -18,12 +29,16 @@ before_script:
   - unzip chromedriver_linux64.zip -d ~/bin
   - export FLASK_DEBUG=1
   - cp .env-travis .env
+  - psql --version
   - psql -c 'create database ksvotes_test;' -U postgres
   - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
   - export $(cat .env | grep -v ^# | xargs)
 
 before_install:
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
+  - sudo service postgresql restart 11
   - sudo apt-get -y install ghostscript
+
 
 script: make locales test jstest
 
