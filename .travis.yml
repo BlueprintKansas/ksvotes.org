@@ -17,6 +17,9 @@ addons:
     - postgresql-11
     - postgresql-client-11
 # postgresql 11.8 is production RDS version
+env:
+  global:
+    - POSTGRES_PASSWORD=postgres
 
 before_script:
   - CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
