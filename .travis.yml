@@ -11,7 +11,11 @@ services:
 install: make deps
 addons:
   chrome: stable
-  postgresql: "11.8"
+  postgresql: "11"
+  apt:
+    packages:
+    - postgresql-11
+    - postgresql-client-11
 # postgresql 11.8 is production RDS version
 
 before_script:
