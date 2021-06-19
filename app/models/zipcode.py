@@ -22,7 +22,7 @@ class ZIPCode(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow())
     updated_at = db.Column(db.DateTime, default=datetime.utcnow())
     zipcode = db.Column(db.String(), unique=True)
-    counties = db.relationship('ZIPCodeCounty')
+    counties = db.relationship('ZIPCodeCounty', overlaps="zipcode")
 
     def save(self, db_session):
         db_session.add(self)
