@@ -124,6 +124,7 @@ USPS_USER_ID={{key from https://registration.shippingapis.com/}}
 # Airtable is managed by ksvoterguide.org folks for early voting and ballot dropbox locations.
 # AIRTABLE_EV_KEY=sekrit
 # AIRTABLE_EV_BASE_ID=sekrit
+# to temporarily disable, leave the table names commented out
 # AIRTABLE_EV_TABLE='SoS 10-19-2020'
 # AIRTABLE_DROPBOX_TABLE='dropbox 2020'
 ```
