@@ -127,12 +127,11 @@ $(function () {
     }
   };
 
-  if (checkbox.is(':checked')) {
-    checkHandler();
-  }
+  // always call once on page load.
+  checkHandler();
 
   $('input[name=has_prev_name]').change(checkHandler);
-  form.parsley()
+  form.parsley();
 });
 
 </script>

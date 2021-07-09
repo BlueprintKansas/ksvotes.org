@@ -133,34 +133,27 @@
 $(function () {
   //initialize form with parsley validation
   var form = $('#step_3');
-  // for refresh/backbutton initialization 
-  if($('input[name=has_mail_addr]').is(':checked')) {
-    $('.mail-address-fields').show();
-    $('#mail_zip').attr("required", true);
-    $('#mail_state').attr("required", true);
-    $('#mail_city').attr("required", true);
-    $('#mail_addr').attr("required", true);
-  }
+  const checkRequiredFields = function() {
+    if($('input[name=has_mail_addr]').is(':checked')) {
+      $('.mail-address-fields').show();
+      $('#mail_zip').attr("required", true);
+      $('#mail_state').attr("required", true);
+      $('#mail_city').attr("required", true);
+      $('#mail_addr').attr("required", true);
+    } else {
+      $('.mail-address-fields').hide();
+      $('#mail_zip').removeAttr("required").val('').blur();
+      $('#mail_state').removeAttr("required").val('').blur();
+      $('#mail_city').removeAttr("required").val('').blur();
+      $('#mail_addr').removeAttr("required").val('').blur();
+    }
+  };
 
-  $('input[name=has_mail_addr]').change(
-      function(){
-          if (this.checked) {
-              $('.mail-address-fields').show();
-              $('#mail_zip').attr("required", true);
-              $('#mail_state').attr("required", true);
-              $('#mail_city').attr("required", true);
-              $('#mail_addr').attr("required", true);
+  // initialize and listen
+  checkRequiredFields();
+  $('input[name=has_mail_addr]').change(checkRequiredFields);
 
-          } else {
-              $('.mail-address-fields').hide();
-              $('#mail_zip').removeAttr("required").val('').blur();
-              $('#mail_state').removeAttr("required").val('').blur();
-              $('#mail_city').removeAttr("required").val('').blur();
-              $('#mail_addr').removeAttr("required").val('').blur();
-          }
-      });
-
-  form.parsley()
+  form.parsley();
 });
 </script>
 {% endblock %}
