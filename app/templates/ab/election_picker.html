@@ -193,6 +193,9 @@ $(function () {
     }
   });
 
+  // always start in this state (nothing checked)
+  unrequirePermReason();
+
   // handle the Required logic ourselves (too complex for Parsley)
   $('#btn-next').click(function(ev) {
     let hasPrimary = false;

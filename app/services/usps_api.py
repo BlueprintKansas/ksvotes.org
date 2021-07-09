@@ -1,6 +1,7 @@
 import os
 from pyusps import address_information
 from collections import OrderedDict
+from flask import current_app
 
 class USPS_API():
     def __init__(self, address_payload = None):
@@ -76,7 +77,9 @@ class USPS_API():
                 ('address_extended', self.address_payload.get('mail_unit', ''))
             ]))
 
+        current_app.logger.debug("Trying USPS address lookup")
         results = self.verify_with_usps(addresses)
+        current_app.logger.debug("USPS API returned {}".format(results))
         if results:
             return self.marshall_address_results(results)
         else:
