@@ -69,6 +69,15 @@ def test_prepopulate_address(app, db_session, client):
     assert r.try_value('state') == 'KS'
     assert r.try_value('zip') == '12345'
 
+def test_zip_code_match(app, db_session, client):
+    sosrec = { 'Address': '123 Main St #456 Wichita, KS, 12345-1234' }
+    r = Registrant()
+
+    assert r.zip_code_matches(sosrec, 12345) == True
+    assert r.zip_code_matches(sosrec, '12345') == True
+    assert r.zip_code_matches(sosrec, 98765) == False
+    assert r.zip_code_matches(sosrec, 'myzip') == False
+
 def test_prepopulate_secure_voter(app, db_session, client):
     sosrec = { 'Address': 'No information available', 'Party': 'Republican' }
     r = Registrant()

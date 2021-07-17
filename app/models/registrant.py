@@ -260,6 +260,15 @@ class Registrant(db.Model):
         signed_at_utc = utc_tz.localize(self.signed_at)
         return signed_at_utc.astimezone(central_tz)
 
+    def zip_code_matches(self, sosrec, zipcode):
+        address = sosrec['Address'].replace('<br/>', ' ')
+        addr_parts = usaddress.tag(address)
+        for key, val in addr_parts[0].items():
+            if key == 'ZipCode':
+                if str(val).startswith(str(zipcode)):
+                    return True
+        return False
+
     def populate_address(self, sosrec):
         address = sosrec['Address'].replace('<br/>', ' ')
         addr_parts = usaddress.tag(address)
