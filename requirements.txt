@@ -53,7 +53,7 @@ SQLAlchemy==1.4.22
 urllib3==1.26.6
 usaddress==0.5.10
 Werkzeug==1.0.1
-WTForms==2.3.3
+WTForms==2.3.1
 # WTForms >= 2.3.2 breaks validation of citizenship
 # tests
 behave==1.2.6
