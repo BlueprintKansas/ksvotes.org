@@ -18,6 +18,9 @@ import sys
 import datetime
 import json
 
+import tracemalloc
+tracemalloc.start(10)
+
 @main.route('/terms', methods=['GET'])
 def terms():
     g.locale = guess_locale()
@@ -292,3 +295,37 @@ def stats():
 
     return render_template('stats.html', stats=stats)
 
+@main.route('/memory/', methods=['GET'])
+def memory():
+    import tracemalloc
+    import linecache
+    import os
+    key_type = 'lineno'
+    limit = 20
+    snapshot = tracemalloc.take_snapshot()
+    snapshot = snapshot.filter_traces((
+        tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
+        tracemalloc.Filter(False, "<frozen importlib._bootstrap_external>"),
+        tracemalloc.Filter(False, "<unknown>"),
+    ))
+    top_stats = snapshot.statistics(key_type)
+
+    buff = []
+
+    buff.append("Top %s lines" % limit)
+    for index, stat in enumerate(top_stats[:limit], 1):
+        frame = stat.traceback[0]
+        buff.append("#%s: %s:%s: %.1f KiB"
+              % (index, frame.filename, frame.lineno, stat.size / 1024))
+        line = linecache.getline(frame.filename, frame.lineno).strip()
+        if line:
+            buff.append('    %s' % line)
+
+    other = top_stats[limit:]
+    if other:
+        size = sum(stat.size for stat in other)
+        buff.append("%s other: %.1f KiB" % (len(other), size / 1024))
+    total = sum(stat.size for stat in top_stats)
+    buff.append("Total allocated size: %.1f KiB" % (total / 1024))
+
+    return jsonify(status='ok', total=total, report=buff, pid=os.getpid())
