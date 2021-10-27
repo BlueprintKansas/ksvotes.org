@@ -21,7 +21,7 @@
   "0_lead":{
     "wiki_step":"0",
     "ref":"0_lead",
-    "en":"Your Kansas Online Voter Registration and Advance Ballot Service",
+    "en":"Your Kansas Non-Profit Online Voter Registration Service",
     "es":"Su registro de votante en línea y servicio de información"
   },
   "0_intro_deadline":{
@@ -30,13 +30,13 @@
     "en":"We can help you check your registration and find information on voting. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
     "es":"Podemos ayudarlo a verificar su registro y encontrar información sobre la votación. Para iniciar el proceso, necesitamos información para poder ver si está registrado para votar en Kansas."
   },
-  "0_intro_vr":{
+  "0_intro_":{
     "wiki_step":"0",
     "ref":"0_intro",
     "en":"We can help you register to vote or check your registration. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
     "es":"Podemos ayudarlo a registrarse para votar o verificar su registro. Para comenzar el proceso, necesitamos cierta información para que podamos ver si usted está actualmente registrado para votar en Kansas."
   },
-  "0_intro":{
+  "0_intro_ab":{
     "wiki_step":"0",
     "ref":"0_intro",
     "en":"We can help you register to vote, check your registration, apply to vote by mail, or track your advance ballot status. To start the process, we need some information so that we can see if you are currently registered to vote in Kansas.",
@@ -46,11 +46,11 @@
     "en":"Enter your information to look up your polling place, see early voting options, and view a sample ballot.",
     "es":"Ingrese su información para buscar su lugar de votación, vea las opciones de votación anticipada y vea una boleta de muestra."
   },
-   "0_form_explain":{
+   "0_form_explain_ab":{
     "en":"To request an advance ballot or to register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para solicitar una boleta por adelantado o para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
-  "0_form_explain_vr":{
+  "0_form_explain":{
     "en":"To register to vote in Kansas, we need to verify your current voter registration status.",
     "es":"Para registrarse para votar, necesitamos verificar su estado actual de registro de votante."
   },
@@ -83,7 +83,7 @@
     "es": "Sobre este sitio"
   },
     "0_footer_SOS":{
-    "en": "KSVotes.org is a 501(c)3 non-partisan non-profit organization and not a service of the Kansas Secretary of State",
+    "en": "KSVotes.org is a 501(c)3 non-partisan non-profit organization and not a service of the Kansas Secretary of State or any election official",
     "es": "KSVotes.org es una organización sin fines de lucro no partidista 501(c)3 y no es un servicio del Secretario de Estado de Kansas"
   },
   "0_name_help":{
