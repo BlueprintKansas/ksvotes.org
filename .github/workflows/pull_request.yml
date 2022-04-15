@@ -45,15 +45,17 @@ jobs:
       - name: Debug env
         run: env
       - name: Install ImageMagick
+        env:
+          IMAGE_MAGICK_VERSION: 6.9.12-44
         run: |
           sudo apt-get --purge remove imagemagick
           sudo apt autoremove
           sudo apt-get install build-essential checkinstall libgs-dev ghostscript
           mkdir src
           cd src
-          wget http://www.imagemagick.org/download/releases/ImageMagick-6.9.12-44.tar.xz
-          tar xf ImageMagick-6.9.12-44.tar.xz
-          cd ImageMagick-6.9.12-44
+          wget http://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz
+          tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz
+          cd ImageMagick-${IMAGE_MAGICK_VERSION}
           ./configure --with-gslib=yes
           make
           sudo checkinstall
