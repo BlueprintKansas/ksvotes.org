@@ -42,11 +42,16 @@ jobs:
           unzip chromedriver_linux64.zip -d ~/bin
       - name: Setup env
         run: cp .env-ci .env && cat .env | grep -v ^# >> $GITHUB_ENV
-      - name: Debug env
-        run: env
+      - name: Cache ImageMagick
+        id: cache-imagemagick
+        uses: actions/cache@v3
+        with:
+          path: /usr/local
+          key: ${{ runner.os }}-imagemagick-6.9.12-44
       - name: Install ImageMagick
         env:
           IMAGE_MAGICK_VERSION: 6.9.12-44
+        if: steps.cache-imagemagick.outputs.cache-hit != 'true'
         run: |
           sudo apt-get --purge remove imagemagick
           sudo apt autoremove
