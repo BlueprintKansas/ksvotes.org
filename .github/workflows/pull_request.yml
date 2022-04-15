@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes --no-install-recommends postgresql-client ghostscript
+          sudo apt-get install --yes --no-install-recommends postgresql-client imagemagick libmagickwand-dev ghostscript
           make deps
       - name: Create test db
         run: |
