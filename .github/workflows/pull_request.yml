@@ -58,3 +58,7 @@ jobs:
         run: make locales
       - name: Run tests
         run: make test jstest
+        env:
+          USPS_USER_ID: ${{ secrets.USPS_USER_ID }}
+          NVRIS_URL: TESTING
+          KSMYVOTEINFO_ENV: mock
