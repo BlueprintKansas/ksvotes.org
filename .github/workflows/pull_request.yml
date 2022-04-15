@@ -53,7 +53,7 @@ jobs:
           cd src
           wget http://www.imagemagick.org/download/releases/ImageMagick-6.9.12-44.tar.xz
           tar xf ImageMagick-6.9.12-44.tar.xz
-          cd ImageMagic-6.9.12-44
+          cd ImageMagick-6.9.12-44
           ./configure --with-gslib=yes
           make
           checkinstall
