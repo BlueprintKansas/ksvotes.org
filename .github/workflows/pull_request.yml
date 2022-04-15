@@ -44,10 +44,24 @@ jobs:
         run: cp .env-ci .env && cat .env | grep -v ^# >> $GITHUB_ENV
       - name: Debug env
         run: env
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get --purge remove imagemagick
+          sudo apt autoremove
+          sudo apt-get install build-essential checkinstall libgs-dev ghostscript
+          mkdir src
+          cd src
+          wget http://www.imagemagick.org/download/releases/ImageMagick-6.9.12-44.tar.xz
+          tar xf ImageMagick-6.9.12-44.tar.xz
+          cd ImageMagic-6.9.12-44
+          ./configure --with-gslib=yes
+          make
+          checkinstall
+          ldconfig
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes --no-install-recommends postgresql-client imagemagick libmagickwand-dev ghostscript
+          sudo apt-get install --yes --no-install-recommends postgresql-client
           make deps
       - name: Create test db
         run: |
