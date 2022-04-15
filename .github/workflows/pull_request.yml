@@ -50,8 +50,8 @@ jobs:
       - name: Create test db
         run: |
           psql --version
-          psql -c 'create database ksvotes_test;' -U postgres
-          psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+          PGPASSWORD=postgres psql -c 'create database ksvotes_test;' -U postgres -h localhost
+          PGPASSWORD=postgres psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres -h localhost
       - name: Make locales
         run: make locales
       - name: Run tests
