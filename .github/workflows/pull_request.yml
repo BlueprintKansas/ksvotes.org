@@ -1,0 +1,58 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+# Cancel redundant builds on same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+name: Test and Lint
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.9]
+        node-version: [14.18]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - name: Start CI docker compose
+        run: make start-services
+        env:
+          DOCKER_BUILDKIT: 1
+          ENV_NAME: ci
+      - name: Install Chrome driver
+        run: |
+          export CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
+          export CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
+          curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
+          unzip chromedriver_linux64.zip -d ~/bin
+      - name: Setup env
+        run: cp .env-ci .env && export $(cat .env | grep -v ^# | xargs)
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends postgresql-client ghostscript
+      - name: Create test db
+        run: |
+          psql --version
+          psql -c 'create database ksvotes_test;' -U postgres
+          psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+      - name: Make locales
+        run: make locales
+      - name: Run tests
+        run: make test jstest
