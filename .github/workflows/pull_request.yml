@@ -58,6 +58,10 @@ jobs:
         run: make locales
       - name: Make CSS
         run: make css
+      - name: Debug
+        run: |
+          pip show Wand
+          convert -version
       - name: Run tests
         run: make test jstest
         env:
