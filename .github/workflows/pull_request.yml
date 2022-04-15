@@ -41,7 +41,9 @@ jobs:
           curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
           unzip chromedriver_linux64.zip -d ~/bin
       - name: Setup env
-        run: cp .env-ci .env && export $(cat .env | grep -v ^# | xargs)
+        run: cp .env-ci .env && $(cat .env | grep -v ^# | xargs >> $GITHUB_ENV)
+      - name: Debug env
+        run: env
       - name: Install dependencies
         run: |
           sudo apt-get update
