@@ -29,7 +29,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
       - name: Start CI docker compose
         run: make start-services
         env:
@@ -47,6 +46,7 @@ jobs:
         run: |
           apt-get update
           apt-get install --yes --no-install-recommends postgresql-client ghostscript
+          make deps
       - name: Create test db
         run: |
           psql --version
