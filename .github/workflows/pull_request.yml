@@ -56,8 +56,8 @@ jobs:
           cd ImageMagick-6.9.12-44
           ./configure --with-gslib=yes
           make
-          checkinstall
-          ldconfig
+          sudo checkinstall
+          sudo ldconfig
       - name: Install dependencies
         run: |
           sudo apt-get update
