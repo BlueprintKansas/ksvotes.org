@@ -46,7 +46,7 @@ jobs:
         id: cache-imagemagick
         uses: actions/cache@v3
         with:
-          path: /usr/local/lib
+          path: /usr/local/lib/libMagick*
           key: ${{ runner.os }}-imagemagick-6.9.12-44
       - name: Install ImageMagick
         env:
