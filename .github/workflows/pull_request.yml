@@ -41,7 +41,7 @@ jobs:
           curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
           unzip chromedriver_linux64.zip -d ~/bin
       - name: Setup env
-        run: cp .env-ci .env && cat .env | grep -v ^# >> $GITHUB_ENV
+        run: echo "test" && cp .env-ci .env && cat .env | grep -v ^# >> $GITHUB_ENV
       - name: Cache ImageMagick
         id: cache-imagemagick
         uses: actions/cache@v3
