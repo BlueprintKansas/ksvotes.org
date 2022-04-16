@@ -26,6 +26,9 @@ WORKDIR /app
 
 COPY requirements*.txt ./
 COPY Makefile .
+
+RUN pip install -r requirements.txt
+
 COPY manage.py .
 COPY bin ./bin
 COPY app ./app
@@ -38,7 +41,7 @@ COPY scss ./scss
 COPY translations.json .
 COPY start-server.sh .
 
-RUN pip install -r requirements.txt && make locales
+RUN make locales
 
 # finish with app user and app
 RUN groupadd ksvotesapp && \
