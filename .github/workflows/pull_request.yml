@@ -86,6 +86,7 @@ jobs:
           pip show Wand
           convert -version
           convert -list font
+          convert -debug all -size 50x50 xc:none -gravity center -draw 'text 0,0 "a b c"' test.png
       - name: Run tests
         run: make test jstest
         env:
