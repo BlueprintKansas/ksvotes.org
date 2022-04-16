@@ -1,11 +1,18 @@
 version: '3'
+networks:
+  app-tier:
+    driver: bridge
 services:
   redis:
+    networks:
+      - app-tier
     image: redis:2.8.23
     ports:
       - "6379:6379"
 
   ksvotes-postgres:
+    networks:
+      - app-tier
     image: postgres:11.7
     container_name: ksvotes-db
     ports:

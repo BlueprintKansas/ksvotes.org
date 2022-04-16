@@ -86,4 +86,24 @@ start-services:
 stop-services:
 	docker-compose down
 
+DOCKER_IMG="ksvotes:flask-web"
+DOCKER_NAME="ksvotes-flask-web"
+ifeq (, $(shell which docker))
+DOCKER_CONTAINER_ID := docker-is-not-installed
+else
+DOCKER_CONTAINER_ID := $(shell docker ps --filter ancestor=$(DOCKER_IMG) --format "{{.ID}}" -a)
+endif
+
+container-build:
+	docker build -f Dockerfile -t $(DOCKER_IMG) .
+
+container-run:
+	docker run -p 5000:5000 -it $(DOCKER_IMG)
+
+login:
+	docker run --rm -it --name $(DOCKER_NAME) \
+	--add-host=host.docker.internal:host-gateway \
+	--network ksvotesorg_app-tier \
+	-v $(PWD):/app -p 5000:5000 $(DOCKER_IMG) /bin/bash
+
 .PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services
