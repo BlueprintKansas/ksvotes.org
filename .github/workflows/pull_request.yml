@@ -85,6 +85,7 @@ jobs:
         run: |
           pip show Wand
           convert -version
+          convert -list font
       - name: Run tests
         run: make test jstest
         env:
