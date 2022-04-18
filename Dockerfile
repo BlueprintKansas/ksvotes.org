@@ -37,13 +37,12 @@ RUN groupadd ksvotesapp && \
   apt-get -y install make && \
   chown -R ksvotesapp:ksvotesapp /app
 
-USER ksvotesapp
-
 ARG ENV_NAME=""
 ENV ENV_NAME=${ENV_NAME}
 
 CMD ["./start-server.sh"]
 
+## CI
 FROM ksvotes as ksvotes-ci
 COPY run-ci-tests.sh .
 COPY .env-ci .env
@@ -52,6 +51,9 @@ ARG USPS_USER_ID=""
 ENV USPS_USER_ID=$USPS_USER_ID
 RUN pip install -r requirements-ci.txt
 
-FROM ksvotes as ksvotes-localdev
-# no op for now
+USER ksvotesapp
 
+## local dev
+FROM ksvotes as ksvotes-localdev
+
+USER ksvotesapp
