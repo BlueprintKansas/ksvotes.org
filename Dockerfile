@@ -8,19 +8,7 @@ ARG IMAGE_MAGICK_VERSION=6.9.12-44
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends wget xz-utils build-essential \
-      postgresql-client libpq-dev libffi-dev libgs-dev ghostscript fonts-liberation
-
-RUN mkdir src && \
-    cd src && \
-    wget --no-check-certificate -nv https://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
-    tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
-    cd ImageMagick-${IMAGE_MAGICK_VERSION} && \
-    ./configure --with-gslib=yes && \
-    make && \
-    make install && \
-    ldconfig && \
-    cd .. && \
-    rm -rf src
+      postgresql-client libpq-dev libffi-dev libgs-dev ghostscript fonts-liberation imagemagick
 
 WORKDIR /app
 
