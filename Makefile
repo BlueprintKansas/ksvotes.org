@@ -3,7 +3,8 @@ check:
 	@python manage.py check_configuration
 
 deps:
-	pip install -r requirements.txt
+	pip install -U -r requirements.txt
+	pip install -U -r requirements-ci.txt
 	rm -f package-lock.json && yarn install
 
 venv:
