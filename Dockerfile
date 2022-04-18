@@ -50,6 +50,7 @@ COPY .env-ci .env
 COPY conftest.py .
 ARG USPS_USER_ID=""
 ENV USPS_USER_ID=$USPS_USER_ID
+RUN pip install -r requirements-ci.txt
 
 FROM ksvotes as ksvotes-localdev
 # no op for now
