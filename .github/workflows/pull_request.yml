@@ -42,31 +42,6 @@ jobs:
           unzip chromedriver_linux64.zip -d ~/bin
       - name: Setup env
         run: cp .env-ci .env && cat .env | grep -v ^# >> $GITHUB_ENV
-      - name: Set permissions on /usr/local/lib
-        run: sudo chmod 777 /usr/local/lib
-      - name: Cache ImageMagick
-        id: cache-imagemagick
-        uses: actions/cache@v3
-        with:
-          path: /usr/local/lib/*Magick*
-          key: ${{ runner.os }}-imagemagick-6.9.12-44
-      - name: Install ImageMagick
-        env:
-          IMAGE_MAGICK_VERSION: 6.9.12-44
-        if: steps.cache-imagemagick.outputs.cache-hit != 'true'
-        run: |
-          sudo apt-get --purge remove imagemagick
-          sudo apt autoremove
-          sudo apt-get install build-essential checkinstall libgs-dev ghostscript
-          mkdir src
-          cd src
-          wget http://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz
-          tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz
-          cd ImageMagick-${IMAGE_MAGICK_VERSION}
-          ./configure --with-gslib=yes
-          make
-          sudo checkinstall
-          sudo ldconfig
       - name: Install dependencies
         run: |
           sudo apt-get update
