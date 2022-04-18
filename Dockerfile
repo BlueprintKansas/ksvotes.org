@@ -24,6 +24,7 @@ COPY migrations ./migrations
 COPY babel.cfg .
 COPY config.py .
 COPY county-clerks.csv .
+COPY ks-zip-by-county.csv .
 COPY Procfile .
 COPY scss ./scss
 COPY translations.json .
