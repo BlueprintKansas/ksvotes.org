@@ -19,5 +19,5 @@ services:
         ENV_NAME: ${ENV_NAME}
         USPS_USER_ID: ${USPS_USER_ID}
     ports:
-      - "8081:8081"
+      - "5000:5000"
     command: ["wait-for-it", "-t", "60", "ksvotes-postgres:5432", "--", "./start-server.sh"]
