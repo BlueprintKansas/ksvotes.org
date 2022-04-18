@@ -59,5 +59,7 @@ jobs:
         run: docker logs web --details
         if: failure()
       - name: Stop CI docker compose
-        run: make ci-stop
+        run: |
+          docker exec web ls -l
+          make ci-stop
         if: always()
