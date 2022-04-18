@@ -31,6 +31,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Setup env
         run: echo USPS_USER_ID=${{ secrets.USPS_USER_ID }} >> .env-ci && cat .env-ci | grep -v ^# >> $GITHUB_ENV
+      - name: Add /etc/hosts entries
+        run: |
+          echo '127.0.0.1  ksvotes-postgres' | sudo tee -a /etc/hosts
+          echo '127.0.0.1  redis' | sudo tee -a /etc/hosts
       - name: Start CI docker compose
         run: make ci-start
         env:
