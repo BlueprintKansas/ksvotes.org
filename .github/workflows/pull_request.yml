@@ -60,6 +60,5 @@ jobs:
         if: failure()
       - name: Stop CI docker compose
         run: |
-          docker exec web ls -l
           make ci-stop
         if: always()
