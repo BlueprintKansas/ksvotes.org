@@ -7,8 +7,10 @@ export $(cat .env | grep -v ^# | xargs)
 env
 
 if [ "${ENV_NAME}" == "ci" ]; then
+  unset -e
   psql -c "drop database ksvotes_test;" -U postgres -h ksvotes-postgres
   psql -c "drop user foo;" -U postgres -h ksvotes-postgres
+  set -e
   psql -c "create database ksvotes_test;" -U postgres -h ksvotes-postgres
   psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres -h ksvotes-postgres
 fi
