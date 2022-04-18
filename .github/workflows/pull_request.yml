@@ -29,8 +29,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Setup env
+        run: echo USPS_USER_ID=${{ secrets.USPS_USER_ID }} >> .env-ci && cat .env-ci | grep -v ^# >> $GITHUB_ENV
       - name: Start CI docker compose
-        run: make start-services
+        run: make ci-start
         env:
           DOCKER_BUILDKIT: 1
           ENV_NAME: ci
@@ -40,54 +42,16 @@ jobs:
           export CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
           curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
           unzip chromedriver_linux64.zip -d ~/bin
-      - name: Setup env
-        run: cp .env-ci .env && cat .env | grep -v ^# >> $GITHUB_ENV
-      - name: Set permissions on /usr/local/lib
-        run: sudo chmod 777 /usr/local/lib
-      - name: Cache ImageMagick
-        id: cache-imagemagick
-        uses: actions/cache@v3
-        with:
-          path: /usr/local/lib/libMagick*
-          key: ${{ runner.os }}-imagemagick-6.9.12-44
-      - name: Install ImageMagick
-        env:
-          IMAGE_MAGICK_VERSION: 6.9.12-44
-        if: steps.cache-imagemagick.outputs.cache-hit != 'true'
-        run: |
-          sudo apt-get --purge remove imagemagick
-          sudo apt autoremove
-          sudo apt-get install build-essential checkinstall libgs-dev ghostscript
-          mkdir src
-          cd src
-          wget http://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz
-          tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz
-          cd ImageMagick-${IMAGE_MAGICK_VERSION}
-          ./configure --with-gslib=yes
-          make
-          sudo checkinstall
-          sudo ldconfig
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends postgresql-client
           make deps
-      - name: Create test db
-        run: |
-          psql --version
-          psql -c 'create database ksvotes_test;' -U postgres -h localhost
-          psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres -h localhost
-      - name: Make locales
-        run: make locales
-      - name: Make CSS
-        run: make css
-      - name: Debug
-        run: |
-          pip show Wand
-          convert -version
       - name: Run tests
-        run: make test jstest
-        env:
-          USPS_USER_ID: ${{ secrets.USPS_USER_ID }}
-          NVRIS_URL: TESTING
-          KSMYVOTEINFO_ENV: mock
+        run: make ci-test jstest
+      - name: Docker logs
+        run: docker logs web --details
+        if: failure()
+      - name: Stop CI docker compose
+        run: make ci-stop
+        if: always()

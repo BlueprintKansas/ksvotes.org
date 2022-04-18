@@ -1,0 +1,23 @@
+# consumes the Dockerfile for use in GitHub Actions CI pipeline
+version: "3"
+networks:
+  app-tier:
+    driver: bridge
+services:
+  web:
+    depends_on:
+      - "redis"
+      - "ksvotes-postgres"
+    networks:
+      - app-tier
+    container_name: web
+    image: ksvotes:${ENV_NAME}
+    build:
+      context: .
+      target: ksvotes-ci
+      args:
+        ENV_NAME: ${ENV_NAME}
+        USPS_USER_ID: ${USPS_USER_ID}
+    ports:
+      - "8081:8081"
+    command: ["wait-for-it", "-t", "60", "ksvotes-postgres:5432", "--", "./start-server.sh"]

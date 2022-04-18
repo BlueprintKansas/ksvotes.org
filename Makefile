@@ -106,4 +106,23 @@ login:
 	--network ksvotesorg_app-tier \
 	-v $(PWD):/app -p 5000:5000 $(DOCKER_IMG) /bin/bash
 
+CI_OPTS=-f docker-compose.yml -f docker-compose-ci.yml --env-file=.env-ci
+
+ci-build:
+	ENV_NAME=ci docker-compose $(CI_OPTS) build
+
+ci-start:
+	ENV_NAME=ci docker-compose $(CI_OPTS) up -d --no-recreate
+
+ci-stop:
+	ENV_NAME=ci docker-compose $(CI_OPTS) down
+
+ci-test:
+	ENV_NAME=ci docker-compose $(CI_OPTS) logs --tail="all"
+	ENV_NAME=ci docker exec web ./run-ci-tests.sh
+
+ci-clean:
+	ENV_NAME=ci docker-compose $(CI_OPTS) down --rmi all
+
+
 .PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services

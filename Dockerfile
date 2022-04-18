@@ -1,14 +1,11 @@
-FROM revolutionsystems/python:3.10.4-wee-optimized-lto
+FROM revolutionsystems/python:3.10.4-wee-optimized-lto as ksvotes
 
 # build ImageMagick with gslib for formfiller
 USER root
-WORKDIR /tmp
-
-ARG IMAGE_MAGICK_VERSION=6.9.12-44
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends wget xz-utils build-essential \
-      postgresql-client libpq-dev libffi-dev libgs-dev ghostscript fonts-liberation imagemagick
+      postgresql-client libpq-dev libffi-dev libgs-dev ghostscript fonts-liberation imagemagick wait-for-it
 
 WORKDIR /app
 
@@ -41,6 +38,19 @@ RUN groupadd ksvotesapp && \
   chown -R ksvotesapp:ksvotesapp /app
 
 USER ksvotesapp
-EXPOSE 8081
+
+ARG ENV_NAME=""
+ENV ENV_NAME=${ENV_NAME}
 
 CMD ["./start-server.sh"]
+
+FROM ksvotes as ksvotes-ci
+COPY run-ci-tests.sh .
+COPY .env-ci .env
+COPY conftest.py .
+ARG USPS_USER_ID=""
+ENV USPS_USER_ID=$USPS_USER_ID
+
+FROM ksvotes as ksvotes-localdev
+# no op for now
+
