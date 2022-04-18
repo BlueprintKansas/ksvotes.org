@@ -12,7 +12,7 @@ WORKDIR /app
 COPY requirements*.txt ./
 COPY Makefile .
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 
 COPY manage.py .
 COPY bin ./bin
@@ -32,7 +32,6 @@ RUN make locales
 # finish with app user and app
 RUN groupadd ksvotesapp && \
   useradd -g ksvotesapp ksvotesapp && \
-  rm -f requirements*.txt && \
   apt-get purge -y --auto-remove build-essential && \
   apt-get -y install make && \
   chown -R ksvotesapp:ksvotesapp /app
@@ -49,7 +48,7 @@ COPY .env-ci .env
 COPY conftest.py .
 ARG USPS_USER_ID=""
 ENV USPS_USER_ID=$USPS_USER_ID
-RUN pip install -r requirements-ci.txt
+RUN pip install --no-cache-dir -r requirements-ci.txt && rm requirements-ci.txt
 
 USER ksvotesapp
 
