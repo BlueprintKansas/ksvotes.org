@@ -104,6 +104,6 @@ login:
 	docker run --rm -it --name $(DOCKER_NAME) \
 	--add-host=host.docker.internal:host-gateway \
 	--network ksvotesorg_app-tier \
-	-v $(PWD):/app -p 8081:8081 $(DOCKER_IMG) /bin/bash
+	-v $(PWD):/app -p 5000:5000 $(DOCKER_IMG) /bin/bash
 
 .PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services
