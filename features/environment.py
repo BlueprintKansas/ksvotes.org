@@ -14,7 +14,7 @@ chrome_options.add_argument("--proxy-bypass-list=*")
 
 
 def before_all(context):
-  context.server = simple_server.WSGIServer(("", 5000), WSGIRequestHandler)
+  context.server = simple_server.WSGIServer(("test.ksvotes.org", 5000), WSGIRequestHandler)
   app = create_app(os.getenv('APP_CONFIG') or 'testing')
   context.server.set_app(app)
   context.pa_app = threading.Thread(target=context.server.serve_forever)
