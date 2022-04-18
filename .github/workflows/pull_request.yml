@@ -35,6 +35,7 @@ jobs:
         run: |
           echo '127.0.0.1  ksvotes-postgres' | sudo tee -a /etc/hosts
           echo '127.0.0.1  redis' | sudo tee -a /etc/hosts
+          cat /etc/hosts
       - name: Start CI docker compose
         run: make ci-start
         env:
