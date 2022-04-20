@@ -110,7 +110,7 @@ login:
 CI_OPTS=-f docker-compose.yml -f docker-compose-ci.yml --env-file=.env-ci
 
 ci-build:
-	docker build -f Dockerfile -t $(DOCKER_IMG) .
+	ENV_NAME=ci docker build -f Dockerfile -t $(DOCKER_IMG) .
 	ENV_NAME=ci docker-compose $(CI_OPTS) build
 
 ci-start: ci-build
