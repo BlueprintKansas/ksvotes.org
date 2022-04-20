@@ -87,8 +87,8 @@ start-services:
 stop-services:
 	docker-compose down
 
-DOCKER_IMG="ksvotes:flask-web"
-DOCKER_NAME="ksvotes-flask-web"
+DOCKER_IMG=ksvotes:flask-web
+DOCKER_NAME=ksvotes-flask-web
 ifeq (, $(shell which docker))
 DOCKER_CONTAINER_ID := docker-is-not-installed
 else
@@ -110,7 +110,7 @@ login:
 CI_OPTS=-f docker-compose.yml -f docker-compose-ci.yml --env-file=.env-ci
 
 ci-build:
-	ENV_NAME=ci docker build -f Dockerfile -t $(DOCKER_IMG) .
+	docker build -f Dockerfile -t $(DOCKER_IMG)-ci --build-arg ENV_NAME=ci .
 	ENV_NAME=ci docker-compose $(CI_OPTS) build
 
 ci-start: ci-build

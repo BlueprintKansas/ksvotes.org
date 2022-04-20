@@ -1,4 +1,4 @@
-FROM ksvotes:flask-web
+FROM ksvotes:flask-web-ci
 
 ## CI
 USER root
