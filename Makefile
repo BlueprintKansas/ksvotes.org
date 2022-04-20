@@ -113,7 +113,7 @@ ci-build:
 	docker build -f Dockerfile -t $(DOCKER_IMG) .
 	ENV_NAME=ci docker-compose $(CI_OPTS) build
 
-ci-start:
+ci-start: ci-build
 	ENV_NAME=ci docker-compose $(CI_OPTS) up -d --no-recreate
 
 ci-stop:
