@@ -53,7 +53,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          make deps
+          pip install -U -r requirements-ci.txt
+          npm install
       - name: Run tests
         run: make ci-test jstest
       - name: Docker logs
