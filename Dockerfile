@@ -39,22 +39,6 @@ RUN groupadd ksvotesapp && \
 ARG ENV_NAME=""
 ENV ENV_NAME=${ENV_NAME}
 
+USER ksvotesapp
 CMD ["./start-server.sh"]
 
-## CI
-FROM ksvotes as ksvotes-ci
-COPY run-ci-tests.sh .
-COPY .env-ci .env
-COPY conftest.py .
-ARG USPS_USER_ID=""
-ENV USPS_USER_ID=$USPS_USER_ID
-RUN pip install --no-cache-dir -r requirements-ci.txt && \
-    rm requirements-ci.txt && \
-    chown ksvotesapp:ksvotesapp .env run-ci-tests.sh conftest.py
-
-USER ksvotesapp
-
-## local dev
-FROM ksvotes as ksvotes-localdev
-
-USER ksvotesapp

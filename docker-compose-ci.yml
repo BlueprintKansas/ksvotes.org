@@ -14,7 +14,7 @@ services:
     image: ksvotes:${ENV_NAME}
     build:
       context: .
-      target: ksvotes-ci
+      dockerfile: Dockerfile.ci
       args:
         ENV_NAME: ${ENV_NAME}
         USPS_USER_ID: ${USPS_USER_ID}
