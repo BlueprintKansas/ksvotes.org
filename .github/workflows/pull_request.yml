@@ -53,9 +53,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          pip install -U -r requirements.txt
-          pip install -U -r requirements-ci.txt
-          npm install
+          make deps
       - name: Run tests
         run: make ci-test jstest
       - name: Run playwright tests
