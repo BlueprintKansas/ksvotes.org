@@ -404,8 +404,8 @@
   "3_zip_help":{
     "wiki_step":"3",
     "ref":"3_zip_help",
-    "en":"5 digit zip required",
-    "es":"Se requiere un zip de 5 dígitos"
+    "en":"5 digit ZIP Code required",
+    "es":"Se requiere un ZIP de 5 dígitos"
   },
   "3_has_prev_addr":{
     "wiki_step":"3",
