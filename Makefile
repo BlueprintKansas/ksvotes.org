@@ -3,6 +3,7 @@ check:
 	@python manage.py check_configuration
 
 deps:
+	pip install -U -r requirements.txt
 	pip install -U -r requirements-ci.txt
 	npm install
 	playwright install
