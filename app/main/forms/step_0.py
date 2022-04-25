@@ -10,7 +10,7 @@ import re
 
 class DOBField(StringField):
     def process_formdata(self, valuelist):
-        mdy = re.search(r"^(\d{2})(\d{2})(\d{4})$", re.sub('\D', '', valuelist[0]))
+        mdy = re.search(r"^(\d{2})(\d{2})(\d{4})$", re.sub(r"\D", '', valuelist[0]))
         if not mdy:
             return False
         self.data = '{m}/{d}/{y}'.format(m=mdy.group(1), d=mdy.group(2), y=mdy.group(3))
