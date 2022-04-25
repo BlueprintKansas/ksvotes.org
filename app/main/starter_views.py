@@ -18,9 +18,6 @@ import sys
 import datetime
 import json
 
-import tracemalloc
-tracemalloc.start(10)
-
 @main.route('/terms', methods=['GET'])
 def terms():
     g.locale = guess_locale()

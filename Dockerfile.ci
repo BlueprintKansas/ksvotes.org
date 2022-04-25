@@ -1,0 +1,15 @@
+FROM ksvotes:flask-web-ci
+
+## CI
+USER root
+COPY run-ci-tests.sh .
+COPY .env-ci .env
+COPY conftest.py .
+COPY requirements-ci.txt .
+ARG USPS_USER_ID=""
+ENV USPS_USER_ID=$USPS_USER_ID
+RUN pip install --no-cache-dir -r requirements-ci.txt && \
+    rm requirements-ci.txt && \
+    chown ksvotesapp:ksvotesapp .env run-ci-tests.sh conftest.py
+USER ksvotesapp
+
