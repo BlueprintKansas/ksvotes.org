@@ -53,6 +53,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
+          pip install -U -r requirements.txt
           pip install -U -r requirements-ci.txt
           npm install
       - name: Run tests
