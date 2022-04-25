@@ -46,7 +46,7 @@ jstest:
 	behave
 
 playwright:
-	pytest -s --base-url=http://test.ksvotes.org:5000 playwright/
+	pytest -s -vv --base-url=http://test.ksvotes.org:5000 playwright/
 
 css:
 	npm run css
