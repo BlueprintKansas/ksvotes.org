@@ -10,7 +10,7 @@ import re
 
 class DOBField(StringField):
     def process_formdata(self, valuelist):
-        mdy = re.search('^(\d{2})(\d{2})(\d{4})$', re.sub('\D', '', valuelist[0]))
+        mdy = re.search(r"^(\d{2})(\d{2})(\d{4})$", re.sub('\D', '', valuelist[0]))
         if not mdy:
             return False
         self.data = '{m}/{d}/{y}'.format(m=mdy.group(1), d=mdy.group(2), y=mdy.group(3))
@@ -23,14 +23,14 @@ class FormStep0(FlaskForm):
         lazy_gettext(u'0_dob'),
         validators=[
             DataRequired(message=lazy_gettext(u'Required')),
-            Regexp('^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$', message=lazy_gettext(u'0_dob_flag'))
+            Regexp(r"^\d{2}[\/\-]?\d{2}[\/\-]?\d{4}$", message=lazy_gettext(u'0_dob_flag'))
         ]
     )
 
     zip = StringField(lazy_gettext(u'3_zip'),
         validators=[
             DataRequired(message=lazy_gettext(u'Required')),
-            Regexp('^\d{5}(-\d{4})?$', message=lazy_gettext(u'3_zip_help'))
+            Regexp(r"^\d{5}(-\d{4})?$", message=lazy_gettext(u'3_zip_help'))
         ]
     )
 
@@ -39,7 +39,7 @@ class FormStep0(FlaskForm):
         Email(message=lazy_gettext(u'0_email_flag'))]
     )
     phone = TelField(lazy_gettext(u'0_phone'),
-        validators=[Optional(), Regexp('^\d{3}[\-\.]?\d{3}[\-\.]?\d{4}$', message=lazy_gettext(u'0_phone_help'))]
+        validators=[Optional(), Regexp(r"^\d{3}[\-\.]?\d{3}[\-\.]?\d{4}$", message=lazy_gettext(u'0_phone_help'))]
     )
 
     if os.getenv('RECAPTCHA_KEY'):
@@ -47,8 +47,8 @@ class FormStep0(FlaskForm):
 
     def validate_dob(self, field):
         time_now = datetime.datetime.utcnow()
-        dob = re.sub('\D', '', field.data)
-        mdy = re.search('^(\d{2})(\d{2})(\d{4})$', dob)
+        dob = re.sub(r"\D", '', field.data)
+        mdy = re.search(r"^(\d{2})(\d{2})(\d{4})$", dob)
         if not mdy:
             field.errors.append(lazy_gettext(u'0_dob_help'))
             return False

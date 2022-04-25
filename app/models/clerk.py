@@ -45,7 +45,7 @@ class Clerk(db.Model):
         import re
         from flask import current_app
         csv_file = 'county-clerks.csv'
-        phone_re = re.compile('^(\d\d\d)(\d\d\d)(\d\d\d\d)$')
+        phone_re = re.compile(r"^(\d\d\d)(\d\d\d)(\d\d\d\d)$")
         with open(csv_file, newline="\n") as csvfile:
             next(csvfile)  # skip headers
             # GEOCODE_FORMAT,COUNTY,OFFICER,EMAIL,HOURS,PHONE,FAX,ADDRESS1,ADDRESS2,CITY,STATE,ZIP
