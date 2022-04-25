@@ -1,6 +1,6 @@
 # KSVotes.org
 
-[![Build Status](https://travis-ci.com/BlueprintKansas/ksvotes.org.svg?branch=master)](https://travis-ci.com/BlueprintKansas/ksvotes.org)
+[![Build Status](https://github.com/BlueprintKansas/ksvotes.org/actions/workflows/pull_request.yml/badge.svg)](https://github.com/BlueprintKansas/ksvotes.org)
 
 The ksvotes.org site makes Kansas online voting registration easy.
 
@@ -16,11 +16,9 @@ The ksvotes.org site makes Kansas online voting registration easy.
 
 ### Database services
 
-You can run PostgreSQL and Redis locally, or via Docker.
+You run PostgreSQL and Redis via Docker.
 
-For native Mac installations consider [PostgresApp](https://postgresapp.com/).
-
-For Docker, there is a `docker-compose.yml` file in the repo you can use with:
+See the `docker-compose.yml` file in the repo. You can use with:
 
 ```
 $ make start-services
@@ -39,7 +37,7 @@ section below we assume the names you picked were `ksvotes_dev` and `ksvotes_tes
 ## Setup & Installation
 Recommendations for running after cloning:
 
-Install [Python 3.6+](https://www.python.org/downloads/)
+Install [Python 3.10+](https://www.python.org/downloads/)
 
 Install [pip](https://pypi.org/project/pip/#description)
 
@@ -54,13 +52,31 @@ $(venv) make deps
 $(venv) make locales
 ```
 
+## /etc/hosts file
+
+You'll want to add some entries to your local `/etc/hosts` file to make using Docker easier.
+
+```
+127.0.0.1  ksvotes-postgres
+127.0.0.1  redis
+127.0.0.1  test.ksvotes.org
+```
+
+## Create databases
+
+```sh
+$(venv) psql -c "create database ksvotes_test;" -U postgres -h ksvotes-postgres
+$(venv) psql -c "create database ksvotes_dev;" -U postgres -h ksvotes-postgres
+$(venv) psql -c "create user foo with password 'bar';" -U postgres -h ksvotes-postgres
+```
+
 ### Environmental Variables
 Create a .env file in the root directory and add the following variables.
 Note that the commented-out (`#`-prefixed) variables are optional.
 
 ```
-DATABASE_URL=postgresql://localhost/ksvotes_dev
-TESTING_DATABASE_URL=postgresql://localhost/ksvotes_test
+DATABASE_URL=postgresql://foo:bar@ksvotes-postgres/ksvotes_dev
+TESTING_DATABASE_URL=postgresql://foo:bar@ksvotes-postgres/ksvotes_test
 SECRET_KEY={{generate a secret key}}
 APP_CONFIG=development
 CRYPT_KEY={{generate a secret key | base64}}
@@ -167,49 +183,75 @@ $(venv) make update
 ### Run the Application
 
 Let's get up and running.
-```
-$(venv) make run
+
+First, build the container image:
+
+```sh
+$(venv) make container-build
 ```
 
-Navigate to [localhost:5000](http://localhost:5000)
+Second, login to the container:
+
+```sh
+$(venv) make login
+```
+
+If you get an error like `docker: Error response from daemon: network ksvotesorg_app-tier not found.` make sure you have the redis/postgresql services running
+with `make start-services`.
+
+Third, start the app:
+
+```sh
+ksvotesapp@randomstr:/app$ make run
+```
+
+Navigate to [test.ksvotes.org:5000](http://test.ksvotes.org:5000)
 
 
 ## Tests
 
-To run all unit tests:
-```
-$(venv) make test
+To run all unit tests (inside the Docker container):
+
+```sh
+ksvotesapp@randomstr:/app$ make test
 ```
 
 To run all unit tests with coverage:
-```
-$(venv) make testcov
+
+```sh
+ksvotesapp@randomstr:/app$ make testcov
 ```
 
-To run all browsers tests (requires [Chromedriver](https://chromedriver.chromium.org/getting-started)):
-```
-$(venv) make jstest
+### Browser tests
+
+Run browser-based tests outside the container, on your native host:
+
+```sh
+$(venv) make playwright
 ```
 
 ## Styling
+
 Code is currently setup to SCSS with node scripts to compile.
 
 Edit `scss/source.scss` and compile with `% make css`.
 
 Alternatively you can create your own .css style sheet in *app/static/css* and replace
-```
+
+```html
 <link href="{{url_for('static', filename='css/compiled.css')}}" rel="stylesheet">
 ```
+
 in *app/templates/base.html* with
-```
+
+```html
 <link href="{{url_for('static', filename='css/[[[name of your style sheet]]]')}}" rel="stylesheet">
 ```
 
 To setup scss watcher in root directory run:
-```
+
+```sh
 $ npm install
-```
-```
 $ npm run watch
 ```
 
