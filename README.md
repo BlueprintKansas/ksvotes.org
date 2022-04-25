@@ -21,8 +21,8 @@ You run PostgreSQL and Redis via Docker.
 See the `docker-compose.yml` file in the repo. You can use with:
 
 ```
-$ make start-services
-$ make stop-services
+$ make services-start
+$ make services-stop
 ```
 
 Redis is used for caching stats and external API calls.
@@ -197,7 +197,7 @@ $(venv) make login
 ```
 
 If you get an error like `docker: Error response from daemon: network ksvotesorg_app-tier not found.` make sure you have the redis/postgresql services running
-with `make start-services`.
+with `make services-stop`.
 
 Third, start the app:
 

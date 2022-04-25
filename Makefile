@@ -85,11 +85,15 @@ redact:
 export:
 	python manage.py export_registrants
 
-start-services:
+services-start:
 	docker-compose up -d
 
-stop-services:
+start-services: services-start
+
+services-stop:
 	docker-compose down
+
+stop-services: services-stop
 
 DOCKER_IMG=ksvotes:flask-web
 DOCKER_NAME=ksvotes-flask-web
