@@ -57,6 +57,8 @@ jobs:
           npm install
       - name: Run tests
         run: make ci-test jstest
+      - name: Run playwright tests
+        run: make playwright
       - name: Docker logs
         run: docker logs web --details
         if: failure()
