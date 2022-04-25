@@ -23,9 +23,7 @@ For native Mac installations consider [PostgresApp](https://postgresapp.com/).
 For Docker, there is a `docker-compose.yml` file in the repo you can use with:
 
 ```
-# start
 $ make start-services
-# stop
 $ make stop-services
 ```
 
@@ -50,7 +48,7 @@ Install [virtualenv](https://virtualenv.pypa.io/en/stable/)
 In app root directory setup your virtualenv and install dependencies to your virtualenv python.
 
 ```
-$ virtualenv venv -p python3
+$ python3 -m venv venv
 $ . venv/bin/activate
 $(venv) make deps
 $(venv) make locales

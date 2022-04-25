@@ -1,0 +1,11 @@
+def test_home(page):
+    page.goto("/")
+    page.locator("[name=name_first]").fill("Kris")
+    page.locator("[name=name_last]").fill("Kobach")
+    page.locator("[name=dob]").fill("03/26/1966")
+    page.locator("[name=zip]").fill("66044")
+    page.locator("[name=email]").fill("someone@example.com")
+    page.locator("[name=email-confirm]").fill("someone@example.com")
+    page.locator("xpath=//button[@type='submit']").click()
+    assert page.url.endswith("/change-or-apply/")
+    assert page.locator("text=Success")

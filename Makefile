@@ -3,9 +3,9 @@ check:
 	@python manage.py check_configuration
 
 deps:
-	pip install -U -r requirements.txt
 	pip install -U -r requirements-ci.txt
 	npm install
+	playwright install
 
 venv:
 	@echo 'You must run: . venv/bin/activate'
@@ -43,6 +43,9 @@ test: check
 
 jstest:
 	behave
+
+playwright:
+	pytest -s --base-url=http://test.ksvotes.org:5000 playwright/
 
 css:
 	npm run css
@@ -127,4 +130,4 @@ ci-clean:
 	ENV_NAME=ci docker-compose $(CI_OPTS) down --rmi all
 
 
-.PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services
+.PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services playwright
