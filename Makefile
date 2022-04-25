@@ -6,6 +6,7 @@ deps:
 	pip install -U -r requirements.txt
 	pip install -U -r requirements-ci.txt
 	npm install
+	playwright install
 
 venv:
 	@echo 'You must run: . venv/bin/activate'
@@ -44,6 +45,9 @@ test: check
 jstest:
 	behave
 
+playwright:
+	pytest -s -vv --base-url=http://test.ksvotes.org:5000 playwright/
+
 css:
 	npm run css
 
@@ -81,11 +85,15 @@ redact:
 export:
 	python manage.py export_registrants
 
-start-services:
+services-start:
 	docker-compose up -d
 
-stop-services:
+start-services: services-start
+
+services-stop:
 	docker-compose down
+
+stop-services: services-stop
 
 DOCKER_IMG=ksvotes:flask-web
 DOCKER_NAME=ksvotes-flask-web
@@ -127,4 +135,4 @@ ci-clean:
 	ENV_NAME=ci docker-compose $(CI_OPTS) down --rmi all
 
 
-.PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services
+.PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services playwright
