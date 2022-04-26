@@ -104,7 +104,7 @@ DOCKER_CONTAINER_ID := $(shell docker ps --filter ancestor=$(DOCKER_IMG) --forma
 endif
 
 container-build:
-	docker build -f Dockerfile -t $(DOCKER_IMG) .
+	docker build -f Dockerfile -t $(DOCKER_IMG) --build-arg GIT_SHA=`git rev-parse HEAD | cut -c1-8` .
 
 container-run:
 	docker run -p 8081:8081 -it $(DOCKER_IMG)

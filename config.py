@@ -28,6 +28,7 @@ class Config:
     FAIL_EMAIL = os.getenv('FAIL_EMAIL', 'fail@ksvotes.org')
     STAGE_BANNER = os.getenv('STAGE_BANNER', False)
     REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
+    GIT_SHA = os.getenv('GIT_SHA', "")
 
     @staticmethod
     def init_app(app):
