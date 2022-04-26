@@ -54,6 +54,7 @@ jobs:
         run: |
           sudo apt-get update
           make deps
+          playwright install --with-deps
       - name: Run tests
         run: make ci-test jstest
       - name: Run playwright tests
