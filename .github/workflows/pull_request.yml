@@ -59,7 +59,9 @@ jobs:
       - name: Run playwright tests
         run: make playwright
       - name: Docker logs
-        run: docker logs web --details
+        run: |
+          docker logs web --details
+          make ci-logs
         if: failure()
       - name: Stop CI docker compose
         run: |
