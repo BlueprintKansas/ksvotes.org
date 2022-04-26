@@ -1,6 +1,6 @@
 # helpers
 def complete_step_0(page):
-    page.goto("/ref?ref=demo")
+    page.goto("/demo")
     page.locator("[name=email-confirm]").fill("nosuchperson@example.com")
     assert page.input_value("[name=dob]") == "01/01/2000"
     page.locator("xpath=//button[@type='submit']").click()

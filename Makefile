@@ -127,12 +127,17 @@ ci-start: ci-build ## Start the docker-compose services in CI
 ci-stop: ## Stop the docker-compose services in CI
 	ENV_NAME=ci docker-compose $(CI_OPTS) down
 
-ci-test: ## Run the unit tests in CI
-	ENV_NAME=ci docker-compose $(CI_OPTS) logs --tail="all"
+ci-test: ci-logs ## Run the unit tests in CI
 	ENV_NAME=ci docker exec web ./run-ci-tests.sh
 
 ci-clean: ## Remove the docker images in CI
 	ENV_NAME=ci docker-compose $(CI_OPTS) down --rmi all
+
+ci-logs: ## Tail the docker-compose logs for CI
+	ENV_NAME=ci docker-compose $(CI_OPTS) logs --tail="all"
+
+ci-logs-tail: ## Tail -f the docker-compose logs for CI
+	ENV_NAME=ci docker-compose $(CI_OPTS) logs -f
 
 
 .PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services playwright
