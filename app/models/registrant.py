@@ -177,6 +177,7 @@ class Registrant(db.Model):
         r.is_citizen = True
         r.county = 'TEST'
         r.save(db.session)
+        print("Saved demo attributes for {}".format(r.session_id))
 
     @classmethod
     def find_or_create_by(cls, **kwargs):
