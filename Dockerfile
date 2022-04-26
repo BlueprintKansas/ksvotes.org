@@ -38,6 +38,8 @@ RUN groupadd ksvotesapp && \
 
 ARG ENV_NAME=""
 ENV ENV_NAME=${ENV_NAME}
+ARG GIT_SHA=""
+ENV GIT_SHA=${GIT_SHA}
 
 USER ksvotesapp
 CMD ["./start-server.sh"]

@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Get Git sha
+        run: echo GIT_SHA=`git rev-parse HEAD | cut -c1-8` >> $GITHUB_ENV
       - name: Build, Push and Release a Docker container to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
@@ -35,7 +37,7 @@ jobs:
 
           # (Optional, default: "")
           # Additional options of docker build command.
-          docker_options: "--no-cache"
+          docker_options: "--no-cache --build-arg GIT_SHA=${{ env.GIT_SHA }}"
 
           # (Optional, default: "web")
           # Select the process type for which you want the docker container to be uploaded.
