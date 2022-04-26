@@ -54,8 +54,6 @@ jobs:
         run: |
           sudo apt-get update
           make deps
-      - name: Set up test fixtures
-        run: ENV_NAME=ci docker exec web make load-demo
       - name: Run tests
         run: make ci-test jstest
       - name: Run playwright tests
