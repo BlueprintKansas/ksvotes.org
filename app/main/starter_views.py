@@ -227,6 +227,7 @@ def referring_org():
 
     # special 'ref' value of 'demo' attaches to the DEMO_UUID if defined
     if request.values['ref'] == 'demo' and current_app.config['DEMO_UUID']:
+        current_app.logger.debug("loading demo fixture")
         sid = current_app.config['DEMO_UUID']
 
     http_session['session_id'] = sid
