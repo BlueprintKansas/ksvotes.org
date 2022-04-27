@@ -66,6 +66,12 @@ def test_dob_munging(page):
     page.locator("[name=zip]").focus() # must blur dob field
     assert page.input_value("[name=dob]") == "03/26/1966"
 
+def test_phone_munging(page):
+    page.goto("/")
+    page.locator("[name=phone]").fill("1234567890")
+    page.locator("[name=zip]").focus() # must blur dob field
+    assert page.input_value("[name=phone]") == "123-456-7890"
+
 def test_email_match(page):
     page.goto("/")
     page.locator("[name=email]").fill("someone@example.com")
