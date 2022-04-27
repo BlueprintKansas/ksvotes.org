@@ -2,15 +2,13 @@
   "name": "ksvotes",
   "version": "1.0.0",
   "scripts": {
-    "css": "node-sass --output-style compressed --include-path scss scss/source.scss app/static/css/compiled.css",
-    "test": "node ./node_modules/mocha/bin/mocha js-test/*.js --reporter spec",
+    "css": "sass -s compressed -I scss scss/source.scss app/static/css/compiled.css",
     "watch": "nodemon -e scss -x \"npm run css\""
   },
   "license": "MIT",
   "devDependencies": {
-    "mocha": "5.2.0",
-    "node-sass": "^7.0.0",
     "nodemon": "^1.11.0",
+    "sass": "^1.51.0",
     "zombie": "6.1.2"
   },
   "dependencies": {
