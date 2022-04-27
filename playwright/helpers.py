@@ -15,3 +15,9 @@ def click_register_now(page):
 
 def click_apply_for_advance_ballot(page):
     page.locator("text=Apply for Advance Ballot").click()
+
+def click_back(page):
+    page.locator("id=btn-back").click()
+
+def click_change_of_name(page):
+    page.locator("id=has_prev_name").click()
