@@ -31,6 +31,7 @@ def db(app, request):
         _db.create_all()
         Clerk.load_fixtures()
         ZIPCode.load_fixtures()
+        Registrant.load_fixtures()
 
 @pytest.fixture(scope="function")
 def client(app, request):

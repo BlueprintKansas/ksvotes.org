@@ -154,7 +154,7 @@ class Registrant(db.Model):
     @classmethod
     def load_fixtures(cls):
         if not os.getenv('DEMO_UUID'):
-            raise Exception("Must defined env var DEMO_UUID")
+            raise Exception("Must define env var DEMO_UUID")
 
         r = cls.find_or_create_by(session_id=os.getenv('DEMO_UUID'))
         r.registration_value = {}
@@ -177,7 +177,6 @@ class Registrant(db.Model):
         r.is_citizen = True
         r.county = 'TEST'
         r.save(db.session)
-        print("Saved demo attributes for {}".format(r.session_id))
 
     @classmethod
     def find_or_create_by(cls, **kwargs):
