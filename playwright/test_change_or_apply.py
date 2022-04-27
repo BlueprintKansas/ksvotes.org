@@ -18,3 +18,9 @@ def test_advance_ballot(page):
     page.locator("text=Apply for Advance Ballot").click()
     assert page.url.endswith("/ab/election_picker")
     assert page.locator("text=Election(s)").all_text_contents() == ["Election(s)"]
+
+def test_advance_ballot_status(page):
+    complete_step_0(page)
+    link = page.locator("text=Check advance ballot status")
+    assert link.get_attribute("href") == "https://myvoteinfo.voteks.org/voterview"
+    assert link.get_attribute("target") == "_blank"
