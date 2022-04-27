@@ -149,7 +149,7 @@ class Registrant(db.Model):
         return cls.lookup_by_session_id(sid)
 
     def is_demo(self):
-        return True if str(self.session_id) == os.getenv('DEMO_UUID') else False
+        return self.session_id == UUID(os.getenv('DEMO_UUID'))
 
     @classmethod
     def load_fixtures(cls):

@@ -101,6 +101,7 @@ ifeq (, $(shell which docker))
 DOCKER_CONTAINER_ID := docker-is-not-installed
 else
 DOCKER_CONTAINER_ID := $(shell docker ps --filter ancestor=$(DOCKER_IMG) --format "{{.ID}}" -a)
+DOCKER_CONTAINER_ID_CI := $(shell docker ps --filter ancestor=ksvotes:ci --format "{{.ID}}" -a)
 endif
 
 container-build: ## Build the app docker image
@@ -138,6 +139,10 @@ ci-logs: ## Tail the docker-compose logs for CI
 
 ci-logs-tail: ## Tail -f the docker-compose logs for CI
 	ENV_NAME=ci docker-compose $(CI_OPTS) logs -f
+
+ci-attach: ## Attach to a running container and open a shell (like login for running container)
+	docker exec -it $(DOCKER_CONTAINER_ID_CI) /bin/bash
+
 
 
 .PHONY: deps venv test dbmigrate run testcov fixtures redact export start-services stop-services playwright

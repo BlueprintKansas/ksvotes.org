@@ -3,7 +3,7 @@ import json
 
 def test_db_connection(app, db_session, client):
     genq = db_session.query(Registrant).first()
-    assert genq == None
+    assert genq.is_demo() == True
 
 def test_insert_get_clerk(app, db_session, client):
     new_clerk = Clerk(
@@ -42,7 +42,7 @@ def test_insert_get_registrant_start(app, db_session, client):
     db_session.commit()
 
 
-    registrant = db_session.query(Registrant).first()
+    registrant = db_session.query(Registrant).order_by(Registrant.id.desc()).first()
     #confirm that registration was modified from dictionary value
     assert isinstance(registrant.registration, (dict)) == False
 
