@@ -30,10 +30,35 @@ def test_name(page):
     click_back(page)
     assert page.input_value("[name=name_middle]") == "Other"
     # add name change
+    assert page.locator("text=Previous Name").is_visible() == False
     click_change_of_name(page)
+    assert page.locator("text=Previous Name").is_visible() == True
     page.select_option("select#prev_prefix", label="Miss")
     page.locator("[name=prev_name_first]").fill("Previous No")
     page.locator("[name=prev_name_middle]").fill("Previous Other")
     page.locator("[name=prev_name_last]").fill("Previous Person")
     page.select_option("select#prev_suffix", label="III")
     click_submit(page)
+    assert page.url.endswith("/vr/address")
+    # on back, the checkbox is checked and Previous Name section visible
+    click_back(page)
+    assert page.locator("text=Previous Name").is_visible() == True
+    assert page.input_value("[name=prev_name_first]") == "Previous No"
+    assert page.input_value("[name=prev_name_middle]") == "Previous Other"
+    assert page.input_value("[name=prev_name_last]") == "Previous Person"
+    assert page.input_value("[name=prev_prefix]") == "miss"
+    assert page.input_value("[name=prev_suffix]") == "iii"
+    # toggling checkbox clears input values
+    click_change_of_name(page)
+    assert page.locator("text=Previous Name").is_visible() == False
+    click_change_of_name(page)
+    assert page.locator("text=Previous Name").is_visible() == True
+    assert page.input_value("[name=prev_name_last]") == ""
+    assert page.input_value("[name=prev_prefix]") == ""
+    click_submit(page)
+    assert page.url.endswith("/vr/name") # validation prevents submit
+    assert page.locator("text=Required").all_text_contents() == ["Required", "Required"] # first + last required
+    click_change_of_name(page)
+    assert page.locator("text=Previous Name").is_visible() == False
+    click_submit(page)
+    assert page.url.endswith("/vr/address")
