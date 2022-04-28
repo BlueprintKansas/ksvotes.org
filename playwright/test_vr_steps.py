@@ -197,4 +197,8 @@ def test_address(page):
     assert page.input_value("[name=mail_zip]") == ""
 
     click_submit(page)
+    assert len(page.locator("text=Required").all_text_contents()) == 8
+    click_previous_address(page)
+    click_has_mailing_address(page)
+    click_submit(page)
     assert page.url.endswith("/vr/party")
