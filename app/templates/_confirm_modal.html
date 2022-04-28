@@ -11,11 +11,11 @@
         {% endif %}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-blue-grey" data-dismiss="modal">
+        <button id="confirm-modal-try-again" type="button" class="btn btn-outline-blue-grey" data-dismiss="modal">
           <i class="fa fa-times mr-2"></i>
           {{cancel_btn or _('btn_try_again')}}
         </button>
-        <button type="button" class="btn btn-outline-default submit">
+        <button id="confirm-modal-ok" type="button" class="btn btn-outline-default submit">
           <i class="fa checkmark fa-check mr-2"></i>
           {{submit_btn or _('btn_ok')}}
         </button>
