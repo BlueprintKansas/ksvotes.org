@@ -94,7 +94,9 @@ def test_address(page):
     assert page.locator("text=5 digit ZIP Code required").all_text_contents() == []
 
     # repeat for previous address
+    assert page.locator("text=What was your address where you were registered before?").is_visible() == False
     click_previous_address(page)
+    assert page.locator("text=What was your address where you were registered before?").is_visible() == True
     # start empty
     assert page.input_value("[name=prev_addr]") == ""
     assert page.input_value("[name=prev_unit]") == ""
@@ -123,7 +125,9 @@ def test_address(page):
     assert page.locator("text=5 digit ZIP Code required").all_text_contents() == []
 
     # repeat for mailing address
+    assert page.locator("text=What is the address where you get your mail?").is_visible() == False
     click_has_mailing_address(page)
+    assert page.locator("text=What is the address where you get your mail?").is_visible() == True
     # start empty
     assert page.input_value("[name=mail_addr]") == ""
     assert page.input_value("[name=mail_unit]") == ""
@@ -150,3 +154,47 @@ def test_address(page):
     assert page.locator("text=5 digit ZIP Code required").all_text_contents() == ["5 digit ZIP Code required"]
     page.locator("[name=mail_zip]").fill("12345-1234")
     assert page.locator("text=5 digit ZIP Code required").all_text_contents() == []
+
+    # submit passes validation, advances to next page
+    click_submit(page)
+    assert page.locator("text=Required").all_text_contents() == []
+    assert page.url.endswith("/vr/party")
+
+    # back works, values are sticky
+    click_back(page)
+    assert page.locator("text=What was your address where you were registered before?").is_visible() == True
+    assert page.input_value("[name=prev_addr]") == ""
+    assert page.input_value("[name=prev_unit]") == ""
+    assert page.input_value("[name=prev_city]") == ""
+    assert page.input_value("[name=prev_state]") == ""
+    assert page.input_value("[name=prev_zip]") == ""
+    assert page.locator("text=What is the address where you get your mail?").is_visible() == True
+    assert page.input_value("[name=mail_addr]") == ""
+    assert page.input_value("[name=mail_unit]") == ""
+    assert page.input_value("[name=mail_city]") == ""
+    assert page.input_value("[name=mail_state]") == ""
+    assert page.input_value("[name=mail_zip]") == ""
+
+    # toggling checkbox clears fields
+    click_previous_address(page)
+    assert page.locator("text=What was your address where you were registered before?").is_visible() == False
+    click_previous_address(page)
+    assert page.locator("text=What was your address where you were registered before?").is_visible() == True
+    assert page.input_value("[name=prev_addr]") == ""
+    assert page.input_value("[name=prev_unit]") == ""
+    assert page.input_value("[name=prev_city]") == ""
+    assert page.input_value("[name=prev_state]") == ""
+    assert page.input_value("[name=prev_zip]") == ""
+
+    click_has_mailing_address(page)
+    assert page.locator("text=What is the address where you get your mail?").is_visible() == False
+    click_has_mailing_address(page)
+    assert page.locator("text=What is the address where you get your mail?").is_visible() == True
+    assert page.input_value("[name=mail_addr]") == ""
+    assert page.input_value("[name=mail_unit]") == ""
+    assert page.input_value("[name=mail_city]") == ""
+    assert page.input_value("[name=mail_state]") == ""
+    assert page.input_value("[name=mail_zip]") == ""
+
+    click_submit(page)
+    assert page.url.endswith("/vr/party")
