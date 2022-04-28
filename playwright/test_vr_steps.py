@@ -163,17 +163,17 @@ def test_address(page):
     # back works, values are sticky
     click_back(page)
     assert page.locator("text=What was your address where you were registered before?").is_visible() == True
-    assert page.input_value("[name=prev_addr]") == ""
-    assert page.input_value("[name=prev_unit]") == ""
-    assert page.input_value("[name=prev_city]") == ""
-    assert page.input_value("[name=prev_state]") == ""
-    assert page.input_value("[name=prev_zip]") == ""
+    assert page.input_value("[name=prev_addr]") == "456 Any St"
+    assert page.input_value("[name=prev_unit]") == "Apt A"
+    assert page.input_value("[name=prev_city]") == "Some Place"
+    assert page.input_value("[name=prev_state]") == "MO"
+    assert page.input_value("[name=prev_zip]") == "12345-1234"
     assert page.locator("text=What is the address where you get your mail?").is_visible() == True
-    assert page.input_value("[name=mail_addr]") == ""
-    assert page.input_value("[name=mail_unit]") == ""
-    assert page.input_value("[name=mail_city]") == ""
-    assert page.input_value("[name=mail_state]") == ""
-    assert page.input_value("[name=mail_zip]") == ""
+    assert page.input_value("[name=mail_addr]") == "999 Mailing Ave"
+    assert page.input_value("[name=mail_unit]") == "Apt B"
+    assert page.input_value("[name=mail_city]") == "Specific City"
+    assert page.input_value("[name=mail_state]") == "NE"
+    assert page.input_value("[name=mail_zip]") == "12345-1234"
 
     # toggling checkbox clears fields
     click_previous_address(page)
