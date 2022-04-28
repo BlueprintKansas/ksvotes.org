@@ -8,7 +8,7 @@ def complete_step_0(page):
     assert page.locator("text=You are not registered").all_text_contents() == ["You are not registered to vote."]
 
 def click_submit(page):
-    page.locator("xpath=//button[@type='submit']").click()
+    page.locator("id=btn-next").click()
 
 def click_register_now(page):
     page.locator("text=Register now!").click()
@@ -27,3 +27,16 @@ def click_previous_address(page):
 
 def click_has_mailing_address(page):
     page.locator("id=has_mail_addr").click()
+
+def create_signature(page):
+    # 2 dots
+    page.locator("id=signature >> canvas").click(position={"x": 10, "y": 10})
+    page.locator("id=signature >> canvas").click(position={"x": 20, "y": 20})
+
+def click_sign(page):
+    page.locator("id=sign-button").click()
+
+def select_county(page, county):
+    page.locator("id=change-county-btn").click()
+    page.select_option("select#county", label=county)
+    page.locator("id=btn-apply").click()

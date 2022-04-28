@@ -202,3 +202,104 @@ def test_address(page):
     click_has_mailing_address(page)
     click_submit(page)
     assert page.url.endswith("/vr/party")
+
+def test_address_verification(page):
+    complete_step_0(page)
+    click_register_now(page)
+    page.locator("id=is_eighteen-0").click()
+    page.locator("id=is_citizen-0").click()
+    click_submit(page)
+    click_submit(page)
+    assert page.url.endswith("/vr/address")
+    # demo address is fake so USPS verification should fail
+    click_submit(page)
+    assert page.url.endswith("/vr/party")
+    assert len(page.locator("text=We couldn't verify your address with the Postal Service").all_text_contents()) == 1
+
+    # use a legit address
+    click_back(page)
+    page.locator("[name=addr]").fill("753 Sunset Dr")
+    page.locator("[name=city]").fill("Lawrence")
+    page.locator("[name=zip]").fill("66044")
+    click_submit(page)
+    assert page.url.endswith("/vr/party")
+    assert len(page.locator("text=753 SUNSET DR").all_text_contents()) == 1
+
+def test_party(page):
+    complete_step_0(page)
+    click_register_now(page)
+    page.locator("id=is_eighteen-0").click()
+    page.locator("id=is_citizen-0").click()
+    click_submit(page) # step 1
+    click_submit(page) # step 2
+    click_submit(page) # step 3
+    assert page.url.endswith("/vr/party")
+    page.select_option("select#party", label="")
+    click_submit(page)
+    assert len(page.locator("text=Required").all_text_contents()) == 1
+    page.select_option("select#party", label="Democratic")
+    assert page.input_value("[name=party]") == "Democratic"
+    page.select_option("select#party", label="Republican")
+    assert page.input_value("[name=party]") == "Republican"
+    page.select_option("select#party", label="Unaffiliated")
+    assert page.input_value("[name=party]") == "Unaffiliated"
+    page.select_option("select#party", label="Libertarian")
+    assert page.input_value("[name=party]") == "Libertarian"
+    click_submit(page)
+    assert page.url.endswith("/vr/identification")
+
+def test_identification(page):
+    complete_step_0(page)
+    click_register_now(page)
+    page.locator("id=is_eighteen-0").click()
+    page.locator("id=is_citizen-0").click()
+    click_submit(page) # step 1
+    click_submit(page) # step 2
+    click_submit(page) # step 3
+    click_submit(page) # step 4
+    assert page.url.endswith("/vr/identification")
+    assert page.input_value("[name=identification]") == "NONE"
+    page.locator("[name=identification]").fill("")
+    click_submit(page)
+    assert len(page.locator("text=Required").all_text_contents()) == 1
+    page.locator("[name=identification]").fill("NONE")
+    click_submit(page)
+    assert page.url.endswith("/vr/preview")
+
+def test_preview(page):
+    complete_step_0(page)
+    click_register_now(page)
+    page.locator("id=is_eighteen-0").click()
+    page.locator("id=is_citizen-0").click()
+    click_submit(page) # step 1
+    click_submit(page) # step 2
+    click_submit(page) # step 3
+    click_submit(page) # step 4
+    click_submit(page) # step 5
+    assert page.url.endswith("/vr/preview")
+    click_sign(page)
+    assert len(page.locator("text=Signature required").all_text_contents()) == 1
+    create_signature(page)
+    click_sign(page)
+    assert page.url.endswith("/vr/affirmation")
+
+def test_affirmation(page):
+    complete_step_0(page)
+    click_register_now(page)
+    page.locator("id=is_eighteen-0").click()
+    page.locator("id=is_citizen-0").click()
+    click_submit(page) # step 1
+    click_submit(page) # step 2
+    click_submit(page) # step 3
+    click_submit(page) # step 4
+    click_submit(page) # step 5
+    create_signature(page)
+    click_sign(page) # step 6
+    assert page.url.endswith("/vr/affirmation")
+    select_county(page, "Douglas")
+    click_submit(page)
+    assert len(page.locator("text=Required").all_text_contents()) == 1
+    page.locator("[name=affirmation]").click()
+    click_submit(page)
+    assert page.url.endswith("/vr/submission")
+    assert len(page.locator("text=Success!").all_text_contents()) == 1
