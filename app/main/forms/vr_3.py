@@ -21,11 +21,11 @@ class FormVR3(FlaskForm):
     prev_unit = StringField(lazy_gettext(u'3_prev_unit'))
     prev_city = StringField(lazy_gettext(u'3_prev_city'), validators=[RequiredIfBool('has_prev_addr', message=lazy_gettext(u'Required'))])
     prev_state = StringField(lazy_gettext(u'3_prev_state'), validators=[RequiredIfBool('has_prev_addr', message=lazy_gettext(u'Required'))])
-    prev_zip = StringField(lazy_gettext(u'3_prev_zip'), validators=[Optional(), RequiredIfBool('has_prev_addr', message=lazy_gettext(u'Required')), Regexp(r"^\d{5}$", message=lazy_gettext(u'3_zip_help'))])
+    prev_zip = StringField(lazy_gettext(u'3_prev_zip'), validators=[Optional(), RequiredIfBool('has_prev_addr', message=lazy_gettext(u'Required')), Regexp(r"^\d{5}(-\d{4})?$", message=lazy_gettext(u'3_zip_help'))])
 
     has_mail_addr = BooleanField(lazy_gettext(u'3_has_mail_addr'))
     mail_addr = StringField(lazy_gettext(u'3_mail_addr'), validators=[RequiredIfBool('has_mail_addr', message=lazy_gettext(u'Required'))])
     mail_unit = StringField(lazy_gettext(u'3_mail_unit'))
     mail_city = StringField(lazy_gettext(u'3_mail_city'), validators=[RequiredIfBool('has_mail_addr', message=lazy_gettext(u'Required'))])
     mail_state = StringField(lazy_gettext(u'3_mail_state'), validators=[RequiredIfBool('has_mail_addr', message=lazy_gettext(u'Required'))])
-    mail_zip = StringField(lazy_gettext(u'3_mail_zip'), validators=[Optional(), RequiredIfBool('has_mail_addr', message=lazy_gettext(u'Required')), Regexp(r"^\d{5}$", message=lazy_gettext(u'3_zip_help'))])
+    mail_zip = StringField(lazy_gettext(u'3_mail_zip'), validators=[Optional(), RequiredIfBool('has_mail_addr', message=lazy_gettext(u'Required')), Regexp(r"^\d{5}(-\d{4})?$", message=lazy_gettext(u'3_zip_help'))])
