@@ -21,3 +21,9 @@ def click_back(page):
 
 def click_change_of_name(page):
     page.locator("id=has_prev_name").click()
+
+def click_previous_address(page):
+    page.locator("id=has_prev_addr").click()
+
+def click_has_mailing_address(page):
+    page.locator("id=has_mail_addr").click()
