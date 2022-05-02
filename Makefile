@@ -79,6 +79,10 @@ deploy-stage-fixtures: ## Make fixtures in the ksvotes-staging env
 deploy-prod-fixtures: ## Make fixtures in the ksvotes-production env
 	heroku run 'make fixtures' --app ksvotes-production
 
+deploy-prod: ## Deploy to production
+	heroku container:push web --app ksvotes-production
+	heroku container:release web --app ksvotes-production
+
 redact: ## Remove PII from the encrypted db column(s)
 	python manage.py redact_pii
 
