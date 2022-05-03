@@ -3,8 +3,9 @@
 set -e
 set -x
 
+# make sure .env exists (at Heroku it will not)
+touch .env
 export $(cat .env | grep -v ^# | xargs)
-env
 
 if [ "${ENV_NAME}" == "ci" ]; then
   set +e
