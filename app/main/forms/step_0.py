@@ -10,6 +10,8 @@ import re
 
 class DOBField(StringField):
     def process_formdata(self, valuelist):
+        if valuelist is None or len(valuelist) == 0:
+            return False
         mdy = re.search(r"^(\d{2})(\d{2})(\d{4})$", re.sub(r"\D", '', valuelist[0]))
         if not mdy:
             return False
