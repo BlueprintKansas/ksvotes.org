@@ -52,6 +52,26 @@ class Registrant(db.Model):
     #create key from environmental key
     #json stringyify dictionary and encrypt
 
+    def to_dict(self):
+        return {
+            "registration": self.registration_value,
+            "vr_completed_at": self.vr_completed_at,
+            "ab_completed_at": self.ab_completed_at,
+            "ref": self.ref,
+            "is_citizen": self.is_citizen,
+            "is_eighteen": self.is_eighteen,
+            "dob_year": self.dob_year,
+            "party": self.party,
+            "county": self.county,
+            "lang": self.lang,
+            "signed_at": self.signed_at,
+            "reg_lookup_complete": self.reg_lookup_complete,
+            "addr_lookup_complete": self.addr_lookup_complete,
+            "reg_found": self.reg_found,
+            "identification_found": self.identification_found,
+            "ab_identification_found": self.ab_identification_found,
+      }
+
     @hybrid_property
     def registration_value(self):
         reg = decryptem(self.registration)

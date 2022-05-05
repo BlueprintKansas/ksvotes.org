@@ -152,6 +152,12 @@ def change_or_apply():
     )
 
 
+@main.route('/debug/', methods=['GET'])
+@InSession
+def debug():
+    return jsonify(registrant = g.registrant.to_dict())
+
+
 @main.route('/change-county', methods=['POST'])
 @InSession
 def change_county():
