@@ -40,7 +40,7 @@ run: ## Run the dev server
 	python manage.py runserver -h 0.0.0.0
 
 testcov: ## Run unit tests with coverage report
-	py.test --cov-report term-missing --cov --ignore=node_modules --cov-fail-under 90
+	py.test --cov-report term-missing --cov --ignore=node_modules --cov-fail-under 85
 
 test: check ## Run unit tests
 	py.test -s -vv app/
