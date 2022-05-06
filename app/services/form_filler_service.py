@@ -1,6 +1,7 @@
 from flask import g, current_app
 import os
 import requests
+from app.services.ksvotes_redis import KSVotesRedis
 import json
 import newrelic.agent
 from formfiller import FormFiller
@@ -37,7 +38,6 @@ class FormFillerService():
   }
 
   DEFINITIONS = {}
-  IMAGES = {}
 
   def __init__(self, payload, form_name):
     self.payload = payload
@@ -57,18 +57,22 @@ class FormFillerService():
     return self.DEFINITIONS[self.form_name]
 
   def __get_or_load_image(self):
-    if self.form_name not in self.IMAGES or self.debug:
-      url = self.FORMS[self.form_name]['base']
+    url = self.FORMS[self.form_name]['base']
+    redis = KSVotesRedis()
+    img_def_cached = redis.get(url)
+    if not img_def_cached:
       current_app.logger.info("{} loading {} image from {}".format(self.payload['uuid'], self.form_name, url))
       img = requests.get(url)
-      self.IMAGES[self.form_name] = { 'bytes': img.content, 'format': img.headers['content-type'] }
-
-    return self.IMAGES[self.form_name]
+      img_def_cached = json.dumps({ 'bytes': base64.b64encode(img.content).decode(), 'size': len(img.content), 'format': img.headers['content-type'] })
+      redis.set(url, img_def_cached, 3600) # cache for an hour
+    return json.loads(img_def_cached)
 
   def __set_filler(self):
     defs = self.__get_or_load_definitions()
     img = self.__get_or_load_image()
-    base_image = Image(blob=img['bytes'], format=img['format'])
+    img_bytes = base64.b64decode(img['bytes'].encode())
+    # current_app.logger.info("using image with bytes={} size={} format={}".format(len(img_bytes), img["size"], img["format"]))
+    base_image = Image(blob=img_bytes, format=img['format'])
     self.filler = FormFiller(payload=self.payload, image=base_image, form=defs, font='Liberation-Sans', font_color='blue')
 
   def as_image(self):
