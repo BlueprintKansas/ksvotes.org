@@ -98,6 +98,7 @@ class NVRISClient():
         election = kwargs['election']
         r = self.registrant
         sig = r.try_value('signature_string', None)
+        party = r.party.lower() if r.party else None
         return {
             'state': 'Kansas', # TODO r.try_value('state'),
             'county_2': r.county, # TODO corresponds with 'state'
@@ -119,13 +120,14 @@ class NVRISClient():
             'signature': sig,
             'signature_date': r.signed_at_central_tz().strftime('%m/%d/%Y') if sig else False,
             'phone_number': r.try_value('phone'),
-            'democratic': True if r.party.lower() == 'democratic' else False,
-            'republican': True if r.party.lower() == 'republican' else False,
+            'democratic': True if party == 'democratic' else False,
+            'republican': True if party == 'republican' else False,
         }
 
     def marshall_ksav2_payload(self, **kwargs):
         r = self.registrant
         sig = r.try_value('signature_string', None)
+        party = r.party.lower() if r.party else None
         return {
             'state': 'Kansas', # TODO r.try_value('state'),
             'county_2': r.county, # TODO corresponds with 'state'
@@ -146,8 +148,8 @@ class NVRISClient():
             'signature': sig,
             'signature_date': r.signed_at_central_tz().strftime('%m/%d/%Y') if sig else False,
             'phone_number': r.try_value('phone'),
-            'democratic': True if r.party.lower() == 'democratic' else False,
-            'republican': True if r.party.lower() == 'republican' else False,
+            'democratic': True if party == 'democratic' else False,
+            'republican': True if party == 'republican' else False,
         }
 
     def marshall_vr_payload(self):
