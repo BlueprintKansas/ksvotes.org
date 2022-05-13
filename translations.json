@@ -313,9 +313,13 @@
     "en":"Election",
     "es":"Elección"
   },
-  "1AB_party_help":{
+  "1AB_party_help_normal":{
     "en":"Political party is required only when requesting a primary election ballot; to vote in a party's primary election, you must be a registered member of that party.",
     "es":"El partido político es requerido solo cuando solicita una boleta electoral primaria; para votar en las elecciones primarias de un partido, debe ser un miembro registrado de ese partido."
+  },
+    "1AB_party_help":{
+    "en":"Unaffiliated voters may request a ballot for the August 2022 Constitutional Amendment ballot question. Political party is required to vote in other primary elections on the August 2022 ballot. To vote in a party's primary election, you must be a registered member of that party.",
+    "es":"Los votantes no afiliados pueden solicitar una boleta para la pregunta de la boleta de enmienda constitucional de agosto de 2022. El partido político debe votar en otras elecciones primarias en la boleta electoral de agosto de 2022. Para votar en las elecciones primarias de un partido, debe ser un miembro registrado de ese partido."
   },
   "1AB_party_flag":{
     "wiki_step":"1AB",
