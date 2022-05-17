@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}Stats{% endblock %}
 {% block content %}
 <div class="container">
   <div class="row justify-content-center">
@@ -14,18 +14,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script>
-  let dateFormat = 'MM/DD/YYYY';
-  let stats = {{stats|tojson}};
-  let color = Chart.helpers.color;
-  let days = [];
-  let vrs = [];
-  let abs = [];
+  const dateFormat = 'MM/DD/YYYY';
+  const stats = {{stats|tojson}};
+  const color = Chart.helpers.color;
+  const days = [];
+  const vrs = [];
+  const abs = [];
   stats['vr'].forEach(function(val, idx, arr) {
     days.push(new Date(val[0].replace(' GMT', '')));
     vrs.push(val[1]);
   });
-  stats['ab'].forEach(function(val, idx, arr) {
-    abs.push(val[1]);
+  days.forEach(function(day, idx) {
+    const abEvent = stats.ab.find(function(abVal, abIdx) {
+      const abDate = new Date(abVal[0].replace(' GMT', ''));
+      return abDate.getTime() === day.getTime();
+    });
+    if (abEvent) {
+      abs[idx] = abEvent[1];
+    } else {
+      abs[idx] = 0;
+    }
   });
   const colors = {
     red: 'rgb(255, 99, 132)',
