@@ -8,8 +8,7 @@
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^1.11.0",
-    "sass": "^1.51.0",
-    "zombie": "6.1.2"
+    "sass": "^1.51.0"
   },
   "dependencies": {
     "moment": "^2.29.2",
