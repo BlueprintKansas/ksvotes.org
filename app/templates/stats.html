@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Stats{% endblock %}
 {% block content %}
-<div class="container">
+<div class="container" style="position: relative">
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <canvas id="stats"></canvas>
+      <canvas id="stats" aria-label="ksvotes stats" role="img" height="300vh"></canvas>
     </div>
   </div>
 </div>
@@ -64,6 +64,11 @@
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      onResize: function (chart, newSize) {
+        // console.log({ chart, newSize, styleHeight: chart.canvas.style.height });
+        // chart.canvas.style.height = chart.canvas.parentNode.style.height;
+      },
       title: {
         display: true,
         text: 'ksvotes.org stats'
