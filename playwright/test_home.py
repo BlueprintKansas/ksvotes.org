@@ -83,7 +83,7 @@ def test_email_pattern(page):
     page.goto("/")
     page.locator("[name=email]").fill("someone@example")
     page.locator("[name=email-confirm]").fill("someone@example")
-    assert page.locator("text=Must be a valid email address").all_text_contents() == ["Must be a valid email address"]
+    assert page.locator("text=Must be a valid email address").all_text_contents() == ["Must be a valid email address", "Must be a valid email address"]
 
 def test_email_required(page):
     page.goto("/")
