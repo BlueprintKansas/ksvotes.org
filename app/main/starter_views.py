@@ -285,11 +285,15 @@ def api_total_processed():
 @main.route('/stats/', methods=['GET'])
 def stats():
     g.locale = guess_locale()
-    ninety_days = datetime.timedelta(days=90)
-    today = datetime.date.today()
+    span = request.values.get("span", "90")
+    span_days = datetime.timedelta(days=int(span))
+    if request.values.get("end"):
+        end_date = datetime.datetime.fromisoformat(request.values.get("end"))
+    else:
+        end_date = datetime.datetime.now()
     s = RegistrantStats()
-    vr_stats = s.vr_through_today(today - ninety_days)
-    ab_stats = s.ab_through_today(today - ninety_days)
+    vr_stats = s.vr_through_today(end_date - span_days, end_date)
+    ab_stats = s.ab_through_today(end_date - span_days, end_date)
 
     stats = {'vr': [], 'ab': []}
     for r in vr_stats:
