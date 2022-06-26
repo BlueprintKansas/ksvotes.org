@@ -285,7 +285,7 @@ def api_total_processed():
 @main.route('/stats/', methods=['GET'])
 def stats():
     g.locale = guess_locale()
-    span = request.values.get("span", "90")
+    span = request.values.get("span", "30")
     span_days = datetime.timedelta(days=int(span))
     if request.values.get("end"):
         end_date = datetime.datetime.fromisoformat(request.values.get("end"))
