@@ -18,4 +18,4 @@ fi
 
 make dbupgrade load-clerks load-zipcodes
 
-newrelic-admin run-program gunicorn --bind 0.0.0.0:${PORT:=5000} manage:app --max-requests 500 --preload --access-logfile -
+newrelic-admin run-program gunicorn --bind 0.0.0.0:${PORT:=5000} manage:app --max-requests 500 --preload --access-logfile - -w ${WEB_CONCURRENCY:=2}
