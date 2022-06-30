@@ -122,6 +122,7 @@
             </div>
           </div>
         </div>
+      </div>
     </section>
     {% endif %}
 
@@ -183,25 +184,23 @@
 
 
   <!-- JQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{{url_for('static', filename='js/mdb-4.5.5.js')}}"></script>
+  <script src="{{url_for('static', filename='js/mdb-4.5.5.js')}}"></script>
   <!-- Parsley -->
-  <script type="text/javascript" src="{{url_for('static', filename='js/parsley.min.js')}}"></script>
-  <script type="text/javascript" src="{{url_for('static', filename='js/moment.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/parsley.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/moment.min.js')}}"></script>
 
-  <script type="text/javascript" src="{{url_for('static', filename='js/p-loading.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/p-loading.min.js')}}"></script>
 
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
-  <script type="text/javascript">
+  <script>
     var showMask = function () {
       var $mask = $('#mask');
       $mask.show();
