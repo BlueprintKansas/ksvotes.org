@@ -20,6 +20,8 @@
   const days = [];
   const vrs = [];
   const abs = [];
+  const lookups = [];
+  const successful_lookups = [];
   stats['vr'].forEach(function(val, idx, arr) {
     days.push(new Date(val[0].replace(' GMT', '')));
     vrs.push(val[1]);
@@ -35,6 +37,12 @@
       abs[idx] = 0;
     }
   });
+  stats['reg'].forEach(function(val, idx, arr) {
+    lookups.push(val[1]);
+  });
+  stats['reg_success'].forEach(function(val, idx, arr) {
+    successful_lookups.push(val[1]);
+  });
   const colors = {
     red: 'rgb(170, 51, 57)',
     orange: 'rgb(255, 159, 64)',
@@ -49,17 +57,29 @@
     data: {
       labels: days,
       datasets: [{
-        label: 'Voter Registrations',
+        label: 'Completed Voter Registrations',
         backgroundColor: color(colors.green).alpha(0.5).rgbString(),
         borderColor: colors.green,
         fill: false,
         data: vrs,
       }, {
-        label: 'Advanced Ballots',
+        label: 'Completed Advanced Ballots',
         backgroundColor: color(colors.red).alpha(0.5).rgbString(),
         borderColor: colors.red,
         fill: false,
         data: abs,
+      }, {
+        label: 'Registration Lookups',
+        backgroundColor: color(colors.blue).alpha(0.5).rgbString(),
+        borderColor: colors.blue,
+        fill: false,
+        data: lookups,
+      }, {
+        label: 'Registrations Found',
+        backgroundColor: color(colors.grey).alpha(0.5).rgbString(),
+        borderColor: colors.grey,
+        fill: false,
+        data: successful_lookups,
       }],
     },
     options: {
@@ -71,7 +91,7 @@
       },
       title: {
         display: true,
-        text: 'ksvotes.org stats'
+        text: 'KSVotes.org Daily Stats'
       },
       scales: {
         xAxes: [{
