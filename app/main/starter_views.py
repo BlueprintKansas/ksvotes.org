@@ -294,12 +294,18 @@ def stats():
     s = RegistrantStats()
     vr_stats = s.vr_through_today(end_date - span_days, end_date)
     ab_stats = s.ab_through_today(end_date - span_days, end_date)
+    reg_lookups = s.reg_lookups(end_date - span_days, end_date)
+    reg_success = s.reg_lookups_successful(end_date - span_days, end_date)
 
-    stats = {'vr': [], 'ab': []}
+    stats = {'vr': [], 'ab': [], 'reg': [], 'reg_success': []}
     for r in vr_stats:
       stats['vr'].append(r.values())
     for r in ab_stats:
       stats['ab'].append(r.values())
+    for r in reg_lookups:
+      stats['reg'].append(r.values())
+    for r in reg_success:
+      stats['reg_success'].append(r.values())
 
     return render_template('stats.html', stats=stats)
 

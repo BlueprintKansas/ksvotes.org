@@ -41,3 +41,33 @@ class RegistrantStats():
     ab_stats = db.session.connection().execute(sql.format(start_date=start_date, end_date=end_date))
 
     return ab_stats.fetchall()
+
+  def reg_lookups(self, start_date, end_date=None):
+    today = datetime.date.today() + datetime.timedelta(days=1)
+    if not end_date:
+        end_date = today
+    sql = """
+      select cast(created_at at time zone 'utc' at time zone 'america/chicago' as date) as lookup_date, count(id)
+      from registrants
+      where reg_lookup_complete is true and created_at at time zone 'utc' at time zone 'america/chicago' between '{start_date}' and '{end_date}'
+      group by lookup_date
+      order by 1
+    """
+    stats = db.session.connection().execute(sql.format(start_date=start_date, end_date=end_date))
+
+    return stats.fetchall()
+
+  def reg_lookups_successful(self, start_date, end_date=None):
+    today = datetime.date.today() + datetime.timedelta(days=1)
+    if not end_date:
+        end_date = today
+    sql = """
+      select cast(created_at at time zone 'utc' at time zone 'america/chicago' as date) as lookup_date, count(id)
+      from registrants
+      where reg_found is true and created_at at time zone 'utc' at time zone 'america/chicago' between '{start_date}' and '{end_date}'
+      group by lookup_date
+      order by 1
+    """
+    stats = db.session.connection().execute(sql.format(start_date=start_date, end_date=end_date))
+
+    return stats.fetchall()
