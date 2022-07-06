@@ -1,4 +1,4 @@
-<script src="{{url_for('static', filename='js/signature_pad.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.5/dist/signature_pad.umd.min.js"></script>
 <script>
     $(document).ready(function() {
       // add canvas element
@@ -7,13 +7,14 @@
       $signature.append('<canvas></canvas>');
       let canvas = $signature.find('canvas')[0];
       let sig_pad = new SignaturePad(canvas, {
-        penColor: "blue",
-        onEnd: function() {
-          let sig_png = sig_pad.toDataURL();
-          if (sig_png.length == 0) {      
-          } else {
-            $sig_string.val(sig_png);
-          }
+        penColor: "blue"
+      });
+      sig_pad.addEventListener("endStroke", () => {
+        let sig_png = sig_pad.toDataURL();
+        if (sig_png.length === 0) {
+          console.log("empty signature!");
+        } else {
+          $sig_string.val(sig_png);
         }
       });
 
