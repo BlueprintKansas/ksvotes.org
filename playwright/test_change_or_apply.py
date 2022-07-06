@@ -19,7 +19,7 @@ def test_advance_ballot_status(page):
     assert link.get_attribute("target") == "_blank"
 
 def test_unknown_voter(page):
-    page.goto("/")
+    page.goto("/forget")
     page.locator("[name=name_first]").fill("Some")
     page.locator("[name=name_last]").fill("Body")
     page.locator("[name=dob]").fill("01/01/2000")
