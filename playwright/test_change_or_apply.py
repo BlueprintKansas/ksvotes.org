@@ -28,7 +28,6 @@ def test_unknown_voter(page):
     page.locator("[name=email-confirm]").fill("someone@example.com")
     click_submit(page)
     assert page.url.endswith("/change-or-apply/")
-    print(page.content())
     assert page.locator("text=You are not registered").all_text_contents() == ["You are not registered to vote."]
     clerk_table = page.locator("table.clerk-details")
     assert "Douglas" in clerk_table.inner_text()
