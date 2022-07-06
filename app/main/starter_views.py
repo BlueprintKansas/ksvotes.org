@@ -185,7 +185,7 @@ def change_county():
 
     if not new_county or new_county == existing_county:
         current_app.logger.error('unable to change county')
-        redirect(redirect_url)
+        return redirect(redirect_url)
 
     current_app.logger.debug('new county %s return to %s' % (new_county, redirect_url))
     reg.county = new_county
