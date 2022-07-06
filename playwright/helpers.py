@@ -1,5 +1,6 @@
 # helpers
 def complete_step_0(page):
+    page.set_default_timeout(10000) # 30sec is default and we want to fail faster.
     page.goto("/demo")
     page.locator("[name=email-confirm]").fill("nosuchperson@example.com")
     assert page.input_value("[name=dob]") == "01/01/2000"

@@ -59,13 +59,23 @@ def test_insert_get_registrant_start(app, db_session, client):
     assert registrant_uuid.registration_value.get('name_first') == "foo"
 
 def test_prepopulate_address(app, db_session, client):
-    sosrec = { 'Address': '123 Main St #456 Wichita, KS, 12345', 'Party': 'Republican' }
+    sosrec = { 'Address': '123 Main St #456, North Wichita, KS 12345', 'Party': 'Republican' }
     r = Registrant()
     r.populate_address(sosrec)
 
     assert r.try_value('addr') == '123 Main St'
     assert r.try_value('unit') == '# 456'
-    assert r.try_value('city') == 'Wichita'
+    assert r.try_value('city') == 'North Wichita'
+    assert r.try_value('state') == 'KS'
+    assert r.try_value('zip') == '12345'
+
+    sosrec = { 'Address': '3309 Woodside Drive, North Wichita, KS 12345', 'Party': 'Republican' }
+    r = Registrant()
+    r.populate_address(sosrec)
+
+    assert r.try_value('addr') == '3309 Woodside Drive'
+    assert r.try_value('unit') == ''
+    assert r.try_value('city') == 'North Wichita'
     assert r.try_value('state') == 'KS'
     assert r.try_value('zip') == '12345'
 

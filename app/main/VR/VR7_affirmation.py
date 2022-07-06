@@ -1,5 +1,5 @@
 from app.main import main
-from flask import g, url_for, render_template, redirect, request
+from flask import g, url_for, render_template, redirect, request, current_app
 from flask_babel import lazy_gettext
 from app import db
 from app.models import Registrant, Clerk
@@ -16,6 +16,7 @@ from datetime import datetime
 def vr7_affirmation():
     reg = g.registrant
     clerk = reg.try_clerk()
+    current_app.logger.debug("county={} clerk={}".format(reg.county, clerk))
     form = FormVR7()
     county_picker = CountyPicker()
 

@@ -35,6 +35,15 @@ def about_us():
     g.locale = guess_locale()
     return render_template('about.html')
 
+# do not cache dynamic content
+@main.after_request
+def add_header(r):
+    r.cache_control.no_cache = True
+    r.cache_control.no_store = True
+    r.cache_control.must_revalidate = True
+    r.headers['Pragma'] = 'no-cache'
+    r.headers['Expires'] = '0'
+    return r
 
 # step 0 / 0x
 @main.route('/', methods=["GET", "POST"])
@@ -75,7 +84,12 @@ def index():
             db.session.add(registrant)
 
         skip_sos = request.values.get('skip-sos')
-        step.run(skip_sos)
+        # always skip for DEMO user, but pretend we did not
+        if current_app.config['DEMO_UUID'] and registrant.is_demo():
+            current_app.logger.debug("skip sos for DEMO user")
+            step.run(True)
+        else:
+            step.run(skip_sos)
         registrant.reg_lookup_complete = step.reg_lookup_complete
         registrant.reg_found = True if step.reg_found else False
         registrant.dob_year = registrant.get_dob_year()
@@ -171,7 +185,7 @@ def change_county():
 
     if not new_county or new_county == existing_county:
         current_app.logger.error('unable to change county')
-        redirect(redirect_url)
+        return redirect(redirect_url)
 
     current_app.logger.debug('new county %s return to %s' % (new_county, redirect_url))
     reg.county = new_county
