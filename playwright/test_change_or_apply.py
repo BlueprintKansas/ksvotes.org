@@ -19,7 +19,7 @@ def test_advance_ballot_status(page):
     assert link.get_attribute("target") == "_blank"
 
 def test_unknown_voter(page):
-    page.goto("/forget")
+    page.goto("/")
     page.locator("[name=name_first]").fill("Some")
     page.locator("[name=name_last]").fill("Body")
     page.locator("[name=dob]").fill("01/01/2000")
@@ -28,6 +28,7 @@ def test_unknown_voter(page):
     page.locator("[name=email-confirm]").fill("someone@example.com")
     click_submit(page)
     assert page.url.endswith("/change-or-apply/")
+    print(page.content())
     assert page.locator("text=You are not registered").all_text_contents() == ["You are not registered to vote."]
     clerk_table = page.locator("table.clerk-details")
     assert "Douglas" in clerk_table.inner_text()
