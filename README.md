@@ -65,8 +65,8 @@ You'll want to add some entries to your local `/etc/hosts` file to make using Do
 ## Create databases
 
 ```sh
-$(venv) psql -c "create database ksvotes_test;" -U postgres -h ksvotes-postgres
-$(venv) psql -c "create database ksvotes_dev;" -U postgres -h ksvotes-postgres
+$(venv) PGPASSWORD=postgres psql -c 'create database "ksvotes.org_test";' -U postgres -h ksvotes-postgres
+$(venv) PGPASSWORD=postgres psql -c 'create database "ksvotes.org_dev";' -U postgres -h ksvotes-postgres
 $(venv) psql -c "create user foo with password 'bar';" -U postgres -h ksvotes-postgres
 ```
 
