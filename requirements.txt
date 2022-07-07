@@ -27,7 +27,7 @@ itsdangerous==1.1.0
 # our 1.x Flask requires we stay at Jinja < 3.0
 Jinja2==2.11.3
 ksmyvoteinfo==1.5
-lxml==4.6.5
+lxml==4.9.1
 Mako==1.1.4
 MarkupSafe==2.0.1
 more-itertools==8.8.0
