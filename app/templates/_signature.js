@@ -25,6 +25,7 @@
           sig_pad.fromDataURL($sig_string.val());
         } else if (sigCache) {
           console.log("set canvas value from sigCache");
+          $('.parsley-errors-list').append($('<li>pop from sigCache</li>'));
           sig_pad.fromDataURL(sigCache);
           sigCache = null;
         }
