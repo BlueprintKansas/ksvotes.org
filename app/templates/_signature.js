@@ -18,9 +18,16 @@
         }
       });
 
+      let sigCache = null;
+
       function fillCanvasFromPNG() {
         if ($sig_string.val().length > 0) {
           sig_pad.fromDataURL($sig_string.val());
+        } else if (sigCache) {
+          console.log("set canvas value from sigCache");
+          $('.parsley-errors-list').append($('<li>pop from sigCache</li>'));
+          sig_pad.fromDataURL(sigCache);
+          sigCache = null;
         }
       }
 
@@ -32,6 +39,10 @@
         // some browsers report devicePixelRatio as less than 1
         // and only part of the canvas is cleared then.
         let ratio =  Math.max(window.devicePixelRatio || 1, 1);
+
+        sigCache = sig_pad.toDataURL();
+
+        $('.parsley-errors-list').append($('<li>canvas resize</li>'));
 
         // This part causes the canvas to be cleared
         canvas.width = canvas.offsetWidth * ratio;
@@ -64,6 +75,7 @@
         ev.preventDefault(); // do not submit (multiple buttons confuse browser)
         sig_pad.clear();
         $('#signature_string').val('');
+        $('.parsley-errors-list').empty();
       });
     });
 </script>
