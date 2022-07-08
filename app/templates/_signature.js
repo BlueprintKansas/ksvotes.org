@@ -25,7 +25,7 @@
           sig_pad.fromDataURL($sig_string.val());
         } else if (sigCache) {
           console.log("set canvas value from sigCache");
-          $('.parsley-errors-list').append($('<li>pop from sigCache</li>'));
+          //$('.parsley-errors-list').append($('<li>pop from sigCache</li>'));
           sig_pad.fromDataURL(sigCache);
           sigCache = null;
         }
@@ -42,7 +42,7 @@
 
         sigCache = sig_pad.toDataURL();
 
-        $('.parsley-errors-list').append($('<li>canvas resize</li>'));
+        //$('.parsley-errors-list').append($('<li>canvas resize</li>'));
 
         // This part causes the canvas to be cleared
         canvas.width = canvas.offsetWidth * ratio;
