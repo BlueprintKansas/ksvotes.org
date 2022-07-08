@@ -73,7 +73,7 @@ class NVRISClient():
     def parse_election_date(self, election):
         import re
         pattern = r"(Prim\w+|General) \((.+)\)"
-        m = re.match(pattern, election)
+        m = re.search(pattern, election)
         if m:
             return m.group(2)
         else:
