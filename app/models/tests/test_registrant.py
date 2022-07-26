@@ -1,5 +1,6 @@
 from app.models import *
 import json
+from datetime import datetime, timedelta
 
 def test_db_connection(app, db_session, client):
     genq = db_session.query(Registrant).first()
@@ -100,19 +101,15 @@ def test_prepopulate_secure_voter(app, db_session, client):
     assert r.try_value('zip') == ''
 
 def test_signed_at_timezone(app, db_session, client):
-    from datetime import datetime
-
     registrant = Registrant()
     registrant.signed_at = datetime(2018, 10, 18, 3, 0)
 
     assert registrant.signed_at_central_tz().strftime('%m/%d/%Y') == "10/17/2018"
 
 def test_redaction(app, db_session, client):
-    from datetime import datetime
-
     r = Registrant()
     r.update({ 'ab_identification': 'abc123', 'identification': 'def456', 'signature_string': 'i am me' })
-    r.save(db_session);
+    r.save(db_session)
 
     assert r.try_value('ab_identification') == 'abc123'
     assert r.try_value('identification') == 'def456'
@@ -131,4 +128,13 @@ def test_redaction(app, db_session, client):
     assert r.try_value('ab_identification') == '[REDACTED]'
     assert r.try_value('identification') == '[REDACTED]'
     assert r.try_value('signature_string') == '[REDACTED]'
+
+def test_updated_since(app, db_session, client):
+    r = Registrant()
+    r.update({ 'ab_identification': 'abc123' })
+    r.save(db_session)
+    r.updated_at = datetime.utcnow() - timedelta(minutes=int(11))
+    assert r.updated_since(10) == False
+    r.updated_at = datetime.utcnow() - timedelta(minutes=int(9))
+    assert r.updated_since(10) == True
 
