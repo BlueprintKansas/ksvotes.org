@@ -40,7 +40,7 @@ def InSession(f):
             # has not been updated within the SESSION_TTL window.
             r = g.registrant
             if r and not r.updated_since(current_app.config['SESSION_TTL']) and not r.is_demo():
-                current_app.logger.error("Discontinuing old session for existing Registrant.")
+                current_app.logger.error("Discontinuing old session %s for existing Registrant." %(session_id))
                 http_session['session_id'] = None
                 if request.method == 'POST':
                     flash(lazy_gettext('session_interrupted_error'), 'warning')
