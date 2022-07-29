@@ -121,6 +121,7 @@ def index():
             sos_failure = step.voter_view_fail
 
         registrant.update({'sos_reg': sos_reg, 'skip_sos': skip_sos, 'sos_failure': sos_failure})
+        registrant.user_agent = request.headers.get("User-Agent")
         registrant.save(db.session)
 
         # small optimization for common case.
