@@ -32,7 +32,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Setup env
-        run: echo USPS_USER_ID=${{ secrets.USPS_USER_ID }} >> .env-ci && cat .env-ci | grep -v ^# >> $GITHUB_ENV
+        run: |
+          echo AB_PRIMARY_DEADLINE=`date --date='tomorrow' -I`"T00:00:00" >> .env-ci
+          echo USPS_USER_ID=${{ secrets.USPS_USER_ID }} >> .env-ci
+          cat .env-ci | grep -v ^# >> $GITHUB_ENV
       - name: Add /etc/hosts entries
         run: |
           echo '127.0.0.1  ksvotes-postgres' | sudo tee -a /etc/hosts
