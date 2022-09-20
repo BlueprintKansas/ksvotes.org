@@ -38,6 +38,7 @@ class RegistrantExporter():
             "reg_found",
             "identification_found",
             "ab_identification_found",
+            "user_agent",
             "r_ref",
             "r_name_first",
             "r_name_last",
