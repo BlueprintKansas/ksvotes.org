@@ -28,7 +28,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 ksmyvoteinfo==1.5
 lxml==4.9.1
-Mako==1.1.4
+Mako==1.2.2
 MarkupSafe==2.0.1
 more-itertools==8.8.0
 newrelic==7.10.0.175
